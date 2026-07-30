@@ -1,24 +1,35 @@
 # CBAP® Exam Simulator
 
-A single-file, offline, 120-question practice exam for the **CBAP®** certification, aligned to the
-**BABOK® Guide v3** and weighted to the published exam blueprint.
+A single-file, offline practice exam for the **CBAP®** certification, aligned to the
+**BABOK® Guide v3** and weighted to the published exam blueprint. Sit the full 120-item paper under
+timed conditions, or run a coached study session over the knowledge areas you choose.
 
-**▶ [Sit the exam](https://REPLACE_ME) —** no install, no sign-up, nothing leaves your browser.
+**▶ [Open it](https://business-analyst-services.github.io/cbap-exam-simulator/) —** no install, no sign-up, nothing leaves your browser.
 
 ---
 
 ## What it is
 
-One self-contained HTML file. Open it and you are sitting a full-length, timed, scenario-based
-mock exam. Feedback is withheld until you submit, then released in full alongside a diagnostic
+One self-contained HTML file, holding 120 scenario-based items across all six Knowledge Areas and
+every task in scope. The first screen asks how you want to run it.
+
+**Exam sitting** — all 120 items, blueprint-weighted, 3 hours 30 minutes on the clock, pausable,
+auto-submitting at zero. Nothing is revealed until you submit. Closest to the real thing.
+
+**Study session** — choose your knowledge areas and a length (10, 25, 50, or everything selected).
+Each item is marked the moment you answer, with a verdict on all four options, the reasoning behind
+the best answer, the BABOK v3 task it comes from and the trap it tests. The set is drawn in
+blueprint proportion across the areas you picked, and both questions and options are shuffled, so
+retaking a set is not a memory test. Untimed, with the clock counting up.
+
+Both modes end on the same diagnostic: score by Knowledge Area, task-level gaps and a prioritised
 study plan.
 
 | | |
 |---|---|
 | **Items** | 120 scenario-based multiple-choice questions |
 | **Coverage** | All 6 Knowledge Areas, all 30 tasks in scope |
-| **Timing** | 3 hours 30 minutes, pausable, auto-submits at zero (or run untimed) |
-| **Feedback** | Deferred to the end — as in the real exam |
+| **Modes** | Timed exam sitting · filtered study session with immediate feedback |
 | **Storage** | None. No accounts, no cookies, no analytics, no network calls |
 
 ### Blueprint weighting
@@ -38,10 +49,16 @@ study plan.
 - **Exam-realistic sitting** — countdown clock, flag-for-review, 120-cell question navigator,
   keyboard answering (`A`–`D` to answer, `←`/`→` to move, `F` to flag, `G` for the grid).
 - **Deferred feedback** — no hints, no running score, no knowledge-area labels during the sitting.
+- **Study mode with feedback after every question** — right or wrong called immediately, a verdict on
+  each of the four options, why the best answer wins, the BABOK v3 task cited, and the trap named.
+  Answers lock once revealed, so you cannot quietly change your mind. Running score in the header,
+  navigator cells coloured right/wrong as you go.
+- **Knowledge-area filtering** — pick one area to drill or any combination; the session is drawn in
+  blueprint proportion across what you selected, and the summary tells you which areas it skipped.
 - **Full review after submission** — every option gets a verdict, not just the correct one, plus the
   discriminating detail in the scenario, the BABOK task reference and the named trap.
 - **Diagnostic study plan** — per-Knowledge-Area performance against blueprint weights with a 70%
-  threshold, task-level gaps, key terms you misread, behavioural error patterns (including how long
+  threshold (short sets are marked as thin samples rather than treated as verdicts), task-level gaps, key terms you misread, behavioural error patterns (including how long
   you spent on wrong answers versus right ones), and prioritised actions ranked by weight × gap.
 - **Light and dark**, responsive, and printable to PDF for your records.
 
