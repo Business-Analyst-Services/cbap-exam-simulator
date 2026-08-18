@@ -1,0 +1,423 @@
+[
+ {
+  "n": "10.1", "name": "Acceptance and Evaluation Criteria", "group": "Measurement and evaluation",
+  "purpose": "States the conditions a solution must meet to be accepted, and the measures used to judge one option against another.",
+  "use": "Reach for it when a requirement has to be testable before anyone builds against it, or when competing options need a common yardstick rather than opinion.",
+  "confused": "Acceptance criteria are pass or fail and belong to a single requirement; evaluation criteria rank options against each other. An item that asks you to choose between suppliers wants evaluation, not acceptance.",
+  "tasks": ["7.3 Validate Requirements", "8.1 Measure Solution Performance", "5.3 Prioritize Requirements"],
+  "kas": [5, 7, 8]
+ },
+ {
+  "n": "10.2", "name": "Backlog Management", "group": "Planning, governance and tracking",
+  "purpose": "Keeps a ranked, living list of outstanding work so the next most valuable item is always visible at the top.",
+  "use": "Reach for it on adaptive work where scope is expected to change and the commitment is to the ordering, not to a fixed set.",
+  "confused": "Backlog management is the ongoing custody of the list; prioritisation is the act of ordering it. Items about re-ranking after new information are prioritisation; items about how the list itself is maintained and drawn from are backlog management.",
+  "tasks": ["5.2 Maintain Requirements", "5.3 Prioritize Requirements", "5.4 Assess Requirements Changes"],
+  "kas": [5]
+ },
+ {
+  "n": "10.3", "name": "Balanced Scorecard", "group": "Measurement and evaluation",
+  "purpose": "Holds performance to four perspectives at once, financial, customer, internal process, and learning and growth, so no single dimension is optimised alone.",
+  "use": "Reach for it when an organisation is measuring itself only on money and needs the leading indicators that explain the money.",
+  "confused": "A balanced scorecard is a framework for choosing a spread of measures; metrics and KPIs are the individual measures themselves. If the scenario already has measures and asks whether they are the right ones, the scorecard is the answer.",
+  "tasks": ["6.2 Define Future State", "8.1 Measure Solution Performance", "8.2 Analyze Performance Measures"],
+  "kas": [6, 8]
+ },
+ {
+  "n": "10.4", "name": "Benchmarking and Market Analysis", "group": "Strategy and discovery",
+  "purpose": "Compares the practices and results of an enterprise against peers, competitors or a recognised standard, and reads the market it operates in.",
+  "use": "Reach for it when you need an outside reference point for what good looks like, or when the case for change rests on a claim about the market.",
+  "confused": "Benchmarking looks outward at others; measuring solution performance looks inward at your own. An item where the comparison target is another organisation is benchmarking, even if the words performance and measure appear in the stem.",
+  "tasks": ["6.1 Analyze Current State", "6.2 Define Future State", "8.4 Assess Enterprise Limitations"],
+  "kas": [6, 8]
+ },
+ {
+  "n": "10.5", "name": "Brainstorming", "group": "Elicitation and collaboration",
+  "purpose": "Generates a wide field of ideas quickly by separating generation from judgement.",
+  "use": "Reach for it when the problem is that too few options are on the table, and the group has the knowledge but has not yet been asked the open question.",
+  "confused": "Brainstorming diverges; decision analysis and prioritisation converge. If the scenario already has plenty of options and needs to pick one, brainstorming is the wrong tool no matter how collaborative the setting sounds.",
+  "tasks": ["4.2 Conduct Elicitation", "6.3 Assess Risks", "7.5 Define Design Options"],
+  "kas": [4, 6, 7]
+ },
+ {
+  "n": "10.6", "name": "Business Capability Analysis", "group": "Strategy and discovery",
+  "purpose": "Describes what the enterprise is able to do, independently of who does it or how, and grades each ability for performance and importance.",
+  "use": "Reach for it when investment has to be aimed at an outcome rather than a department, or when the same weakness keeps surfacing across several units.",
+  "confused": "Capabilities are what the organisation can do; processes are how it does it. An item that keeps naming org units or hand-offs is heading for process or organisational modelling, not capability analysis.",
+  "tasks": ["6.1 Analyze Current State", "6.2 Define Future State", "6.4 Define Change Strategy"],
+  "kas": [6]
+ },
+ {
+  "n": "10.7", "name": "Business Cases", "group": "Valuation and decision",
+  "purpose": "Assembles the justification for a change: the need, the options considered, the recommended option and what it is expected to be worth.",
+  "use": "Reach for it when a decision-maker has to approve funding and needs the need, the options and the value in one place.",
+  "confused": "The business case is the container; financial analysis is one of its contents. An item that turns on how the return was calculated is financial analysis, while one that turns on whether the recommendation was justified at all is the business case.",
+  "tasks": ["6.4 Define Change Strategy", "6.2 Define Future State", "7.6 Analyze Potential Value and Recommend Solution"],
+  "kas": [6, 7]
+ },
+ {
+  "n": "10.8", "name": "Business Model Canvas", "group": "Strategy and discovery",
+  "purpose": "Lays the operating logic of a business on one page across nine blocks, from value proposition through to cost structure and revenue streams.",
+  "use": "Reach for it early, when the question is how the enterprise creates and captures value rather than how a particular process runs.",
+  "confused": "The canvas describes a whole business model; SWOT assesses position. An item asking what would break if the revenue model changed is canvas work; one asking what threatens the organisation is SWOT.",
+  "tasks": ["6.1 Analyze Current State", "6.2 Define Future State"],
+  "kas": [6]
+ },
+ {
+  "n": "10.9", "name": "Business Rules Analysis", "group": "Modelling and specification",
+  "purpose": "Draws out the rules that constrain or guide behaviour and states them so they can be governed and changed independently of the process that applies them.",
+  "use": "Reach for it when policy changes more often than process, or when the same rule is buried in several systems and nobody can say which version is current.",
+  "confused": "A rule is a constraint on behaviour; a requirement is something the solution must do. Items where a policy is being restated as a system function are testing whether you keep the rule separate from the process that invokes it.",
+  "tasks": ["7.1 Specify and Model Requirements", "6.1 Analyze Current State", "7.4 Define Requirements Architecture"],
+  "kas": [6, 7]
+ },
+ {
+  "n": "10.10", "name": "Collaborative Games", "group": "Elicitation and collaboration",
+  "purpose": "Uses a structured, playful exercise to surface assumptions and shared understanding that direct questioning does not reach.",
+  "use": "Reach for it when a group is stuck, guarded, or dominated by one voice, and the obstacle is the dynamic rather than the information.",
+  "confused": "A collaborative game is a device used inside a session; the workshop is the session. If the item turns on planning, facilitating or closing the event, it is workshops.",
+  "tasks": ["4.2 Conduct Elicitation", "4.5 Manage Stakeholder Collaboration"],
+  "kas": [4]
+ },
+ {
+  "n": "10.11", "name": "Concept Modelling", "group": "Modelling and specification",
+  "purpose": "Fixes the business vocabulary and the relationships between its terms, independently of any system or database.",
+  "use": "Reach for it when the same word means different things in different parts of the business and the disagreement is being mistaken for a requirements dispute.",
+  "confused": "A concept model is about meaning in the business; a data model is about structure for storage. Items that mention tables, keys or attributes have already left concept modelling.",
+  "tasks": ["7.1 Specify and Model Requirements", "7.4 Define Requirements Architecture"],
+  "kas": [7]
+ },
+ {
+  "n": "10.12", "name": "Data Dictionary", "group": "Modelling and specification",
+  "purpose": "Records the standard definition of each data element: its meaning, format, allowed values and composition.",
+  "use": "Reach for it when data is being exchanged or migrated and the arguments are about what a field actually holds.",
+  "confused": "A data dictionary defines elements; a glossary defines business terms. If the disputed word is a business concept rather than a stored field, the answer is glossary.",
+  "tasks": ["7.1 Specify and Model Requirements", "3.4 Plan Business Analysis Information Management"],
+  "kas": [3, 7]
+ },
+ {
+  "n": "10.13", "name": "Data Flow Diagrams", "group": "Modelling and specification",
+  "purpose": "Shows where data comes from, what transforms it and where it ends up, across processes, stores and external parties.",
+  "use": "Reach for it when the concern is movement and custody of information rather than the order in which people act.",
+  "confused": "Data flow diagrams follow the data; process models follow the work. An item about who does what next is process modelling even when systems are involved.",
+  "tasks": ["7.1 Specify and Model Requirements", "6.1 Analyze Current State", "7.4 Define Requirements Architecture"],
+  "kas": [6, 7]
+ },
+ {
+  "n": "10.14", "name": "Data Mining", "group": "Strategy and discovery",
+  "purpose": "Interrogates large data sets for patterns and relationships that were not hypothesised in advance.",
+  "use": "Reach for it when the evidence for a problem or an opportunity is already sitting in operational data and nobody has looked.",
+  "confused": "Data mining finds the pattern; metrics and KPIs track a measure you already chose. If the scenario knows what it wants to watch, it does not need mining.",
+  "tasks": ["6.1 Analyze Current State", "8.2 Analyze Performance Measures", "4.2 Conduct Elicitation"],
+  "kas": [4, 6, 8]
+ },
+ {
+  "n": "10.15", "name": "Data Modelling", "group": "Modelling and specification",
+  "purpose": "Describes the entities an organisation holds information about, their attributes and the relationships between them.",
+  "use": "Reach for it when the solution has to store or exchange information and the structure, cardinality and ownership of that information are in question.",
+  "confused": "Data modelling structures information for a solution; concept modelling settles what the business means by a term. The give-away for data modelling is cardinality: one-to-many, optionality, keys.",
+  "tasks": ["7.1 Specify and Model Requirements", "7.4 Define Requirements Architecture"],
+  "kas": [7]
+ },
+ {
+  "n": "10.16", "name": "Decision Analysis", "group": "Valuation and decision",
+  "purpose": "Structures a choice under uncertainty by setting out the options, the criteria, the values and the trade-offs between them.",
+  "use": "Reach for it when a decision is contested, the criteria are not agreed, or the outcome depends on events nobody controls.",
+  "confused": "Decision analysis chooses between options; prioritisation sequences items you have already agreed to do. If nothing is being discarded, it is prioritisation.",
+  "tasks": ["7.6 Analyze Potential Value and Recommend Solution", "6.4 Define Change Strategy", "7.5 Define Design Options"],
+  "kas": [6, 7]
+ },
+ {
+  "n": "10.17", "name": "Decision Modelling", "group": "Modelling and specification",
+  "purpose": "Represents repeatable operational decisions and the logic behind them, so the same inputs always yield the same outcome.",
+  "use": "Reach for it when a decision is made hundreds of times a day by different people and the inconsistency is the problem.",
+  "confused": "Decision modelling documents a recurring operational decision; decision analysis supports a one-off strategic choice. Frequency is the tell.",
+  "tasks": ["7.1 Specify and Model Requirements", "6.1 Analyze Current State"],
+  "kas": [6, 7]
+ },
+ {
+  "n": "10.18", "name": "Document Analysis", "group": "Elicitation and collaboration",
+  "purpose": "Elicits information from existing material: procedures, contracts, system documentation, regulations and prior artefacts.",
+  "use": "Reach for it before you take stakeholder time, so the questions you do ask are the ones the documents cannot answer.",
+  "confused": "Document analysis is elicitation from artefacts, not verification of your own work. If the material being examined is the requirements you just wrote, that is reviews.",
+  "tasks": ["4.1 Prepare for Elicitation", "4.2 Conduct Elicitation", "6.1 Analyze Current State"],
+  "kas": [4, 6]
+ },
+ {
+  "n": "10.19", "name": "Estimation", "group": "Valuation and decision",
+  "purpose": "Produces a forecast of cost, effort, duration or value, together with the confidence and assumptions attached to it.",
+  "use": "Reach for it when a decision needs a number that does not yet exist, and the honest answer is a range rather than a point.",
+  "confused": "Estimation forecasts an unknown; financial analysis works on figures you already have. An item that hands you cash flows and asks what they are worth is financial analysis.",
+  "tasks": ["3.1 Plan Business Analysis Approach", "5.3 Prioritize Requirements", "6.4 Define Change Strategy"],
+  "kas": [3, 5, 6]
+ },
+ {
+  "n": "10.20", "name": "Financial Analysis", "group": "Valuation and decision",
+  "purpose": "Puts a monetary frame around a change: what it costs, what it returns, when the return arrives and what the money is worth once timing and risk are accounted for.",
+  "use": "Reach for it whenever an option has to be justified in money, or when two options differ mainly in the timing of their costs and benefits rather than in their size.",
+  "confused": "Financial analysis values what is already forecast; estimation produces the forecast. And a positive return is not the same as the best option: the exam repeatedly offers an option that is profitable but beaten by an alternative.",
+  "tasks": ["6.4 Define Change Strategy", "7.6 Analyze Potential Value and Recommend Solution", "8.5 Recommend Actions to Increase Solution Value"],
+  "kas": [6, 7, 8],
+  "mechanics": [
+   {"term": "Discount factor", "formula": "1 / (1 + r)^t", "note": "The multiplier that converts a sum arriving in year t into today's money at discount rate r. At 10%, a dollar in year 3 is worth about 75 cents now."},
+   {"term": "Present value (PV)", "formula": "cash flow in year t x discount factor for year t", "note": "Discount each year separately, then add. Never discount a total using a single middle year."},
+   {"term": "Net present value (NPV)", "formula": "sum of discounted benefits - sum of discounted costs", "note": "Positive means the option beats the cost of capital. Between two positive options, the larger NPV wins unless capital is rationed."},
+   {"term": "Payback period", "formula": "years until cumulative net cash flow turns positive", "note": "Measures how long the money is exposed, not how much is made. It ignores everything after the break-even point, which is why a short payback can still be the worse option."},
+   {"term": "Return on investment (ROI)", "formula": "(net benefit / investment) x 100", "note": "A ratio, so it is blind to scale. A 200% return on $10k is worth less in absolute terms than a 40% return on $500k."},
+   {"term": "Internal rate of return (IRR)", "formula": "the discount rate at which NPV = 0", "note": "Compare it against the hurdle rate. Above the hurdle, the option clears; below it, the option destroys value even if the raw benefits exceed the raw costs."},
+   {"term": "Break-even point", "formula": "fixed costs / (unit price - unit variable cost)", "note": "The volume at which contribution covers fixed cost. Rising variable cost moves break-even far more sharply than rising fixed cost."},
+   {"term": "Total cost of ownership", "formula": "acquisition + operating + support + decommissioning over the whole life", "note": "The licence fee is rarely the decision. Items that quote only the purchase price are usually testing whether you asked for the running cost."}
+  ],
+  "worked": "A change costs $400,000 up front and returns $180,000 a year for three years. At a 10% discount rate the benefits are worth 180,000/1.1 = $163,636, then 180,000/1.21 = $148,760, then 180,000/1.331 = $135,236 — $447,632 in total. NPV is $47,632, so the option clears the cost of capital. Undiscounted payback, however, falls during year 3, because $360,000 has been recovered by the end of year 2. The same option therefore looks strong on NPV and slow on payback, and which one governs depends on whether the constraint is value or cash exposure."
+ },
+ {
+  "n": "10.21", "name": "Focus Groups", "group": "Elicitation and collaboration",
+  "purpose": "Draws attitudes and reactions from a selected group in a moderated discussion, using the interaction between participants as part of the data.",
+  "use": "Reach for it when you want to know how people feel about something and why, and when hearing them disagree with each other is informative.",
+  "confused": "A focus group gathers opinion; a workshop produces a work product. If the session is meant to end with a decision or a signed-off model, it is a workshop.",
+  "tasks": ["4.2 Conduct Elicitation", "8.1 Measure Solution Performance"],
+  "kas": [4, 8]
+ },
+ {
+  "n": "10.22", "name": "Functional Decomposition", "group": "Modelling and specification",
+  "purpose": "Breaks a large function, scope or problem into constituent parts small enough to estimate, assign or analyse.",
+  "use": "Reach for it when something is too big to reason about whole, and the parts are genuinely separable.",
+  "confused": "Decomposition breaks work down for analysis; a work breakdown structure schedules delivery. Producing one to satisfy a project manager is the classic doing-project-management trap.",
+  "tasks": ["7.1 Specify and Model Requirements", "3.1 Plan Business Analysis Approach", "6.2 Define Future State"],
+  "kas": [3, 6, 7]
+ },
+ {
+  "n": "10.23", "name": "Glossary", "group": "Modelling and specification",
+  "purpose": "Holds the agreed definition of business terms so that one word carries one meaning across the whole effort.",
+  "use": "Reach for it when stakeholders are using the same word for different things, and the argument is really about vocabulary.",
+  "confused": "A glossary defines business terms; a data dictionary defines stored data elements. Concept modelling goes further and maps the relationships between the terms.",
+  "tasks": ["7.1 Specify and Model Requirements", "3.4 Plan Business Analysis Information Management", "4.3 Confirm Elicitation Results"],
+  "kas": [3, 4, 7]
+ },
+ {
+  "n": "10.24", "name": "Interface Analysis", "group": "Modelling and specification",
+  "purpose": "Identifies the boundaries between the solution and everything it touches, and specifies what crosses each one.",
+  "use": "Reach for it when the risk sits at the seams: between systems, between organisations, or between a person and the solution.",
+  "confused": "Interface analysis defines what crosses a boundary; scope modelling defines where the boundary is. Scope first, interfaces second.",
+  "tasks": ["7.1 Specify and Model Requirements", "7.4 Define Requirements Architecture", "6.2 Define Future State"],
+  "kas": [6, 7]
+ },
+ {
+  "n": "10.25", "name": "Interviews", "group": "Elicitation and collaboration",
+  "purpose": "Elicits information one-to-one or in a small group through prepared and follow-up questioning.",
+  "use": "Reach for it when the subject is sensitive, the expertise is concentrated in one person, or the group setting would suppress what needs saying.",
+  "confused": "Interviews go deep with few people; surveys go wide with many. If the scenario needs coverage across hundreds of staff, interviewing them is the wrong instrument however thorough it sounds.",
+  "tasks": ["4.2 Conduct Elicitation", "4.1 Prepare for Elicitation", "6.1 Analyze Current State"],
+  "kas": [4, 6]
+ },
+ {
+  "n": "10.26", "name": "Item Tracking", "group": "Planning, governance and tracking",
+  "purpose": "Captures and follows issues, risks, conflicts and actions through to resolution, with an owner and a status on each.",
+  "use": "Reach for it when things raised in sessions keep going missing, and the failure is one of follow-through rather than analysis.",
+  "confused": "Item tracking manages open items; risk analysis assesses and responds to risk. A raised concern with no owner is an item; a quantified threat with a response strategy is a risk.",
+  "tasks": ["4.5 Manage Stakeholder Collaboration", "5.4 Assess Requirements Changes", "3.5 Identify Business Analysis Performance Improvements"],
+  "kas": [3, 4, 5]
+ },
+ {
+  "n": "10.27", "name": "Lessons Learned", "group": "Planning, governance and tracking",
+  "purpose": "Assembles what worked, what did not and what should change, from the people who were there, while it is still recoverable.",
+  "use": "Reach for it at the close of a phase or effort, and when the same failure has now happened more than once.",
+  "confused": "Lessons learned improves how the work is done next time; retrospective performance assessment of business analysis itself sits under task 3.5. The technique is the session, the task is the accountability.",
+  "tasks": ["3.5 Identify Business Analysis Performance Improvements", "8.5 Recommend Actions to Increase Solution Value"],
+  "kas": [3, 8]
+ },
+ {
+  "n": "10.28", "name": "Metrics and Key Performance Indicators", "group": "Measurement and evaluation",
+  "purpose": "Defines what will be measured, how, how often and against what target, so performance can be judged rather than asserted.",
+  "use": "Reach for it when success has been described in adjectives, or when data is being collected that nobody has tied to an objective.",
+  "confused": "A metric is a raw measure; a KPI is a metric tied to an objective with a target. An indicator that nobody would act on is a metric, not a KPI, however prominently it is displayed.",
+  "tasks": ["8.1 Measure Solution Performance", "8.2 Analyze Performance Measures", "6.2 Define Future State"],
+  "kas": [6, 8],
+  "mechanics": [
+   {"term": "Leading vs lagging", "formula": "leading predicts, lagging confirms", "note": "A lagging indicator tells you the outcome after it is too late to change it. A dashboard of only lagging measures cannot support intervention."},
+   {"term": "Baseline", "formula": "the measured value before the change", "note": "Without a baseline there is no improvement to claim. Items where nobody measured the current state are testing task 8.1, not the technique."},
+   {"term": "Target and threshold", "formula": "target = intended value; threshold = the point that triggers action", "note": "A KPI with no threshold produces reporting, not management."}
+  ]
+ },
+ {
+  "n": "10.29", "name": "Mind Mapping", "group": "Elicitation and collaboration",
+  "purpose": "Organises ideas radially around a central concept to expose structure and association during thinking.",
+  "use": "Reach for it while exploring, when the shape of the problem is still forming and premature lists would close it down.",
+  "confused": "Mind mapping is for exploring and organising thought; functional decomposition is a disciplined breakdown of scope into parts. A mind map is not a deliverable model.",
+  "tasks": ["4.2 Conduct Elicitation", "6.1 Analyze Current State"],
+  "kas": [4, 6]
+ },
+ {
+  "n": "10.30", "name": "Non-Functional Requirements Analysis", "group": "Modelling and specification",
+  "purpose": "Specifies the qualities a solution must exhibit, such as performance, availability, security, usability and maintainability, in measurable terms.",
+  "use": "Reach for it as soon as functional requirements are stable, because the qualities usually decide the architecture.",
+  "confused": "Non-functional requirements describe how well the solution behaves; business rules constrain what the business permits. And a quality with no number attached is an aspiration, not a requirement.",
+  "tasks": ["7.1 Specify and Model Requirements", "7.5 Define Design Options", "7.2 Verify Requirements"],
+  "kas": [7]
+ },
+ {
+  "n": "10.31", "name": "Observation", "group": "Elicitation and collaboration",
+  "purpose": "Studies work as it is actually performed, rather than as it is described.",
+  "use": "Reach for it when what people say they do and what the system records do not agree, or when the work is tacit and hard to articulate.",
+  "confused": "Observation elicits from the work itself; interviews elicit from the person. If the scenario stresses that the documented procedure is not being followed, the answer is almost always observation.",
+  "tasks": ["4.2 Conduct Elicitation", "6.1 Analyze Current State", "8.3 Assess Solution Limitations"],
+  "kas": [4, 6, 8]
+ },
+ {
+  "n": "10.32", "name": "Organisational Modelling", "group": "Strategy and discovery",
+  "purpose": "Describes the units, roles, reporting lines and interactions that make up an organisation, and where responsibility actually sits.",
+  "use": "Reach for it when the change crosses boundaries, or when a decision keeps stalling because nobody can say who owns it.",
+  "confused": "Organisational modelling maps structure and responsibility; a stakeholder map positions people by influence and interest for engagement purposes. Structure versus engagement is the split.",
+  "tasks": ["6.1 Analyze Current State", "6.2 Define Future State", "3.2 Plan Stakeholder Engagement"],
+  "kas": [3, 6]
+ },
+ {
+  "n": "10.33", "name": "Prioritisation", "group": "Planning, governance and tracking",
+  "purpose": "Orders requirements or work against agreed bases such as value, cost, risk, dependency, regulatory deadline or implementation difficulty.",
+  "use": "Reach for it whenever demand exceeds capacity, which is nearly always, and the sequence has to be defensible to people who lose out.",
+  "confused": "Prioritisation orders things you intend to do; decision analysis picks between options where some are discarded. Also watch the basis: an item where a regulatory date is in play is not decided by value.",
+  "tasks": ["5.3 Prioritize Requirements", "5.4 Assess Requirements Changes", "6.4 Define Change Strategy"],
+  "kas": [5, 6]
+ },
+ {
+  "n": "10.34", "name": "Process Analysis", "group": "Strategy and discovery",
+  "purpose": "Examines an existing process for waste, delay, variation and gaps against its intended outcome, and identifies where improvement is available.",
+  "use": "Reach for it when the process is known and the question is what is wrong with it, rather than what it is.",
+  "confused": "Process analysis evaluates a process; process modelling depicts it. If the scenario has no model yet, you cannot analyse it, which is why the ordering matters in exam items.",
+  "tasks": ["6.1 Analyze Current State", "8.5 Recommend Actions to Increase Solution Value", "8.3 Assess Solution Limitations"],
+  "kas": [6, 8]
+ },
+ {
+  "n": "10.35", "name": "Process Modelling", "group": "Modelling and specification",
+  "purpose": "Depicts the sequence of activities, decisions, actors and hand-offs that produce an outcome.",
+  "use": "Reach for it when order, branching or hand-off is the substance of the problem, and prose has stopped being able to carry it.",
+  "confused": "Process modelling shows the flow of work; use cases show an actor achieving a goal with the solution; data flow diagrams follow information. Hand-offs between people point to process.",
+  "tasks": ["7.1 Specify and Model Requirements", "6.1 Analyze Current State", "6.2 Define Future State"],
+  "kas": [6, 7]
+ },
+ {
+  "n": "10.36", "name": "Prototyping", "group": "Elicitation and collaboration",
+  "purpose": "Makes an early, partial version of the solution so stakeholders can react to something concrete instead of describing something abstract.",
+  "use": "Reach for it when requirements are unclear because people cannot picture the outcome, or when a technical assumption needs testing before commitment.",
+  "confused": "A prototype elicits and validates; it is not the solution and not a design specification. Items where the prototype quietly becomes the build are testing whether you know the difference between throwaway and evolutionary intent.",
+  "tasks": ["4.2 Conduct Elicitation", "7.5 Define Design Options", "7.3 Validate Requirements"],
+  "kas": [4, 7]
+ },
+ {
+  "n": "10.37", "name": "Reviews", "group": "Planning, governance and tracking",
+  "purpose": "Puts a work product in front of others to find defects, confirm understanding or obtain agreement, formally or informally.",
+  "use": "Reach for it when the artefact is ready enough to be examined and the cost of an undetected error is rising.",
+  "confused": "Verification asks whether the requirement is well written; validation asks whether it delivers value. A review is the vehicle for either, so read what the reviewers are being asked to judge.",
+  "tasks": ["7.2 Verify Requirements", "7.3 Validate Requirements", "5.5 Approve Requirements"],
+  "kas": [5, 7]
+ },
+ {
+  "n": "10.38", "name": "Risk Analysis and Management", "group": "Valuation and decision",
+  "purpose": "Identifies uncertain events that could affect value, assesses their likelihood and impact, and settles a response for each.",
+  "use": "Reach for it when the change strategy depends on things nobody controls, and unnamed risk is being carried as optimism.",
+  "confused": "A risk is an uncertain future event; an issue is already happening and belongs in item tracking. And the responses are avoid, transfer, mitigate, accept or increase, not simply escalate.",
+  "tasks": ["6.3 Assess Risks", "6.4 Define Change Strategy", "3.1 Plan Business Analysis Approach"],
+  "kas": [3, 6],
+  "mechanics": [
+   {"term": "Exposure", "formula": "probability x impact", "note": "Ranks risks on a common scale. A low-probability, catastrophic risk can outrank a likely nuisance."},
+   {"term": "Expected monetary value", "formula": "sum of (probability x monetary impact) across outcomes", "note": "Turns a risk profile into a figure that can enter a business case alongside costs and benefits."},
+   {"term": "Residual risk", "formula": "risk remaining after the response is applied", "note": "The response does not close the risk; it changes it. Items that treat mitigation as elimination are testing this."}
+  ]
+ },
+ {
+  "n": "10.39", "name": "Roles and Permissions Matrix", "group": "Modelling and specification",
+  "purpose": "Sets out which role may perform which action on which object, exposing gaps, overlaps and separation-of-duty breaches.",
+  "use": "Reach for it when access, authority or segregation of duties is in question, particularly under audit or regulation.",
+  "confused": "A roles and permissions matrix governs what a role may do in the solution; organisational modelling describes where the role sits. Permission versus position.",
+  "tasks": ["7.1 Specify and Model Requirements", "6.2 Define Future State"],
+  "kas": [6, 7]
+ },
+ {
+  "n": "10.40", "name": "Root Cause Analysis", "group": "Strategy and discovery",
+  "purpose": "Traces a problem back past its symptoms to the condition that produces it, using structured questioning or cause-and-effect mapping.",
+  "use": "Reach for it when a fix keeps failing, when the same defect recurs, or when the stated problem is plainly a symptom.",
+  "confused": "Root cause analysis explains why the current state underperforms; it does not design the future state. An item that jumps from a recurring failure to a solution is testing whether you stopped to find the cause.",
+  "tasks": ["6.1 Analyze Current State", "8.3 Assess Solution Limitations", "8.4 Assess Enterprise Limitations"],
+  "kas": [6, 8]
+ },
+ {
+  "n": "10.41", "name": "Scope Modelling", "group": "Modelling and specification",
+  "purpose": "Draws the boundary of the change: what is inside, what is outside, and what sits on the edge.",
+  "use": "Reach for it when scope is contested, when the effort keeps absorbing adjacent work, or before any credible estimate can be given.",
+  "confused": "Scope modelling sets the boundary; interface analysis specifies what crosses it; functional decomposition breaks down what is inside. Boundary disputes are scope.",
+  "tasks": ["6.2 Define Future State", "6.4 Define Change Strategy", "7.4 Define Requirements Architecture"],
+  "kas": [6, 7]
+ },
+ {
+  "n": "10.42", "name": "Sequence Diagrams", "group": "Modelling and specification",
+  "purpose": "Shows the ordered exchange of messages between participants over time to accomplish a specific interaction.",
+  "use": "Reach for it when timing, ordering and the exact exchange between components decide whether the behaviour is correct.",
+  "confused": "Sequence diagrams order messages between components; process models order activities performed by people and systems; state models track what an object becomes. Messages, work, or status is the three-way split.",
+  "tasks": ["7.1 Specify and Model Requirements", "7.4 Define Requirements Architecture"],
+  "kas": [7]
+ },
+ {
+  "n": "10.43", "name": "Stakeholder List, Map, or Personas", "group": "Planning, governance and tracking",
+  "purpose": "Identifies who is affected, positions them by influence, interest or attitude, and characterises user groups whose needs differ.",
+  "use": "Reach for it at the start, and again whenever the change moves into a part of the organisation you have not analysed.",
+  "confused": "Identifying and positioning stakeholders is analysis; deciding how often and how formally to deal with each is engagement planning under task 3.2. Producing a map is not the same as having a plan.",
+  "tasks": ["3.2 Plan Stakeholder Engagement", "6.1 Analyze Current State", "4.1 Prepare for Elicitation"],
+  "kas": [3, 4, 6]
+ },
+ {
+  "n": "10.44", "name": "State Modelling", "group": "Modelling and specification",
+  "purpose": "Describes the states an object can occupy, the transitions between them and the events and conditions that permit each transition.",
+  "use": "Reach for it when the same object behaves differently depending on where it is in its life, and the rules about what may happen next are the requirement.",
+  "confused": "State modelling tracks what an object may become; process modelling tracks what people do. If the stem is full of statuses such as lodged, assessed, withdrawn, it is state.",
+  "tasks": ["7.1 Specify and Model Requirements", "6.1 Analyze Current State"],
+  "kas": [6, 7]
+ },
+ {
+  "n": "10.45", "name": "Survey or Questionnaire", "group": "Elicitation and collaboration",
+  "purpose": "Collects information from many respondents through a structured instrument, closed for measurement or open for exploration.",
+  "use": "Reach for it when you need breadth, statistical weight, or input from people too numerous or dispersed to meet.",
+  "confused": "Surveys give breadth without depth and cannot ask the follow-up question. Items where the sample is self-selected, or the response rate is poor, are testing whether you treat the result as evidence or as a signal to go and interview.",
+  "tasks": ["4.2 Conduct Elicitation", "8.1 Measure Solution Performance", "6.1 Analyze Current State"],
+  "kas": [4, 6, 8]
+ },
+ {
+  "n": "10.46", "name": "SWOT Analysis", "group": "Strategy and discovery",
+  "purpose": "Sorts internal strengths and weaknesses against external opportunities and threats to read the organisation's position.",
+  "use": "Reach for it early in strategy analysis, when the case for change has to be located in the organisation's actual position.",
+  "confused": "The axis that trips people is internal versus external. A capability the organisation lacks is a weakness, not a threat; a competitor exploiting that lack is the threat.",
+  "tasks": ["6.1 Analyze Current State", "6.2 Define Future State", "6.4 Define Change Strategy"],
+  "kas": [6]
+ },
+ {
+  "n": "10.47", "name": "Use Cases and Scenarios", "group": "Modelling and specification",
+  "purpose": "Describes how an actor interacts with a solution to achieve a goal, including the main flow and the alternatives and exceptions.",
+  "use": "Reach for it when the interaction between an actor and the solution, including everything that can go wrong in it, is the substance of the requirement.",
+  "confused": "A use case is goal-oriented interaction with the solution; a process model is the flow of business work. Use cases carry alternate and exception flows, which is usually the discriminating detail in a stem.",
+  "tasks": ["7.1 Specify and Model Requirements", "7.3 Validate Requirements"],
+  "kas": [7]
+ },
+ {
+  "n": "10.48", "name": "User Stories", "group": "Modelling and specification",
+  "purpose": "States a need briefly from the point of view of the person who has it, as a placeholder for the conversation that will refine it.",
+  "use": "Reach for it on adaptive work where detail is deliberately deferred until the item is close to being built.",
+  "confused": "A user story is a promise of a conversation with acceptance criteria attached; a use case is a complete specified interaction. A story written as a system instruction with no user and no value has stopped being a user story.",
+  "tasks": ["7.1 Specify and Model Requirements", "5.3 Prioritize Requirements", "5.2 Maintain Requirements"],
+  "kas": [5, 7]
+ },
+ {
+  "n": "10.49", "name": "Vendor Assessment", "group": "Valuation and decision",
+  "purpose": "Judges whether a supplier can meet the commitment: capability, viability, cultural fit, licensing and the terms of the relationship.",
+  "use": "Reach for it whenever part of the solution will be bought or delivered by a third party, and before the product demonstration does the deciding.",
+  "confused": "Vendor assessment judges the supplier; evaluation criteria judge the product. An item where the shortlisted product fits but the supplier is thinly capitalised is testing vendor assessment.",
+  "tasks": ["7.5 Define Design Options", "7.6 Analyze Potential Value and Recommend Solution", "6.4 Define Change Strategy"],
+  "kas": [6, 7]
+ },
+ {
+  "n": "10.50", "name": "Workshops", "group": "Elicitation and collaboration",
+  "purpose": "Brings the right stakeholders together in a facilitated, purposeful session that ends in a defined work product.",
+  "use": "Reach for it when a decision or a shared model needs several parties in the room at once, and serial consultation would take too long or never converge.",
+  "confused": "A workshop produces an agreed output; a focus group gathers views; a meeting has no such contract. The presence of a facilitator, a defined output and a scribe is what makes it a workshop.",
+  "tasks": ["4.2 Conduct Elicitation", "4.3 Confirm Elicitation Results", "7.3 Validate Requirements"],
+  "kas": [4, 7]
+ }
+]

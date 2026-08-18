@@ -1,0 +1,1073 @@
+[
+ {
+  "n": 201, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.6 Analyze Potential Value and Recommend Solution",
+  "techniques": ["10.20 Financial Analysis"],
+  "trap": "Reading undiscounted totals as though timing did not matter",
+  "stem": "A freight operator is choosing between two depot automation designs. Both cost $550,000 up front and both run for four years. The finance director has set the discount rate at 10% and asked for a recommendation. A junior analyst has recommended Option A on the grounds that it returns $800,000 against Option B's $760,000. The depot lease is up for renewal in year five.",
+  "exhibit": {
+   "type": "table",
+   "title": "Net cash flow by year (AUD)",
+   "cols": ["Year", "Option A", "Option B"],
+   "align": ["left", "num", "num"],
+   "rows": [
+    ["0 (investment)", "(550,000)", "(550,000)"],
+    ["1", "100,000", "300,000"],
+    ["2", "150,000", "250,000"],
+    ["3", "250,000", "130,000"],
+    ["4", "300,000", "80,000"],
+    ["Total benefit", "800,000", "760,000"]
+   ],
+   "note": "Discount rate 10%. Discount factors: yr1 0.909, yr2 0.826, yr3 0.751, yr4 0.683."
+  },
+  "why": "Discounted, Option A's benefits are worth about $607,600 and Option B's about $631,700, giving net present values of roughly $57,600 and $81,700. Option B wins because its money arrives earlier, and the whole purpose of a discount rate is to price that difference. The raw totals the junior analyst compared implicitly value a dollar in year four the same as a dollar next year. The lease renewal is planted noise.",
+  "options": [
+   {"text": "Endorse Option A, since it returns $40,000 more in total and both options carry the same investment.", "verdict": "This compares undiscounted sums, which is precisely the error the discount rate exists to prevent. Option A's advantage sits in years three and four, where it is worth least."},
+   {"text": "Recommend Option B, because discounting the flows at 10% gives it the higher net present value despite the lower total.", "verdict": "Correct. Option B's benefits fall earlier, so discounting reverses the ranking the raw totals suggest."},
+   {"text": "Recommend neither until the payback period for both options has been calculated, since payback governs the choice.", "verdict": "Payback is a useful second measure but nothing in the scenario establishes a cash constraint that would make exposure the deciding criterion over value."},
+   {"text": "Recommend Option A but ask finance to lower the discount rate, since 10% is penalising the later benefits unfairly.", "verdict": "The discount rate expresses the cost of capital and is the finance director's to set. Adjusting it to produce a preferred answer inverts the analysis."}
+  ],
+  "answer": 1
+ },
+ {
+  "n": 202, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.4 Define Change Strategy",
+  "techniques": ["10.20 Financial Analysis", "10.7 Business Cases"],
+  "trap": "Letting the shorter payback decide when the constraint is value, not cash",
+  "stem": "A not-for-profit has $300,000 of reserves to commit to one of two service changes, each running four years. The board's investment policy uses an 8% discount rate. The treasurer favours Option C because it recovers the outlay during year two, whereas Option D does not recover it until year three. The organisation has an undrawn overdraft facility and no covenant restricting it.",
+  "exhibit": {
+   "type": "table",
+   "title": "Net cash flow and cumulative position (AUD)",
+   "cols": ["Year", "Option C", "Cumulative C", "Option D", "Cumulative D"],
+   "align": ["left", "num", "num", "num", "num"],
+   "rows": [
+    ["0", "(300,000)", "(300,000)", "(300,000)", "(300,000)"],
+    ["1", "180,000", "(120,000)", "60,000", "(240,000)"],
+    ["2", "140,000", "20,000", "90,000", "(150,000)"],
+    ["3", "40,000", "60,000", "170,000", "20,000"],
+    ["4", "20,000", "80,000", "260,000", "280,000"]
+   ],
+   "note": "Discount rate 8%. Net present value: Option C approximately $33,100; Option D approximately $158,800."
+  },
+  "why": "Payback measures how long money is exposed, not how much is made, and it discards everything after the break-even point, which is where nearly all of Option D's value sits. Option D is worth roughly five times Option C in present value terms. Payback would be the governing criterion if liquidity were genuinely constrained, but the undrawn facility says it is not, so the analyst should show the board both measures and explain which one their situation makes decisive.",
+  "options": [
+   {"text": "Support the treasurer, because recovering the reserves a year earlier reduces risk and the board's policy favours prudence.", "verdict": "Prudence is not served by forgoing $125,000 of present value to shorten exposure by one year when the facility is undrawn."},
+   {"text": "Present the payback figures alone, since the board's investment policy is the constraint the analyst is bound by.", "verdict": "The policy sets the discount rate, which is an instruction to value the flows, not to rank them on payback."},
+   {"text": "Recalculate both options over a longer horizon so that Option C has time to accumulate a comparable return.", "verdict": "Extending the horizon invents cash flows nobody has forecast, and Option C's flows are visibly decaying by year four."},
+   {"text": "Put both measures to the board, showing that Option D carries far higher present value and that payback only governs when liquidity is constrained.", "verdict": "Correct. The analyst's job is to make the trade-off legible and to name the condition under which each measure decides."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 203, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.6 Analyze Potential Value and Recommend Solution",
+  "techniques": ["10.20 Financial Analysis", "10.33 Prioritisation"],
+  "trap": "Treating a ratio as though it measured size",
+  "stem": "A retail group has $1.8 million of unallocated capital and must choose where to place it this financial year. Two proposals have cleared technical review. The portfolio office ranks proposals on return on investment and has placed the loyalty pilot first at 200%. The head of stores has asked the analyst whether that ranking is sound. Both proposals can be delivered by the existing team within the year.",
+  "exhibit": {
+   "type": "table",
+   "title": "Proposals as submitted (AUD, four-year horizon)",
+   "cols": ["Proposal", "Investment", "Net benefit", "ROI"],
+   "align": ["left", "num", "num", "num"],
+   "rows": [
+    ["Loyalty pilot", "45,000", "90,000", "200%"],
+    ["Replenishment rebuild", "1,600,000", "640,000", "40%"]
+   ],
+   "note": "Capital available this year: $1,800,000. Both proposals are independent and neither is a prerequisite for the other."
+  },
+  "why": "Return on investment is a ratio and is therefore blind to scale. The loyalty pilot is the more efficient use of each dollar, but it can only absorb $45,000, leaving $1.755 million idle. The replenishment rebuild generates $640,000 of net benefit against the pilot's $90,000. With capital available and no dependency between them, the group can fund both, and the ranking question only bites when capital is genuinely rationed.",
+  "options": [
+   {"text": "Confirm the ranking, because return on investment is the standard comparison and 200% is unambiguously superior to 40%.", "verdict": "The ratio is superior per dollar invested, but the pilot cannot absorb the capital available, so the ratio does not answer the question being asked."},
+   {"text": "Replace return on investment with payback period, which will rank the proposals on the speed of recovery instead.", "verdict": "Swapping one incomplete single measure for another leaves the same problem: neither expresses the absolute value at stake."},
+   {"text": "Point out that ROI is scale-blind, that the two proposals are independent and affordable together, and recommend funding both.", "verdict": "Correct. The ranking assumes a competition that the available capital does not create."},
+   {"text": "Recommend the replenishment rebuild alone, since it produces the larger absolute benefit and consumes most of the capital.", "verdict": "This corrects for scale but discards a proposal returning double its cost, and $200,000 of capital would still be unallocated."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 204, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.4 Define Change Strategy",
+  "techniques": ["10.20 Financial Analysis"],
+  "trap": "Reading a positive raw return as though it cleared the cost of capital",
+  "stem": "A manufacturer is assessing a plant upgrade. Over its life the upgrade costs $2.4 million and returns $2.9 million, so the sponsor describes it as clearly profitable. The finance team has modelled the internal rate of return at 6.2%. The company's stated hurdle rate, reflecting its weighted cost of capital, is 9%. The sponsor has asked the analyst to prepare the paper for the investment committee.",
+  "why": "Benefits exceeding costs in raw terms says nothing about whether the money was well used. An internal rate of return of 6.2% means the upgrade earns less than the 9% the company must pay for the capital, so funding it destroys value even though the arithmetic of the raw totals looks positive. The analyst must present that against the hurdle rather than dress the paper in the sponsor's framing.",
+  "options": [
+   {"text": "Show the committee that the 6.2% return falls below the 9% hurdle rate, so the upgrade does not cover the cost of the capital it consumes.", "verdict": "Correct. The hurdle rate exists precisely to catch options that are nominally profitable but return less than the capital costs."},
+   {"text": "Present the $500,000 surplus as the headline, noting the internal rate of return in an appendix for completeness.", "verdict": "Burying the measure that reverses the conclusion misrepresents the option to the people accountable for the decision."},
+   {"text": "Recommend approval on the basis that any positive return is preferable to leaving the capital uncommitted.", "verdict": "Uncommitted capital is not the alternative; the hurdle rate represents what the capital earns elsewhere, and 9% beats 6.2%."},
+   {"text": "Ask the finance team to remodel using payback, since internal rate of return is unreliable for long-lived assets.", "verdict": "Payback would not address the objection, and nothing in the scenario suggests the model is unsound rather than unwelcome."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 205, "ka": 8, "kaName": "Solution Evaluation",
+  "task": "8.5 Recommend Actions to Increase Solution Value",
+  "techniques": ["10.20 Financial Analysis"],
+  "trap": "Attending to the visible fixed cost while the variable cost moves",
+  "stem": "A subscription business launched a hardware bundle nine months ago. Fixed costs of $240,000 a year were signed off on a break-even of 7,273 units, and the product sells for $75. A component substitution has since lifted the unit variable cost from $42 to $55. The operations lead proposes cutting $20,000 from fixed overhead to restore the position. Current run rate is 9,100 units a year.",
+  "exhibit": {
+   "type": "table",
+   "title": "Break-even at each unit variable cost (fixed costs $240,000, price $75)",
+   "cols": ["Unit variable cost", "Contribution per unit", "Break-even volume"],
+   "align": ["left", "num", "num"],
+   "rows": [
+    ["$42 (as approved)", "$33", "7,273 units"],
+    ["$48", "$27", "8,889 units"],
+    ["$55 (current)", "$20", "12,000 units"]
+   ],
+   "note": "Break-even = fixed costs / (price - unit variable cost). Current run rate 9,100 units a year."
+  },
+  "why": "Contribution has fallen from $33 to $20 a unit, pushing break-even from 7,273 to 12,000 units, well above the 9,100 the product actually sells. Cutting $20,000 of fixed cost moves break-even to 11,000 units, which is still short. The lever that matters is the $13 of lost contribution: recovering it through price or component cost changes break-even far more than trimming overhead, because the fixed cost is divided by contribution rather than added to it.",
+  "options": [
+   {"text": "Accept the overhead reduction, since it is within the operations lead's control and improves the position immediately.", "verdict": "It improves the position to 11,000 units, which is still 1,900 units above the actual run rate. The product continues to lose money."},
+   {"text": "Recommend increasing the sales target to 12,000 units so that the existing cost structure reaches break-even.", "verdict": "This sets a target 32% above the achieved run rate with no stated means of reaching it, which is an assumption rather than a recommendation."},
+   {"text": "Show that contribution per unit is the binding variable and recommend acting on price or component cost before overhead.", "verdict": "Correct. Break-even is fixed cost divided by contribution, so a $13 fall in contribution outweighs a $20,000 overhead saving."},
+   {"text": "Recommend withdrawing the bundle, since the current volume cannot support the revised break-even under any cost structure.", "verdict": "Premature. Restoring roughly $6 of contribution brings break-even under the current run rate, so withdrawal is not yet the only option."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 206, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.5 Define Design Options",
+  "techniques": ["10.20 Financial Analysis", "10.49 Vendor Assessment"],
+  "trap": "Deciding on acquisition price when the life-cycle cost reverses the ranking",
+  "stem": "A health service is selecting a rostering platform. Procurement has shortlisted two vendors and recommends Vendor P on price, its licence being $180,000 against Vendor Q's $340,000. The analyst has assembled the five-year cost of ownership. Both products meet the functional requirements and both vendors passed financial viability checks. The procurement lead notes that only the licence line sits in this year's capital budget.",
+  "exhibit": {
+   "type": "table",
+   "title": "Five-year total cost of ownership (AUD)",
+   "cols": ["Cost element", "Vendor P", "Vendor Q"],
+   "align": ["left", "num", "num"],
+   "rows": [
+    ["Licence (once)", "180,000", "340,000"],
+    ["Implementation", "220,000", "150,000"],
+    ["Annual support (x5)", "310,000", "125,000"],
+    ["Interface maintenance (x5)", "195,000", "60,000"],
+    ["Decommissioning", "40,000", "40,000"],
+    ["Total over five years", "945,000", "715,000"]
+   ],
+   "note": "Both options meet the functional and non-functional requirements as specified."
+  },
+  "why": "The licence is the smallest and most visible element of the cost, and it points the wrong way: over five years Vendor P costs $230,000 more. That the support and interface costs fall outside this year's capital budget is an accounting boundary, not an economic one, and the analyst's obligation is to show the decision-makers the whole life cost rather than the part that happens to be funded from one budget line.",
+  "options": [
+   {"text": "Support procurement's recommendation, since the licence is the only element committed now and the later costs are forecasts.", "verdict": "Support and maintenance are contracted and recurring, not speculative, and treating them as forecast noise understates Vendor P by $230,000."},
+   {"text": "Present total cost of ownership over five years, which reverses the ranking, and explain that the budget boundary is not the cost boundary.", "verdict": "Correct. The decision is about what the health service will pay, not about which budget line the payment lands in."},
+   {"text": "Recommend renegotiating Vendor P's support rates before comparing the options, since support is the largest difference.", "verdict": "Possibly worth doing, but it defers the recommendation and Vendor P would need its support cost roughly halved to draw level."},
+   {"text": "Score both vendors against the evaluation criteria and let the weighted result stand regardless of cost.", "verdict": "Cost is itself an evaluation criterion, and excluding it from the scoring is what produced the flawed recommendation."}
+  ],
+  "answer": 1
+ },
+ {
+  "n": 207, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.4 Define Change Strategy",
+  "techniques": ["10.20 Financial Analysis"],
+  "trap": "Accepting a discounting shortcut that misstates the result",
+  "stem": "A logistics company is reviewing a business case that shows benefits of $150,000 a year for five years against a $500,000 investment. To discount, the author has summed the benefits to $750,000 and applied a single year-three factor of 0.751, reporting a present value of $563,250 and a net present value of $63,250. The company's discount rate is 10%. The author holds a finance qualification.",
+  "why": "Each year's cash flow has to be discounted by its own factor and the results added; applying one middle-year factor to a total is a shortcut that misstates the answer, since the year-one and year-two flows are being discounted too heavily and the year-four and year-five flows not heavily enough. Discounted properly at 10%, five annual flows of $150,000 are worth about $568,600, giving a net present value near $68,600. The author's qualification is not the point at issue.",
+  "options": [
+   {"text": "Accept the figure, since the mid-point factor is a recognised approximation and the difference is immaterial to the decision.", "verdict": "It is an approximation nobody has sanctioned here, and accepting a method because the error looks small concedes the method for cases where it will not be."},
+   {"text": "Recalculate using the year-five factor throughout, which is the conservative choice and protects the committee from optimism.", "verdict": "Deliberate understatement is as much a misrepresentation as overstatement, and it would value year-one money at year-five rates."},
+   {"text": "Refer the calculation to the finance team on the grounds that discounting method is outside the business analyst's remit.", "verdict": "Analysing potential value is squarely the analyst's task, and the error is one of method rather than of specialist financial judgement."},
+   {"text": "Discount each year's flow by its own factor, sum the results, and put the corrected net present value to the committee.", "verdict": "Correct. Present value is calculated per period; a total cannot be discounted by a single intermediate factor."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 208, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.4 Define Change Strategy",
+  "techniques": ["10.20 Financial Analysis", "10.16 Decision Analysis"],
+  "trap": "Letting money already spent influence a forward-looking decision",
+  "stem": "A utility has spent $1.1 million over two years building a customer portal that is not yet live. A vendor product has since become available that would meet the same needs for $400,000 to implement and $60,000 a year to run. Completing the in-house build needs a further $700,000 and would cost $95,000 a year to run. The steering committee is reluctant to write off the investment made so far.",
+  "why": "The $1.1 million is sunk: it is unrecoverable whichever option is chosen and therefore has no bearing on which is cheaper from here. The comparison is $700,000 plus $95,000 a year against $400,000 plus $60,000 a year, and the vendor product wins on both. Reluctance to write off past spend is a real governance dynamic, but the analyst's job is to name it as sunk rather than to let it carry weight in the forward comparison.",
+  "options": [
+   {"text": "Compare only the costs still to be incurred, showing the vendor product cheaper to implement and to run, and identify the $1.1 million as sunk.", "verdict": "Correct. Sunk costs are irrecoverable under either option and cannot discriminate between them."},
+   {"text": "Add the $1.1 million already spent to the in-house option so the committee can see the full investment before choosing.", "verdict": "This is exactly the error. Loading unrecoverable spend onto one side of a forward comparison biases it against the option that would waste it."},
+   {"text": "Recommend completing the build, since $1.1 million is committed and abandoning it would represent a substantial loss of value.", "verdict": "The value was lost when it was spent, not when it is acknowledged. Continuing adds $300,000 of implementation and $35,000 a year."},
+   {"text": "Defer the decision until the portal is finished, at which point the two options can be compared on equal terms.", "verdict": "Finishing first spends the $700,000 the decision is about, which forecloses the choice rather than informing it."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 209, "ka": 8, "kaName": "Solution Evaluation",
+  "task": "8.2 Analyze Performance Measures",
+  "techniques": ["10.20 Financial Analysis", "10.28 Metrics and Key Performance Indicators"],
+  "trap": "Reading gross benefit as though it were net",
+  "stem": "Six months after a claims platform went live, the benefits dashboard is showing green against a $1.4 million annual benefit target. The sponsor intends to report realisation to the executive on that basis. The analyst notices that the run cost of the new platform is not represented anywhere on the dashboard, and that the manual workaround the platform replaced is still being paid for while data migration finishes.",
+  "exhibit": {
+   "type": "dashboard",
+   "title": "Claims platform — benefit realisation, first six months",
+   "tiles": [
+    {"label": "Gross benefit booked", "value": "$742,000", "delta": "+6% vs plan", "dir": "up"},
+    {"label": "Annualised run rate", "value": "$1.48m", "delta": "vs $1.4m target", "dir": "up"},
+    {"label": "Platform run cost", "value": "not shown", "delta": "excluded from view", "dir": "flat"},
+    {"label": "Legacy workaround cost", "value": "not shown", "delta": "still incurred", "dir": "flat"}
+   ],
+   "bars": [
+    {"label": "Handling time saved (hrs)", "value": 88, "max": 100, "note": "88% of target"},
+    {"label": "Rework reduction", "value": 71, "max": 100, "note": "71% of target"},
+    {"label": "Straight-through rate", "value": 63, "max": 100, "note": "63% of target"}
+   ],
+   "note": "All tiles are gross of cost. No cost line appears on the dashboard."
+  },
+  "why": "Benefit realisation is a net concept: what the organisation is better off by, after the cost of running the new solution and after any cost that has not yet stopped. A dashboard carrying only gross benefit will read green regardless of what the platform costs to operate, and the legacy workaround is being paid twice over during migration. The measures themselves are sound; what is missing is the cost side that turns them into realisation.",
+  "options": [
+   {"text": "Report as the sponsor intends, since the measures are tracking against the targets that were agreed at approval.", "verdict": "The targets were for benefit realised, and a gross figure cannot demonstrate realisation however faithfully it tracks."},
+   {"text": "Replace the benefit measures with financial measures only, since hours saved do not appear in the accounts.", "verdict": "Operational measures explain the financial ones and discarding them would remove the leading indicators entirely."},
+   {"text": "Add platform run cost and the continuing workaround cost to the view, and report benefit net of both.", "verdict": "Correct. Realisation is benefit less the cost of achieving and operating it, including costs that have not yet ceased."},
+   {"text": "Withhold reporting until migration finishes, so that the double-running cost no longer distorts the picture.", "verdict": "The distortion is caused by omitting the cost, not by incurring it, and six months of silence removes the executive's ability to intervene."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 210, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.3 Assess Risks",
+  "techniques": ["10.20 Financial Analysis", "10.38 Risk Analysis and Management"],
+  "trap": "Presenting the worst case as though it were the expected case",
+  "stem": "A bank is assessing a migration with a known risk of regulatory remediation. Risk analysis has produced three outcomes with agreed probabilities. The programme director wants the business case to carry the $900,000 severe outcome as the risk provision, on the grounds that it is prudent. The change strategy already includes a mitigation that reduces, but does not remove, the likelihood of the severe outcome.",
+  "exhibit": {
+   "type": "table",
+   "title": "Remediation outcomes, post-mitigation",
+   "cols": ["Outcome", "Probability", "Cost impact", "Weighted"],
+   "align": ["left", "num", "num", "num"],
+   "rows": [
+    ["Severe remediation", "15%", "(900,000)", "(135,000)"],
+    ["Limited remediation", "35%", "(250,000)", "(87,500)"],
+    ["No remediation required", "50%", "0", "0"],
+    ["Expected monetary value", "100%", "", "(222,500)"]
+   ],
+   "note": "Probabilities are post-mitigation and were agreed with the risk committee."
+  },
+  "why": "Expected monetary value weights each outcome by its likelihood and gives $222,500, which is the figure that belongs in the case alongside costs and benefits. Carrying the full $900,000 treats a 15% outcome as certain, overstates the provision fourfold and would distort every comparison the case supports. The severe figure still belongs in the risk register and in the sensitivity analysis, where its purpose is to show what the organisation is exposed to rather than what it expects to pay.",
+  "options": [
+   {"text": "Carry the $900,000 as the director asks, since understating a regulatory exposure carries consequences an analyst should not invite.", "verdict": "Overstating it by $677,500 distorts the case just as seriously, and prudence is served by disclosure rather than by inflating the central figure."},
+   {"text": "Carry the expected monetary value of $222,500 in the case, and show the $900,000 exposure in the risk register and sensitivity analysis.", "verdict": "Correct. The weighted value belongs in the comparison; the severe outcome belongs where exposure is disclosed."},
+   {"text": "Exclude the remediation risk from the case entirely, since mitigation is already part of the change strategy.", "verdict": "Mitigation reduced the probabilities but left residual risk, which is what the post-mitigation figures represent."},
+   {"text": "Average the three cost impacts to $383,333, which avoids relying on probability estimates that may prove unreliable.", "verdict": "A simple average treats a 50% outcome and a 15% outcome as equally likely, discarding the analysis the risk committee agreed."}
+  ],
+  "answer": 1
+ },
+ {
+  "n": 211, "ka": 8, "kaName": "Solution Evaluation",
+  "task": "8.5 Recommend Actions to Increase Solution Value",
+  "techniques": ["10.20 Financial Analysis", "10.28 Metrics and Key Performance Indicators"],
+  "trap": "Booking a saving that never leaves the budget",
+  "stem": "An insurer's automation programme claims $620,000 of annual benefit from 11,400 hours of assessor time saved, valued at an average loaded rate. The finance business partner has declined to recognise it, noting that headcount is unchanged and no budget line has fallen. The programme manager argues the saving is real because the hours genuinely are no longer worked. Assessor backlogs remain at three weeks.",
+  "why": "Hours released are a real operational gain but they are not a cash saving until something changes: the establishment reduces, overtime or contractor spend falls, or the freed capacity absorbs work that would otherwise have been bought. With a three-week backlog, the obvious route is the third, and the analyst's recommendation should be to convert the capacity into an outcome the organisation can point to rather than to argue about whether the hours were saved.",
+  "options": [
+   {"text": "Support the programme manager, since the hours are demonstrably no longer worked and the loaded rate is the organisation's own figure.", "verdict": "The rate is sound and the hours are real, but neither makes the benefit cashable while establishment and budget are unchanged."},
+   {"text": "Withdraw the benefit from the programme's claim, since only cash savings can be recognised as value.", "verdict": "Value is not confined to cash, and discarding a genuine capacity gain understates the solution rather than measuring it correctly."},
+   {"text": "Revalue the hours at a marginal rather than loaded rate, which will reconcile the claim to what finance will accept.", "verdict": "Changing the rate changes the size of a benefit finance is rejecting on grounds of realisation, not valuation."},
+   {"text": "Report the saving as released capacity, and recommend directing it at the three-week backlog so the gain converts into a measurable outcome.", "verdict": "Correct. Non-cashable benefits have to be turned into something observable before they can be claimed as realised value."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 212, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.6 Analyze Potential Value and Recommend Solution",
+  "techniques": ["10.20 Financial Analysis"],
+  "trap": "Comparing options with different lives as though the totals were equivalent",
+  "stem": "A council is choosing between resurfacing a depot yard and replacing it. Resurfacing costs $260,000 and lasts six years. Replacement costs $600,000 and lasts fifteen years. Both carry negligible running costs. An officer has recommended resurfacing on the basis that it costs less than half as much. The council's discount rate is 5% and the depot is expected to remain in use indefinitely.",
+  "why": "The options do not deliver the same thing: one buys six years of yard and the other fifteen. Comparing the totals ignores that the resurfacing has to be repeated. Putting both on a common annual footing, resurfacing costs roughly $51,000 a year in equivalent terms against about $57,800 for replacement, so the officer's conclusion may survive, but only once the lives are made comparable. Comparing $260,000 with $600,000 directly is not an analysis at all.",
+  "options": [
+   {"text": "Put both options on a common annual basis before comparing, since a six-year asset and a fifteen-year asset are not equivalent purchases.", "verdict": "Correct. Options with unequal lives must be annualised or extended to a common horizon before their costs can be compared."},
+   {"text": "Endorse resurfacing, since the lower capital cost is decisive and the council can revisit the decision when the surface fails.", "verdict": "Revisiting in six years is not free; it is a further $260,000 that the comparison has quietly left out."},
+   {"text": "Recommend replacement, because the longer life always represents better value where the asset is to be retained indefinitely.", "verdict": "Longer life is not automatically better value; it depends on the annualised cost, which has not yet been calculated."},
+   {"text": "Compare the two options over a six-year horizon so that the assessment matches the shorter of the two asset lives.", "verdict": "This charges the full $600,000 against six years and discards nine years of remaining life, reversing the bias rather than removing it."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 213, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.3 Validate Requirements",
+  "techniques": ["10.1 Acceptance and Evaluation Criteria"],
+  "trap": "Confusing criteria that rank options with criteria that admit a requirement",
+  "stem": "A transport agency is running two activities in the same week. A shortlist of three ticketing suppliers must be narrowed to one, and a set of forty requirements for the in-house journey planner must be made testable before development starts. A team member has proposed drafting one set of criteria to serve both activities, arguing that the same quality attributes matter in each case.",
+  "why": "Acceptance criteria are pass or fail and attach to a single requirement, establishing whether it has been met. Evaluation criteria carry weightings and are used to rank alternatives against one another. The supplier shortlist needs ranking; the forty requirements need thresholds. A single combined set either applies weightings where a binary answer is owed, or applies binary tests where discrimination between options is owed.",
+  "options": [
+   {"text": "Draft one weighted set, since weighting can be set to zero wherever a requirement needs a simple pass or fail result.", "verdict": "A zero weighting removes the criterion from the ranking altogether rather than converting it into a threshold test."},
+   {"text": "Draft one set expressed as thresholds, since a supplier that clears every threshold is by definition acceptable.", "verdict": "Thresholds identify which suppliers are admissible but cannot choose between two that both clear them, which is the decision being made."},
+   {"text": "Draft evaluation criteria with weightings for the supplier decision, and acceptance criteria as pass-or-fail thresholds for the requirements.", "verdict": "Correct. Ranking alternatives and admitting a requirement are different jobs and need differently constructed criteria."},
+   {"text": "Defer the requirements criteria until the supplier is chosen, so that the supplier's own standards can shape them.", "verdict": "The journey planner is being built in house, so the ticketing supplier's standards have no bearing on its requirements."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 214, "ka": 5, "kaName": "Requirements Life Cycle Management",
+  "task": "5.2 Maintain Requirements",
+  "techniques": ["10.2 Backlog Management", "10.33 Prioritisation"],
+  "trap": "Treating a custody problem as though it were a ranking problem",
+  "stem": "A product team's backlog has grown to 480 items over two years. Roughly a third describe needs that have since been met by other releases, several are duplicates phrased differently, and nobody can say which of the top twenty were ranked this quarter. The product owner asks the analyst to re-run prioritisation across the whole list so the team knows what to build next.",
+  "why": "Re-ranking 480 items of which a third are obsolete produces a carefully ordered list of the wrong things. The failure here is custody, not sequence: items that no longer represent a need should be removed, duplicates consolidated, and the list restored to a state where ranking means something. Backlog management is the ongoing discipline that keeps a list fit to be prioritised; prioritisation is what you do to a list that is already in order.",
+  "options": [
+   {"text": "Retire obsolete items, consolidate the duplicates and re-establish the maintenance discipline before ranking anything.", "verdict": "Correct. Prioritisation presumes the list represents current need, and this one does not."},
+   {"text": "Re-run prioritisation across all 480 items as asked, since the obsolete ones will naturally sink to the bottom.", "verdict": "They will sink, but only after the team has spent the effort ranking them, and duplicates will fragment the value of the need they describe."},
+   {"text": "Rank only the top twenty, since those are the items the team will draw from in the coming quarter.", "verdict": "The top twenty are of unknown provenance in a list nobody trusts, so ranking them confirms rather than resolves the problem."},
+   {"text": "Archive the entire backlog and rebuild it from the current release plan, which reflects what the business needs now.", "verdict": "This discards genuine unmet needs that have not yet reached a release plan, which is most of what a backlog is for."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 215, "ka": 8, "kaName": "Solution Evaluation",
+  "task": "8.2 Analyze Performance Measures",
+  "techniques": ["10.3 Balanced Scorecard", "10.28 Metrics and Key Performance Indicators"],
+  "trap": "Optimising one dimension while the measures that would expose the cost are absent",
+  "stem": "A contact centre reports strongly against every measure on its executive dashboard eighteen months after a workforce management solution went live. Attrition among experienced agents has risen from 9% to 24% over the same period and does not appear on the dashboard. The operations director regards the attrition as a labour market effect. The centre moved premises last year.",
+  "exhibit": {
+   "type": "dashboard",
+   "title": "Contact centre executive dashboard — current quarter",
+   "tiles": [
+    {"label": "Cost per contact", "value": "$4.12", "delta": "-18% vs baseline", "dir": "up"},
+    {"label": "Average handle time", "value": "3m 44s", "delta": "-22% vs baseline", "dir": "up"},
+    {"label": "Schedule adherence", "value": "96%", "delta": "+11 pts", "dir": "up"},
+    {"label": "Agent attrition", "value": "not tracked", "delta": "no measure defined", "dir": "flat"}
+   ],
+   "bars": [
+    {"label": "Financial perspective", "value": 94, "max": 100, "note": "4 measures, all green"},
+    {"label": "Internal process", "value": 91, "max": 100, "note": "3 measures, all green"},
+    {"label": "Customer", "value": 0, "max": 100, "note": "no measures defined"},
+    {"label": "Learning and growth", "value": 0, "max": 100, "note": "no measures defined"}
+   ],
+   "note": "Seven measures in total, all drawn from cost and process."
+  },
+  "why": "Every measure on the dashboard sits in the financial and internal process perspectives, so the solution can be squeezing the customer and the workforce indefinitely without a single indicator moving. A balanced scorecard is the technique for that diagnosis: it asks whether the spread of measures covers all four perspectives, and here two of them are empty. Adding one attrition metric treats the symptom; the structural problem is the absent perspectives.",
+  "options": [
+   {"text": "Add agent attrition as an eighth measure, which closes the specific gap the analyst has identified.", "verdict": "It closes one gap and leaves the customer perspective entirely unmeasured, so the same blindness recurs on the next dimension."},
+   {"text": "Accept the operations director's explanation and benchmark attrition against comparable centres before acting.", "verdict": "Benchmarking might contextualise the figure but does not address a dashboard structurally unable to show the trade-off."},
+   {"text": "Recommend measuring solution performance again from a fresh baseline, since the current one predates the premises move.", "verdict": "The baseline is not the problem; the measures selected against it are, and a new baseline would inherit the same seven."},
+   {"text": "Assess the measures against all four scorecard perspectives, showing that customer and learning and growth carry none.", "verdict": "Correct. The scorecard exposes that the green readings come from optimising two perspectives while two are unobserved."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 216, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.1 Analyze Current State",
+  "techniques": ["10.4 Benchmarking and Market Analysis"],
+  "trap": "Measuring yourself against yourself when the claim concerns the market",
+  "stem": "A mutual bank's executive wants to argue in its strategy paper that its account opening is uncompetitive and that this explains three years of flat membership growth. The analyst has the bank's own cycle times going back four years, which show a steady improvement from eleven days to six. The chief executive has asked what evidence would support or refute the claim. A branch refurbishment programme concludes next month.",
+  "why": "The claim is comparative and external: uncompetitive means slower than the alternatives a prospective member is choosing between. Four years of internal trend data can only show the bank improving against itself, which it has, and is consistent with both the claim and its opposite if the market moved faster. Benchmarking and market analysis supplies the outside reference point the assertion depends on.",
+  "options": [
+   {"text": "Present the internal trend, since a 45% improvement in cycle time is strong evidence that account opening is not the constraint.", "verdict": "Improving from eleven days to six says nothing about competitors who may have moved from four days to one."},
+   {"text": "Benchmark cycle time and abandonment against comparable institutions and read the market the bank is competing in.", "verdict": "Correct. The claim is about relative position, so the evidence has to come from outside the organisation."},
+   {"text": "Survey members who opened accounts in the last year to establish whether they found the process slow.", "verdict": "This samples the people who completed the process and misses the prospects who went elsewhere, which is where flat growth would show."},
+   {"text": "Analyse the current state process to find the delays, so the executive can see what is causing the six days.", "verdict": "Worth doing once the claim is established, but it assumes the conclusion the chief executive is asking the analyst to test."}
+  ],
+  "answer": 1
+ },
+ {
+  "n": 217, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.5 Define Design Options",
+  "techniques": ["10.5 Brainstorming"],
+  "trap": "Diverging when the situation calls for converging, or the reverse",
+  "stem": "A workshop has been convened to settle how a university will handle late enrolment withdrawals. Two options are on the table, each backed by a faculty, and the discussion has hardened into a defence of positions. The registrar wants a decision by the end of the session. Three participants have said privately that a third approach used by a partner institution has never been considered.",
+  "why": "The signal in the scenario is that the option set is too narrow, not that the group cannot choose. Two entrenched positions with an unexamined third approach is a generation problem, and pushing to a decision merely selects the better of two options nobody has tested against alternatives. Brainstorming, run with generation deliberately separated from judgement, widens the field before any decision technique is applied to it.",
+  "options": [
+   {"text": "Apply decision analysis to the two options with agreed criteria, which will settle the matter within the session as the registrar wants.", "verdict": "This chooses efficiently between two options while the evidence says the option set itself is the problem."},
+   {"text": "Escalate to the registrar for a ruling, since the faculties have reached an impasse that the workshop cannot resolve.", "verdict": "Escalation resolves the deadlock by authority and permanently forgoes the third approach nobody has put on the table."},
+   {"text": "Run a generation round with judgement suspended to widen the option set, then evaluate what emerges.", "verdict": "Correct. Two defended positions and a known unexamined alternative is a signal to diverge before converging."},
+   {"text": "Ask the three participants to document the partner institution's approach and circulate it after the session.", "verdict": "This surfaces the option but wastes the assembled group, and a circulated document will be read against positions already hardened."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 218, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.2 Define Future State",
+  "techniques": ["10.6 Business Capability Analysis"],
+  "trap": "Framing an enterprise weakness as a departmental process problem",
+  "stem": "An insurer has run three improvement programmes in four years, one each in claims, underwriting and customer service. Each delivered its stated process improvements. Complaints about inconsistent decisions have continued at the same rate throughout, and each department maintains that the fault lies with the others. The executive has asked the analyst to scope a fourth programme. A new complaints system was installed last year.",
+  "why": "Three departmental fixes have not shifted an enterprise-level symptom, which is the signature of a capability that spans the departments rather than a process that sits inside one. Business capability analysis describes what the organisation is able to do independently of who does it, and would locate the shared ability, decisioning consistency, that no single department owns. Scoping a fourth departmental programme repeats the framing that has already failed three times.",
+  "options": [
+   {"text": "Analyse the capabilities the insurer needs, independently of department, and grade them for performance and importance.", "verdict": "Correct. A symptom that survives three departmental fixes belongs to something none of the departments owns alone."},
+   {"text": "Model the three departments' processes end to end and locate the hand-offs where the inconsistency is introduced.", "verdict": "Process modelling would map the hand-offs but starts from the assumption that the answer lies in the flow between existing units."},
+   {"text": "Scope the fourth programme around the complaints system, since it is the newest asset and holds the relevant data.", "verdict": "The complaints system records the symptom. Scoping a programme around the measurement instrument is not analysis of the cause."},
+   {"text": "Run a root cause analysis on a sample of inconsistent decisions to establish why each one went wrong.", "verdict": "Reasonable at the level of individual decisions, but it will produce three departmental causes and reinforce the framing that has failed."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 219, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.4 Define Change Strategy",
+  "techniques": ["10.7 Business Cases"],
+  "trap": "Producing valuation where the missing element is justification",
+  "stem": "A department has asked for $3.2 million to replace a grants management system. The submission contains a detailed cost model, a discounted benefit projection and a sensitivity analysis. The investment committee has returned it asking why replacement is necessary at all, noting that no other approach is described and the problem with the existing system is stated only as end of life. The finance figures were independently reviewed.",
+  "why": "The submission is strong on valuation and silent on justification. A business case has to establish the need, set out the options that were considered including doing nothing, and explain why the recommended one was chosen. Refining the financial model answers a question the committee has not asked, because the objection is that a single option has been costed rather than that the costing is wrong.",
+  "options": [
+   {"text": "Extend the sensitivity analysis to a wider range of discount rates so the committee can see the recommendation is robust.", "verdict": "Robustness of a figure does not establish why the option it prices is the right one."},
+   {"text": "Obtain a second independent review of the benefit projection to address the committee's evident scepticism.", "verdict": "The figures were already reviewed, and the committee's question is about the absence of alternatives, not the accuracy of the numbers."},
+   {"text": "Restate end of life in technical detail, quantifying the support risk the department carries by not replacing.", "verdict": "This strengthens the description of the need but still presents one option, so the committee's question survives intact."},
+   {"text": "Rebuild the case around the need, the options considered including doing nothing, and why replacement is recommended over them.", "verdict": "Correct. The committee is asking for the justification structure that a business case exists to supply."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 220, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.1 Analyze Current State",
+  "techniques": ["10.8 Business Model Canvas"],
+  "trap": "Analysing a process when the revenue logic is what is changing",
+  "stem": "A trade publisher earns 80% of revenue from print subscriptions sold through a single distributor. The board is considering moving to direct digital subscriptions. The publishing director has asked the analyst to map the current subscription fulfilment process so the board can see what would change. Circulation has declined 6% a year for five years. The distributor contract has fourteen months to run.",
+  "why": "Moving from distributor-sold print to direct digital changes the customer relationship, the channel, the revenue stream, the key partner and the cost structure at once. A fulfilment process map shows one activity in detail and cannot show the board how the business would earn its money afterwards. The business model canvas holds all nine blocks on one page, which is the level at which this decision actually sits.",
+  "options": [
+   {"text": "Map the fulfilment process as asked, then extend it to cover the proposed digital equivalent for comparison.", "verdict": "Two process maps describe how copies reach readers under each model and leave the revenue, partner and cost consequences unexamined."},
+   {"text": "Lay out the current and proposed business models across all nine blocks, so the board can see what changes beyond fulfilment.", "verdict": "Correct. Channel, customer relationship, revenue stream, key partner and cost structure all move together here."},
+   {"text": "Model the financial impact of the change, since the 6% decline and the contract expiry make this a timing decision.", "verdict": "The financial impact matters but cannot be modelled credibly until the board has agreed what the future model actually is."},
+   {"text": "Assess the risks of exiting the distributor relationship, which is the decision with the shortest fuse at fourteen months.", "verdict": "Risk assessment presumes the change strategy. The board has not yet established what it would be moving to."}
+  ],
+  "answer": 1
+ },
+ {
+  "n": 221, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.1 Specify and Model Requirements",
+  "techniques": ["10.9 Business Rules Analysis"],
+  "trap": "Embedding a volatile policy inside the process that applies it",
+  "stem": "A regulator's licensing team applies an eligibility policy that has been amended eleven times in three years, usually at short notice following ministerial direction. The analyst is specifying a replacement assessment system. A developer has proposed writing the current eligibility conditions directly into the assessment workflow, which he notes will be simpler to build and faster to test.",
+  "why": "A policy amended eleven times in three years will be amended again, and burying it in workflow logic means each amendment becomes a change to the process, a redeployment and a retest. Business rules analysis separates the rule from the process that invokes it, so the rule can be governed, versioned and changed on its own terms. The simpler build is real but buys speed once at the cost of every subsequent amendment.",
+  "options": [
+   {"text": "Specify the eligibility conditions as business rules held and governed separately from the assessment workflow that applies them.", "verdict": "Correct. Rules that change far more often than the process must be separable from it."},
+   {"text": "Accept the developer's approach and manage amendments through the standard change control process as they arise.", "verdict": "Change control governs the amendment but does not reduce its cost, which is the point at issue given eleven changes in three years."},
+   {"text": "Specify the workflow now and defer the eligibility conditions to a later release once the policy has stabilised.", "verdict": "Nothing suggests the policy will stabilise, and an assessment system without eligibility conditions cannot assess."},
+   {"text": "Capture the eligibility conditions as non-functional requirements so their volatility is visible to the architects.", "verdict": "Eligibility conditions constrain what the business permits, which makes them rules rather than qualities of the solution."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 222, "ka": 4, "kaName": "Elicitation and Collaboration",
+  "task": "4.5 Manage Stakeholder Collaboration",
+  "techniques": ["10.10 Collaborative Games", "10.50 Workshops"],
+  "trap": "Adding structure to the agenda when the obstacle is the dynamic in the room",
+  "stem": "Three sessions into defining a shared services model, the same pattern recurs: the finance director speaks for most of each session, the two operational managers agree with whatever he proposes, and afterwards both tell the analyst privately that the model will not work in their areas. The agenda, the pre-reading and the facilitation have all been prepared thoroughly. The next session is in a fortnight.",
+  "why": "The information the analyst needs exists and the participants are willing to share it privately, so this is not a shortage of preparation or of the right people. It is a dynamic in which seniority is suppressing dissent in the room. Collaborative games change how contribution happens, by making input simultaneous, anonymous or structured so that no one voice can set the frame, which is what a better agenda cannot do.",
+  "options": [
+   {"text": "Circulate the model in advance and collect written comments, so the managers can record objections outside the session.", "verdict": "This gets the objections but keeps them out of the room, so the group never confronts the disagreement it needs to resolve."},
+   {"text": "Raise the pattern with the finance director privately and ask him to speak less, which addresses the cause directly.", "verdict": "It puts the analyst between the participants, and both managers have chosen not to disagree in the director's presence."},
+   {"text": "Use a structured exercise that makes contribution simultaneous and independent, so no participant can frame the discussion first.", "verdict": "Correct. The obstacle is the interaction pattern, and a collaborative game changes the mechanics of contribution."},
+   {"text": "Split the group and run separate sessions with finance and with operations, then reconcile the outputs afterwards.", "verdict": "Separation removes the conflict from view rather than resolving it, and a shared services model needs agreement between exactly these parties."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 223, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.1 Specify and Model Requirements",
+  "techniques": ["10.11 Concept Modelling", "10.23 Glossary"],
+  "trap": "Treating a disagreement about meaning as a disagreement about requirements",
+  "stem": "Two divisions of an energy retailer have spent three workshops disputing requirements for a customer record. It emerges that retail counts a customer as the person named on the account, while the network division counts the connection point, so a household with two connections is one customer to retail and two to network. Both divisions insist their definition is the correct one. Both need the same system.",
+  "why": "There is no requirements conflict here, only two coherent business concepts sharing one word. A glossary would record both definitions, but it would not express that a named account holder can relate to several connection points, which is the structure the system has to carry. Concept modelling fixes the terms and the relationships between them, which is what turns an argument about which definition wins into a model in which both survive.",
+  "options": [
+   {"text": "Ask the sponsor to rule which definition the system will adopt, since a single system cannot support two meanings of customer.", "verdict": "It can, and must: both divisions have legitimate operational needs, and a ruling would make one of them unable to do its work."},
+   {"text": "Model the concepts and the relationships between account holder, customer and connection point so both meanings are expressed and related.", "verdict": "Correct. The relationship between the terms is the substance of the problem, which is what a concept model captures."},
+   {"text": "Record both definitions in the glossary with their division noted, so future readers know which is meant where.", "verdict": "Necessary but insufficient. Two parallel definitions with no stated relationship leave the data structure undecided."},
+   {"text": "Specify separate customer records for each division and reconcile them through an interface between the two.", "verdict": "This designs a solution to a modelling problem, duplicating data and creating a reconciliation burden that the relationship would avoid."}
+  ],
+  "answer": 1
+ },
+ {
+  "n": 224, "ka": 3, "kaName": "Business Analysis Planning and Monitoring",
+  "task": "3.4 Plan Business Analysis Information Management",
+  "techniques": ["10.12 Data Dictionary"],
+  "trap": "Reaching for the business vocabulary tool when the dispute is about a stored field",
+  "stem": "Two systems are being integrated after a merger. Reconciliation keeps failing on a field both call policy start date. One system records the date the policy was underwritten; the other records the date cover begins, which can be up to thirty days later. Both teams agree on what a policy is and what start means in business terms. The migration window is fixed.",
+  "why": "The disagreement is not about the meaning of a business term, which both teams share, but about what a specific stored field contains, its format and its permitted values. That is a data dictionary matter: define each element precisely, including which event sets it, so the mapping between the two systems can be specified. A glossary would define policy and start date and leave the reconciliation failing exactly as before.",
+  "options": [
+   {"text": "Add both terms to the project glossary with the divergent meanings recorded against each source system.", "verdict": "The teams already agree on the business terms; the divergence is in what the field records, which a glossary does not specify."},
+   {"text": "Model the policy concept and its relationships so the underwriting and cover events are both represented.", "verdict": "Useful for understanding, but the immediate failure is a field-level mapping that needs element definitions, not a conceptual model."},
+   {"text": "Escalate the mapping decision to the migration lead, since the fixed window leaves no time for further analysis.", "verdict": "Escalating an undefined field asks someone else to guess, and the analysis needed here is a matter of hours."},
+   {"text": "Define each element in the data dictionary, including the event that sets it and its permitted values, then specify the mapping.", "verdict": "Correct. Element-level definition is what a data dictionary exists to supply and what the mapping depends on."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 225, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.4 Define Requirements Architecture",
+  "techniques": ["10.13 Data Flow Diagrams"],
+  "trap": "Following the work when the question is about custody of the information",
+  "stem": "A privacy review has asked where a health service's patient identifiers travel once a referral is lodged, which systems hold copies, and which third parties receive them. The clinical team has an approved process model showing every activity from referral to first appointment. The reviewer says it does not answer the question. Appointment scheduling was outsourced last year.",
+  "why": "A process model shows the order of activities and who performs them; it does not show what data each activity reads, writes or transmits, nor where copies come to rest. The privacy question is about the movement and custody of information across processes, stores and external parties, which is exactly what a data flow diagram is built to express. The outsourced scheduler makes it more pressing, not less.",
+  "options": [
+   {"text": "Annotate the existing process model with the data used at each activity, which reuses approved material.", "verdict": "Annotation records what each step touches but still cannot show stores, copies or flows to external parties, which is what the reviewer asked for."},
+   {"text": "Produce a data flow diagram tracing identifiers across processes, data stores and external parties.", "verdict": "Correct. The question is about where data goes and rests, which is what data flow diagrams model."},
+   {"text": "Produce a data model of the patient and referral entities so the reviewer can see what is held about each.", "verdict": "A data model shows structure at rest and says nothing about movement between systems or transmission to third parties."},
+   {"text": "Complete a roles and permissions matrix so the reviewer can see who is able to access identifiers.", "verdict": "Access rights are a related control but do not trace where the data actually flows once the referral is lodged."}
+  ],
+  "answer": 1
+ },
+ {
+  "n": 226, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.1 Analyze Current State",
+  "techniques": ["10.14 Data Mining"],
+  "trap": "Designing new collection when the evidence is already held",
+  "stem": "A distributor knows that some customers churn but cannot say which are at risk or why. Eleven years of order, delivery, complaint and credit history sit in the warehouse and have never been analysed together. The commercial manager proposes a customer survey to find out what drives churn, and has budgeted six weeks for it. Churned customers are unlikely to respond.",
+  "why": "The organisation is proposing to collect new opinion data while eleven years of behavioural evidence about what churning customers actually did goes unexamined. Data mining interrogates existing data for patterns nobody hypothesised, which is what a question phrased as we do not know which customers or why calls for. A survey asks people to explain behaviour, and the ones who left are precisely the ones least likely to answer.",
+  "options": [
+   {"text": "Run the survey as proposed, since only customers can explain the reasons behind their own decisions.", "verdict": "Stated reasons are useful but the sample is biased against the churned customers, and the warehouse already holds what they did."},
+   {"text": "Benchmark churn against comparable distributors to establish whether the rate is abnormal before investigating causes.", "verdict": "Worth knowing, but it answers whether there is a problem rather than which customers are at risk and why."},
+   {"text": "Analyse the warehouse history for patterns preceding churn, then use targeted elicitation to test what the patterns suggest.", "verdict": "Correct. Mine the evidence that exists to form the hypothesis, then spend stakeholder time confirming it."},
+   {"text": "Define churn metrics and begin tracking them so that future churn can be analysed as it happens.", "verdict": "This starts the clock again on a question eleven years of existing data could answer this month."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 227, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.1 Specify and Model Requirements",
+  "techniques": ["10.15 Data Modelling"],
+  "trap": "Settling structure by prose when cardinality is the requirement",
+  "stem": "A childcare provider is specifying a family portal. Requirements written in prose state that a parent can manage bookings for their child. In review it emerges that some children attend under shared care arrangements with two households, some parents have children at more than one centre, and a guardian may act for a child who is not their own. The prose has been approved by the sponsor.",
+  "why": "Every complication described is a question of cardinality and optionality between parent, guardian, child, household and centre, and prose cannot state them without ambiguity. A data model settles how many of each may relate to how many others and whether the relationship is optional, which is what the portal's access rules and screens will be built from. Sponsor approval of ambiguous prose does not resolve the ambiguity.",
+  "options": [
+   {"text": "Model the entities and the relationships between them, stating cardinality and optionality for each.", "verdict": "Correct. Many-to-many relationships and optional participation are precisely what a data model exists to state."},
+   {"text": "Rewrite the requirements in more precise prose, enumerating each of the arrangements described in the review.", "verdict": "Enumeration in prose grows unmanageable and still leaves the reader to infer the general rule from a list of cases."},
+   {"text": "Write use cases for each arrangement so the interactions are specified from the actor's point of view.", "verdict": "Use cases would describe the interactions but presuppose the structural relationships that have not yet been settled."},
+   {"text": "Build a concept model to establish what the provider means by parent, guardian and household.", "verdict": "The meanings are not in dispute; how many of each may relate to how many others is, and that is structure rather than vocabulary."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 228, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.6 Analyze Potential Value and Recommend Solution",
+  "techniques": ["10.16 Decision Analysis"],
+  "trap": "Ranking what should be chosen between",
+  "stem": "A water authority must select one of four metering approaches. Each is viable, they differ sharply in cost, disruption, regulatory exposure and speed, and three executives disagree about which matters most. The programme office has suggested applying the organisation's standard prioritisation framework to place the four in order and taking the top one. Only one approach can be implemented.",
+  "why": "Prioritisation orders items that will all eventually be done, and its output is a sequence. Here three approaches will never be done at all, and the disagreement is about which criteria should govern, not about ordering. Decision analysis is built for that: it makes the options, the criteria, the weightings and the trade-offs explicit so the executives argue about the criteria openly rather than through their preferred option.",
+  "options": [
+   {"text": "Apply the prioritisation framework, since it already carries agreed criteria and produces a defensible order.", "verdict": "The framework orders work to be sequenced. Three of these four options are being discarded, which prioritisation does not model."},
+   {"text": "Ask the three executives to reach consensus on the most important factor before any analysis is undertaken.", "verdict": "This asks for the answer before the trade-offs are visible, which is what has kept the disagreement unresolved."},
+   {"text": "Recommend the approach with the lowest regulatory exposure, since regulatory risk outranks cost and disruption.", "verdict": "This asserts one executive's criterion as decisive, which is the very question the group has not settled."},
+   {"text": "Structure the choice explicitly, setting out options, agreed criteria, weightings and the trade-offs between them.", "verdict": "Correct. A contested one-off choice with unagreed criteria is what decision analysis is for."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 229, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.1 Analyze Current State",
+  "techniques": ["10.17 Decision Modelling"],
+  "trap": "Bringing a strategic decision technique to a high-volume operational one",
+  "stem": "A council's development assessment officers decide roughly 400 times a day whether an application may be determined under delegated authority or must go to the panel. Six officers apply the test and reach different conclusions on similar applications; appeals frequently turn on the inconsistency. The manager has asked for decision analysis to resolve which approach is best. The council uses two case systems.",
+  "why": "Decision analysis structures a one-off choice under uncertainty between options. Here the decision is made 400 times a day, the options are fixed and the problem is that identical inputs produce different outputs. That is a repeatable operational decision, and decision modelling represents it and the logic behind it so the same inputs yield the same outcome, which is what removes the inconsistency the appeals are exploiting.",
+  "options": [
+   {"text": "Run decision analysis with the six officers to establish which interpretation of the test should prevail.", "verdict": "Decision analysis chooses between strategic options; it does not specify logic that has to execute consistently 400 times a day."},
+   {"text": "Model the delegation decision and its underlying logic so that identical inputs produce identical outcomes.", "verdict": "Correct. A high-frequency operational decision with inconsistent outputs is what decision modelling addresses."},
+   {"text": "Document the test as business rules in the policy manual and require officers to confirm they have read it.", "verdict": "The rules exist; the failure is that their application is not modelled, so reading them again will not converge six interpretations."},
+   {"text": "Analyse the appeals to find the root cause of the inconsistency before modelling anything.", "verdict": "The scenario already states the cause, so further diagnosis defers the modelling that would fix it."}
+  ],
+  "answer": 1
+ },
+ {
+  "n": 230, "ka": 4, "kaName": "Elicitation and Collaboration",
+  "task": "4.1 Prepare for Elicitation",
+  "techniques": ["10.18 Document Analysis"],
+  "trap": "Spending scarce stakeholder time on what the artefacts already answer",
+  "stem": "An analyst has ninety minutes with a chief pharmacist who has been unavailable for six weeks and will be again. The dispensing procedure, the regulatory schedule, the current system specification and two prior review reports are all available and unread. A colleague suggests using the session to walk through the current process from the beginning so nothing is assumed.",
+  "why": "Everything the documents can answer should be answered before the session, so the ninety minutes are spent on what only the chief pharmacist knows: judgement, exceptions, why the documented procedure is departed from, and what the reports got wrong. Walking the process from the beginning spends a scarce and irreplaceable slot on material sitting unread on the analyst's own desk.",
+  "options": [
+   {"text": "Analyse the available documents first, then use the session for what only the chief pharmacist can supply.", "verdict": "Correct. Document analysis before elicitation is what makes limited stakeholder time worth having."},
+   {"text": "Walk the process through from the beginning as the colleague suggests, since assumptions are the greater risk.", "verdict": "It removes assumptions at the cost of the entire session, and the documents remove most of them for free."},
+   {"text": "Send the documents to the chief pharmacist beforehand and ask her to correct them ahead of the session.", "verdict": "This transfers the analyst's preparation to the stakeholder whose time is the constraint, and she has been unavailable for six weeks."},
+   {"text": "Use the session to confirm the two prior review reports, since their findings are the most contested material.", "verdict": "Plausible, but it commits the whole session to one artefact before establishing what the other three already settle."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 231, "ka": 3, "kaName": "Business Analysis Planning and Monitoring",
+  "task": "3.1 Plan Business Analysis Approach",
+  "techniques": ["10.19 Estimation"],
+  "trap": "Presenting a single figure where the distribution is the information",
+  "stem": "A steering committee has asked for the analysis effort on a claims replacement. The team has produced three-point estimates for four components. The delivery manager wants to report the sum of the most likely column, 102 days, as the number, on the grounds that a single figure is what the committee asked for and ranges invite argument.",
+  "exhibit": {
+   "type": "table",
+   "title": "Three-point estimates, analysis effort in days",
+   "cols": ["Component", "Optimistic", "Most likely", "Pessimistic", "Expected"],
+   "align": ["left", "num", "num", "num", "num"],
+   "rows": [
+    ["Rules engine", "30", "45", "90", "50.0"],
+    ["Interfaces", "20", "25", "40", "26.7"],
+    ["Reporting", "10", "12", "18", "12.7"],
+    ["Migration", "15", "20", "60", "25.8"],
+    ["Total", "75", "102", "208", "115.2"]
+   ],
+   "note": "Expected = (optimistic + 4 x most likely + pessimistic) / 6."
+  },
+  "why": "The estimates are heavily skewed: the rules engine and migration can each run to three times their optimistic case, so the weighted expected total is 115 days rather than 102. Reporting the most likely sum understates the effort by 13 days and, more importantly, conceals that the spread runs from 75 to 208. An estimate without its confidence and assumptions is a number the committee cannot govern.",
+  "options": [
+   {"text": "Report 102 days as the delivery manager asks, since it is the sum of the outcomes the team considers most likely.", "verdict": "The most likely values are the modal cases; summing them ignores the skew, which is where the rules engine and migration risk sits."},
+   {"text": "Report the pessimistic total of 208 days, which protects the team and the committee against the worst case.", "verdict": "Building in a 106-day contingency as the headline misrepresents the estimate as badly as understating it."},
+   {"text": "Report the expected value of 115 days with the range and the assumptions that drive the spread.", "verdict": "Correct. The weighted expected value is the defensible figure, and the range is the information the committee needs."},
+   {"text": "Decompose the two volatile components further until the ranges narrow enough to justify a single figure.", "verdict": "Decomposition may sharpen the estimate but the committee needs a number now, and uncertainty this early is genuine rather than an artefact of granularity."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 232, "ka": 4, "kaName": "Elicitation and Collaboration",
+  "task": "4.2 Conduct Elicitation",
+  "techniques": ["10.21 Focus Groups", "10.50 Workshops"],
+  "trap": "Convening a group to gather views when a work product is owed",
+  "stem": "A university has to agree a single set of assessment extension rules across five faculties by the end of the month, replacing five divergent local practices. The student experience lead has proposed a series of focus groups with academics and students to understand attitudes to the current arrangements. Faculty representatives hold the authority to agree the new rules.",
+  "why": "What is owed by the end of the month is an agreed set of rules, which is a work product, and the people with authority to agree it are available. A focus group gathers attitudes and produces understanding rather than agreement, and running a series of them consumes the month without converging anything. A facilitated workshop with the decision-makers, aimed at a defined output, is the instrument that produces an agreement to a deadline.",
+  "options": [
+   {"text": "Run the focus groups as proposed, since rules imposed without understanding attitudes will not be observed in practice.", "verdict": "Attitudes matter, but a series of groups produces sentiment by the deadline and no agreed rules."},
+   {"text": "Survey academics and students across all five faculties, which gathers the same attitudes with far better coverage.", "verdict": "Better coverage of the same thing that is not owed. Neither instrument produces an agreement between faculties."},
+   {"text": "Ask each faculty to submit its preferred rules in writing and reconcile the five submissions into a single set.", "verdict": "Serial consultation reconciles on paper and leaves the disagreements to surface when the reconciled version is circulated."},
+   {"text": "Convene a facilitated workshop with the faculty representatives, aimed at producing the agreed rule set as its output.", "verdict": "Correct. A defined work product owed to a deadline, with authorised parties available, is workshop territory."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 233, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.1 Specify and Model Requirements",
+  "techniques": ["10.22 Functional Decomposition"],
+  "trap": "Producing a delivery schedule instead of an analysis breakdown",
+  "stem": "A single requirement, the system shall support the end-to-end grant lifecycle, has resisted estimation, assignment and testing for two sprints. The analyst intends to break it down. The project manager asks that the breakdown be structured as work packages with durations and owners so it can be loaded into the schedule, since the same decomposition can serve both purposes.",
+  "why": "Functional decomposition breaks a function into constituent parts so each can be analysed, specified and estimated; a work breakdown structure organises delivery effort into scheduled packages. They look similar and are not the same artefact, and building one to serve both purposes bends the analysis to fit the schedule. Producing the schedule is project management work, which the analyst should decline while still supplying the decomposition the project manager needs to build it.",
+  "options": [
+   {"text": "Decompose the requirement into constituent functions for analysis, and let the project manager derive work packages from it.", "verdict": "Correct. The analyst supplies the functional breakdown; scheduling it is the project manager's work."},
+   {"text": "Produce the work packages with durations and owners as asked, since the underlying breakdown is identical either way.", "verdict": "It is not identical: a schedule is organised by who does what when, which distorts a breakdown meant to expose functional structure."},
+   {"text": "Decline to decompose and instead write acceptance criteria against the requirement as it stands.", "verdict": "Criteria against an end-to-end lifecycle requirement inherit exactly the breadth that has defeated estimation and testing."},
+   {"text": "Break the requirement into user stories sized for a sprint, which addresses both the estimation and the scheduling problem.", "verdict": "Sprint sizing is a delivery consideration, and stories cut to fit a sprint may not respect the functional boundaries analysis needs."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 234, "ka": 4, "kaName": "Elicitation and Collaboration",
+  "task": "4.3 Confirm Elicitation Results",
+  "techniques": ["10.23 Glossary"],
+  "trap": "Reconciling documents when the parties are using one word two ways",
+  "stem": "Two teams have signed off elicitation results that appear to conflict. Operations recorded that a shipment is complete when it leaves the warehouse; finance recorded that a shipment is complete when the customer confirms receipt. Both are describing their own accountability accurately. The analyst has been asked to determine which record is wrong before the results are baselined.",
+  "why": "Neither record is wrong. One word is carrying two meanings, each correct within its own accountability, and the apparent conflict is entirely a vocabulary artefact. A glossary settles which term means what, and where a single word must serve both, qualifies it, so the elicitation results can be confirmed without either team being asked to accept a description of their work that is false.",
+  "options": [
+   {"text": "Ask the sponsor to determine which definition of complete the programme will use, then correct the other record.", "verdict": "This makes one team's accurate record of its own accountability into an error, and the sponsor cannot change what either function actually does."},
+   {"text": "Baseline both records as elicited and let the difference be resolved when requirements are specified.", "verdict": "Confirming results that appear to contradict each other pushes a known ambiguity downstream, where it will cost more."},
+   {"text": "Establish the terms in a glossary, qualifying complete so each meaning is distinct, and confirm both records against it.", "verdict": "Correct. The conflict is lexical, and defining the vocabulary lets both records stand as accurate."},
+   {"text": "Model the shipment life cycle so the states between despatch and receipt are visible to both teams.", "verdict": "A state model would help later but the immediate task is confirming elicitation results, which only needs the terms settled."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 235, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.4 Define Requirements Architecture",
+  "techniques": ["10.24 Interface Analysis"],
+  "trap": "Specifying what crosses a boundary nobody has agreed",
+  "stem": "A payments platform will exchange data with a core banking system, a fraud service and two partner apps. The integration lead has begun writing message specifications for all four. The analyst notes that whether reversals are handled by the platform or by core banking is still open, and that the answer changes what passes across three of the four boundaries. Delivery has been promised in eight weeks.",
+  "why": "Interface analysis specifies what crosses a boundary, which presupposes that the boundary has been drawn. With reversal handling unallocated, the boundary between the platform and core banking is not settled, so three of the four message specifications are being written against an undecided scope. Settling the scope question first costs days; discovering it after four specifications are written costs the rework on three of them.",
+  "options": [
+   {"text": "Continue with the fraud service and partner app specifications only, deferring the core banking work until reversals are settled.", "verdict": "Two of the partner app interfaces are among the three affected, so this defers less than it appears to."},
+   {"text": "Settle where reversal handling sits, then specify what crosses each boundary once the boundaries are fixed.", "verdict": "Correct. Scope first, interfaces second, because the boundary determines what crosses it."},
+   {"text": "Specify both variants for the three affected interfaces so that either allocation can be implemented without delay.", "verdict": "Doubling the specification work to avoid making a decision costs more than making it and leaves two versions to keep aligned."},
+   {"text": "Write the specifications assuming the platform handles reversals, which is the more common arrangement in comparable systems.", "verdict": "An assumption adopted for convenience under schedule pressure becomes a decision nobody made and nobody owns."}
+  ],
+  "answer": 1
+ },
+ {
+  "n": 236, "ka": 4, "kaName": "Elicitation and Collaboration",
+  "task": "4.2 Conduct Elicitation",
+  "techniques": ["10.25 Interviews", "10.45 Survey or Questionnaire"],
+  "trap": "Choosing an instrument that cannot reach the information required",
+  "stem": "A hospital is replacing its handover process. The analyst needs to establish how experienced nurses judge which details of a patient's condition to pass on, a judgement they exercise constantly and have never written down. There are 340 nurses across three sites. The executive sponsor has asked for a survey so that every nurse has an opportunity to contribute.",
+  "why": "What is needed is tacit expertise, the reasoning behind a judgement the nurses have never articulated. A survey can only capture what a respondent can express in a fixed question and cannot ask why, which is where the entire content sits. Interviews with a small number of experienced nurses, with follow-up questioning, is the instrument that reaches it. Breadth can be added afterwards to test whether what emerges generalises.",
+  "options": [
+   {"text": "Run the survey as the sponsor asks, since 340 nurses is too many to interview and inclusion matters to adoption.", "verdict": "Inclusion is a real concern but a survey cannot elicit reasoning nobody has articulated, so it would produce coverage without content."},
+   {"text": "Observe handovers across the three sites, since what nurses actually pass on is more reliable than what they say.", "verdict": "Observation captures what is passed on but not why those details were selected, which is the judgement being sought."},
+   {"text": "Run a workshop with nurses from each site so the group can articulate the judgement collectively.", "verdict": "A workshop suits producing an agreed output; drawing out tacit individual reasoning is better served one to one."},
+   {"text": "Interview a small number of experienced nurses in depth, then use a survey to test how widely what emerges holds.", "verdict": "Correct. Depth first to find the reasoning, breadth second to test whether it generalises."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 237, "ka": 4, "kaName": "Elicitation and Collaboration",
+  "task": "4.5 Manage Stakeholder Collaboration",
+  "techniques": ["10.26 Item Tracking"],
+  "trap": "Treating a follow-through failure as an analysis failure",
+  "stem": "Stakeholders have begun disengaging from a programme's sessions. Reviewing the minutes, the analyst finds nineteen concerns raised over four months, of which eleven have no recorded owner, no status and no evidence of any response. The programme director's view is that the sessions need better facilitation. The concerns themselves were well captured in the minutes.",
+  "why": "The concerns were heard and recorded, so elicitation and facilitation both worked. What failed is what happened afterwards: eleven items with no owner and no status mean stakeholders have learned that raising something achieves nothing, and disengagement is the rational response. Item tracking gives each concern an owner, a status and a route to resolution, which is what restores the incentive to contribute.",
+  "options": [
+   {"text": "Introduce item tracking so every concern carries an owner and a status through to resolution, and work the existing backlog of eleven.", "verdict": "Correct. The failure is follow-through, and tracking with ownership is what closes that loop."},
+   {"text": "Improve facilitation as the director suggests, so that concerns are resolved within the session in which they are raised.", "verdict": "The minutes show concerns were captured well, and most cannot be resolved in the room, which is why they need tracking."},
+   {"text": "Add the eleven concerns to the risk register so they receive formal assessment and executive visibility.", "verdict": "Most are issues rather than uncertain future events, and a register without owners repeats the same failure in a different document."},
+   {"text": "Re-run stakeholder analysis to establish whether the right people are attending the sessions.", "verdict": "The right people attended and raised nineteen concerns. Analysing them again does not answer why nobody responded."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 238, "ka": 3, "kaName": "Business Analysis Planning and Monitoring",
+  "task": "3.5 Identify Business Analysis Performance Improvements",
+  "techniques": ["10.27 Lessons Learned"],
+  "trap": "Deferring capture until the people who hold it have dispersed",
+  "stem": "A two-year programme has just closed. Requirements churn ran at three times the organisation's norm throughout, and the same pattern appeared on the programme before it. Most of the team rolls off in a fortnight. The portfolio director has scheduled a review for the end of the quarter, ten weeks away, so that benefits data can be included in the discussion.",
+  "why": "The knowledge that would explain the churn is held by people who will have dispersed within a fortnight, and recollection degrades quickly once a team breaks up. Benefits data will still be available in ten weeks; the team will not. Holding the lessons learned session now, while participants are present, and revisiting benefits separately when the data matures, keeps both, whereas waiting keeps only one.",
+  "options": [
+   {"text": "Accept the schedule, since a review without benefits data cannot establish whether the programme succeeded.", "verdict": "The question at issue is why churn ran at three times the norm, which the team can answer and the benefits data cannot."},
+   {"text": "Survey the team before they roll off and hold the scheduled review using the responses.", "verdict": "A survey captures what people can write down unprompted and loses the exchange between participants that surfaces the causes."},
+   {"text": "Run the lessons learned session now while the team is present, and take benefits data to a separate review later.", "verdict": "Correct. Capture the perishable input while it exists; the durable input can wait."},
+   {"text": "Extract the causes from the change records, which document every requirement change with its stated reason.", "verdict": "Stated reasons record what changed, not the conditions that made this programme and its predecessor churn alike."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 239, "ka": 8, "kaName": "Solution Evaluation",
+  "task": "8.1 Measure Solution Performance",
+  "techniques": ["10.28 Metrics and Key Performance Indicators"],
+  "trap": "Mistaking a wall of measures for the ability to manage",
+  "stem": "A logistics operator reports fourteen measures on its depot dashboard each month. Every one is a count or an average of something that has already happened, and none carries a target. When on-time delivery fell for three consecutive months, nobody escalated because no measure crossed a defined line. The operations director says the dashboard is comprehensive and the issue is that people do not read it.",
+  "exhibit": {
+   "type": "dashboard",
+   "title": "Depot dashboard — representative measures",
+   "tiles": [
+    {"label": "Deliveries completed", "value": "41,208", "delta": "count, no target", "dir": "flat"},
+    {"label": "On-time delivery", "value": "88.1%", "delta": "3rd monthly fall", "dir": "down"},
+    {"label": "Average time per drop", "value": "17.4 min", "delta": "no target", "dir": "flat"},
+    {"label": "Vehicle utilisation", "value": "72%", "delta": "no target", "dir": "flat"}
+   ],
+   "bars": [
+    {"label": "Measures with a defined target", "value": 0, "max": 14, "note": "0 of 14"},
+    {"label": "Measures with an action threshold", "value": 0, "max": 14, "note": "0 of 14"},
+    {"label": "Leading indicators", "value": 2, "max": 14, "note": "2 of 14"}
+   ],
+   "note": "All fourteen measures are reported monthly in arrears."
+  },
+  "why": "A measure with no target and no threshold produces reporting rather than management: there is no defined point at which anyone is obliged to act, so a three-month decline can run unchallenged while the dashboard remains technically accurate. Twelve of the fourteen are also lagging, confirming outcomes after the window to change them has closed. The fix is to tie the measures to objectives with targets and action thresholds, not to ask people to read harder.",
+  "options": [
+   {"text": "Reduce the dashboard to the four or five measures that matter most, since fourteen is more than any reader will absorb.", "verdict": "Fewer measures with no targets fail in exactly the same way, only faster."},
+   {"text": "Circulate the dashboard weekly rather than monthly so that a three-month decline becomes visible sooner.", "verdict": "More frequent publication of measures nobody is obliged to act on shortens the delay without creating the obligation."},
+   {"text": "Attach objectives, targets and action thresholds to the measures, and add leading indicators that predict the outcome.", "verdict": "Correct. A metric becomes a key performance indicator when it is tied to an objective with a target someone must respond to."},
+   {"text": "Assign each measure to a named owner in the depot so that accountability for the numbers is unambiguous.", "verdict": "Ownership without a threshold gives the owner nothing to be accountable against, so the escalation still never triggers."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 240, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.1 Analyze Current State",
+  "techniques": ["10.29 Mind Mapping"],
+  "trap": "Imposing a formal model before the shape of the problem is known",
+  "stem": "A charity's chief executive can say only that fundraising has become harder and that it feels like several unrelated things happening at once. She has ninety minutes and no documented view of the problem. The analyst intends to leave the session with a structured sense of what is in play. A formal capability model is scheduled for the following month.",
+  "why": "The problem has no established shape, so any formal notation would force premature structure and quietly discard whatever does not fit its rules. Mind mapping organises ideas radially around a central concept and lets association do the work, which suits a first exploratory conversation with a stakeholder who cannot yet separate the strands. The formal modelling follows once there is something to model.",
+  "options": [
+   {"text": "Map the problem radially around fundraising, letting the strands and their associations emerge during the conversation.", "verdict": "Correct. Exploratory organisation of thought is what mind mapping is for, and the formal model comes later."},
+   {"text": "Decompose fundraising into its constituent functions so each strand can be examined in turn.", "verdict": "Functional decomposition needs a function whose boundaries are known, and the chief executive cannot yet name the strands."},
+   {"text": "Run a SWOT so the internal and external pressures on fundraising are separated from the outset.", "verdict": "SWOT imposes a four-way classification on material that has not been surfaced, and the chief executive would be sorting before she has recalled."},
+   {"text": "Bring the capability model forward and use the session to grade fundraising capabilities for performance.", "verdict": "Grading capabilities requires knowing which ones are in play, which is the question the session is meant to open."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 241, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.1 Specify and Model Requirements",
+  "techniques": ["10.30 Non-Functional Requirements Analysis"],
+  "trap": "Accepting a quality expressed as an adjective",
+  "stem": "A tender response is due in a fortnight for a public-facing permit portal. The requirements set states that the portal must be fast, highly available, secure and easy to use. The sponsor considers these self-evident and does not want the tender delayed by what he calls wordsmithing. Vendors will price and design against whatever is issued.",
+  "why": "Fast, available, secure and easy to use are aspirations until they carry numbers and conditions: response time at what percentile under what load, availability over what window excluding what, secure against which standard, usable measured how. Vendors will price against the loosest reading, and the organisation will have no basis to reject what arrives. The qualities also drive architecture, so leaving them vague concedes the design as well as the price.",
+  "options": [
+   {"text": "Issue the tender as drafted and clarify the qualities during evaluation, when vendors can be questioned directly.", "verdict": "By evaluation the vendors have priced and designed against their own readings, and there is no agreed basis to compare them."},
+   {"text": "Add the qualities to the evaluation criteria with weightings, so vendors offering more are scored higher.", "verdict": "Scoring undefined qualities produces an assessment of the persuasiveness of the response rather than of the solution."},
+   {"text": "Move the qualities into the contract as service levels to be negotiated after the supplier is selected.", "verdict": "Negotiating service levels after selection removes the competitive pressure that would have made them affordable."},
+   {"text": "Specify each quality measurably, with load, percentile, availability window and standard, before the tender is issued.", "verdict": "Correct. A non-functional requirement without a measure cannot be priced, designed against or accepted."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 242, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.1 Analyze Current State",
+  "techniques": ["10.31 Observation"],
+  "trap": "Believing the documented procedure over the work as performed",
+  "stem": "A manufacturer's quality procedure requires a four-step inspection at the end of each shift. Supervisors confirm in interview that it is followed. The system records inspection completion at a median of forty seconds, which the analyst calculates is too short for four steps. Defect escapes have risen 40% in a year. A new shift roster started in March.",
+  "why": "Three sources disagree: the procedure says four steps, the supervisors say it is followed, and the timing data says it cannot be. Asking again produces the same answer, because the supervisors are describing the procedure they are accountable for rather than knowingly misleading. Watching the inspection performed is the only way to establish what actually happens, which is exactly the gap between stated and actual practice that observation exists to close.",
+  "options": [
+   {"text": "Re-interview the supervisors with the timing data in front of them, so the discrepancy has to be addressed directly.", "verdict": "Confronting people with data that implies non-compliance produces defensiveness, and they may sincerely believe the procedure is followed."},
+   {"text": "Observe the inspection being performed across several shifts to establish what is actually done.", "verdict": "Correct. Where stated practice and system evidence conflict, watching the work is the technique that resolves it."},
+   {"text": "Analyse the defect data to determine which of the four steps is failing to catch the escapes.", "verdict": "This assumes all four steps are being performed, which is the assumption the timing data has put in doubt."},
+   {"text": "Review the procedure against the new shift roster, since the rise in escapes coincides with the March change.", "verdict": "The roster is worth noting but the forty-second median is the sharper signal, and it points at what is done rather than when."}
+  ],
+  "answer": 1
+ },
+ {
+  "n": 243, "ka": 3, "kaName": "Business Analysis Planning and Monitoring",
+  "task": "3.3 Plan Business Analysis Governance",
+  "techniques": ["10.32 Organisational Modelling"],
+  "trap": "Planning engagement when the problem is that authority is unlocated",
+  "stem": "Three requirements decisions have now stalled for over a month each. In every case two directors each believed the other was accountable, and in one case a third area turned out to hold the mandate following a restructure eighteen months ago that was never documented. The programme sponsor asks the analyst to improve stakeholder engagement so decisions move faster.",
+  "why": "Engagement planning decides how often and how formally to deal with people whose roles are known. Here nobody can say where the decision rights sit, because a restructure moved them and was never recorded. Organisational modelling maps the units, roles, reporting lines and, critically, where responsibility actually rests, which is the input the governance plan needs before any engagement approach can be designed around it.",
+  "options": [
+   {"text": "Build a stakeholder map positioning each director by influence and interest, then set engagement accordingly.", "verdict": "Influence and interest describe attitude and power, not who holds the mandate, which is the specific thing nobody can establish."},
+   {"text": "Escalate each stalled decision to the sponsor, who can direct which director decides in each case.", "verdict": "It unblocks three decisions by substituting the sponsor's authority and leaves the fourth to stall the same way."},
+   {"text": "Model the organisation's units, roles and reporting lines to locate where responsibility for each decision now sits.", "verdict": "Correct. Undocumented movement of decision rights is a structural question, and the model has to precede the governance plan."},
+   {"text": "Document the decision-making approach in the governance plan, naming an approver for each requirement type.", "verdict": "Naming approvers is the right output but cannot be done credibly until the analyst knows who actually holds the mandate."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 244, "ka": 5, "kaName": "Requirements Life Cycle Management",
+  "task": "5.3 Prioritize Requirements",
+  "techniques": ["10.33 Prioritisation"],
+  "trap": "Applying a value basis where the basis is imposed from outside",
+  "stem": "A superannuation fund must implement a legislative change by 1 July or face penalty and licence conditions. The same release carries a member portal redesign with a strong benefit case and a data quality fix that the legislative change depends on. The product owner proposes ranking all three on business value, which places the portal redesign first.",
+  "why": "Value is one basis for prioritisation among several, and it is the wrong one where a regulatory deadline and a dependency are in play. The legislative change is not competing for a place; it has a date attached and a consequence for missing it. The data quality fix must precede it regardless of its own value. Prioritisation on value alone is exactly how a fund misses a statutory date while delivering a well-liked portal.",
+  "options": [
+   {"text": "Sequence on the binding constraints first, dependency then regulatory date, and rank the portal redesign on value within what remains.", "verdict": "Correct. Prioritisation bases include dependency and regulatory deadline, and those govern before value is consulted."},
+   {"text": "Rank all three on business value as proposed, since a consistent basis is what makes a ranking defensible.", "verdict": "Consistency applied to the wrong basis produces a defensible route to a licence condition."},
+   {"text": "Split the release so the legislative change is delivered separately and the other two ranked on value between them.", "verdict": "This isolates the legislative item but strands the data quality fix it depends on in the value-ranked release."},
+   {"text": "Escalate to the executive, since a decision with licence consequences is above the product owner's authority.", "verdict": "The sequencing follows from the constraints and needs no ruling; escalating a soluble prioritisation question delays it."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 245, "ka": 8, "kaName": "Solution Evaluation",
+  "task": "8.3 Assess Solution Limitations",
+  "techniques": ["10.34 Process Analysis", "10.35 Process Modelling"],
+  "trap": "Analysing a process that has never been depicted",
+  "stem": "A council's development approval times have doubled since a new case system went live. Four teams touch each application and each describes its own part differently; no end-to-end depiction exists. The service manager has asked the analyst to identify the waste and delay in the process so the bottleneck can be removed before the next reporting period.",
+  "why": "Analysis presupposes a depiction: waste, delay, variation and rework are identified against a model of the flow, and with four teams describing only their own parts there is nothing to analyse across. The sequence is to model the end-to-end process first, then analyse it. Going straight to bottleneck-hunting produces four local opinions about which other team is the problem, which is the state the council is already in.",
+  "options": [
+   {"text": "Interview each of the four teams about where they experience delay and consolidate the responses into findings.", "verdict": "Four local views of delay is what the council already has, and consolidating them does not create the end-to-end picture."},
+   {"text": "Compare approval times against the previous system to isolate which stage the new system slowed.", "verdict": "Comparison at the aggregate level shows that it slowed, not where, because the stages have never been defined consistently."},
+   {"text": "Measure cycle time at each team boundary so the bottleneck can be identified from the data alone.", "verdict": "Boundary timings need agreed boundaries, and the four teams do not currently describe the process in compatible terms."},
+   {"text": "Model the end-to-end process across the four teams first, then analyse it for waste, delay and rework.", "verdict": "Correct. You cannot analyse a process that has not been depicted, and the inconsistent local accounts are the reason."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 246, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.1 Specify and Model Requirements",
+  "techniques": ["10.35 Process Modelling", "10.47 Use Cases and Scenarios"],
+  "trap": "Choosing the notation that suits the reader rather than the subject",
+  "stem": "An analyst must specify how a returned parcel is handled. Six parties are involved: the customer, the courier, two warehouse teams, finance and a third-party refurbisher, and the difficulty is the hand-offs between them and what happens when one party rejects the parcel. A developer has asked for use cases because that is what the team builds from.",
+  "why": "The substance here is a chain of hand-offs between six parties, with branching where a party rejects. That is business work flowing between actors, which is what a process model expresses. A use case describes one actor pursuing a goal through the solution and would fragment a six-party chain into disconnected pieces, losing precisely the hand-offs that are the problem. What the team prefers to build from does not change what the subject is.",
+  "options": [
+   {"text": "Write use cases as the developer asks, since specifications the team cannot build from have no practical value.", "verdict": "The team's preference is worth serving, but not by choosing a notation that cannot express the hand-offs at issue."},
+   {"text": "Model the end-to-end process with the six parties and the rejection branches, then derive use cases where the actor interacts with the solution.", "verdict": "Correct. Model the flow in the notation that carries it, then supply the interaction detail the team needs."},
+   {"text": "Produce a sequence diagram, since the ordering of exchanges between the six parties is the essential content.", "verdict": "Sequence diagrams order messages between components; these are business parties performing work, not systems exchanging messages."},
+   {"text": "Write user stories for each party's part in the return so the work can be sized and scheduled.", "verdict": "Stories deliberately defer detail and would leave the hand-off and rejection logic unspecified, which is the entire difficulty."}
+  ],
+  "answer": 1
+ },
+ {
+  "n": 247, "ka": 4, "kaName": "Elicitation and Collaboration",
+  "task": "4.2 Conduct Elicitation",
+  "techniques": ["10.36 Prototyping"],
+  "trap": "Letting an elicitation device become the delivered solution",
+  "stem": "A clickable prototype built to elicit requirements for a claims intake screen has been well received. The sponsor now proposes that the delivery team extend the prototype into the production solution, since stakeholders have already agreed it and rebuilding would waste the work. The prototype was built in a rapid tool with no error handling, no security model and no test coverage.",
+  "why": "The prototype did its job: it made an abstract requirement concrete and got agreement. What it is not is a solution, having none of the error handling, security or test coverage production requires, and the decision being proposed converts a throwaway artefact into an evolutionary one after the fact. The analyst should preserve what the prototype established, which is the agreed interaction, and be clear that the artefact itself is not the deliverable.",
+  "options": [
+   {"text": "Specify the requirements the prototype established, and let the team build against them rather than extending the prototype.", "verdict": "Correct. The prototype's value is the agreement it produced, which transfers; its construction does not."},
+   {"text": "Extend the prototype as the sponsor proposes, adding error handling, security and tests as the first work items.", "verdict": "This retrofits into a rapid-tool artefact the very qualities its construction traded away, usually at more cost than rebuilding."},
+   {"text": "Ask the delivery team to assess whether the prototype tool is suitable for production and be guided by their answer.", "verdict": "It defers a decision the analyst can already inform, and frames a requirements question as a tooling one."},
+   {"text": "Rebuild the prototype to production standards in the same tool so stakeholders see no change in what they agreed.", "verdict": "Stakeholders agreed to the interaction, not to the implementation, so preserving the tool for their comfort constrains the build for no benefit."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 248, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.2 Verify Requirements",
+  "techniques": ["10.37 Reviews"],
+  "trap": "Confusing whether a requirement is well written with whether it is worth having",
+  "stem": "A requirements set has passed a review in which testers confirmed every item was unambiguous, atomic, testable and consistently worded. Two weeks later the business sponsor reads the set and says that a third of it describes work her area no longer does following a service redesign. The reviewers were the same testers who will write the test cases.",
+  "why": "The review verified the requirements, establishing that they are well formed, and it did so correctly. It did not validate them, which asks whether they deliver value to the business and align with its needs, and it could not, because the participants were testers rather than the people who know the service redesign. The same technique serves both purposes, so what matters is who reviews and against what question.",
+  "options": [
+   {"text": "Re-run the review with a stricter quality checklist so that obsolete requirements are caught in future.", "verdict": "No quality checklist would catch this: the obsolete items are well written, which is why they passed."},
+   {"text": "Accept the outcome, since verification is the analyst's accountability and validation belongs to the sponsor.", "verdict": "Validating requirements is a business analysis task, and it is the analyst who must convene it with the right participants."},
+   {"text": "Convene a validation review with the business stakeholders, examining whether each requirement still delivers value.", "verdict": "Correct. Verification asked whether the requirements were well written; validation asks whether they are the right ones."},
+   {"text": "Trace each requirement to a business objective, which will expose the third that no longer supports one.", "verdict": "Tracing would expose them, but the objectives themselves moved in the redesign, so the business still has to confirm the set."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 249, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.3 Assess Risks",
+  "techniques": ["10.38 Risk Analysis and Management"],
+  "trap": "Treating mitigation as though it removed the risk",
+  "stem": "A retailer's change strategy carries a risk that a single supplier of a payment component fails during peak trading. The team has added monitoring and an escalation path, and the risk has been closed in the register on the basis that it is now mitigated. Peak trading begins in eleven weeks and no alternative supplier has been identified.",
+  "why": "Monitoring and escalation detect the failure sooner and shorten the response; they do not reduce the likelihood that the supplier fails, nor the impact if it does during peak. What remains after a response is applied is residual risk, and it has to be assessed and either accepted explicitly or addressed by a response that changes the exposure, such as transfer or a second supplier. Closing the risk records a decision nobody made.",
+  "options": [
+   {"text": "Accept the closure, since monitoring and escalation are proportionate responses and the register reflects the team's judgement.", "verdict": "The responses are reasonable but they act on detection, not on likelihood or impact, so the exposure is unchanged."},
+   {"text": "Raise the risk again at a higher severity so that the executive is obliged to fund a second supplier.", "verdict": "Inflating severity to force an outcome corrupts the register and substitutes manipulation for analysis."},
+   {"text": "Move the item to the issues log, since supplier concentration is a present condition rather than a future event.", "verdict": "Concentration is a present condition but the failure is an uncertain future event, which keeps it a risk."},
+   {"text": "Reopen it with the residual exposure assessed, and put the remaining response options to the decision-maker for an explicit choice.", "verdict": "Correct. Mitigation changes a risk rather than closing it, and accepting what remains has to be a decision on the record."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 250, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.1 Specify and Model Requirements",
+  "techniques": ["10.39 Roles and Permissions Matrix"],
+  "trap": "Mapping where people sit when the question is what they may do",
+  "stem": "An audit has found that in a grants system some officers can both create a payment and approve it. The finance controller has asked the analyst to establish the extent of the problem across all roles and objects before the remediation is scoped. An organisation chart is available and current. Eleven roles and nine object types exist in the system.",
+  "why": "The audit finding concerns what each role is permitted to do to each object, and separation of duties is only visible when create, approve, amend and delete are laid out role by role and object by object. An organisation chart shows where people sit and answers a different question entirely. The matrix makes gaps, overlaps and the specific create-and-approve breach countable across all ninety-nine combinations rather than anecdotal.",
+  "options": [
+   {"text": "Model the organisation so the reporting lines show which officers should not hold both permissions.", "verdict": "Reporting lines describe position rather than permission, and a separation-of-duties breach is defined by the permissions."},
+   {"text": "Build a matrix of the eleven roles against the nine object types and the actions permitted on each.", "verdict": "Correct. Permission by role and object is what exposes overlaps, gaps and separation-of-duties breaches systematically."},
+   {"text": "Specify a business rule that no officer may approve a payment they created, and pass it to the delivery team.", "verdict": "The rule is right but scoping remediation needs the extent first, and the audit asked about all roles rather than this one breach."},
+   {"text": "Extract the current access list from the system and review it with each role owner for correctness.", "verdict": "The list shows who currently holds what, which conflates the assignment with the permission design the audit is questioning."}
+  ],
+  "answer": 1
+ },
+ {
+  "n": 251, "ka": 8, "kaName": "Solution Evaluation",
+  "task": "8.3 Assess Solution Limitations",
+  "techniques": ["10.40 Root Cause Analysis"],
+  "trap": "Treating a recurring symptom with a fourth fix",
+  "stem": "A billing system has produced duplicate invoices three times in eighteen months. Each occurrence was traced to a different batch job and each was patched. The third occurrence affected 4,000 customers. The vendor has proposed a fourth patch and a monitoring alert. The finance director has asked the analyst whether to accept it.",
+  "why": "Three different batch jobs producing the same failure mode points past any of the three to a condition they share, in scheduling, in restart handling or in the absence of an idempotency control. Patching the third job removes the third symptom and leaves whatever produced all three intact, which is why the pattern has already survived two fixes. The alert would detect the fourth occurrence rather than prevent it.",
+  "options": [
+   {"text": "Trace the three occurrences back to the condition they have in common before accepting any further patch.", "verdict": "Correct. A failure mode surviving two fixes in three different places is the signature of a shared cause."},
+   {"text": "Accept the patch and the alert, since the alert will catch any recurrence before customers are affected.", "verdict": "Detection after the fact is not prevention, and 4,000 customers were affected before anyone noticed last time."},
+   {"text": "Escalate to the vendor's account management, since three failures in eighteen months indicates a quality problem on their side.", "verdict": "Contract pressure may be warranted but it does not identify the cause, and the fourth occurrence would arrive regardless."},
+   {"text": "Assess the enterprise limitations around batch scheduling, since the failures all originate in scheduled processing.", "verdict": "Closer, but it assumes the cause is environmental before the three occurrences have been traced to anything in common."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 252, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.4 Define Change Strategy",
+  "techniques": ["10.41 Scope Modelling"],
+  "trap": "Estimating and building before the boundary has been drawn",
+  "stem": "A programme to modernise a licensing service has absorbed adjacent work three times: first inspections, then a public register, then complaints handling. Each absorption was agreed informally in a meeting. The sponsor now wants a firm estimate and delivery date. Nobody can produce a current statement of what is in and out of scope.",
+  "why": "An estimate is a function of scope, and this scope has expanded three times without ever being stated, so any figure produced now would be an estimate of something undefined and would be absorbed again within weeks. Scope modelling draws the boundary explicitly, including what sits just outside it, which is what makes further absorption a visible decision rather than a meeting-room agreement.",
+  "options": [
+   {"text": "Estimate the four workstreams separately so the sponsor has a figure for each of the absorbed areas.", "verdict": "Four estimates against four undefined areas inherit the same problem, and nothing prevents a fifth absorption."},
+   {"text": "Ask the sponsor to freeze scope at its current extent so the estimate can be produced against a stable base.", "verdict": "Freezing an unstated scope freezes an ambiguity; nobody could say afterwards what had been frozen."},
+   {"text": "Model the scope boundary explicitly, stating what is in, what is out and what sits adjacent, then estimate against it.", "verdict": "Correct. The boundary has to exist before it can be estimated or defended, and naming the adjacent work makes further absorption explicit."},
+   {"text": "Trace the three absorbed areas back to the programme's business objectives to test whether they belong.", "verdict": "A reasonable test of each absorption, but it evaluates past decisions rather than producing the boundary the estimate needs."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 253, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.4 Define Requirements Architecture",
+  "techniques": ["10.42 Sequence Diagrams"],
+  "trap": "Reaching for a workflow notation when the exchange between components is the requirement",
+  "stem": "An intermittent failure occurs when a payment authorisation, a fraud check and a ledger posting are triggered by the same transaction. It appears only under load and always involves the ledger recording a posting before the fraud service has replied. Four components are involved. The business process model shows the activities and has not helped.",
+  "why": "The activities are known; what is not specified is the order and timing of the messages between the four components, including which calls block and which return asynchronously. A process model shows business activities and cannot express that, which is why it has not helped. Sequence diagrams order the exchanges along a time axis, which is where a race between a reply and a posting becomes visible.",
+  "options": [
+   {"text": "Model the process again in more detail, adding the system steps beneath each business activity.", "verdict": "More detail in a notation that has no time axis still cannot show that the posting precedes the reply."},
+   {"text": "Produce a state model of the transaction so the permitted transitions between statuses are defined.", "verdict": "State modelling would constrain what the transaction may become, but the fault is in the ordering of messages, not the statuses."},
+   {"text": "Specify non-functional requirements for response time under load, since the failure only appears when the system is busy.", "verdict": "Load exposes the defect but does not cause it; a faster fraud service would hide an ordering fault rather than fix it."},
+   {"text": "Diagram the ordered exchange of messages between the four components, showing which calls block and which do not.", "verdict": "Correct. Ordering of messages between components over time is what sequence diagrams express."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 254, "ka": 3, "kaName": "Business Analysis Planning and Monitoring",
+  "task": "3.2 Plan Stakeholder Engagement",
+  "techniques": ["10.43 Stakeholder List, Map, or Personas"],
+  "trap": "Designing for an average user who does not exist",
+  "stem": "A government service is being redesigned for 200,000 annual users. Design decisions keep being justified by reference to the typical user, but the cohort includes people using assistive technology, people with no reliable internet access, agents acting on behalf of others, and a high-volume professional group. The team has a complete stakeholder list and an engagement plan.",
+  "why": "The list establishes who the stakeholders are and the plan establishes how they will be dealt with; neither captures that four groups have materially different needs, contexts and constraints. Personas characterise those groups so design decisions can be tested against each rather than against an average that describes none of them. The typical user in this cohort is a composite that no actual user resembles.",
+  "options": [
+   {"text": "Segment the 200,000 users by volume and design for the largest segment, since it represents the majority of transactions.", "verdict": "Volume weighting is how the assistive technology and low-connectivity groups get designed out, and they are the ones with least alternative."},
+   {"text": "Develop personas for the distinct user groups so design decisions can be tested against each set of needs and constraints.", "verdict": "Correct. Personas exist precisely because a cohort with materially different needs cannot be served by an average."},
+   {"text": "Add the four groups to the stakeholder map, positioned by influence and interest, and engage them accordingly.", "verdict": "Influence and interest govern engagement; they do not describe the needs and constraints that design decisions must satisfy."},
+   {"text": "Run usability testing with a representative sample once the design is complete, and remediate what it finds.", "verdict": "Testing at the end finds what the design already excluded, when changing it is most expensive."}
+  ],
+  "answer": 1
+ },
+ {
+  "n": 255, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.1 Specify and Model Requirements",
+  "techniques": ["10.44 State Modelling"],
+  "trap": "Describing the work when the rules are about what the object may become",
+  "stem": "A tribunal case may be lodged, allocated, listed, adjourned, reserved, determined, withdrawn or struck out. Disputes have arisen because a case was reinstated after being struck out, and because one was adjourned after determination. The registrar wants the rules about what may follow what specified unambiguously. A process model of case handling already exists and is accurate.",
+  "why": "The existing process model correctly describes what registry staff do, and it is not the artefact in question. What the registrar needs is which statuses a case may move to from each current status, and under what event or condition, so that adjourning a determined case is prevented by specification rather than by staff diligence. That is a state model, and its transitions are exactly the disputed rules.",
+  "options": [
+   {"text": "Extend the process model with decision points showing where each status change is made.", "verdict": "Decision points show where staff act but not which transitions are permissible, which is what the two disputes turned on."},
+   {"text": "Specify business rules describing the conditions under which each status change is allowed.", "verdict": "Closer, but a list of rules over eight statuses obscures the completeness question a transition model makes visible."},
+   {"text": "Write use cases for reinstatement and adjournment so the two disputed interactions are fully specified.", "verdict": "This specifies the two known disputes and leaves the remaining transitions unstated, so the next dispute is simply a different pair."},
+   {"text": "Model the states a case may occupy and the permitted transitions between them, with the event or condition for each.", "verdict": "Correct. What an object may become, from where and on what event, is what state modelling specifies."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 256, "ka": 8, "kaName": "Solution Evaluation",
+  "task": "8.1 Measure Solution Performance",
+  "techniques": ["10.45 Survey or Questionnaire"],
+  "trap": "Reading a self-selected sample as though it were representative",
+  "stem": "A satisfaction survey issued after a portal launch returned 310 responses from 12,000 users, a 2.6% response rate, and reports 82% satisfaction. The sponsor wants to publish it as evidence the launch succeeded. Support ticket volume has tripled since go-live, and the survey was linked from a banner on the portal's home page.",
+  "why": "A 2.6% response rate from a banner on the portal reaches people who reached the portal, used it and chose to respond, which selects for those it worked for. Users who abandoned it or went to the phone channel are structurally absent, and tripled ticket volume suggests there are many. The figure is not wrong as a description of the respondents; it simply cannot support a claim about the 12,000, and the sampling method is the reason.",
+  "options": [
+   {"text": "Report the result with its response rate and sampling method, and measure performance from the channels the non-respondents used.", "verdict": "Correct. Disclose what the sample supports, and get the missing population from ticket and channel data."},
+   {"text": "Publish the 82% as the sponsor asks, noting the response rate in a footnote for transparency.", "verdict": "A footnote does not repair a sample drawn from the successful users, and the headline would still assert what it cannot support."},
+   {"text": "Reissue the survey by email to all 12,000 users to raise the response rate to a credible level.", "verdict": "Email raises the rate but still selects for people willing to respond, and does nothing about the tripled tickets already available as evidence."},
+   {"text": "Discard the survey result, since a 2.6% response rate carries no information about solution performance.", "verdict": "It carries real information about the respondents; the error is generalising it, not collecting it."}
+  ],
+  "answer": 0
+ },
+ {
+  "n": 257, "ka": 6, "kaName": "Strategy Analysis",
+  "task": "6.1 Analyze Current State",
+  "techniques": ["10.46 SWOT Analysis"],
+  "trap": "Confusing an internal shortcoming with an external threat",
+  "stem": "An analyst is reviewing a draft SWOT prepared by a regional airline's strategy team before it goes to the board. Four of the entries are shown below. The chief executive has said the analysis feels right and does not want it over-engineered. The airline's fleet renewal decision is due next quarter.",
+  "exhibit": {
+   "type": "table",
+   "title": "Draft SWOT entries under review",
+   "cols": ["Entry", "Placed under", "Nature of the item"],
+   "align": ["left", "left", "left"],
+   "rows": [
+    ["No digital booking capability", "Threats", "A capability the airline lacks"],
+    ["Competitor launching direct routes", "Weaknesses", "An action by another party"],
+    ["Ageing fleet with high maintenance cost", "Threats", "An asset the airline owns"],
+    ["Strong regional brand recognition", "Strengths", "An attribute the airline holds"]
+   ],
+   "note": "Strengths and weaknesses are internal; opportunities and threats are external."
+  },
+  "why": "Three of the four entries are on the wrong axis. Lacking a booking capability and owning an ageing fleet are both internal, which makes them weaknesses; a competitor launching routes is external, which makes it a threat. Only the brand entry is correctly placed. The distinction matters because weaknesses are what the airline can act on directly and threats are what it must respond to, and misplacing them sends the board's fleet decision the wrong signal about what is within its control.",
+  "options": [
+   {"text": "Leave the placements, since the board is concerned with the substance of each item rather than its quadrant.", "verdict": "The quadrant is the substance: it states whether the airline can act on the item or must respond to it."},
+   {"text": "Move the capability gap and the ageing fleet to weaknesses, and the competitor's route launch to threats.", "verdict": "Correct. Internal attributes are strengths or weaknesses; external events are opportunities or threats."},
+   {"text": "Merge the ageing fleet and the capability gap into a single entry, since both concern investment the airline has deferred.", "verdict": "Merging distinct items to explain a shared cause loses two separate positions the board must act on, and still leaves them misplaced."},
+   {"text": "Replace the SWOT with a capability analysis, which would classify the fleet and booking items without the axis problem.", "verdict": "Capability analysis is a useful companion but discards the external scan the board needs alongside its fleet decision."}
+  ],
+  "answer": 1
+ },
+ {
+  "n": 258, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.3 Validate Requirements",
+  "techniques": ["10.47 Use Cases and Scenarios"],
+  "trap": "Specifying the happy path and calling the requirement complete",
+  "stem": "Requirements for an online renewal transaction have been signed off. Each describes what happens when the customer supplies valid details and payment succeeds. In testing, the team finds no specification for an expired card, a part-completed renewal resumed the next day, a customer whose licence is under suspension, or a payment that times out after debiting.",
+  "why": "Every gap found in testing is an alternate or exception flow, and it is the presence of those flows that distinguishes a use case from a description of the successful path. A use case specifies the main flow, the alternatives and the exceptions together, which forces the analyst to ask what else can happen at each step. Signing off only the successful path defers all four questions to whoever is writing the code.",
+  "options": [
+   {"text": "Raise four change requests so the missing conditions are added through the agreed change process.", "verdict": "These are not changes to agreed requirements; they are parts of the requirement that were never specified."},
+   {"text": "Add acceptance criteria covering the four conditions to the requirements already signed off.", "verdict": "Criteria could record the expected outcomes but not the flows that reach them, and four is unlikely to be all of them."},
+   {"text": "Ask the test team to define the expected behaviour, since they identified the gaps and understand the conditions.", "verdict": "This delegates a specification decision to testers, who would be validating their own assumptions afterwards."},
+   {"text": "Specify each transaction as a use case with its main flow, alternate flows and exceptions, and validate the complete set.", "verdict": "Correct. Alternate and exception flows are part of the use case, not an addition discovered during testing."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 259, "ka": 5, "kaName": "Requirements Life Cycle Management",
+  "task": "5.3 Prioritize Requirements",
+  "techniques": ["10.48 User Stories"],
+  "trap": "Writing a system instruction and calling it a user story",
+  "stem": "A backlog contains items in the form as a user I want the record saved to the audit table so that the record is saved to the audit table. The team cannot prioritise them because nobody can say who benefits or by how much. The delivery lead argues the format is correct because each begins with as a user I want and the team agreed the template.",
+  "why": "The template is being satisfied while the content it exists to carry is absent: as a user names no actual role, and the benefit clause restates the action rather than stating what it is worth to anyone. Prioritisation needs value, and these items carry none, which is why the team is stuck. A user story is a placeholder for a conversation, and these have no one to have it with.",
+  "options": [
+   {"text": "Prioritise on technical dependency instead, since the items describe system behaviour rather than user-facing value.", "verdict": "Dependency sequences work but never establishes whether it is worth doing, which is what the team cannot currently answer."},
+   {"text": "Convert them to non-functional requirements, since auditability is a quality of the solution rather than a user need.", "verdict": "Some may be, but the underlying problem is that no role or value has been identified, which the conversion does not supply."},
+   {"text": "Rewrite them with the actual role and the value to that role, going back to the stakeholders where neither is known.", "verdict": "Correct. Without a real role and a genuine benefit there is nothing to prioritise, and the conversation is the point of the story."},
+   {"text": "Accept them as written and size them by effort, letting the team schedule by cost until value becomes clearer.", "verdict": "Sequencing by cost alone optimises for cheapness and would deliver low-value items first on principle."}
+  ],
+  "answer": 2
+ },
+ {
+  "n": 260, "ka": 7, "kaName": "Requirements Analysis and Design Definition",
+  "task": "7.6 Analyze Potential Value and Recommend Solution",
+  "techniques": ["10.49 Vendor Assessment"],
+  "trap": "Assessing the product and forgetting the supplier behind it",
+  "stem": "A council has scored three products against its evaluation criteria. The highest scorer is supplied by a two-year-old firm of nine people, currently loss-making, whose product is genuinely the best fit and whose reference site is a council half the size. The contract would run seven years and the product would hold the rates register.",
+  "why": "Evaluation criteria judge the product and this one judged it correctly. What has not been assessed is whether the supplier can sustain a seven-year commitment holding a critical register: financial viability, capacity relative to a council twice the size of its only reference, and what happens to the rates data if the firm fails. That is vendor assessment, and it is a separate question from product fit rather than a lower-weighted criterion within it.",
+  "options": [
+   {"text": "Award to the highest scorer, since the criteria were agreed in advance and departing from them would be indefensible.", "verdict": "The criteria assessed the product; awarding on them alone means the supplier was never assessed at all."},
+   {"text": "Re-score with financial viability added as a weighted criterion so the position is reflected in the totals.", "verdict": "Folding viability into a product score lets a strong functional fit outweigh a supplier that may not survive the term."},
+   {"text": "Award to the second-placed product, since a seven-year contract over the rates register cannot carry supplier risk.", "verdict": "This discards the best-fitting product before establishing whether the risk can be addressed through escrow, guarantees or contract terms."},
+   {"text": "Assess the supplier separately on viability, capacity and continuity, and put both assessments to the decision-maker.", "verdict": "Correct. Product fit and supplier capability are distinct judgements and both belong in front of the decision-maker."}
+  ],
+  "answer": 3
+ },
+ {
+  "n": 261, "ka": 4, "kaName": "Elicitation and Collaboration",
+  "task": "4.3 Confirm Elicitation Results",
+  "techniques": ["10.50 Workshops"],
+  "trap": "Calling a meeting a workshop and expecting a work product from it",
+  "stem": "Three sessions described as requirements workshops have produced no agreed output. Each ran without a stated objective, without a facilitator, with attendance varying week to week, and with notes taken by whoever remembered. Participants say the sessions are useful discussions. The programme needs a confirmed set of elicitation results before analysis can proceed.",
+  "why": "What has been running is a series of meetings. A workshop is defined by having a stated output, a facilitator who is neutral on the content, the participants with authority to agree that output, and someone recording decisions. All four are absent, which is precisely why three sessions produced useful discussion and nothing confirmable. Adding a fourth session in the same form produces a fourth discussion.",
+  "options": [
+   {"text": "Circulate the accumulated notes for written confirmation, which obtains agreement without another session.", "verdict": "The notes are of unknown provenance from varying attendees, so confirming them would baseline whatever happened to be written down."},
+   {"text": "Run the next session with a defined output, a facilitator, the participants who can agree it, and a scribe.", "verdict": "Correct. Those four elements are what make a session a workshop rather than a discussion."},
+   {"text": "Replace the sessions with individual interviews, since the group format has failed three times.", "verdict": "The format has not been tried yet, and interviews cannot produce agreement between parties who need to agree with each other."},
+   {"text": "Escalate to the sponsor to mandate attendance, since varying participation is the most visible of the four problems.", "verdict": "Consistent attendance at a session with no objective, facilitator or scribe still produces a discussion."}
+  ],
+  "answer": 1
+ }
+]

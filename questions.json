@@ -32,6 +32,9 @@
   "ka": 5,
   "kaName": "Requirements Life Cycle Management",
   "task": "5.1 Trace Requirements",
+  "techniques": [
+   "10.2 Backlog Management"
+  ],
   "trap": "Being led by an irrelevant detail planted in the scenario",
   "stem": "A public university is replacing its student placement system using a small co-located team on a two-month timebox. The BA has been asked to establish traceability. The programme sponsor has read that a regulator required a neighbouring institution to maintain full bidirectional traceability across its finance system, and wants the same here. Placement data falls outside that regulation. The team works from a lightweight backlog tool. What should the BA do next?",
   "why": "The regulatory precedent applies to a different institution's finance data and is the planted detail. The level of traceability formality is chosen to suit the risk, complexity and approach of this change, and a two-month timebox with a lightweight tool argues against exhaustive bidirectional linking.",
@@ -88,6 +91,10 @@
   "ka": 6,
   "kaName": "Strategy Analysis",
   "task": "6.2 Define Future State",
+  "techniques": [
+   "10.4 Benchmarking and Market Analysis",
+   "10.35 Process Modelling"
+  ],
   "trap": "Treating a stakeholder's stated want as the requirement",
   "stem": "A telco's customer director has declared that the future state will deliver \"best-in-class service experience\" and wants the BA to build the case on that phrase. Current state analysis shows first-contact resolution sitting at 54 per cent, with repeat calls concentrated in mobile plan changes. The board has said it will fund only commitments it can later verify. The telco is concurrently refreshing its retail store fit-outs. What should the BA do next?",
   "why": "The board will fund only verifiable commitments, so the aspiration has to be restated as objectives with defined targets and timeframes tied to the observed weakness in plan changes. Adopting the phrase as written leaves nothing that can be measured or later evaluated.",
@@ -144,6 +151,10 @@
   "ka": 3,
   "kaName": "Business Analysis Planning and Monitoring",
   "task": "3.3 Plan Business Analysis Governance",
+  "techniques": [
+   "10.7 Business Cases",
+   "10.33 Prioritisation"
+  ],
   "trap": "Confusing a Task with a Technique, or a Technique with an Input/Output",
   "stem": "An electricity distributor is planning the analysis work for a smart metering upgrade affecting field crews, the wholesale market operator and a shared services function. Funding is capped by the regulator's determination, and the sponsor has asked how competing demands from these three groups will be settled when not everything can be funded. The distributor is separately trialling drones for line inspection. The business analyst wants this settled and recorded before elicitation begins. Which decision does the sponsor's question require the analyst to make?",
   "why": "The sponsor's question is about how competing demands are ranked and by whom when funding is capped, which is a prioritisation decision-rights matter. Elicitation techniques, repositories and benefit measures are all legitimate concerns but none of them settles who ranks requirements against what criteria.",
@@ -172,6 +183,9 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.2 Verify Requirements",
+  "techniques": [
+   "10.1 Acceptance and Evaluation Criteria"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "Tallowood Super is automating insurance-cover changes. One requirement reads: 'members should be notified promptly of any change to their cover'. Testers report they cannot design a test for it. Marketing has asked that the notification carry the fund's refreshed logo. Design begins in a fortnight, and the product owner has already agreed the requirement in principle. What should the BA do next?",
   "why": "Testability is a characteristic of the requirement itself, so the imprecise word has to be replaced in the statement rather than compensated for in test artefacts. Agreement in principle does not cure the defect, and the logo request is irrelevant.",
@@ -200,6 +214,9 @@
   "ka": 5,
   "kaName": "Requirements Life Cycle Management",
   "task": "5.1 Trace Requirements",
+  "techniques": [
+   "10.22 Functional Decomposition"
+  ],
   "trap": "Confusing a Task with a Technique, or a Technique with an Input/Output",
   "stem": "A federal services agency is rebuilding its concessions eligibility platform. The BA has documented a business requirement that concession status be confirmed within one working day, and a set of stakeholder requirements elaborated beneath it. The delivery manager asks the BA to \"stand up a coverage matrix\" so the steering committee can see that nothing has been missed. The agency migrated its requirements tooling to a cloud repository last month. Which action best reflects sound practice?",
   "why": "The steering committee wants assurance that the levels of requirement align, which comes from recorded derive relationships between the business requirement and the stakeholder requirements below it. A coverage matrix is a way of presenting traceability information held in the repository, not a technique the BA selects.",
@@ -228,6 +245,11 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.5 Define Design Options",
+  "techniques": [
+   "10.9 Business Rules Analysis",
+   "10.20 Financial Analysis",
+   "10.41 Scope Modelling"
+  ],
   "trap": "Doing project management work instead of business analysis work",
   "stem": "An iron ore miner needs to lift haul truck availability. The approved change strategy permits three approaches: extend the existing maintenance management system, procure a specialist predictive maintenance product, or outsource condition monitoring to the truck manufacturer. Site two way radios were upgraded last quarter. The general manager wants a comparison of the approaches before the next board meeting, and notes that each approach implies quite different roles, business rules and equipment on site. What should the BA produce?",
   "why": "Each approach changes people, policies and infrastructure differently, so the deliverable is a description of the components and consequences of each. Schedules and resourcing profiles are project management outputs, and a full financial appraisal belongs with the later value analysis. The radio upgrade is planted noise.",
@@ -340,6 +362,12 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.1 Specify and Model Requirements",
+  "techniques": [
+   "10.11 Concept Modelling",
+   "10.13 Data Flow Diagrams",
+   "10.35 Process Modelling",
+   "10.44 State Modelling"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "At Corella Telecom, three teams use the word 'service' differently: network engineers mean a physical circuit, billing means a charged product line, and customer care means an open arrangement with a subscriber. Requirements written by each team therefore conflict without anyone noticing. The company's sponsorship of a football club was announced yesterday. Before further requirements are specified, the BA must stop the three interpretations from propagating into conflicting requirements. Which model best serves this?",
   "why": "The failure is definitional, with one term carrying three meanings, so what is needed is agreed vocabulary and the relationships between concepts. State, flow and process models all presume that agreement already exists; the sponsorship is noise.",
@@ -368,6 +396,9 @@
   "ka": 3,
   "kaName": "Business Analysis Planning and Monitoring",
   "task": "3.1 Plan Business Analysis Approach",
+  "techniques": [
+   "10.33 Prioritisation"
+  ],
   "trap": "Confusing a Task with a Technique, or a Technique with an Input/Output",
   "stem": "A SaaS scale-up has grown from forty to three hundred staff in eighteen months and wants to formalise how change is analysed. The chief product officer has asked the lead business analyst to document, before the next quarterly planning cycle, which analysis activities will be performed on each initiative, when they will occur, what will be produced and how rigorous each deliverable needs to be. Two squads work in two-week iterations whilst the billing team runs quarterly releases. A Singapore office opened last month. Which planning output is the chief product officer describing?",
   "why": "The request concerns the activities, their sequencing, the deliverables and the level of rigour, which is precisely the content of the analysis approach. The other descriptions are legitimate planning outputs, but each answers a different planning question about collaboration, decision rights or storage.",
@@ -396,6 +427,9 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.5 Define Design Options",
+  "techniques": [
+   "10.50 Workshops"
+  ],
   "trap": "Right action, wrong lifecycle stage",
   "stem": "A national freight operator records proof of delivery on paper at depots, and clerks type the dockets into the transport management system each evening. The BA and stakeholders have agreed that the improvement opportunity is to capture delivery evidence automatically at the point of delivery. Candidates include a driver mobile application, scanning hardware from the incumbent tracking vendor, and an integration with a third party courier network. The operator recently rebranded its trailers. The steering group asks what comes next. What should the BA do?",
   "why": "The opportunity is agreed and three candidates exist, so the next step is to describe each candidate against that opportunity. Recommending one of them jumps past the comparison, and returning to elicitation repeats work already done. The trailer rebrand is irrelevant.",
@@ -424,6 +458,9 @@
   "ka": 5,
   "kaName": "Requirements Life Cycle Management",
   "task": "5.4 Assess Requirements Changes",
+  "techniques": [
+   "10.2 Backlog Management"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "A grain growers' co-operative has an approved requirements baseline for a harvest-receival system. A grower director proposes an additional moisture-testing capability. The BA's assessment shows modest benefit, significant cost and a two-week delay to receival season readiness. The co-operative's governance approach makes the programme steering committee the decision maker for changes to a baseline. The co-operative also sponsors the regional agricultural show each spring. What should the BA do next?",
   "why": "The assessment is complete, so the outstanding step is resolution by the body the governance approach names as decision maker for baselined changes. Recommending rejection or quietly deferring the item substitutes the BA's judgement for the steering committee's authority.",
@@ -592,6 +629,9 @@
   "ka": 3,
   "kaName": "Business Analysis Planning and Monitoring",
   "task": "3.1 Plan Business Analysis Approach",
+  "techniques": [
+   "10.1 Acceptance and Evaluation Criteria"
+  ],
   "trap": "Doing project management work instead of business analysis work",
   "stem": "A federal services agency is replacing its citizen grants portal. Regulatory obligations mean every release must be certified by an external assessor before deployment, and the delivery partner is engaged on a fixed-price basis. The agency's project manager has already circulated a work breakdown structure, a resourcing plan and a milestone schedule, and the agency has just refreshed its intranet. The newly assigned business analyst has been asked to set out how requirements work will be carried out, and is unsure how much detail must be settled up front. What should the BA do next?",
   "why": "The certification gate applied to every release is the detail that dictates the formality, timing and rigour of the analysis deliverables. The project manager's schedule and work breakdown are planning artefacts the analyst consumes; they do not decide how analysis will be performed.",
@@ -648,6 +688,10 @@
   "ka": 5,
   "kaName": "Requirements Life Cycle Management",
   "task": "5.4 Assess Requirements Changes",
+  "techniques": [
+   "10.2 Backlog Management",
+   "10.33 Prioritisation"
+  ],
   "trap": "Right action, wrong lifecycle stage",
   "stem": "A SaaS payroll vendor works in an adaptive approach with a prioritised product backlog. One requirement has been elaborated but has not been approved or scheduled into an iteration. A customer advisory group suggests a different calculation basis for leave loading. The product owner attends backlog refinement each fortnight. The vendor has just completed its annual security audit with no findings. What should the BA do?",
   "why": "The requirement has not been baselined, so the suggestion can be handled through the normal refinement and prioritisation cycle rather than through formal change control. Convening a change body or running a full impact analysis applies the formality reserved for changes to approved requirements.",
@@ -676,6 +720,9 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.3 Validate Requirements",
+  "techniques": [
+   "10.1 Acceptance and Evaluation Criteria"
+  ],
   "trap": "Right action, wrong lifecycle stage",
   "stem": "Harbourlight Foundation, a not-for-profit, is deploying donor management software. Its board approved a case promising a twenty per cent lift in recurring giving. The requirements have been drafted and checked for quality. Preparing to confirm the set with stakeholders, the BA finds there is no agreed way to tell afterwards whether each group of requirements produced the promised lift. Volunteers have separately asked for a mobile rostering feature. What should the BA do next?",
   "why": "Confirming that requirements deliver value depends on evaluation criteria agreed in advance, and those criteria are exactly what is missing. Measuring the live solution belongs after deployment, and the rostering request is planted noise.",
@@ -704,6 +751,9 @@
   "ka": 6,
   "kaName": "Strategy Analysis",
   "task": "6.3 Assess Risks",
+  "techniques": [
+   "10.38 Risk Analysis and Management"
+  ],
   "trap": "Doing project management work instead of business analysis work",
   "stem": "A SaaS provider is preparing to migrate customers onto a re-architected billing engine. The BA has identified several uncertainties, chief among them unknown data quality in legacy customer accounts. The delivery manager asks the BA to take ownership of the project risk register and to chair the fortnightly risk review. The provider's Series C funding closed in February. What is the most appropriate response?",
   "why": "The analyst's contribution is to understand what the data quality uncertainty would do to the value the change is expected to deliver and what responses are available. Administering a register and chairing a governance forum are delivery management duties that do not produce that understanding.",
@@ -760,6 +810,9 @@
   "ka": 8,
   "kaName": "Solution Evaluation",
   "task": "8.1 Measure Solution Performance",
+  "techniques": [
+   "10.7 Business Cases"
+  ],
   "trap": "Being led by an irrelevant detail planted in the scenario",
   "stem": "A metropolitan hospital network has been running a new electronic referral solution for four months. At a governance forum the clinical director complains that requirements were signed off late and that traceability during the project was patchy. The chief operating officer nonetheless wants to know whether referral turnaround has improved as the business case promised. The BA holds turnaround and rejection-rate measures agreed before go-live. Referral volumes rose after a nearby clinic closed. What should the BA do next?",
   "why": "The complaint concerns how business analysis work was performed, which is a separate concern from how the deployed solution is performing. The agreed pre-go-live measures already exist, so collecting against them answers the executive's question. The clinic closure is context, not a reason to change the measures.",
@@ -816,6 +869,10 @@
   "ka": 3,
   "kaName": "Business Analysis Planning and Monitoring",
   "task": "3.2 Plan Stakeholder Engagement",
+  "techniques": [
+   "10.45 Survey or Questionnaire",
+   "10.50 Workshops"
+  ],
   "trap": "Choosing the most thorough option when the scenario constrains time or access",
   "stem": "A telecommunications carrier is migrating enterprise customers onto a new billing platform. The business analyst has eight weeks before design begins and must plan the involvement of forty-two internal groups spread across five states, plus an industry regulator that responds only in writing and only within statutory timeframes. Travel budgets were frozen last month after a poor half-year result. The chief information officer wants a plan that keeps analysis moving rather than stalling on availability. What should the BA do?",
   "why": "A frozen travel budget, forty-two groups and an eight-week window rule out uniform intensive involvement, so engagement has to be differentiated by how much each group's participation matters. Escalating the freeze addresses the budget rather than the planning question the analyst has been given.",
@@ -872,6 +929,12 @@
   "ka": 4,
   "kaName": "Elicitation and Collaboration",
   "task": "4.1 Prepare for Elicitation",
+  "techniques": [
+   "10.25 Interviews",
+   "10.31 Observation",
+   "10.45 Survey or Questionnaire",
+   "10.50 Workshops"
+  ],
   "trap": "Choosing the most thorough option when the scenario constrains time or access",
   "stem": "An iron ore miner is standardising shift handover across three remote sites. Operators work fourteen-day fly-in fly-out rosters and cannot be released for scheduled meetings, and the site network drops out for hours at a time. The general manager notes that the sites' safety record improved last quarter. A BA has a fortnight before the design workshop and needs to understand how handover is actually performed. Which preparation choice best fits the constraints?",
   "why": "Operator unavailability and an unreliable network rule out both group sessions and online instruments. Watching handover as it happens, backed by existing logs, obtains actual behaviour within the fortnight. Supervisor accounts would describe the intended process rather than the performed one.",
@@ -900,6 +963,12 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.2 Verify Requirements",
+  "techniques": [
+   "10.33 Prioritisation",
+   "10.37 Reviews",
+   "10.47 Use Cases and Scenarios",
+   "10.50 Workshops"
+  ],
   "trap": "Being led by an irrelevant detail planted in the scenario",
   "stem": "Wattlebrook University is redeveloping enrolment. A peer reviewer reports that the specification pack uses three different names for the same concept, that several use cases have no post-conditions, and that one model contradicts the text beside it. Separately, academics have voiced doubt that the new timetable engine will actually reduce clashes. Design workshops begin in a fortnight and the lead BA wants the pack fit for use. Which action addresses the reviewer's findings?",
   "why": "Every finding the reviewer named concerns how well the artefacts themselves are written, which is settled by systematic checking against quality criteria. The academics' doubt about clash reduction is a value question, planted to pull towards confirming benefits instead.",
@@ -928,6 +997,10 @@
   "ka": 5,
   "kaName": "Requirements Life Cycle Management",
   "task": "5.4 Assess Requirements Changes",
+  "techniques": [
+   "10.2 Backlog Management",
+   "10.33 Prioritisation"
+  ],
   "trap": "Skipping a required stakeholder, approval or governance step",
   "stem": "An electricity distributor has baselined the requirements for an outage-notification solution. Two weeks before construction begins, the customer experience manager emails the BA asking that the notification window be shortened from four hours to one, following updated regulator guidance. The team believes the change is small and wants to absorb it quietly. The distributor's annual bushfire readiness programme is also under way. What should the BA do next?",
   "why": "The requirements are baselined, so the shortened window is a proposed change that must be assessed and then authorised by the agreed decision maker. Traceability relationships are what reveal how far the change reaches; absorbing it without authorisation bypasses change control.",
@@ -984,6 +1057,11 @@
   "ka": 6,
   "kaName": "Strategy Analysis",
   "task": "6.1 Analyze Current State",
+  "techniques": [
+   "10.7 Business Cases",
+   "10.31 Observation",
+   "10.50 Workshops"
+  ],
   "trap": "Choosing the most thorough option when the scenario constrains time or access",
   "stem": "A regional water utility must put a business case to its board in nine working days to secure funding in this cycle. The BA needs a defensible picture of how billing exception handling performs today. Operations staff are available only in short windows because of a mains repair programme. Detailed process documentation from an audit completed four months ago exists, together with exception volume reports. The utility launched a new logo last week. What should the BA do?",
   "why": "Recent audit documentation and volume data already describe the process, and the constraint is on staff availability and elapsed time rather than on evidence. Confirming that material in brief targeted sessions produces a defensible current state within the window.",
@@ -1012,6 +1090,9 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.2 Verify Requirements",
+  "techniques": [
+   "10.37 Reviews"
+  ],
   "trap": "Choosing the most thorough option when the scenario constrains time or access",
   "stem": "Brindabella Water's BA has completed a first pass over a 90-page specification and logged 46 quality defects: missing measures, unnamed actors, and assumptions left unstated. Reviewers sit across three depots, several work part-time, and the pack must move to design in three weeks. The utility's annual price submission was lodged yesterday. What should the BA do next?",
   "why": "The defects are already identified, so what is missing is disciplined resolution of each one with a named owner. Part-time reviewers across three depots and a three-week window rule out an exhaustive group walkthrough, and the price submission is noise.",
@@ -1040,6 +1121,9 @@
   "ka": 8,
   "kaName": "Solution Evaluation",
   "task": "8.3 Assess Solution Limitations",
+  "techniques": [
+   "10.7 Business Cases"
+  ],
   "trap": "Jumping to solution before the problem or current state is understood",
   "stem": "A general insurer's new claims platform was expected to auto-adjudicate 55 per cent of motor claims; it manages 31 per cent. Analysis of the agreed measures confirms the shortfall and shows it is concentrated in claims involving third-party vehicles. The claims manager has already drafted a business case for a rules-engine upgrade. Assessors report that a mandatory free-text field forces manual review on exactly those claims. The insurer is also relocating its head office next quarter. What should the BA do next?",
   "why": "The mandatory free-text field is a constraint within the platform itself and aligns precisely with the claim type where the shortfall sits. Identifying and characterising that limitation comes before endorsing any remedy. Assessor workload and team structure would be enterprise concerns, and nothing points to them here.",
@@ -1096,6 +1180,9 @@
   "ka": 3,
   "kaName": "Business Analysis Planning and Monitoring",
   "task": "3.3 Plan Business Analysis Governance",
+  "techniques": [
+   "10.43 Stakeholder List, Map, or Personas"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "A general insurer is standing up a claims transformation. Requirements will be produced by three analysts working across pricing, claims operations and digital. Two earlier initiatives stalled because nobody could say whose agreement was needed before a requirement counted as settled, and the same three areas disagreed on what took precedence. A delivery change board already meets monthly on schedule and budget matters. The insurer recently refreshed its brand colours. The programme director has asked the lead analyst to sort this out before elicitation begins. What should the lead analyst establish?",
   "why": "The failure described is an authority failure — no one could say whose agreement made a requirement settled, or whose view prevailed when areas disagreed. Defining approval, consultation and decision-making authority before elicitation is what prevents the recurrence; the existing delivery change board covers schedule and budget, not requirements. The brand refresh is planted noise.",
@@ -1124,6 +1211,11 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.1 Specify and Model Requirements",
+  "techniques": [
+   "10.35 Process Modelling",
+   "10.39 Roles and Permissions Matrix",
+   "10.43 Stakeholder List, Map, or Personas"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "Meridian Mutual Bank is consolidating three lending platforms. Credit officers, branch staff and an outsourced collections vendor all work on the same customer file, and disputes keep arising over who may waive a fee, up to what dollar limit, and who may reopen a closed arrangement. The programme's cloud migration finished a fortnight early. Before detailed requirements are written, the BA must make these boundaries of authority explicit. Which model is most appropriate?",
   "why": "The dispute concerns entitlement to take particular actions and the monetary limits attached, not reporting structure or the order of steps. A matrix of roles against permitted actions captures both dimensions; the completed migration is irrelevant.",
@@ -1152,6 +1244,9 @@
   "ka": 4,
   "kaName": "Elicitation and Collaboration",
   "task": "4.5 Manage Stakeholder Collaboration",
+  "techniques": [
+   "10.23 Glossary"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "A retail chain's supply chain programme has run for six months with a settled group of stakeholders. A newly acquired homewares business has just been folded in, bringing a merchandising team that uses different terminology and has never worked with a BA before. The chain relaunched its loyalty app in April. The merchandising manager has openly questioned why her team should attend the programme's sessions at all. What should the BA do next?",
   "why": "A new group has arrived with no shared understanding of the work and visible reluctance to take part, so the first move is to establish mutual expectations about involvement. Adding them to invitations addresses logistics whilst leaving the reluctance untouched. Directing attendance through the sponsor and launching straight into elicitation both skip the agreement that makes participation productive.",
@@ -1180,6 +1275,14 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.1 Specify and Model Requirements",
+  "techniques": [
+   "10.6 Business Capability Analysis",
+   "10.12 Data Dictionary",
+   "10.23 Glossary",
+   "10.35 Process Modelling",
+   "10.45 Survey or Questionnaire",
+   "10.50 Workshops"
+  ],
   "trap": "Being led by an irrelevant detail planted in the scenario",
   "stem": "Rivergate State Roads, a government transport agency, is replacing its heavy-vehicle permit system. In workshops, assessors describe a permit passing through six units, with applications sitting idle whenever a route survey is outstanding and nobody certain who currently holds the file. The sponsor is enthusiastic about the departmental colour palette signed off last month. A glossary and a stakeholder register already exist. Before any design options are shaped, the team needs to expose where waiting time accumulates and which hand-offs could be removed. Which model best supports this analysis?",
   "why": "The tension is idle time between hand-offs across six units, which is a question about the flow of activities rather than about roles, data or abilities. A model of the activity sequence answers it directly, and the colour palette is planted noise.",
@@ -1264,6 +1367,9 @@
   "ka": 6,
   "kaName": "Strategy Analysis",
   "task": "6.1 Analyze Current State",
+  "techniques": [
+   "10.45 Survey or Questionnaire"
+  ],
   "trap": "Jumping to solution before the problem or current state is understood",
   "stem": "A metropolitan public hospital's executive has declared theatre utilisation \"clearly unacceptable\" and asked the BA to scope a replacement scheduling system. No utilisation figures have been produced for eighteen months, and the concern rests on accounts from two surgeons. The hospital's new multi-storey car park opened last month to good feedback. Which action best supports the work at this point?",
   "why": "Without current utilisation measures there is no evidence of a performance gap, only an assertion from a small group. Establishing the measures describes the problem and its extent before any scheduling replacement is scoped or targets are set.",
@@ -1292,6 +1398,12 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.1 Specify and Model Requirements",
+  "techniques": [
+   "10.33 Prioritisation",
+   "10.35 Process Modelling",
+   "10.41 Scope Modelling",
+   "10.44 State Modelling"
+  ],
   "trap": "Being led by an irrelevant detail planted in the scenario",
   "stem": "At Carrington Metropolitan Hospital, theatre scheduling is being automated. Consultants explain that priority depends on urgency category, surgeon availability, whether the patient is paediatric, and infection-control status, and each consultant describes the combinations differently. A new wayfinding app launches next month and has absorbed much of the communications budget. The BA needs a representation that lays out every combination of conditions and the outcome it produces, so the contradictions surface. Which model fits best?",
   "why": "Four interacting conditions producing a scheduling outcome, described inconsistently by different clinicians, is a rationale problem. Setting out the combinations and outcomes in tabular form makes the contradictions visible; the wayfinding app and its budget are planted noise.",
@@ -1348,6 +1460,9 @@
   "ka": 3,
   "kaName": "Business Analysis Planning and Monitoring",
   "task": "3.2 Plan Stakeholder Engagement",
+  "techniques": [
+   "10.22 Functional Decomposition"
+  ],
   "trap": "Right action, wrong lifecycle stage",
   "stem": "A regional hospital is introducing electronic medication charting. The business analyst has compiled the affected groups — ward nurses, visiting medical officers, pharmacy, the clinical governance committee and the state health department — and has already assessed each group's influence over the change and attitude towards it. Visiting medical officers are contracted rather than employed and attend the site irregularly. The hospital's car park upgrade is running six months late. The sponsor asks the analyst what happens with this analysis now.",
   "why": "The groups have been identified and their influence and attitude already assessed, so the outstanding work is turning that assessment into planned collaboration and communication. Repeating identification adds nothing, and the irregular attendance of the medical officers is the detail that must shape how they are involved.",
@@ -1376,6 +1491,10 @@
   "ka": 4,
   "kaName": "Elicitation and Collaboration",
   "task": "4.2 Conduct Elicitation",
+  "techniques": [
+   "10.25 Interviews",
+   "10.31 Observation"
+  ],
   "trap": "Treating a stakeholder's stated want as the requirement",
   "stem": "Whilst observing on a hospital's oncology ward, a BA sees nurses recording chemotherapy checks on a paper sheet and entering them into the clinical system afterwards, although the nurse unit manager stated in an earlier interview that every check goes straight into the system. The ward was repainted a fortnight ago. Two further observation sessions are booked this week, and the BA has not yet written up any results. What should the BA do next?",
   "why": "The elicitation activity is still under way, so the BA should probe the paper step with the people performing it and capture both accounts as results. Accepting the manager's version privileges a stated account over observed behaviour. Reconciling notes against documented procedure belongs after the results are captured.",
@@ -1404,6 +1523,9 @@
   "ka": 5,
   "kaName": "Requirements Life Cycle Management",
   "task": "5.5 Approve Requirements",
+  "techniques": [
+   "10.27 Lessons Learned"
+  ],
   "trap": "Skipping a required stakeholder, approval or governance step",
   "stem": "A state road authority is delivering a heavy-vehicle permits solution. The requirements have been verified and reviewed with the operational teams. Under pressure to hit a funding milestone, the delivery lead tells the BA to release the requirements to the build team now and obtain formal sign-off retrospectively. The governance approach names the executive director of permits as the approver. The authority's depot relocation is scheduled for spring. What should the BA do?",
   "why": "Approval is what allows construction to proceed, and the governance approach identifies who holds that authority. Schedule pressure from a funding milestone does not transfer approval authority to the delivery lead or make retrospective sign-off acceptable.",
@@ -1544,6 +1666,12 @@
   "ka": 4,
   "kaName": "Elicitation and Collaboration",
   "task": "4.1 Prepare for Elicitation",
+  "techniques": [
+   "10.18 Document Analysis",
+   "10.25 Interviews",
+   "10.35 Process Modelling",
+   "10.50 Workshops"
+  ],
   "trap": "Confusing a Task with a Technique, or a Technique with an Input/Output",
   "stem": "A superannuation fund is consolidating two member portals following a merger. A BA has agreed with the sponsor that a facilitated workshop will explore the future claims journey, and all eight participants have accepted. The fund's marketing team recently won an industry award. Two participants have never seen a process model before. The workshop runs in three days, and the BA has the current-state process maps but nothing else assembled. What should the BA do next?",
   "why": "The technique and the participants are already settled, so the remaining preparation work is assembling supporting materials and readying participants to use them. Swapping the technique treats a preparation gap as a technique problem. Further document analysis and sponsor authority questions do not address the three-day deadline.",
@@ -1572,6 +1700,11 @@
   "ka": 5,
   "kaName": "Requirements Life Cycle Management",
   "task": "5.3 Prioritize Requirements",
+  "techniques": [
+   "10.2 Backlog Management",
+   "10.33 Prioritisation",
+   "10.43 Stakeholder List, Map, or Personas"
+  ],
   "trap": "Treating a stakeholder's stated want as the requirement",
   "stem": "A telco is prioritising the backlog for a billing replacement. The head of marketing has ranked a personalised offers capability highest, because a campaign has already been booked with an agency. A separate requirement implements a new industry code obligation for customers in financial hardship, effective at the end of the quarter, with penalties for non-compliance. The programme has capacity for one of the two in the next release. What should the BA do?",
   "why": "Regulatory or policy compliance is a legitimate basis for ranking, and an enforceable obligation with a fixed effective date and penalties outweighs a discretionary benefit. The booked campaign is commercial pressure from one stakeholder rather than a property of the requirement itself.",
@@ -1600,6 +1733,9 @@
   "ka": 6,
   "kaName": "Strategy Analysis",
   "task": "6.3 Assess Risks",
+  "techniques": [
+   "10.38 Risk Analysis and Management"
+  ],
   "trap": "Being led by an irrelevant detail planted in the scenario",
   "stem": "A third-party logistics provider has assessed the risks of consolidating four warehouse management systems. Loss of pick accuracy during cutover carries high impact and moderate likelihood. The executive team has said it will tolerate short-term service disruption provided consolidation completes before peak season. The provider repainted its delivery fleet last quarter. What should the BA do with this risk?",
   "why": "A stated willingness to tolerate short-term disruption is not blanket acceptance of every consequence, so the exposure still has to be weighed against the tolerance actually expressed. Driving the exposure to its lowest achievable level ignores that tolerance in the other direction.",
@@ -1684,6 +1820,9 @@
   "ka": 3,
   "kaName": "Business Analysis Planning and Monitoring",
   "task": "3.3 Plan Business Analysis Governance",
+  "techniques": [
+   "10.2 Backlog Management"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "A retail bank is two years into a core banking replacement. Three streams produce requirements at the same time, and conflicts between them keep surfacing only once build has started. The head of change is particularly troubled that any stream lead can currently accept a change into their own backlog without anyone else being aware or able to object. The bank's branch fit-out programme is running separately. The business analyst is asked to close the underlying planning gap.",
   "why": "The complaint is that changes are accepted without any agreed authority or arbitration, which is a decision-rights gap rather than a visibility or tooling gap. Shared storage would expose conflicts sooner but would still leave each stream lead free to accept changes unilaterally.",
@@ -1712,6 +1851,10 @@
   "ka": 4,
   "kaName": "Elicitation and Collaboration",
   "task": "4.1 Prepare for Elicitation",
+  "techniques": [
+   "10.25 Interviews",
+   "10.43 Stakeholder List, Map, or Personas"
+  ],
   "trap": "Right action, wrong lifecycle stage",
   "stem": "A state transport agency is replacing its driver licensing system. A BA has been asked to gather input from counter staff across eleven regional offices, several of which now operate reduced hours. The programme director has just announced that a new brand palette will be applied to all public-facing screens. The BA holds the approved stakeholder list and the business objectives, but there is no agreed statement of what any individual session is meant to produce. What should the BA do next?",
   "why": "Nothing has been elicited yet, so comparing accounts or starting interviews is premature. The missing piece is a stated purpose and outcome for each activity, which then drives technique and logistics choices against the reduced-hours constraint. The brand palette announcement has no bearing on how counter staff are engaged.",
@@ -1768,6 +1911,9 @@
   "ka": 6,
   "kaName": "Strategy Analysis",
   "task": "6.1 Analyze Current State",
+  "techniques": [
+   "10.38 Risk Analysis and Management"
+  ],
   "trap": "Right action, wrong lifecycle stage",
   "stem": "A superannuation fund is examining why member retention has fallen. The BA has mapped member servicing processes and supporting systems and has assembled three years of retention figures. Separately, the regulator has flagged forthcoming changes to portability rules and a competitor has launched a low-fee product. The fund's chief executive retires in June. The sponsor asks what remains before the current state description can be considered complete.",
   "why": "The internal picture is documented but the forces acting on the fund from outside it are not. Regulatory change and a competing product shape retention directly, so the current state description is incomplete without them; objectives, transition states and risk work all come later.",
@@ -1824,6 +1970,11 @@
   "ka": 8,
   "kaName": "Solution Evaluation",
   "task": "8.1 Measure Solution Performance",
+  "techniques": [
+   "10.31 Observation",
+   "10.45 Survey or Questionnaire",
+   "10.50 Workshops"
+  ],
   "trap": "Choosing the most thorough option when the scenario constrains time or access",
   "stem": "A national freight and logistics operator has rolled out handheld scanning at 60 depots. The BA must report on how the solution is performing within a fortnight. Depot managers will allow only short visits during shift changes, and drivers are unavailable for workshops. Scanner telemetry is complete and reliable. The safety team has separately raised a driver fatigue concern that is unrelated to scanning. Which approach fits the constraint?",
   "why": "Access to people is tightly limited whilst reliable system-generated data already exists, so the telemetry carries the measurement and observation supplements it within the permitted windows. Workshop-based and census approaches are ruled out by the stated access limits, not by their merit. The fatigue concern sits outside this solution's performance.",
@@ -1880,6 +2031,9 @@
   "ka": 4,
   "kaName": "Elicitation and Collaboration",
   "task": "4.3 Confirm Elicitation Results",
+  "techniques": [
+   "10.50 Workshops"
+  ],
   "trap": "Skipping a required stakeholder, approval or governance step",
   "stem": "An airline's ground handling programme held a three-hour session on aircraft turnaround. The BA circulated the notes to all twelve participants the same afternoon, asking for comment within two days. Nine replied with no changes and three did not reply at all. The airline's loyalty programme is being rebranded this quarter. The BA is due to begin modelling the turnaround process on Monday. What should the BA do next?",
   "why": "Confirmation depends on participants actually agreeing that the record reflects what they contributed, so silence from a quarter of the group leaves the results unconfirmed. Sponsor approval and comparison against performance targets address different questions entirely and belong to later work.",
@@ -1908,6 +2062,9 @@
   "ka": 5,
   "kaName": "Requirements Life Cycle Management",
   "task": "5.2 Maintain Requirements",
+  "techniques": [
+   "10.9 Business Rules Analysis"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "A private health insurer has finished a claims-assessment release. The requirement set contains business rules about waiting periods that apply to every product the insurer sells, alongside screen-level requirements written against the specific claims vendor's interface. The BA is closing out the work and wants the organisation to get continuing value from what was produced. A benefits realisation review is scheduled for next quarter. What should the BA do?",
   "why": "Reuse potential depends on the level of abstraction: enterprise-wide business rules are reusable across products and solutions, whilst requirements phrased in one vendor's interface terms have very narrow reuse. Archiving the package intact stores the requirements without making the reusable ones retrievable and vendor-independent.",
@@ -1936,6 +2093,9 @@
   "ka": 6,
   "kaName": "Strategy Analysis",
   "task": "6.3 Assess Risks",
+  "techniques": [
+   "10.38 Risk Analysis and Management"
+  ],
   "trap": "Right action, wrong lifecycle stage",
   "stem": "A state transport agency has agreed a future state for digital vehicle registration. Legislation permitting digital proof of registration sits before parliament and its passage is uncertain; the future state cannot operate without it. The BA has already documented the change's assumptions. The agency refreshed its public website in April. How should the BA treat the legislative uncertainty?",
   "why": "The future state depends on an external outcome that is genuinely unresolved, so the uncertainty is analysed for its likelihood and its consequence for the agreed objectives. Recording it as a constraint or an influencer describes it without evaluating what happens if it does not occur.",
@@ -1964,6 +2124,10 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.3 Validate Requirements",
+  "techniques": [
+   "10.33 Prioritisation",
+   "10.37 Reviews"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "Coralline Airways is changing its loyalty programme. The requirement set has passed peer review with no defects raised: each statement is clear, testable and consistent with the rest. The two agreed objectives are to reduce churn among frequent flyers and to lift ancillary revenue. The BA notices a substantial group of requirements about gifting tier status that cannot be connected to either objective. Cabin crew rostering is being renegotiated separately. What should the BA do next?",
   "why": "The set is already well formed, so the open question is whether the gifting requirements deliver value and align to the stated objectives. Prioritising or removing them acts before that is established, and the rostering negotiation is irrelevant.",
@@ -1992,6 +2156,10 @@
   "ka": 8,
   "kaName": "Solution Evaluation",
   "task": "8.3 Assess Solution Limitations",
+  "techniques": [
+   "10.2 Backlog Management",
+   "10.33 Prioritisation"
+  ],
   "trap": "Right action, wrong lifecycle stage",
   "stem": "A SaaS company released a customer onboarding module. Support tickets cluster around bulk data import failing for files above a certain size, and the agreed measures show onboarding time has worsened rather than improved. The product manager suggests running a fresh round of elicitation with customers to gather new requirements for the next release. The marketing team is preparing a major conference launch in five weeks. What should the BA do next?",
   "why": "A specific defect inside the module correlates with the worsened measure, so its severity and effect on intended value need establishing. Fresh elicitation is valid work but belongs to defining a future change, not to diagnosing why the live solution underperforms. Backlog scheduling and replacement calls both run ahead of the diagnosis.",
@@ -2048,6 +2216,13 @@
   "ka": 4,
   "kaName": "Elicitation and Collaboration",
   "task": "4.2 Conduct Elicitation",
+  "techniques": [
+   "10.18 Document Analysis",
+   "10.31 Observation",
+   "10.36 Prototyping",
+   "10.45 Survey or Questionnaire",
+   "10.50 Workshops"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "A telco's self-service app team cannot agree whether customers will accept a shorter identity-verification flow. Two product owners hold opposing views and each cites customer complaints in support. The app's Android release slipped last month. A BA has a usability lab booked for one week and a working clickable prototype already built. The head of digital has asked for evidence of customer behaviour rather than further opinion before the next planning increment. Which approach should the BA take?",
   "why": "The request is for behavioural evidence, and both a prototype and lab time are already available, which points to an experimental approach. Complaint analysis and surveys yield reported rather than observed behaviour. A workshop would settle a disagreement between the product owners without producing customer evidence at all.",
@@ -2076,6 +2251,10 @@
   "ka": 5,
   "kaName": "Requirements Life Cycle Management",
   "task": "5.3 Prioritize Requirements",
+  "techniques": [
+   "10.25 Interviews",
+   "10.33 Prioritisation"
+  ],
   "trap": "Choosing the most thorough option when the scenario constrains time or access",
   "stem": "A not-for-profit disability services provider has sixty requirements for a client-management system, and the stakeholder group has marked every one of them as highest priority. The board has fixed both the budget and the go-live date. The BA has a single two-hour session with the group next week, and several members are volunteers who travel long distances to attend. The provider's newsletter is published monthly. What should the BA do?",
   "why": "Stakeholders avoiding trade-offs by ranking everything highest is a known prioritisation challenge, and the fixed budget and date make trade-offs unavoidable. With one short session and volunteers who are hard to reach, a facilitated forced ranking is more workable than interviewing everyone individually.",
@@ -2132,6 +2311,10 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.6 Analyze Potential Value and Recommend Solution",
+  "techniques": [
+   "10.1 Acceptance and Evaluation Criteria",
+   "10.43 Stakeholder List, Map, or Personas"
+  ],
   "trap": "Treating a stakeholder's stated want as the requirement",
   "stem": "A domestic airline is selecting between three crew rostering designs. The BA and stakeholders agreed evaluation criteria covering compliance with the fatigue management standard, cost to serve, and time to benefit. In the review meeting the chief operating officer states a preference for the vendor whose chief executive she knows personally, and asks the BA to write the recommendation accordingly. The airline refurbished its domestic lounges last year. What should the BA do?",
   "why": "Criteria were agreed with stakeholders precisely so the recommendation rests on evidence rather than relationships. Writing to the executive's preference or quietly adding a criterion to justify it both subvert the agreed basis, and escalation is unnecessary when the scored comparison already answers the question. The lounge refurbishment is noise.",
@@ -2216,6 +2399,9 @@
   "ka": 4,
   "kaName": "Elicitation and Collaboration",
   "task": "4.5 Manage Stakeholder Collaboration",
+  "techniques": [
+   "10.43 Stakeholder List, Map, or Personas"
+  ],
   "trap": "Doing project management work instead of business analysis work",
   "stem": "At a SaaS scale-up, attendance at a BA's fortnightly requirements sessions has fallen from nine participants to three over two months. Those still attending are all from support; product and engineering have stopped coming, although both were closely engaged during discovery. The company moved offices in June. Decisions affecting requirements are now being taken in side conversations the BA only hears about afterwards. What should the BA do next?",
   "why": "Engagement has fallen away from stakeholders who were previously active, and the decisions are still being made elsewhere, so the BA needs to understand why and re-establish agreed participation. Logging a risk hands the relationship problem to someone else. Continuing with the remaining three or downgrading the absent groups accepts a loss of influence rather than addressing it.",
@@ -2244,6 +2430,9 @@
   "ka": 5,
   "kaName": "Requirements Life Cycle Management",
   "task": "5.1 Trace Requirements",
+  "techniques": [
+   "10.38 Risk Analysis and Management"
+  ],
   "trap": "Doing project management work instead of business analysis work",
   "stem": "An iron ore miner is deploying an autonomous haulage scheduling system. The vendor has delivered a design specification listing the modules it intends to build. The BA holds an approved set of functional requirements for shift handover. The project manager wants confidence that every approved requirement will be built and that nothing is being built that nobody asked for. The site's safety induction schedule has slipped by a fortnight. What should the BA do next?",
   "why": "Linking each vendor module to the requirement it fulfils is a satisfy relationship, and that is what exposes both unbuilt requirements and unrequested build items. Raising a risk moves the work into project management without producing the analysis that would substantiate it.",
@@ -2272,6 +2461,10 @@
   "ka": 6,
   "kaName": "Strategy Analysis",
   "task": "6.2 Define Future State",
+  "techniques": [
+   "10.6 Business Capability Analysis",
+   "10.41 Scope Modelling"
+  ],
   "trap": "Confusing a Task with a Technique, or a Technique with an Input/Output",
   "stem": "A grain growers' co-operative is defining a future state for member payments. Objectives for payment turnaround are agreed and the business capabilities that must change have been identified. The general manager asks the BA to \"draw us a context diagram so everyone knows the boundary\". The co-operative's silo upgrade finishes in August. Which statement best describes what the BA would be doing?",
   "why": "A context diagram is one form of scope model, and scope modelling is a technique used to depict the solution scope that sits within the defined future state. It does not replace the solution scope itself, nor does it constitute a separate task.",
@@ -2384,6 +2577,10 @@
   "ka": 4,
   "kaName": "Elicitation and Collaboration",
   "task": "4.3 Confirm Elicitation Results",
+  "techniques": [
+   "10.45 Survey or Questionnaire",
+   "10.49 Vendor Assessment"
+  ],
   "trap": "Treating a stakeholder's stated want as the requirement",
   "stem": "A freight logistics operator surveyed 140 depot staff about scanning delays, and the responses point overwhelmingly to poor handheld device performance. The BA also holds a fortnight of system timing data showing the scanning transaction completes well within target. Depot CCTV was upgraded in May. The operations director has already asked a vendor to quote on replacement handhelds ahead of the next budget round. What should the BA do next?",
   "why": "Survey responses and timing data disagree about the same step, so the results must be examined together with the people who reported the problem before anything is concluded. Weight of respondents does not make a stated cause correct. Specifying requirements for replacement devices assumes the cause before it has been established.",
@@ -2412,6 +2609,12 @@
   "ka": 5,
   "kaName": "Requirements Life Cycle Management",
   "task": "5.3 Prioritize Requirements",
+  "techniques": [
+   "10.2 Backlog Management",
+   "10.33 Prioritisation",
+   "10.45 Survey or Questionnaire",
+   "10.50 Workshops"
+  ],
   "trap": "Skipping a required stakeholder, approval or governance step",
   "stem": "A superannuation fund is midway through delivering a member-onboarding solution. A competitor's product launch has changed the relative value of two backlog items, and the delivery team's tech lead has already reordered the sprint backlog accordingly. The fund's agreed governance approach names the product owner as the person who ranks requirements. The fund also runs a quarterly member satisfaction survey. What should the BA do next?",
   "why": "Prioritisation continues throughout the life cycle as new information arrives, but the governance approach names who may reorder the ranking. The tech lead's reordering bypasses the product owner, so the BA takes the new information to the person with that authority.",
@@ -2440,6 +2643,10 @@
   "ka": 6,
   "kaName": "Strategy Analysis",
   "task": "6.3 Assess Risks",
+  "techniques": [
+   "10.38 Risk Analysis and Management",
+   "10.50 Workshops"
+  ],
   "trap": "Skipping a required stakeholder, approval or governance step",
   "stem": "At a mutual bank, the BA has drafted a risk assessment for a proposed open-banking lending capability, working from documentation and the programme's own records. The credit risk team, the member advocate and the data custodians have not been consulted, although each holds knowledge of how the exposures would actually materialise. The sponsor wants the assessment tabled at Thursday's board meeting. The bank signed a new head office lease in March. What should the BA do?",
   "why": "Risk analysis depends on the knowledge of stakeholders who understand how each exposure would arise, and none of those parties has contributed. Tabling first and consulting afterwards presents the board with an assessment that has no basis in domain knowledge.",
@@ -2468,6 +2675,9 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.3 Validate Requirements",
+  "techniques": [
+   "10.50 Workshops"
+  ],
   "trap": "Treating a stakeholder's stated want as the requirement",
   "stem": "At Pilbara Ridge Minerals, the maintenance superintendent insists the replacement asset system reproduce every screen of the legacy application, 'so the crews never have to relearn anything'. The change's approved objective is a fifteen per cent reduction in unplanned downtime. A new accommodation camp opens in October. The requirements are already clear and testable, and the BA is now working through the set with stakeholders. What should the BA do next?",
   "why": "A demand to replicate legacy screens is a stated want, and whether it serves the downtime objective is the question that alignment to business value answers. Quality has already been established, and the camp opening is planted noise.",
@@ -2496,6 +2706,11 @@
   "ka": 8,
   "kaName": "Solution Evaluation",
   "task": "8.1 Measure Solution Performance",
+  "techniques": [
+   "10.4 Benchmarking and Market Analysis",
+   "10.7 Business Cases",
+   "10.45 Survey or Questionnaire"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "A superannuation fund has introduced a digital advice tool intended to lift member confidence in retirement planning. Contact centre volumes have fallen 12 per cent, which operations attributes to the tool, although a fee change took effect in the same month. The product owner wants performance measured properly. Member confidence was the benefit stated in the business case. The BA has member survey capability, call logs and a data warehouse. Which approach best supports measuring how the tool is performing?",
   "why": "The value the solution was funded to deliver is member confidence, which is qualitative and cannot be inferred from call volumes alone. Performance measurement should reflect the agreed value, using quantitative and qualitative measures together. The coincident fee change makes the call-volume drop an unreliable proxy.",
@@ -2524,6 +2739,11 @@
   "ka": 3,
   "kaName": "Business Analysis Planning and Monitoring",
   "task": "3.2 Plan Stakeholder Engagement",
+  "techniques": [
+   "10.43 Stakeholder List, Map, or Personas",
+   "10.45 Survey or Questionnaire",
+   "10.50 Workshops"
+  ],
   "trap": "Skipping a required stakeholder, approval or governance step",
   "stem": "A university is redesigning its student admissions process. A workshop has produced the list of affected roles: admissions officers, faculty selection committees, the international office, an outsourced agent network operating in three countries, and the student union. The vice-chancellor launched a sustainability policy the same week. The business analyst then discovers that the agent network is contractually represented by a single account manager, who is unwilling to expose individual agents to direct contact.",
   "why": "The agent network remains affected by the redesign, so it stays in the plan; what changes is the route and depth of collaboration, which now runs through the account manager. Approaching agents directly would breach the contractual arrangement, and removing them would lose a materially affected group.",
@@ -2552,6 +2772,11 @@
   "ka": 4,
   "kaName": "Elicitation and Collaboration",
   "task": "4.4 Communicate Business Analysis Information",
+  "techniques": [
+   "10.9 Business Rules Analysis",
+   "10.12 Data Dictionary",
+   "10.35 Process Modelling"
+  ],
   "trap": "Choosing the most thorough option when the scenario constrains time or access",
   "stem": "A retail bank's BA has finished analysis for a new mortgage origination capability. The material runs to sixty pages of process models, a data dictionary and a large set of business rules. Next week the BA has a twenty-minute slot with the executive risk committee, which wants to understand exposure and cost of the change. The delivery squad has already begun grooming, and the bank renewed its football sponsorship. How should the BA proceed?",
   "why": "The audience, its interest and the length of the slot are all fixed, so the information must be packaged to suit them rather than delivered wholesale. Circulating the full pack ignores what this audience needs. Delegating the session or asking for more time avoids the analysis communication responsibility.",
@@ -2664,6 +2889,9 @@
   "ka": 8,
   "kaName": "Solution Evaluation",
   "task": "8.3 Assess Solution Limitations",
+  "techniques": [
+   "10.9 Business Rules Analysis"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "An airline deployed a crew-rostering solution intended to halve roster reissues; reissues have fallen only slightly. Rostering officers say they override the automated roster most days. Investigation shows the optimisation rules cannot represent two of the four fatigue provisions in the enterprise agreement, so officers correct the output by hand. The airline is simultaneously midway through an enterprise-wide culture programme that leadership is promoting heavily. What should the BA record?",
   "why": "The overriding behaviour is a consequence of the solution being unable to represent rules it must honour, which is a limitation within the solution itself. Officer trust and culture are downstream symptoms rather than the constraint. Renegotiating the enterprise agreement treats a valid business rule as the fault.",
@@ -2720,6 +2948,9 @@
   "ka": 4,
   "kaName": "Elicitation and Collaboration",
   "task": "4.3 Confirm Elicitation Results",
+  "techniques": [
+   "10.25 Interviews"
+  ],
   "trap": "Right action, wrong lifecycle stage",
   "stem": "A general insurer's BA has completed six interviews on claims triage. Three assessors described a mandatory fraud check at lodgement; the other three described the same check as optional and applied by judgement. The insurer's new claims manager started last week. The BA has the current procedure manual and twelve months of claims audit findings available, and a requirements review with the sponsor is scheduled for next Tuesday. What should the BA do next?",
   "why": "Two groups of assessors gave incompatible accounts of the same step, so the results need checking against independent sources and then reconciling with the participants. Testing the check against business objectives is validation work that comes later. Modelling both variants for the sponsor pushes an unresolved elicitation problem downstream.",
@@ -2748,6 +2979,9 @@
   "ka": 5,
   "kaName": "Requirements Life Cycle Management",
   "task": "5.3 Prioritize Requirements",
+  "techniques": [
+   "10.33 Prioritisation"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "An airline is prioritising requirements for a crew-rostering replacement. The crew union and the operations director agree that a fatigue-rule engine is the most valuable item. The engine cannot be implemented until a crew qualifications data set has been migrated, and that migration currently ranks low because on its own it delivers nothing visible to crew. The airline is also repainting its fleet livery this year. What should the BA do?",
   "why": "Relationships between requirements are a legitimate basis for ranking, and an enabling item that a high-value requirement depends on must be lifted so the sequence is deliverable. Ranking on benefit alone would leave the fatigue engine blocked by an item nobody has scheduled.",
@@ -2776,6 +3010,9 @@
   "ka": 6,
   "kaName": "Strategy Analysis",
   "task": "6.2 Define Future State",
+  "techniques": [
+   "10.38 Risk Analysis and Management"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "A sandstone university has agreed objectives and outlined scope for a redesigned admissions capability. The deputy vice-chancellor asks the BA to set out what the university gains and why the new capability is worth holding. The finance office has offered to compute a discounted cash flow over five years. The campus solar array was completed in March. What should the BA prepare?",
   "why": "The question asked is what the university gains net of what the future state costs to hold, which is the potential value of that future state. A discounted cash flow addresses only the financial dimension and would sit inside that assessment rather than replace it.",
@@ -2860,6 +3097,11 @@
   "ka": 3,
   "kaName": "Business Analysis Planning and Monitoring",
   "task": "3.4 Plan Business Analysis Information Management",
+  "techniques": [
+   "10.9 Business Rules Analysis",
+   "10.23 Glossary",
+   "10.35 Process Modelling"
+  ],
   "trap": "Doing project management work instead of business analysis work",
   "stem": "A national retail chain is about to begin a loyalty programme initiative. The business analyst will produce process models, business rules and a glossary, and a separate store-refit team will later work on the same point-of-sale processes. The chain appointed a new head of merchandising a fortnight ago. Before analysis begins, the analyst must settle how the analysis material will be handled. What should the analyst determine?",
   "why": "The judgement owed up front is which analysis material will retain value beyond this initiative and how it will remain findable and usable by others, which is what makes reuse possible at all. Archiving everything to satisfy a closure checklist is administrative and makes material harder, not easier, to reuse. The new head of merchandising is planted noise.",
@@ -3000,6 +3242,9 @@
   "ka": 8,
   "kaName": "Solution Evaluation",
   "task": "8.1 Measure Solution Performance",
+  "techniques": [
+   "10.4 Benchmarking and Market Analysis"
+  ],
   "trap": "Skipping a required stakeholder, approval or governance step",
   "stem": "A state road transport agency has deployed an online licence-renewal portal, replacing counter service at 42 offices. Six weeks after go-live the executive sponsor asks the BA for a performance report by Friday. The BA can see portal analytics covering session counts, completion rates and average duration, and the vendor has offered a benchmarking dashboard used in three other jurisdictions. Nobody has documented what a successful renewal experience looks like. The steering committee meets fortnightly. What should the BA do next?",
   "why": "Nothing has been agreed as to what a successful renewal represents, so any number reported now measures whatever the analytics happen to capture rather than value. Defining and agreeing the measures with the sponsor and affected stakeholders precedes collection. The vendor dashboard and the reporting deadline are pressure, not justification.",
@@ -3028,6 +3273,9 @@
   "ka": 3,
   "kaName": "Business Analysis Planning and Monitoring",
   "task": "3.5 Identify Business Analysis Performance Improvements",
+  "techniques": [
+   "10.38 Risk Analysis and Management"
+  ],
   "trap": "Skipping a required stakeholder, approval or governance step",
   "stem": "A state road authority is halfway through a two-year tolling reform. The business analyst observes that elicitation sessions routinely overrun and that stakeholders arrive without having read the material circulated beforehand, so decisions are deferred. Reviews of how the analysis effort is performing were scheduled only for programme end. A road safety media campaign is running concurrently. The analyst wants improvements to take effect on the remaining eighteen months of work.",
   "why": "The stakeholders who agreed how analysis would be performed are the ones who need the performance findings and who agree any corrective action, so improvements can apply to the remaining work. Changing techniques quietly, or waiting for the closing review, both leave those stakeholders out of a decision that is theirs.",
@@ -3056,6 +3304,9 @@
   "ka": 4,
   "kaName": "Elicitation and Collaboration",
   "task": "4.4 Communicate Business Analysis Information",
+  "techniques": [
+   "10.37 Reviews"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "A university's student administration replacement has reached the end of analysis. The BA published the requirements package to the project SharePoint and emailed a link to forty stakeholders, including faculty administrators who rarely use SharePoint and two offshore integration partners. The vice-chancellor's office has asked for a fortnightly programme newsletter. Several faculty administrators have raised no comments whatsoever since the link went out. What should the BA do next?",
   "why": "Distribution is not communication until the recipients have received and understood the material, so the silent group must be checked and the delivery form adjusted where it failed. Treating silence as agreement skips that entirely. A single briefing may help some groups but assumes the cause of the silence rather than establishing it.",
@@ -3112,6 +3363,9 @@
   "ka": 6,
   "kaName": "Strategy Analysis",
   "task": "6.1 Analyze Current State",
+  "techniques": [
+   "10.38 Risk Analysis and Management"
+  ],
   "trap": "Treating a stakeholder's stated want as the requirement",
   "stem": "An iron ore miner's maintenance director asks the BA to \"get us a mobile work-order app\" because supervisors are keying job cards twice. The BA was engaged a fortnight ago and has not yet reviewed how work orders move between the planning cell, the site crews and the ERP. The miner recently won an industry award for its safety record. What should the BA do next?",
   "why": "The director has stated a solution, not a need, and nobody has yet established where the double keying originates. Examining how work orders actually flow locates the problem before any solution is scoped, and the safety award has no bearing on the analysis.",
@@ -3140,6 +3394,11 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.1 Specify and Model Requirements",
+  "techniques": [
+   "10.6 Business Capability Analysis",
+   "10.22 Functional Decomposition",
+   "10.35 Process Modelling"
+  ],
   "trap": "Jumping to solution before the problem or current state is understood",
   "stem": "Southbound Freight's executives want to understand why parcel volumes are being lost to competitors. A vendor has offered to decompose the proposed depot system into functions and two executives want to start there. The BA argues that starting from the vendor's proposed system would presume the answer, and that what the executives are asking about cannot be anchored to how the company is organised or equipped today. A new uniform supplier was appointed last week. Which model should the BA produce?",
   "why": "The stated need is a solution-independent view of present ability against required ability, which is a capability question. Decomposing a proposed system presumes the solution, and process or structural views tie the analysis to today's arrangements; the uniform supplier is irrelevant.",
@@ -3168,6 +3427,9 @@
   "ka": 8,
   "kaName": "Solution Evaluation",
   "task": "8.2 Analyze Performance Measures",
+  "techniques": [
+   "10.43 Stakeholder List, Map, or Personas"
+  ],
   "trap": "Jumping to solution before the problem or current state is understood",
   "stem": "A retail bank set a target that 70 per cent of personal loan applications would be completed digitally without assisted intervention. Three months after release the figure sits at 46 per cent and is falling in two of eight regions. The head of lending has asked the BA to fix the drop-off at step four. A concurrent brand campaign has lifted overall application volume, which the marketing team is celebrating. What should the BA do next?",
   "why": "The size and location of the shortfall against the agreed target have not yet been established, and the head of lending has already named a cause. Analysing the measures determines the extent of the gap and where it concentrates before any remedy is considered. Rising volume from the campaign does not explain the regional pattern.",
@@ -3196,6 +3458,11 @@
   "ka": 3,
   "kaName": "Business Analysis Planning and Monitoring",
   "task": "3.1 Plan Business Analysis Approach",
+  "techniques": [
+   "10.25 Interviews",
+   "10.27 Lessons Learned",
+   "10.35 Process Modelling"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "A mining company is standardising maintenance processes across four remote sites. Roster rules restrict access to shift supervisors to a single two-hour window each fortnight, and travel between sites is by charter flight. The group has run three comparable standardisation efforts in its energy division over the past five years. The company has just purchased a new haul truck fleet. The business analyst wants a comparable view of how those earlier efforts structured their analysis work before committing to an approach.",
   "why": "The analyst is explicitly seeking a comparable view of how earlier, similar efforts were structured, which is what drawing on documented experience from those initiatives provides. Options that elicit current-state detail from supervisors are constrained by the fortnightly access window and address a different question.",
@@ -3224,6 +3491,9 @@
   "ka": 4,
   "kaName": "Elicitation and Collaboration",
   "task": "4.4 Communicate Business Analysis Information",
+  "techniques": [
+   "10.50 Workshops"
+  ],
   "trap": "Confusing a Task with a Technique, or a Technique with an Input/Output",
   "stem": "An electricity distributor is introducing a new outage management capability. Its stakeholders include field crews without regular email access, a contact centre in another state, and an offshore development team for whom English is a second language. The distributor's annual regulatory submission falls due in March. A BA has completed a detailed requirements specification and now needs the analysis understood by all three groups. Which approach should the BA take?",
   "why": "The three groups differ in access, location and language, so the same information has to be delivered in forms suited to each whilst remaining consistent. Issuing one document to everyone ignores those differences. A workshop is a technique that cannot reach crews without regular availability, and relaying through managers loses fidelity.",
@@ -3280,6 +3550,9 @@
   "ka": 6,
   "kaName": "Strategy Analysis",
   "task": "6.2 Define Future State",
+  "techniques": [
+   "10.38 Risk Analysis and Management"
+  ],
   "trap": "Choosing a technically correct but not BEST answer",
   "stem": "A general insurer is defining a future state for automated claims triage. The analysis rests on a national repairer pricing dataset becoming publicly available in July; without it the intended cycle-time objective cannot be reached. The programme director wants the future state endorsed this week. The insurer relocated its Brisbane office in May. What should the BA do?",
   "why": "The dataset is a belief held to be true that the future state depends on and that cannot yet be confirmed, which makes it an assumption to be recorded with the future state and carried into risk analysis. Deleting the objective or escalating an issue both act before that is done.",
@@ -3308,6 +3581,9 @@
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.5 Define Design Options",
+  "techniques": [
+   "10.33 Prioritisation"
+  ],
   "trap": "Right action, wrong lifecycle stage",
   "stem": "A regional bank is redesigning home loan origination. The chosen design shape includes a broker portal, the existing core banking platform, a new decisioning engine, and a retained manual underwriting step for complex applications. The BA holds a validated requirement that a conditional approval be returned within four minutes. The bank's marketing team has just signed a sponsorship with a local football club. The design team asks the BA to make the four minute requirement actionable across the shape that has been agreed. What should the BA do first?",
   "why": "The design already names four distinct components, so the requirement has to be apportioned across them before any of them can be built or configured. Verifying or reprioritising the requirement are real tasks but both sit earlier in the life cycle and the requirement is already validated. The sponsorship is noise.",
@@ -3336,6 +3612,9 @@
   "ka": 8,
   "kaName": "Solution Evaluation",
   "task": "8.3 Assess Solution Limitations",
+  "techniques": [
+   "10.2 Backlog Management"
+  ],
   "trap": "Doing project management work instead of business analysis work",
   "stem": "A mining company's new maintenance scheduling solution is producing shift plans that ignore equipment availability at two of five sites. The measures show planned-maintenance compliance well below the agreed level. The maintenance superintendent asks the BA to take over the defect backlog, chase the vendor daily and publish a remediation schedule. A separate haul-truck procurement is running in parallel and consuming executive attention. What should the BA do next?",
   "why": "The scheduling failures point to constraints within the solution whose nature and severity have not yet been established. Owning a backlog, chasing a vendor and publishing schedules are delivery and contract management activities. Re-baselining the target hides the shortfall instead of explaining it.",

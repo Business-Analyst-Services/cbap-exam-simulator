@@ -2,7 +2,8 @@
 
 A single-file, offline practice exam for the **CBAP®** certification, aligned to the
 **BABOK® Guide v3** and weighted to the published exam blueprint. Sit the full 120-item paper under
-timed conditions, or run a coached study session over the knowledge areas you choose.
+timed conditions, run a coached study session over the knowledge areas you choose, or work the
+50 BABOK techniques one at a time in the technique lab.
 
 **▶ [Open it](https://business-analyst-services.github.io/cbap-exam-simulator/) —** no install, no sign-up, nothing leaves your browser.
 
@@ -22,14 +23,23 @@ the best answer, the BABOK v3 task it comes from and the trap it tests. The set 
 blueprint proportion across the areas you picked, and both questions and options are shuffled, so
 retaking a set is not a memory test. Untimed, with the clock counting up.
 
-Both modes end on the same diagnostic: score by Knowledge Area, task-level gaps and a prioritised
-study plan.
+**Technique lab** — the 50 BABOK v3 techniques, in two halves. *Learn* gives you a card per
+technique: what it is for, when to reach for it, the technique it is most often confused with, and
+the tasks that use it. *Drill* runs technique-filtered items with feedback after every question,
+drawn from a dedicated technique bank plus every item in the main 120 that turns on a named
+technique. Financial Analysis, Estimation, Risk and KPI items carry **data exhibits** — tables and
+dashboards you work from rather than prose you recognise — and the summary scores you by technique
+and by technique group.
+
+All three modes end on the same diagnostic: score by Knowledge Area, task-level gaps and a
+prioritised study plan; the technique lab adds a per-technique and per-group breakdown.
 
 | | |
 |---|---|
-| **Items** | 120 scenario-based multiple-choice questions |
-| **Coverage** | All 6 Knowledge Areas, all 30 tasks in scope |
-| **Modes** | Timed exam sitting · filtered study session with immediate feedback |
+| **Items** | 120-item exam bank · 61-item technique bank · 133-item technique drill pool |
+| **Coverage** | All 6 Knowledge Areas, all 30 tasks, all 50 techniques |
+| **Modes** | Timed exam sitting · filtered study session · technique lab (learn + drill) |
+| **Exhibits** | 11 items carry a data table or dashboard, 8 of them financial |
 | **Storage** | None. No accounts, no cookies, no analytics, no network calls |
 
 ### Blueprint weighting
@@ -55,6 +65,13 @@ study plan.
   navigator cells coloured right/wrong as you go.
 - **Knowledge-area filtering** — pick one area to drill or any combination; the session is drawn in
   blueprint proportion across what you selected, and the summary tells you which areas it skipped.
+- **Technique filtering** — the 50 techniques grouped into six families, selectable individually or
+  by group, with a live count of available items against each. Shortcuts for the numeric techniques
+  and for items carrying a data exhibit. The drill draws evenly across the techniques you picked
+  rather than by blueprint weight, because the point is coverage of your selection.
+- **Data exhibits** — a question can carry a table or a small dashboard. Financial items give you
+  cash flows, discount factors, break-even volumes and total cost of ownership to work with, so the
+  arithmetic is part of the question rather than a phrase to pattern-match.
 - **Full review after submission** — every option gets a verdict, not just the correct one, plus the
   discriminating detail in the scenario, the BABOK task reference and the named trap.
 - **Diagnostic study plan** — per-Knowledge-Area performance against blueprint weights with a 70%
@@ -76,6 +93,13 @@ These are interpretation questions, not recall questions. Every item is written 
   stage, confusing a task with a technique, doing project management instead of business analysis,
   treating a stated want as the requirement, and so on.
 
+Technique items add one more rule: the item must turn on *choosing or applying the right technique*,
+not on recalling its definition. Each one puts a plausible neighbouring technique in the option set —
+the pairing named in that technique's `confused` field — so the discrimination is what is being
+tested. Items with a data exhibit go further and require the figures to be worked: the distractors
+are the answers you reach by comparing undiscounted totals, reading a ratio as a size, treating a
+sunk cost as live, or stopping at the licence price.
+
 **Answer key integrity.** The key was generated before the questions were written: exactly 30 each
 of A/B/C/D, no two consecutive items sharing a letter, and no cyclic pattern. Knowledge Areas are
 interleaved so no two consecutive questions come from the same area. There is no letter to guess.
@@ -85,7 +109,10 @@ interleaved so no two consecutive questions come from the same area. There is no
 | File | Purpose |
 |---|---|
 | `index.html` | The entire application — open it in any browser |
-| `questions.json` | The question bank as data, if you want to build your own front end |
+| `questions.json` | The 120-item exam bank as data, if you want to build your own front end |
+| `technique-questions.json` | The technique drill bank, including the items that carry data exhibits |
+| `techniques.json` | The 50 BABOK v3 techniques used by the learn view |
+| `build.js` | Embeds the three JSON files into `index.html` and validates them first |
 
 ### `questions.json` shape
 
@@ -95,6 +122,7 @@ interleaved so no two consecutive questions come from the same area. There is no
   "ka": 7,
   "kaName": "Requirements Analysis and Design Definition",
   "task": "7.6 Analyze Potential Value and Recommend Solution",
+  "techniques": ["10.20 Financial Analysis"],
   "trap": "Doing project management work instead of business analysis work",
   "stem": "A local council is deciding between two designs for …",
   "why": "Work breakdown structures and resourcing profiles are project management products …",
@@ -103,7 +131,55 @@ interleaved so no two consecutive questions come from the same area. There is no
 }
 ```
 
-`answer` is the zero-based index of the correct option.
+`answer` is the zero-based index of the correct option. `techniques` is optional on exam items and
+required on technique items; each entry must match a `"<n> <name>"` key in `techniques.json`.
+
+### Data exhibits
+
+An item may carry an `exhibit`, rendered under the stem and repeated in the review pane.
+
+```json
+"exhibit": {
+  "type": "table",
+  "title": "Net cash flow by year (AUD)",
+  "cols": ["Year", "Option A", "Option B"],
+  "align": ["left", "num", "num"],
+  "rows": [["1", "100,000", "300,000"]],
+  "note": "Discount rate 10%."
+}
+```
+
+```json
+"exhibit": {
+  "type": "dashboard",
+  "title": "Benefit realisation, first six months",
+  "tiles": [{ "label": "Gross benefit", "value": "$742,000", "delta": "+6% vs plan", "dir": "up" }],
+  "bars":  [{ "label": "Rework reduction", "value": 71, "max": 100, "note": "71% of target" }],
+  "note": "All tiles are gross of cost."
+}
+```
+
+`dir` is **sentiment, not arrow direction**: `up` renders favourable, `down` unfavourable, anything
+else neutral. A falling cost is therefore `up`.
+
+### `techniques.json` shape
+
+```json
+{
+  "n": "10.20",
+  "name": "Financial Analysis",
+  "group": "Valuation and decision",
+  "purpose": "Puts a monetary frame around a change …",
+  "use": "Reach for it whenever an option has to be justified in money …",
+  "confused": "Financial analysis values what is already forecast; estimation produces the forecast …",
+  "tasks": ["6.4 Define Change Strategy"],
+  "kas": [6, 7, 8],
+  "mechanics": [{ "term": "Net present value (NPV)", "formula": "…", "note": "…" }],
+  "worked": "A change costs $400,000 up front and returns $180,000 a year …"
+}
+```
+
+`mechanics` and `worked` are optional and carried only by the techniques with arithmetic to teach.
 
 ## Running it
 
@@ -114,9 +190,20 @@ path. To host your own copy, enable GitHub Pages on a fork and point it at the d
 
 ## Contributing
 
-Corrections to keyed answers or BABOK task references are welcome — open an issue quoting the item
-number shown in the review pane. Edit `questions.json` rather than the HTML if you are proposing new
-items; the bank is embedded into `index.html` at build time.
+Corrections to keyed answers or BABOK task or technique references are welcome — open an issue
+quoting the item number shown in the review pane.
+
+Edit the JSON, never the arrays inside `index.html`. Then:
+
+```bash
+node build.js
+```
+
+That regenerates the embedded data block and refuses to write if anything is wrong: the exam bank
+must be 120 items with a 30/30/30/30 answer key, no two consecutive items may share an answer letter
+or a knowledge area, every item needs four options each with a verdict, every technique reference
+must resolve, every table row must match its header width, and every one of the 50 techniques must
+have at least one item of its own. Commit the JSON and the regenerated `index.html` together.
 
 ## Disclaimer
 
