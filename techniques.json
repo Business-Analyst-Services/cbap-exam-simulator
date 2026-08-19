@@ -38,6 +38,43 @@
    ],
    "note": "A zero weight removes a criterion from the ranking; it does not turn it into a threshold."
   },
+  "template": {
+   "type": "table",
+   "title": "Acceptance and Evaluation Criteria — blank template",
+   "cols": [
+    "Purpose",
+    "Form",
+    "Example",
+    "Result"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per purpose."
+  },
   "tasks": [
    "7.3 Validate Requirements",
    "8.1 Measure Solution Performance",
@@ -99,6 +136,43 @@
    ],
    "note": "Prioritisation presumes the list represents current need. This one did not."
   },
+  "template": {
+   "type": "table",
+   "title": "Backlog Management — blank template",
+   "cols": [
+    "State",
+    "Items",
+    "Action"
+   ],
+   "align": [
+    "left",
+    "num",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per state."
+  },
   "tasks": [
    "5.2 Maintain Requirements",
    "5.3 Prioritize Requirements",
@@ -154,6 +228,42 @@
     }
    ],
    "note": "Adding attrition closes one gap and leaves the customer perspective unobserved. Two perspectives are structurally missing."
+  },
+  "template": {
+   "type": "canvas",
+   "title": "Balanced Scorecard — blank template",
+   "cols": 2,
+   "panels": [
+    {
+     "label": "Financial — 4 measures",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Internal process — 3 measures",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Customer — 0 measures",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Learning and growth — 0 measures",
+     "items": [
+      "",
+      ""
+     ]
+    }
+   ],
+   "note": "Panels are fixed. An empty panel is a finding, not an omission."
   },
   "tasks": [
    "6.2 Define Future State",
@@ -216,6 +326,43 @@
    ],
    "note": "The bank improved 45% and fell further behind. Internal data alone supports the opposite conclusion."
   },
+  "template": {
+   "type": "table",
+   "title": "Benchmarking and Market Analysis — blank template",
+   "cols": [
+    "Measure",
+    "This bank",
+    "Peer median",
+    "Best in market"
+   ],
+   "align": [
+    "left",
+    "num",
+    "num",
+    "num"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per measure."
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "6.2 Define Future State",
@@ -260,6 +407,28 @@
      "label": "— any critique here is ruled out of order, including agreement"
     }
    ]
+  },
+  "template": {
+   "type": "flow",
+   "title": "Brainstorming — blank template",
+   "steps": [
+    {
+     "label": "Step 1",
+     "note": "",
+     "actor": "Round 1"
+    },
+    {
+     "label": "Step 2",
+     "note": "",
+     "actor": "Round 2"
+    },
+    {
+     "label": "Step 3",
+     "note": "",
+     "actor": "Round 3"
+    }
+   ],
+   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
   },
   "tasks": [
    "4.2 Conduct Elicitation",
@@ -335,6 +504,58 @@
    ],
    "note": "Decisioning consistency spans claims, underwriting and service. No department owns it, so no departmental programme fixed it."
   },
+  "template": {
+   "type": "matrix",
+   "title": "Business Capability Analysis — blank template",
+   "cols": [
+    "Weak",
+    "Adequate",
+    "Strong"
+   ],
+   "rows": [
+    "Critical",
+    "Supporting"
+   ],
+   "xLabel": "Performance",
+   "yLabel": "Importance",
+   "cells": [
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ]
+   ],
+   "note": "Place each item in one cell only. If it fits two, the axes are not yet sharp enough."
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "6.2 Define Future State",
@@ -403,6 +624,56 @@
      ]
     }
    ]
+  },
+  "template": {
+   "type": "canvas",
+   "title": "Business Cases — blank template",
+   "cols": 2,
+   "panels": [
+    {
+     "label": "Need",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Options considered",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Why replace",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Value",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Risks",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Timing",
+     "items": [
+      "",
+      ""
+     ]
+    }
+   ],
+   "note": "Panels are fixed. An empty panel is a finding, not an omission."
   },
   "tasks": [
    "6.4 Define Change Strategy",
@@ -491,6 +762,77 @@
    ],
    "note": "The publisher does not hold its own subscriber list. That is the change strategy's first problem."
   },
+  "template": {
+   "type": "canvas",
+   "title": "Business Model Canvas — blank template",
+   "cols": 3,
+   "panels": [
+    {
+     "label": "Key partners",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Key activities",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Value proposition",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Customer relationship",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Channels",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Customer segments",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Revenue streams",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Cost structure",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Key resources",
+     "items": [
+      "",
+      ""
+     ]
+    }
+   ],
+   "note": "Panels are fixed. An empty panel is a finding, not an omission."
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "6.2 Define Future State"
@@ -550,6 +892,43 @@
    ],
    "note": "Eleven amendments in three years. Held in workflow code, each one would be a release."
   },
+  "template": {
+   "type": "table",
+   "title": "Business Rules Analysis — blank template",
+   "cols": [
+    "Rule",
+    "Statement",
+    "Owner",
+    "Last changed"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per rule."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "6.1 Analyze Current State",
@@ -599,6 +978,33 @@
      "label": "— simultaneous writing is what stops the loudest voice framing the room"
     }
    ]
+  },
+  "template": {
+   "type": "flow",
+   "title": "Collaborative Games — blank template",
+   "steps": [
+    {
+     "label": "Step 1",
+     "note": "",
+     "actor": "Set up"
+    },
+    {
+     "label": "Step 2",
+     "note": "",
+     "actor": "Play"
+    },
+    {
+     "label": "Step 3",
+     "note": "",
+     "actor": "Cluster"
+    },
+    {
+     "label": "Step 4",
+     "note": "",
+     "actor": "Debrief"
+    }
+   ],
+   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
   },
   "tasks": [
    "4.2 Conduct Elicitation",
@@ -650,6 +1056,45 @@
      ]
     }
    ]
+  },
+  "template": {
+   "type": "tree",
+   "title": "Concept Modelling — blank template",
+   "levels": [
+    "Concept",
+    "Relates to",
+    "Detail"
+   ],
+   "nodes": [
+    {
+     "label": "Concept",
+     "children": [
+      {
+       "label": "Relates to",
+       "children": [
+        {
+         "label": "Detail"
+        },
+        {
+         "label": "Detail"
+        }
+       ]
+      },
+      {
+       "label": "Relates to",
+       "children": [
+        {
+         "label": "Detail"
+        },
+        {
+         "label": "Detail"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "note": "Placeholders name the level, not the content. Two branches shown; add as many as the subject needs."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -716,6 +1161,48 @@
    ],
    "note": "Reconciliation failed because one name carried two events. The target splits them."
   },
+  "template": {
+   "type": "table",
+   "title": "Data Dictionary — blank template",
+   "cols": [
+    "Element",
+    "Set by",
+    "Type",
+    "Permitted",
+    "Mandatory"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per element."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "3.4 Plan Business Analysis Information Management"
@@ -769,6 +1256,38 @@
      "label": "→ nightly extract to the data warehouse, identifiers not masked"
     }
    ]
+  },
+  "template": {
+   "type": "flow",
+   "title": "Data Flow Diagrams — blank template",
+   "steps": [
+    {
+     "label": "Step 1",
+     "note": "",
+     "actor": "External"
+    },
+    {
+     "label": "Step 2",
+     "note": "",
+     "actor": "Process"
+    },
+    {
+     "label": "Step 3",
+     "note": "",
+     "actor": "Store"
+    },
+    {
+     "label": "Step 4",
+     "note": "",
+     "actor": "Process"
+    },
+    {
+     "label": "Step 5",
+     "note": "",
+     "actor": "External"
+    }
+   ],
+   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -824,6 +1343,38 @@
     ]
    ],
    "note": "None of these was on anyone's list of suspected causes."
+  },
+  "template": {
+   "type": "table",
+   "title": "Data Mining — blank template",
+   "cols": [
+    "Pattern found",
+    "Holds for",
+    "Lead time to churn"
+   ],
+   "align": [
+    "left",
+    "num",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per pattern found."
   },
   "tasks": [
    "6.1 Analyze Current State",
@@ -885,6 +1436,43 @@
     ]
    ],
    "note": "Shared care is 2 households per child. A guardian need not be a parent."
+  },
+  "template": {
+   "type": "table",
+   "title": "Data Modelling — blank template",
+   "cols": [
+    "From",
+    "Relationship",
+    "To"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per from."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -965,6 +1553,61 @@
    ],
    "note": "Staged and AMI-lite tie. That is a useful result: the argument moves to a tiebreak the group can have."
   },
+  "template": {
+   "type": "table",
+   "title": "Decision Analysis — blank template",
+   "cols": [
+    "Criterion",
+    "Weight",
+    "Smart",
+    "Staged",
+    "Manual+",
+    "AMI-lite"
+   ],
+   "align": [
+    "left",
+    "num",
+    "num",
+    "num",
+    "num",
+    "num"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per criterion."
+  },
   "tasks": [
    "7.6 Analyze Potential Value and Recommend Solution",
    "6.4 Define Change Strategy",
@@ -1032,6 +1675,45 @@
     }
    ]
   },
+  "template": {
+   "type": "tree",
+   "title": "Decision Modelling — blank template",
+   "levels": [
+    "Decision",
+    "Condition",
+    "Outcome"
+   ],
+   "nodes": [
+    {
+     "label": "Decision",
+     "children": [
+      {
+       "label": "Condition",
+       "children": [
+        {
+         "label": "Outcome"
+        },
+        {
+         "label": "Outcome"
+        }
+       ]
+      },
+      {
+       "label": "Condition",
+       "children": [
+        {
+         "label": "Outcome"
+        },
+        {
+         "label": "Outcome"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "note": "Placeholders name the level, not the content. Two branches shown; add as many as the subject needs."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "6.1 Analyze Current State"
@@ -1084,6 +1766,38 @@
      "Which were implemented and which lapsed"
     ]
    ]
+  },
+  "template": {
+   "type": "table",
+   "title": "Document Analysis — blank template",
+   "cols": [
+    "Source",
+    "What it settled",
+    "What it could not"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per source."
   },
   "tasks": [
    "4.1 Prepare for Elicitation",
@@ -1158,6 +1872,55 @@
     ]
    ],
    "note": "Expected = (O + 4M + P) / 6. Reporting the 102 understates by 13 days and hides a range of 75 to 208."
+  },
+  "template": {
+   "type": "table",
+   "title": "Estimation — blank template",
+   "cols": [
+    "Component",
+    "Optimistic",
+    "Likely",
+    "Pessimistic",
+    "Expected"
+   ],
+   "align": [
+    "left",
+    "num",
+    "num",
+    "num",
+    "num"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per component."
   },
   "tasks": [
    "3.1 Plan Business Analysis Approach",
@@ -1244,6 +2007,73 @@
     ]
    ],
    "note": "The eight blocks below work each of these through with figures."
+  },
+  "template": {
+   "type": "matrix",
+   "title": "Financial Analysis — blank template",
+   "cols": [
+    "It answers",
+    "It cannot answer"
+   ],
+   "rows": [
+    "NPV",
+    "Payback",
+    "ROI",
+    "IRR"
+   ],
+   "xLabel": "Use it when",
+   "yLabel": "Measure",
+   "cells": [
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ]
+   ],
+   "note": "Place each item in one cell only. If it fits two, the axes are not yet sharp enough."
   },
   "tasks": [
    "6.4 Define Change Strategy",
@@ -1952,6 +2782,38 @@
     ]
    ]
   },
+  "template": {
+   "type": "table",
+   "title": "Focus Groups — blank template",
+   "cols": [
+    "Group",
+    "Who",
+    "What emerged"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per group."
+  },
   "tasks": [
    "4.2 Conduct Elicitation",
    "8.1 Measure Solution Performance"
@@ -2032,6 +2894,45 @@
     }
    ]
   },
+  "template": {
+   "type": "tree",
+   "title": "Functional Decomposition — blank template",
+   "levels": [
+    "Function",
+    "Sub-function",
+    "Component"
+   ],
+   "nodes": [
+    {
+     "label": "Function",
+     "children": [
+      {
+       "label": "Sub-function",
+       "children": [
+        {
+         "label": "Component"
+        },
+        {
+         "label": "Component"
+        }
+       ]
+      },
+      {
+       "label": "Sub-function",
+       "children": [
+        {
+         "label": "Component"
+        },
+        {
+         "label": "Component"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "note": "Placeholders name the level, not the content. Two branches shown; add as many as the subject needs."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "3.1 Plan Business Analysis Approach",
@@ -2082,6 +2983,38 @@
     ]
    ],
    "note": "Elicitation results were confirmed against this, and both records were accurate."
+  },
+  "template": {
+   "type": "table",
+   "title": "Glossary — blank template",
+   "cols": [
+    "Term",
+    "Agreed meaning",
+    "Used by"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per term."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -2145,6 +3078,43 @@
    ],
    "note": "Reversal handling sits with the platform. Had it sat with core banking, rows 1, 2 and 4 would differ."
   },
+  "template": {
+   "type": "table",
+   "title": "Interface Analysis — blank template",
+   "cols": [
+    "Interface",
+    "Direction",
+    "Carries",
+    "Frequency"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per interface."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "7.4 Define Requirements Architecture",
@@ -2198,6 +3168,38 @@
      "Surfaces constraints as the expert sees them"
     ]
    ]
+  },
+  "template": {
+   "type": "table",
+   "title": "Interviews — blank template",
+   "cols": [
+    "Question",
+    "Type",
+    "Why it is being asked"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per question."
   },
   "tasks": [
    "4.2 Conduct Elicitation",
@@ -2273,6 +3275,55 @@
    ],
    "note": "Raising something and watching nothing happen teaches people not to raise things."
   },
+  "template": {
+   "type": "table",
+   "title": "Item Tracking — blank template",
+   "cols": [
+    "Raised",
+    "Concern",
+    "Type",
+    "Owner",
+    "Status"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per raised."
+  },
   "tasks": [
    "4.5 Manage Stakeholder Collaboration",
    "5.4 Assess Requirements Changes",
@@ -2322,6 +3373,35 @@
     }
    ],
    "note": "Change records showed what changed. Only the team could say why this programme and its predecessor churned alike."
+  },
+  "template": {
+   "type": "canvas",
+   "title": "Lessons Learned — blank template",
+   "cols": 3,
+   "panels": [
+    {
+     "label": "What worked",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "What did not",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Change next time",
+     "items": [
+      "",
+      ""
+     ]
+    }
+   ],
+   "note": "Panels are fixed. An empty panel is a finding, not an omission."
   },
   "tasks": [
    "3.5 Identify Business Analysis Performance Improvements",
@@ -2393,6 +3473,78 @@
     }
    ],
    "note": "Each leaf carries a target and the threshold at which someone is obliged to do something."
+  },
+  "template": {
+   "type": "tree",
+   "title": "Metrics and Key Performance Indicators — blank template",
+   "levels": [
+    "Objective",
+    "Strategy",
+    "Tactic",
+    "KPI"
+   ],
+   "nodes": [
+    {
+     "label": "Objective",
+     "children": [
+      {
+       "label": "Strategy",
+       "children": [
+        {
+         "label": "Tactic",
+         "children": [
+          {
+           "label": "KPI"
+          },
+          {
+           "label": "KPI"
+          }
+         ]
+        },
+        {
+         "label": "Tactic",
+         "children": [
+          {
+           "label": "KPI"
+          },
+          {
+           "label": "KPI"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Strategy",
+       "children": [
+        {
+         "label": "Tactic",
+         "children": [
+          {
+           "label": "KPI"
+          },
+          {
+           "label": "KPI"
+          }
+         ]
+        },
+        {
+         "label": "Tactic",
+         "children": [
+          {
+           "label": "KPI"
+          },
+          {
+           "label": "KPI"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "note": "Placeholders name the level, not the content. Two branches shown; add as many as the subject needs."
   },
   "tasks": [
    "8.1 Measure Solution Performance",
@@ -2483,6 +3635,45 @@
     }
    ]
   },
+  "template": {
+   "type": "tree",
+   "title": "Mind Mapping — blank template",
+   "levels": [
+    "Centre",
+    "Strand",
+    "Detail"
+   ],
+   "nodes": [
+    {
+     "label": "Centre",
+     "children": [
+      {
+       "label": "Strand",
+       "children": [
+        {
+         "label": "Detail"
+        },
+        {
+         "label": "Detail"
+        }
+       ]
+      },
+      {
+       "label": "Strand",
+       "children": [
+        {
+         "label": "Detail"
+        },
+        {
+         "label": "Detail"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "note": "Placeholders name the level, not the content. Two branches shown; add as many as the subject needs."
+  },
   "tasks": [
    "4.2 Conduct Elicitation",
    "6.1 Analyze Current State"
@@ -2548,6 +3739,49 @@
     ]
    ]
   },
+  "template": {
+   "type": "table",
+   "title": "Non-Functional Requirements Analysis — blank template",
+   "cols": [
+    "Quality",
+    "Measure",
+    "Target",
+    "Under"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per quality."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "7.5 Define Design Options",
@@ -2600,6 +3834,38 @@
      "Times recorded are estimates"
     ]
    ]
+  },
+  "template": {
+   "type": "table",
+   "title": "Observation — blank template",
+   "cols": [
+    "Documented step",
+    "Observed",
+    "Gap"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per documented step."
   },
   "tasks": [
    "4.2 Conduct Elicitation",
@@ -2673,6 +3939,45 @@
     }
    ]
   },
+  "template": {
+   "type": "tree",
+   "title": "Organisational Modelling — blank template",
+   "levels": [
+    "Division",
+    "Unit",
+    "Decision right"
+   ],
+   "nodes": [
+    {
+     "label": "Division",
+     "children": [
+      {
+       "label": "Unit",
+       "children": [
+        {
+         "label": "Decision right"
+        },
+        {
+         "label": "Decision right"
+        }
+       ]
+      },
+      {
+       "label": "Unit",
+       "children": [
+        {
+         "label": "Decision right"
+        },
+        {
+         "label": "Decision right"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "note": "Placeholders name the level, not the content. Two branches shown; add as many as the subject needs."
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "6.2 Define Future State",
@@ -2732,6 +4037,47 @@
     ]
    ],
    "note": "Value alone puts the portal first. The data fix is a dependency of the legislative change, and the legislative change has a 1 July date with a licence condition attached. Sequence: data fix, legislative change, then the portal."
+  },
+  "template": {
+   "type": "matrix",
+   "title": "Prioritisation — blank template",
+   "cols": [
+    "Low",
+    "High"
+   ],
+   "rows": [
+    "High",
+    "Low"
+   ],
+   "xLabel": "Effort",
+   "yLabel": "Value",
+   "cells": [
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ]
+   ],
+   "note": "Place each item in one cell only. If it fits two, the axes are not yet sharp enough."
   },
   "tasks": [
    "5.3 Prioritize Requirements",
@@ -2806,6 +4152,55 @@
    ],
    "note": "Doubling assessor capacity addresses 7 of the 43 days."
   },
+  "template": {
+   "type": "table",
+   "title": "Process Analysis — blank template",
+   "cols": [
+    "Step",
+    "Elapsed",
+    "Touch time",
+    "Verdict"
+   ],
+   "align": [
+    "left",
+    "num",
+    "num",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per step."
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "8.5 Recommend Actions to Increase Solution Value",
@@ -2864,6 +4259,43 @@
     }
    ]
   },
+  "template": {
+   "type": "flow",
+   "title": "Process Modelling — blank template",
+   "steps": [
+    {
+     "label": "Step 1",
+     "note": "",
+     "actor": ""
+    },
+    {
+     "label": "Step 2",
+     "note": "",
+     "actor": ""
+    },
+    {
+     "label": "Step 3",
+     "note": "",
+     "actor": ""
+    },
+    {
+     "label": "Step 4",
+     "note": "",
+     "actor": ""
+    },
+    {
+     "label": "Step 5",
+     "note": "",
+     "actor": ""
+    },
+    {
+     "label": "Step 6",
+     "note": "",
+     "actor": ""
+    }
+   ],
+   "note": "Name the actor above each step, and start a new box wherever the work changes hands."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "6.1 Analyze Current State",
@@ -2914,6 +4346,33 @@
     }
    ]
   },
+  "template": {
+   "type": "flow",
+   "title": "Prototyping — blank template",
+   "steps": [
+    {
+     "label": "Step 1",
+     "note": "",
+     "actor": "Round 1"
+    },
+    {
+     "label": "Step 2",
+     "note": "",
+     "actor": "Round 2"
+    },
+    {
+     "label": "Step 3",
+     "note": "",
+     "actor": "Round 3"
+    },
+    {
+     "label": "Step 4",
+     "note": "",
+     "actor": "Then"
+    }
+   ],
+   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
+  },
   "tasks": [
    "4.2 Conduct Elicitation",
    "7.5 Define Design Options",
@@ -2962,6 +4421,43 @@
     ]
    ],
    "note": "No quality checklist would have caught it. The obsolete requirements were well written."
+  },
+  "template": {
+   "type": "table",
+   "title": "Reviews — blank template",
+   "cols": [
+    "Review",
+    "Question asked",
+    "Participants",
+    "Found"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per review."
   },
   "tasks": [
    "7.2 Verify Requirements",
@@ -3052,6 +4548,76 @@
     ]
    ],
    "note": "Expected monetary value across all outcomes is $222,500. That figure goes in the business case; the $900,000 severe case goes here."
+  },
+  "template": {
+   "type": "matrix",
+   "title": "Risk Analysis and Management — blank template",
+   "cols": [
+    "Moderate",
+    "Major",
+    "Severe"
+   ],
+   "rows": [
+    "Likely",
+    "Possible",
+    "Unlikely"
+   ],
+   "xLabel": "Impact",
+   "yLabel": "Likelihood",
+   "cells": [
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ]
+   ],
+   "note": "Place each item in one cell only. If it fits two, the axes are not yet sharp enough."
   },
   "tasks": [
    "6.3 Assess Risks",
@@ -3175,6 +4741,92 @@
    ],
    "note": "The grants officer can raise and approve the same payment. Counted across all 99 combinations, not anecdotally."
   },
+  "template": {
+   "type": "matrix",
+   "title": "Roles and Permissions Matrix — blank template",
+   "cols": [
+    "Create",
+    "Approve",
+    "Amend",
+    "Delete"
+   ],
+   "rows": [
+    "Grants officer",
+    "Finance officer",
+    "Team leader"
+   ],
+   "xLabel": "Action",
+   "yLabel": "Role",
+   "cells": [
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ]
+   ],
+   "note": "Place each item in one cell only. If it fits two, the axes are not yet sharp enough."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "6.2 Define Future State"
@@ -3233,6 +4885,78 @@
     }
    ]
   },
+  "template": {
+   "type": "tree",
+   "title": "Root Cause Analysis — blank template",
+   "levels": [
+    "Symptom",
+    "Why",
+    "Why again",
+    "Root cause"
+   ],
+   "nodes": [
+    {
+     "label": "Symptom",
+     "children": [
+      {
+       "label": "Why",
+       "children": [
+        {
+         "label": "Why again",
+         "children": [
+          {
+           "label": "Root cause"
+          },
+          {
+           "label": "Root cause"
+          }
+         ]
+        },
+        {
+         "label": "Why again",
+         "children": [
+          {
+           "label": "Root cause"
+          },
+          {
+           "label": "Root cause"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Why",
+       "children": [
+        {
+         "label": "Why again",
+         "children": [
+          {
+           "label": "Root cause"
+          },
+          {
+           "label": "Root cause"
+          }
+         ]
+        },
+        {
+         "label": "Why again",
+         "children": [
+          {
+           "label": "Root cause"
+          },
+          {
+           "label": "Root cause"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "note": "Placeholders name the level, not the content. Two branches shown; add as many as the subject needs."
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "8.3 Assess Solution Limitations",
@@ -3284,6 +5008,35 @@
     }
    ]
   },
+  "template": {
+   "type": "canvas",
+   "title": "Scope Modelling — blank template",
+   "cols": 3,
+   "panels": [
+    {
+     "label": "In scope",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Out of scope",
+     "items": [
+      "",
+      ""
+     ]
+    },
+    {
+     "label": "Adjacent — decide before it drifts",
+     "items": [
+      "",
+      ""
+     ]
+    }
+   ],
+   "note": "Panels are fixed. An empty panel is a finding, not an omission."
+  },
   "tasks": [
    "6.2 Define Future State",
    "6.4 Define Change Strategy",
@@ -3333,6 +5086,33 @@
      "label": "— posting before the fraud reply is the defect. Load widens the window; it does not cause it."
     }
    ]
+  },
+  "template": {
+   "type": "flow",
+   "title": "Sequence Diagrams — blank template",
+   "steps": [
+    {
+     "label": "Step 1",
+     "note": "",
+     "actor": "1"
+    },
+    {
+     "label": "Step 2",
+     "note": "",
+     "actor": "2"
+    },
+    {
+     "label": "Step 3",
+     "note": "",
+     "actor": "3"
+    },
+    {
+     "label": "Step 4",
+     "note": "",
+     "actor": "4"
+    }
+   ],
+   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -3394,6 +5174,47 @@
     ]
    ],
    "note": "Weighted by volume, the bottom-right group disappears. They are the ones with least alternative."
+  },
+  "template": {
+   "type": "matrix",
+   "title": "Stakeholder List, Map, or Personas — blank template",
+   "cols": [
+    "Low",
+    "High"
+   ],
+   "rows": [
+    "High",
+    "Low"
+   ],
+   "xLabel": "Interest",
+   "yLabel": "Influence",
+   "cells": [
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       ""
+      ]
+     },
+     {
+      "items": [
+       ""
+      ]
+     }
+    ]
+   ],
+   "note": "Place each item in one cell only. If it fits two, the axes are not yet sharp enough."
   },
   "tasks": [
    "3.2 Plan Stakeholder Engagement",
@@ -3458,6 +5279,33 @@
     }
    ]
   },
+  "template": {
+   "type": "flow",
+   "title": "State Modelling — blank template",
+   "steps": [
+    {
+     "label": "Step 1",
+     "note": ""
+    },
+    {
+     "label": "Step 2",
+     "note": ""
+    },
+    {
+     "label": "Step 3",
+     "note": ""
+    },
+    {
+     "label": "Step 4",
+     "note": ""
+    },
+    {
+     "label": "Step 5",
+     "note": ""
+    }
+   ],
+   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "6.1 Analyze Current State"
@@ -3511,6 +5359,38 @@
     ]
    ],
    "note": "Issued by email to the full list, not by a banner on the portal, so non-users are reachable."
+  },
+  "template": {
+   "type": "table",
+   "title": "Survey or Questionnaire — blank template",
+   "cols": [
+    "Question",
+    "Type",
+    "Guards against"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per question."
   },
   "tasks": [
    "4.2 Conduct Elicitation",
@@ -3578,6 +5458,51 @@
    ],
    "note": "Lacking a capability is a weakness. A competitor exploiting that lack is the threat."
   },
+  "template": {
+   "type": "matrix",
+   "title": "SWOT Analysis — blank template",
+   "cols": [
+    "Helpful",
+    "Harmful"
+   ],
+   "rows": [
+    "Internal",
+    "External"
+   ],
+   "xLabel": "Nature",
+   "yLabel": "Origin",
+   "cells": [
+    [
+     {
+      "tag": "Strengths",
+      "items": [
+       ""
+      ]
+     },
+     {
+      "tag": "Weaknesses",
+      "items": [
+       ""
+      ]
+     }
+    ],
+    [
+     {
+      "tag": "Opportunities",
+      "items": [
+       ""
+      ]
+     },
+     {
+      "tag": "Threats",
+      "items": [
+       ""
+      ]
+     }
+    ]
+   ],
+   "note": "Place each item in one cell only. If it fits two, the axes are not yet sharp enough."
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "6.2 Define Future State",
@@ -3632,6 +5557,30 @@
     }
    ]
   },
+  "template": {
+   "type": "flow",
+   "title": "Use Cases and Scenarios — blank template",
+   "steps": [
+    {
+     "label": "Step 1",
+     "note": "",
+     "actor": "Main flow"
+    },
+    {
+     "label": "Step 2",
+     "note": ""
+    },
+    {
+     "label": "Step 3",
+     "note": ""
+    },
+    {
+     "label": "Step 4",
+     "note": ""
+    }
+   ],
+   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "7.3 Validate Requirements"
@@ -3673,6 +5622,38 @@
      "Returns within 2 s. Partial surname supported."
     ]
    ]
+  },
+  "template": {
+   "type": "table",
+   "title": "User Stories — blank template",
+   "cols": [
+    "Before",
+    "After",
+    "Acceptance criterion"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per before."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -3729,6 +5710,38 @@
    ],
    "note": "The product genuinely is the best fit. Both assessments go to the decision-maker, not one folded into the other."
   },
+  "template": {
+   "type": "table",
+   "title": "Vendor Assessment — blank template",
+   "cols": [
+    "Dimension",
+    "Finding",
+    "Bearing on a 7-year contract"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ]
+   ],
+   "note": "One row per dimension."
+  },
   "tasks": [
    "7.5 Define Design Options",
    "7.6 Analyze Potential Value and Recommend Solution",
@@ -3783,6 +5796,38 @@
      "label": "— without this it is a meeting, and three of them have already produced nothing"
     }
    ]
+  },
+  "template": {
+   "type": "flow",
+   "title": "Workshops — blank template",
+   "steps": [
+    {
+     "label": "Step 1",
+     "note": "",
+     "actor": "Before"
+    },
+    {
+     "label": "Step 2",
+     "note": "",
+     "actor": "Open"
+    },
+    {
+     "label": "Step 3",
+     "note": "",
+     "actor": "Work"
+    },
+    {
+     "label": "Step 4",
+     "note": "",
+     "actor": "Decide"
+    },
+    {
+     "label": "Step 5",
+     "note": "",
+     "actor": "Close"
+    }
+   ],
+   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
   },
   "tasks": [
    "4.2 Conduct Elicitation",

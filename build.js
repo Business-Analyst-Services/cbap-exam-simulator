@@ -104,6 +104,28 @@ all.forEach(q => {
 
 techniques.forEach(t => {
   if (t.visual) checkExhibit(t.visual, `${t.n} visual`);
+  if (t.template) {
+    const where = `${t.n} template`;
+    checkExhibit(t.template, where);
+    if (!t.visual) errors.push(`${where}: template without a worked example`);
+    else {
+      // The pair must stay structural twins, or the toggle teaches the wrong shape.
+      if (t.template.type !== t.visual.type) errors.push(`${where}: type "${t.template.type}" but example is "${t.visual.type}"`);
+      if (t.template.type === "table" && t.template.cols.join("|") !== t.visual.cols.join("|"))
+        errors.push(`${where}: columns differ from the worked example`);
+      if (t.template.type === "matrix") {
+        if (t.template.cols.join("|") !== t.visual.cols.join("|")) errors.push(`${where}: matrix columns differ from the worked example`);
+        if (t.template.rows.join("|") !== t.visual.rows.join("|")) errors.push(`${where}: matrix rows differ from the worked example`);
+      }
+      if (t.template.type === "canvas" && t.template.panels.map(p => p.label).join("|") !== t.visual.panels.map(p => p.label).join("|"))
+        errors.push(`${where}: canvas panels differ from the worked example`);
+      if (t.template.type === "flow" && t.template.steps.length !== t.visual.steps.length)
+        errors.push(`${where}: ${t.template.steps.length} steps against the example's ${t.visual.steps.length}`);
+      // A template that still carries findings has not been blanked properly.
+      const leaked = JSON.stringify(t.template).match(/\$[\d,]{3,}|\b\d{2,}%/g);
+      if (leaked) errors.push(`${where}: still carries example data (${[...new Set(leaked)].slice(0, 3).join(", ")})`);
+    }
+  }
   (t.explainers || []).forEach((x, i) => {
     const where = `${t.n} explainer ${i + 1}`;
     ["term", "formula", "plain"].forEach(f => { if (!x[f]) errors.push(`${where}: missing ${f}`); });

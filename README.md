@@ -191,7 +191,8 @@ else neutral. A falling cost is therefore `up`.
   "confused": "Financial analysis values what is already forecast; estimation produces the forecast …",
   "tasks": ["6.4 Define Change Strategy"],
   "kas": [6, 7, 8],
-  "visual": { "type": "matrix", "title": "Which measure answers which question", "lead": "…", … },
+  "visual":   { "type": "matrix", "title": "Which measure answers which question", … },
+  "template": { "type": "matrix", "title": "Financial Analysis — blank template", … },
   "mechanics": [{ "term": "Net present value (NPV)", "formula": "…", "note": "…" }],
   "explainers": [{ "term": "…", "formula": "…", "plain": "…", "data": { … }, "chart": { … } }],
   "worked": "A change costs $400,000 up front and returns $180,000 a year …"
@@ -202,6 +203,18 @@ else neutral. A falling cost is therefore `up`.
 with realistic content rather than described. A data dictionary is shown as a populated dictionary;
 decision modelling as a real decision tree; SWOT as a filled 2×2 with the internal/external axis
 corrected. Across the 50 that is 22 tables, 9 flows, 7 trees, 7 matrices and 5 canvases.
+
+**Every technique also carries a `template`** — the same artefact with the content stripped out, so
+you can fill it in yourself. The learn card shows a *Worked example / Blank template* toggle. The
+two are structural twins by construction: templates are derived from the worked version, so columns,
+tree depth, quadrants, panels and step counts always match, and `build.js` fails the build if they
+drift apart or if a template still carries figures from the example.
+
+Scaffolding survives the blanking; findings do not. SWOT keeps *Strengths / Weaknesses /
+Opportunities / Threats*, the Business Model Canvas keeps its nine panel names, a KPI tree keeps
+*Objective → Strategy → Tactic → KPI* as placeholders, and a data flow keeps *External / Process /
+Store*. But a process model's actor slots are emptied, because *Courier* and *Refurbisher* belong to
+the worked case rather than to the technique.
 
 `mechanics`, `explainers` and `worked` are optional and carried only by the techniques with
 arithmetic to teach.
