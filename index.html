@@ -223,6 +223,12 @@ kbd{font:12px/1 ui-monospace,monospace;border:1px solid var(--border);border-bot
   border:1px solid var(--border);border-radius:8px;padding:9px 15px;font-size:15px;background:transparent}
 .btnlink:hover{border-color:var(--axis)}
 .vtoggle{margin:2px 0 10px}
+.vdl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 2px;font-size:13px}
+.vdl span{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em;font-weight:650;margin-right:2px}
+.vdl a{text-decoration:none;color:var(--accent-deep);border:1px solid var(--border);border-radius:99px;
+  padding:4px 12px;background:var(--surface-1);font-size:12.5px}
+.vdl a:hover{border-color:var(--accent);background:var(--sel)}
+@media print{ .vdl{display:none} }
 .vtoggle button{padding:5px 13px;font-size:13px}
 /* blank template cells read as fillable, not as missing content */
 .vpane[data-v="tpl"] .exhibit td:empty::after,
@@ -455,7 +461,7 @@ td.mcell span{display:block;font-size:13px;color:var(--ink-2);padding:1.5px 0}
           <li>Items are drawn from a dedicated technique bank plus every item in the main 120 that turns on a named technique.</li>
           <li>Financial Analysis, Estimation, Risk and KPI items carry data exhibits — tables and dashboards you have to read rather than recognise.</li>
           <li>The end-of-session summary scores you by technique and by the group the technique sits in.</li>
-          <li><b>To fill one in</b>, download the templates. Every technique has its own PowerPoint, Word and Excel file — 150 in all — plus a single 102-slide pack. The buttons are in the reference header.</li>
+          <li><b>To fill one in</b>, download it. Each technique card carries its own PowerPoint, Word and Excel download, and the button follows the tab — the worked example or the blank template, whichever you are looking at. The header has the whole library and the 102-slide pack.</li>
           <li><b>Follow one scenario</b> walks a single engagement through 16 techniques in order, each step taking what the one before it produced. That is where the hand-offs between techniques become visible.</li>
         </ul>
       </div>
@@ -539,7 +545,7 @@ td.mcell span{display:block;font-size:13px;color:var(--ink-2);padding:1.5px 0}
     <span class="pill" id="learnCount"></span>
     <button class="ghost" id="themeBtn4">◐</button>
     <a class="ghost btnlink" id="learnPackBtn" href="CBAP-Technique-Pack.pptx" download>↓ PowerPoint pack</a>
-    <a class="ghost btnlink" id="learnZipBtn" href="CBAP-Technique-Templates.zip" download>↓ All 150 templates</a>
+    <a class="ghost btnlink" id="learnZipBtn" href="CBAP-Technique-Templates.zip" download>↓ Every template</a>
     <button class="ghost" id="learnPrintBtn">Print / save PDF</button>
     <button class="ghost" id="learnBackBtn">← Setup</button>
     <button class="primary" id="learnDrillBtn">Drill these →</button>
@@ -13897,6 +13903,20 @@ function startSession(){
   }
 }
 
+/* Matches the file names make-files.js writes. */
+function fileBase(t){
+  const n = t.n.length < 5 ? t.n.replace(/^10\.(\d)$/, "10.0$1") : t.n;
+  return n.replace("10.", "") + "-" +
+    t.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+/* The download follows the tab: whichever half is on screen is what you get. */
+function downloads(t, half){
+  const b = "templates/" + fileBase(t) + "-" + half;
+  const one = (ext, label) => `<a href="${b}.${ext}" download>${label}</a>`;
+  return `<div class="vdl"><span>Download this ${half === "example" ? "worked example" : "blank template"}</span>` +
+    one("pptx", "PowerPoint") + one("docx", "Word") + one("xlsx", "Excel") + `</div>`;
+}
+
 /* ---------- learn view ---------- */
 function openLearn(){
   const chosen = TECHNIQUES.filter(t => S.techs.has(t.n + " " + t.name));
@@ -13926,8 +13946,8 @@ function openLearn(){
         <div class="conf">${esc(t.confused)}</div>
         ${t.visual ? `<div class="lbl">What it produces</div>
           ${t.template ? `<div class="seg vtoggle"><button class="on" data-v="ex">Worked example</button><button data-v="tpl">Blank template</button></div>` : ""}
-          <div class="vpane" data-v="ex">${exhibitHTML({exhibit: t.visual})}</div>
-          ${t.template ? `<div class="vpane hidden" data-v="tpl">${exhibitHTML({exhibit: t.template})}</div>` : ""}` : ""}
+          <div class="vpane" data-v="ex">${exhibitHTML({exhibit: t.visual})}${downloads(t, "example")}</div>
+          ${t.template ? `<div class="vpane hidden" data-v="tpl">${exhibitHTML({exhibit: t.template})}${downloads(t, "template")}</div>` : ""}` : ""}
         ${t.mechanics ? `<div class="lbl">Mechanics</div>
           <table class="mech"><tbody>${t.mechanics.map(m => `<tr>
             <td class="mt">${esc(m.term)}</td><td class="mf">${esc(m.formula)}</td><td>${esc(m.note)}</td>

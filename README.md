@@ -118,7 +118,7 @@ interleaved so no two consecutive questions come from the same area. There is no
 | `techniques.json` | The 50 BABOK v3 techniques used by the learn view |
 | `build.js` | Validates the data, embeds it, and rebuilds every download |
 | `scenario.json` | One engagement worked across 16 techniques, with the hand-offs between them |
-| `make-files.js` | One .pptx, .docx and .xlsx per technique — 150 files plus a zip |
+| `make-files.js` | Worked example and blank template, per technique, per format — 300 files plus a zip |
 | `make-scenario.js` | The scenario walkthrough in all three formats |
 | `ooxml.js` | Shared ZIP and escaping for all three writers |
 | `docx-lib.js` / `xlsx-lib.js` | Minimal Word and Excel writers, no dependencies |
@@ -269,16 +269,19 @@ path. To host your own copy, enable GitHub Pages on a fork and point it at the d
 
 | What | Where |
 |---|---|
-| **[Every technique, three formats](https://business-analyst-services.github.io/cbap-exam-simulator/CBAP-Technique-Templates.zip)** | 150 files — one `.pptx`, `.docx` and `.xlsx` per technique |
+| **[Every template](https://business-analyst-services.github.io/cbap-exam-simulator/CBAP-Technique-Templates.zip)** | 300 files — worked example and blank template, each as `.pptx`, `.docx` and `.xlsx` |
 | **[The 102-slide pack](https://business-analyst-services.github.io/cbap-exam-simulator/CBAP-Technique-Pack.pptx)** | All 50 techniques in one deck |
 | **[Scenario walkthrough](https://business-analyst-services.github.io/cbap-exam-simulator/CBAP-Scenario-Walkthrough.pptx)** | One engagement, 16 techniques ([Word](https://business-analyst-services.github.io/cbap-exam-simulator/CBAP-Scenario-Walkthrough.docx) · [Excel](https://business-analyst-services.github.io/cbap-exam-simulator/CBAP-Scenario-Walkthrough.xlsx)) |
 
 Every one is rebuilt by `node build.js` from the same JSON the app embeds, so nothing drifts.
 
-### One file per technique
+### One file per technique, per half
 
-Each is self-contained — the worked example and the blank template for that technique alone — so it
-can be handed to someone without the other 49. Named `12-data-dictionary.docx` and so on.
+Every technique card in the app carries its own download, and **the button follows the tab**: on the
+worked example tab you get the worked example, on the blank template tab you get the blank. Named
+`12-data-dictionary-example.docx` and `12-data-dictionary-template.docx`.
+
+Each file covers one technique only, so it can be handed to someone without the other 49.
 
 The three formats are not the same artefact three times:
 

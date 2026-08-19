@@ -500,10 +500,12 @@ function buildPack(list) {
 }
 
 /* One technique on its own: just the pair, no front matter. */
-function buildOne(t) {
+function buildOne(t, which) {
   P.resetIds();
   const slides = pair(t);
-  return P.build(slides, { title: t.n + " " + t.name, creator: "Business Analyst Services" });
+  const pick = which === "ex" ? [slides[0]] : which === "tpl" ? [slides[1]] : slides;
+  const suffix = which === "ex" ? " — worked example" : which === "tpl" ? " — blank template" : "";
+  return P.build(pick, { title: t.n + " " + t.name + suffix, creator: "Business Analyst Services" });
 }
 
 /* Render an artefact into an arbitrary rectangle, so callers that are not the

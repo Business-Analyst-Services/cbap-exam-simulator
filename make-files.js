@@ -24,7 +24,7 @@ const pad = n => (n.length < 5 ? n.replace(/^10\.(\d)$/, "10.0$1") : n);
 const baseName = t => pad(t.n).replace("10.", "") + "-" + slug(t.name);
 
 /* ---------- Excel ---------- */
-function xlsxFor(t) {
+function xlsxFor(t, which) {
   const sheet = (x, label) => {
     const g = toGrid(x);
     const rows = [];
@@ -54,15 +54,17 @@ function xlsxFor(t) {
       [{ v: "Tasks", s: X.S.LABEL }, { v: (t.tasks || []).join("  ·  "), s: X.S.CELL }],
       [{ v: "Knowledge areas", s: X.S.LABEL }, { v: (t.kas || []).join(", "), s: X.S.CELL }],
       [],
-      [{ v: "Worked example and blank template are on the next two sheets.", s: X.S.NOTE, span: 2 }]
+      [{ v: which === "ex" ? "The worked example is on the next sheet." : "The blank template is on the next sheet — fill it in.", s: X.S.NOTE, span: 2 }]
     ]
   };
-  return X.build([guide, sheet(t.visual, "Worked example"), sheet(t.template, "Blank template")],
-    { title: t.n + " " + t.name });
+  const half = which === "ex"
+    ? sheet(t.visual, "Worked example")
+    : sheet(t.template, "Blank template");
+  return X.build([guide, half], { title: t.n + " " + t.name });
 }
 
 /* ---------- Word ---------- */
-function docxFor(t) {
+function docxFor(t, which) {
   const C = D.C;
   let b = "";
   b += D.para(t.n + "  " + t.name, { size: 21, bold: true, after: 2 });
@@ -88,8 +90,9 @@ function docxFor(t) {
     return s;
   };
 
-  b += section(t.visual, "Worked example");
-  b += section(t.template, "Blank template — fill this one in");
+  b += which === "ex"
+    ? section(t.visual, "Worked example")
+    : section(t.template, "Blank template — fill this one in");
   b += D.para((t.tasks || []).length ? "Tasks that use it: " + t.tasks.join("  ·  ") : "",
     { size: 9, color: C.muted, before: 6 });
   b += D.para("CBAP® Technique Pack · BABOK® Guide v3 · business-analyst.services · not affiliated with IIBA®",
@@ -101,16 +104,20 @@ function docxFor(t) {
 fs.rmSync(OUTDIR, { recursive: true, force: true });
 fs.mkdirSync(OUTDIR, { recursive: true });
 
+/* Two files per technique per format: the worked example and the blank
+   template separately, so a download matches the tab you are looking at. */
 const entries = [];
-let bytes = 0;
+let bytes = 0, count = 0;
 techs.forEach(t => {
   const base = baseName(t);
-  const made = [["pptx", PPT.buildOne(t)], ["docx", docxFor(t)], ["xlsx", xlsxFor(t)]];
-  made.forEach(([ext, buf]) => {
-    const name = base + "." + ext;
-    fs.writeFileSync(path.join(OUTDIR, name), buf);
-    entries.push({ name: "CBAP technique templates/" + name, data: buf });
-    bytes += buf.length;
+  [["ex", "example"], ["tpl", "template"]].forEach(([which, label]) => {
+    const made = [["pptx", PPT.buildOne(t, which)], ["docx", docxFor(t, which)], ["xlsx", xlsxFor(t, which)]];
+    made.forEach(([ext, buf]) => {
+      const name = base + "-" + label + "." + ext;
+      fs.writeFileSync(path.join(OUTDIR, name), buf);
+      entries.push({ name: "CBAP technique templates/" + name, data: buf });
+      bytes += buf.length; count++;
+    });
   });
 });
 
@@ -119,10 +126,12 @@ const index = ["CBAP Technique Templates", "",
   "  .pptx  the artefact drawn as PowerPoint shapes - swimlanes, use cases,",
   "         state machines and sequence diagrams keep their notation.",
   "  .docx  the same artefact as a Word table you type into.",
-  "  .xlsx  the same artefact as a worksheet, one sheet for the worked example",
-  "         and one for the blank template.", "",
-  "Each file holds the worked example and the blank template for that technique",
-  "only, so it can be handed on without the other 49.", "",
+  "  .xlsx  the same artefact as a worksheet, with an About sheet beside it.", "",
+  "Two files per technique per format:", "",
+  "  -example   the artefact filled in",
+  "  -template  the same artefact blank, for you to complete", "",
+  "Each file covers one technique only, so it can be handed on without the",
+  "other 49.", "",
   "Generated from techniques.json. Not affiliated with IIBA(R).", "",
   "----", ""];
 techs.forEach(t => index.push(baseName(t).padEnd(44) + t.n + "  " + t.name));
@@ -140,6 +149,6 @@ fs.writeFileSync(path.join(dir, "CBAP-Technique-Templates.zip"), zipBuf);
 
 console.log("templates/ written");
 console.log("  techniques   " + techs.length);
-console.log("  files        " + techs.length * 3 + " (" + techs.length + " each of pptx, docx, xlsx)");
+console.log("  files        " + count + " (example + template, in each of pptx, docx, xlsx)");
 console.log("  loose size   " + (bytes / 1024 / 1024).toFixed(1) + " MB");
 console.log("  zip          " + (zipBuf.length / 1024 / 1024).toFixed(1) + " MB");
