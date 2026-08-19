@@ -25,7 +25,9 @@ retaking a set is not a memory test. Untimed, with the clock counting up.
 
 **Technique lab** — the 50 BABOK v3 techniques, in two halves. *Learn* gives you a card per
 technique: what it is for, when to reach for it, the technique it is most often confused with, and
-the tasks that use it. *Drill* runs technique-filtered items with feedback after every question,
+the tasks that use it. Financial Analysis goes further, breaking into eight worked concepts — one
+idea at a time, each with a short plain-English line, a small data table and a dashboard showing
+what the numbers do. *Drill* runs technique-filtered items with feedback after every question,
 drawn from a dedicated technique bank plus every item in the main 120 that turns on a named
 technique. Financial Analysis, Estimation, Risk and KPI items carry **data exhibits** — tables and
 dashboards you work from rather than prose you recognise — and the summary scores you by technique
@@ -175,11 +177,20 @@ else neutral. A falling cost is therefore `up`.
   "tasks": ["6.4 Define Change Strategy"],
   "kas": [6, 7, 8],
   "mechanics": [{ "term": "Net present value (NPV)", "formula": "…", "note": "…" }],
+  "explainers": [{ "term": "…", "formula": "…", "plain": "…", "data": { … }, "chart": { … } }],
   "worked": "A change costs $400,000 up front and returns $180,000 a year …"
 }
 ```
 
-`mechanics` and `worked` are optional and carried only by the techniques with arithmetic to teach.
+`mechanics`, `explainers` and `worked` are optional and carried only by the techniques with
+arithmetic to teach.
+
+**Explainers** are the visual route: one concept per block, each with a plain-English sentence, the
+formula, a `data` table and a `chart` dashboard built from the same exhibit shapes questions use.
+Financial Analysis has eight — discount factor, present value, NPV, payback, ROI, IRR, break-even
+and total cost of ownership — and the card opens with a jump index across them. Every figure in
+them is arithmetically consistent; the NPV block deliberately shows an option with a $20,000 raw
+surplus and a *negative* net present value, because that is the trap the exam sets.
 
 ## Running it
 

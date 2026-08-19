@@ -37,6 +37,30 @@ for (let i = 1; i < questions.length; i++) {
   if (questions[i].ka === questions[i - 1].ka) errors.push(`items ${i} and ${i + 1} share a knowledge area`);
 }
 
+/* Exhibits appear on questions and inside technique explainers, so check them in one place. */
+function checkExhibit(x, where) {
+  if (!["table", "dashboard"].includes(x.type)) { errors.push(`${where}: exhibit type "${x.type}"`); return; }
+  if (x.type === "table") {
+    if (!x.cols || !x.rows) { errors.push(`${where}: table exhibit missing cols or rows`); return; }
+    x.rows.forEach((r, i) => {
+      if (r.length !== x.cols.length) errors.push(`${where}: table row ${i + 1} has ${r.length} cells, header has ${x.cols.length}`);
+    });
+    if (x.align && x.align.length !== x.cols.length) errors.push(`${where}: align has ${x.align.length} entries, header has ${x.cols.length}`);
+  }
+  if (x.type === "dashboard") {
+    if (!x.tiles && !x.bars) { errors.push(`${where}: dashboard exhibit is empty`); return; }
+    (x.tiles || []).forEach((t, i) => {
+      if (!t.label || t.value === undefined) errors.push(`${where}: tile ${i + 1} missing label or value`);
+      if (t.dir && !["up", "down", "flat"].includes(t.dir)) errors.push(`${where}: tile ${i + 1} has dir "${t.dir}" (expected up, down or flat)`);
+    });
+    (x.bars || []).forEach((b, i) => {
+      if (!b.label) errors.push(`${where}: bar ${i + 1} missing label`);
+      if (typeof b.value !== "number") errors.push(`${where}: bar ${i + 1} value is not a number`);
+      if (b.max !== undefined && typeof b.max !== "number") errors.push(`${where}: bar ${i + 1} max is not a number`);
+    });
+  }
+}
+
 const all = questions.concat(techQuestions);
 all.forEach(q => {
   const where = `item ${q.n}`;
@@ -45,15 +69,16 @@ all.forEach(q => {
   if (q.options && q.options.some(o => !o.text || !o.verdict)) errors.push(`${where}: option missing text or verdict`);
   ["ka", "kaName", "task", "trap", "stem", "why"].forEach(f => { if (!q[f]) errors.push(`${where}: missing ${f}`); });
   (q.techniques || []).forEach(k => { if (!keys.has(k)) errors.push(`${where}: unknown technique "${k}"`); });
-  if (q.exhibit) {
-    const x = q.exhibit;
-    if (!["table", "dashboard"].includes(x.type)) errors.push(`${where}: exhibit type "${x.type}"`);
-    if (x.type === "table") {
-      if (!x.cols || !x.rows) errors.push(`${where}: table exhibit missing cols or rows`);
-      else x.rows.forEach((r, i) => { if (r.length !== x.cols.length) errors.push(`${where}: table row ${i + 1} has ${r.length} cells, header has ${x.cols.length}`); });
-    }
-    if (x.type === "dashboard" && !x.tiles && !x.bars) errors.push(`${where}: dashboard exhibit is empty`);
-  }
+  if (q.exhibit) checkExhibit(q.exhibit, where);
+});
+
+techniques.forEach(t => {
+  (t.explainers || []).forEach((x, i) => {
+    const where = `${t.n} explainer ${i + 1}`;
+    ["term", "formula", "plain"].forEach(f => { if (!x[f]) errors.push(`${where}: missing ${f}`); });
+    if (!x.data) errors.push(`${where}: missing data table`); else checkExhibit(x.data, where + " data");
+    if (!x.chart) errors.push(`${where}: missing dashboard`); else checkExhibit(x.chart, where + " chart");
+  });
 });
 
 techQuestions.forEach(q => {

@@ -158,17 +158,169 @@
   "confused": "Financial analysis values what is already forecast; estimation produces the forecast. And a positive return is not the same as the best option: the exam repeatedly offers an option that is profitable but beaten by an alternative.",
   "tasks": ["6.4 Define Change Strategy", "7.6 Analyze Potential Value and Recommend Solution", "8.5 Recommend Actions to Increase Solution Value"],
   "kas": [6, 7, 8],
-  "mechanics": [
-   {"term": "Discount factor", "formula": "1 / (1 + r)^t", "note": "The multiplier that converts a sum arriving in year t into today's money at discount rate r. At 10%, a dollar in year 3 is worth about 75 cents now."},
-   {"term": "Present value (PV)", "formula": "cash flow in year t x discount factor for year t", "note": "Discount each year separately, then add. Never discount a total using a single middle year."},
-   {"term": "Net present value (NPV)", "formula": "sum of discounted benefits - sum of discounted costs", "note": "Positive means the option beats the cost of capital. Between two positive options, the larger NPV wins unless capital is rationed."},
-   {"term": "Payback period", "formula": "years until cumulative net cash flow turns positive", "note": "Measures how long the money is exposed, not how much is made. It ignores everything after the break-even point, which is why a short payback can still be the worse option."},
-   {"term": "Return on investment (ROI)", "formula": "(net benefit / investment) x 100", "note": "A ratio, so it is blind to scale. A 200% return on $10k is worth less in absolute terms than a 40% return on $500k."},
-   {"term": "Internal rate of return (IRR)", "formula": "the discount rate at which NPV = 0", "note": "Compare it against the hurdle rate. Above the hurdle, the option clears; below it, the option destroys value even if the raw benefits exceed the raw costs."},
-   {"term": "Break-even point", "formula": "fixed costs / (unit price - unit variable cost)", "note": "The volume at which contribution covers fixed cost. Rising variable cost moves break-even far more sharply than rising fixed cost."},
-   {"term": "Total cost of ownership", "formula": "acquisition + operating + support + decommissioning over the whole life", "note": "The licence fee is rarely the decision. Items that quote only the purchase price are usually testing whether you asked for the running cost."}
-  ],
-  "worked": "A change costs $400,000 up front and returns $180,000 a year for three years. At a 10% discount rate the benefits are worth 180,000/1.1 = $163,636, then 180,000/1.21 = $148,760, then 180,000/1.331 = $135,236 — $447,632 in total. NPV is $47,632, so the option clears the cost of capital. Undiscounted payback, however, falls during year 3, because $360,000 has been recovered by the end of year 2. The same option therefore looks strong on NPV and slow on payback, and which one governs depends on whether the constraint is value or cash exposure."
+  "explainers": [
+   {
+    "term": "Discount factor",
+    "formula": "1 / (1 + r)^t",
+    "plain": "Money later is worth less than money now. The factor says how much less.",
+    "data": {
+     "type": "table", "title": "What $1,000 is worth today, at a 10% discount rate",
+     "cols": ["Arrives in", "Factor", "Worth today"], "align": ["left", "num", "num"],
+     "rows": [["Year 1", "0.909", "$909"], ["Year 2", "0.826", "$826"], ["Year 3", "0.751", "$751"], ["Year 4", "0.683", "$683"], ["Year 5", "0.621", "$621"]]
+    },
+    "chart": {
+     "type": "dashboard", "title": "The same $1,000, shrinking as it moves further out",
+     "tiles": [{"label": "Discount rate", "value": "10%", "delta": "cost of capital", "dir": "flat"},
+               {"label": "$1,000 in year 5", "value": "$621", "delta": "loses $379 to time", "dir": "down"}],
+     "bars": [{"label": "Year 1", "value": 909, "max": 1000, "note": "$909"},
+              {"label": "Year 2", "value": 826, "max": 1000, "note": "$826"},
+              {"label": "Year 3", "value": 751, "max": 1000, "note": "$751"},
+              {"label": "Year 4", "value": 683, "max": 1000, "note": "$683"},
+              {"label": "Year 5", "value": 621, "max": 1000, "note": "$621"}],
+     "note": "Bars are scaled against the full $1,000."
+    }
+   },
+   {
+    "term": "Present value",
+    "formula": "cash flow x its own year's factor",
+    "plain": "Discount each year on its own, then add. Never discount a total using one middle year.",
+    "data": {
+     "type": "table", "title": "One $50,000 benefit, three possible timings",
+     "cols": ["Benefit", "Arrives", "Worth today"], "align": ["left", "left", "num"],
+     "rows": [["$50,000", "Year 1", "$45,455"], ["$50,000", "Year 3", "$37,566"], ["$50,000", "Year 5", "$31,046"]],
+     "note": "Identical benefit. Only the timing differs."
+    },
+    "chart": {
+     "type": "dashboard", "title": "What waiting costs",
+     "tiles": [{"label": "Arrives year 1", "value": "$45,455", "delta": "best case", "dir": "up"},
+               {"label": "Arrives year 5", "value": "$31,046", "delta": "$14,409 less", "dir": "down"}],
+     "bars": [{"label": "Year 1", "value": 45455, "max": 50000, "note": "$45,455"},
+              {"label": "Year 3", "value": 37566, "max": 50000, "note": "$37,566"},
+              {"label": "Year 5", "value": 31046, "max": 50000, "note": "$31,046"}]
+    }
+   },
+   {
+    "term": "Net present value",
+    "formula": "discounted benefits - discounted costs",
+    "plain": "Positive means it beat the cost of capital. A raw surplus can still be a negative NPV.",
+    "data": {
+     "type": "table", "title": "$100,000 now, returning $40,000 a year for three years",
+     "cols": ["Year", "Cash flow", "Factor", "Present value"], "align": ["left", "num", "num", "num"],
+     "rows": [["0", "($100,000)", "1.000", "($100,000)"],
+              ["1", "$40,000", "0.909", "$36,364"],
+              ["2", "$40,000", "0.826", "$33,058"],
+              ["3", "$40,000", "0.751", "$30,053"],
+              ["Net", "+$20,000 raw", "", "($526)"]]
+    },
+    "chart": {
+     "type": "dashboard", "title": "Looks profitable, is not",
+     "tiles": [{"label": "Raw surplus", "value": "+$20,000", "delta": "benefits less cost", "dir": "up"},
+               {"label": "Net present value", "value": "-$526", "delta": "fails at 10%", "dir": "down"}],
+     "bars": [{"label": "Benefits, raw", "value": 120000, "max": 120000, "note": "$120,000"},
+              {"label": "Benefits, discounted", "value": 99474, "max": 120000, "note": "$99,474"},
+              {"label": "Cost today", "value": 100000, "max": 120000, "note": "$100,000"}],
+     "note": "Discounting drops the benefits just below the cost line."
+    }
+   },
+   {
+    "term": "Payback period",
+    "formula": "time until cumulative cash flow turns positive",
+    "plain": "How long the money is exposed. It says nothing at all about what happens afterwards.",
+    "data": {
+     "type": "table", "title": "$300,000 out, $120,000 back each year",
+     "cols": ["Year", "Cash flow", "Cumulative"], "align": ["left", "num", "num"],
+     "rows": [["0", "($300,000)", "($300,000)"], ["1", "$120,000", "($180,000)"],
+              ["2", "$120,000", "($60,000)"], ["3", "$120,000", "$60,000"]],
+     "note": "Crosses zero halfway through year 3."
+    },
+    "chart": {
+     "type": "dashboard", "title": "Recovery against the $300,000 outlay",
+     "tiles": [{"label": "Payback", "value": "2.5 years", "delta": "outlay recovered", "dir": "up"},
+               {"label": "Ignored by payback", "value": "everything after", "delta": "year 3 onwards", "dir": "flat"}],
+     "bars": [{"label": "End of year 1", "value": 120000, "max": 300000, "note": "$120,000 of $300,000"},
+              {"label": "End of year 2", "value": 240000, "max": 300000, "note": "$240,000 of $300,000"},
+              {"label": "End of year 3", "value": 360000, "max": 300000, "note": "$360,000 — recovered"}]
+    }
+   },
+   {
+    "term": "Return on investment",
+    "formula": "(net benefit / investment) x 100",
+    "plain": "A ratio, so it is blind to size. The bigger percentage is often the smaller prize.",
+    "data": {
+     "type": "table", "title": "Two proposals, ranked by ROI",
+     "cols": ["Proposal", "Invested", "Net benefit", "ROI"], "align": ["left", "num", "num", "num"],
+     "rows": [["Loyalty pilot", "$10,000", "$30,000", "300%"], ["Platform rebuild", "$500,000", "$250,000", "50%"]]
+    },
+    "chart": {
+     "type": "dashboard", "title": "The ranking flips depending on what you measure",
+     "tiles": [{"label": "Higher ROI", "value": "Pilot, 300%", "delta": "per dollar invested", "dir": "up"},
+               {"label": "Higher return", "value": "Rebuild, $250,000", "delta": "8x the pilot", "dir": "up"}],
+     "bars": [{"label": "Pilot — ROI", "value": 300, "max": 300, "note": "300%"},
+              {"label": "Rebuild — ROI", "value": 50, "max": 300, "note": "50%"},
+              {"label": "Pilot — net $", "value": 30000, "max": 250000, "note": "$30,000"},
+              {"label": "Rebuild — net $", "value": 250000, "max": 250000, "note": "$250,000"}],
+     "note": "Top two bars share one scale, bottom two another. ROI wins on the ratio, loses on the money."
+    }
+   },
+   {
+    "term": "Internal rate of return",
+    "formula": "the rate at which NPV = 0",
+    "plain": "The rate the option itself earns. Only useful next to what your capital costs.",
+    "data": {
+     "type": "table", "title": "$180,000 now, returning $55,000 a year for four years",
+     "cols": ["Item", "Value"], "align": ["left", "num"],
+     "rows": [["Investment", "$180,000"], ["Benefit each year", "$55,000"], ["Raw total benefit", "$220,000"],
+              ["Raw surplus", "+$40,000"], ["Internal rate of return", "8.5%"], ["Company hurdle rate", "9.0%"]]
+    },
+    "chart": {
+     "type": "dashboard", "title": "Profitable on paper, below the bar",
+     "tiles": [{"label": "Earns", "value": "8.5%", "delta": "internal rate of return", "dir": "flat"},
+               {"label": "Capital costs", "value": "9.0%", "delta": "hurdle rate", "dir": "flat"},
+               {"label": "Verdict", "value": "Reject", "delta": "destroys 0.5% a year", "dir": "down"}],
+     "bars": [{"label": "This option earns", "value": 8.5, "max": 12, "note": "8.5%"},
+              {"label": "Hurdle rate", "value": 9.0, "max": 12, "note": "9.0%"}],
+     "note": "A $40,000 raw surplus does not rescue a return below the cost of capital."
+    }
+   },
+   {
+    "term": "Break-even point",
+    "formula": "fixed costs / (price - unit variable cost)",
+    "plain": "Contribution is the divisor, so losing a dollar of it hurts far more than saving a dollar of overhead.",
+    "data": {
+     "type": "table", "title": "Price $50, fixed costs $200,000",
+     "cols": ["Unit variable cost", "Contribution", "Break-even"], "align": ["left", "num", "num"],
+     "rows": [["$30", "$20", "10,000 units"], ["$35", "$15", "13,333 units"], ["$40", "$10", "20,000 units"]],
+     "note": "Variable cost rises by a third; break-even doubles."
+    },
+    "chart": {
+     "type": "dashboard", "title": "Units needed to cover fixed cost",
+     "tiles": [{"label": "Contribution at $30", "value": "$20", "delta": "10,000 units", "dir": "up"},
+               {"label": "Contribution at $40", "value": "$10", "delta": "20,000 units", "dir": "down"}],
+     "bars": [{"label": "Variable cost $30", "value": 10000, "max": 20000, "note": "10,000 units"},
+              {"label": "Variable cost $35", "value": 13333, "max": 20000, "note": "13,333 units"},
+              {"label": "Variable cost $40", "value": 20000, "max": 20000, "note": "20,000 units"}]
+    }
+   },
+   {
+    "term": "Total cost of ownership",
+    "formula": "acquisition + running + support + disposal",
+    "plain": "The purchase price is rarely the decision. Add what it costs to keep the thing alive.",
+    "data": {
+     "type": "table", "title": "Five-year cost of two shortlisted products",
+     "cols": ["Cost element", "Vendor A", "Vendor B"], "align": ["left", "num", "num"],
+     "rows": [["Licence, once", "$100,000", "$200,000"], ["Running, per year", "$40,000", "$15,000"],
+              ["Running over 5 years", "$200,000", "$75,000"], ["Total", "$300,000", "$275,000"]]
+    },
+    "chart": {
+     "type": "dashboard", "title": "The cheaper licence is the dearer product",
+     "tiles": [{"label": "Cheaper to buy", "value": "Vendor A", "delta": "$100,000 licence", "dir": "flat"},
+               {"label": "Cheaper to own", "value": "Vendor B", "delta": "$25,000 less over 5 years", "dir": "up"}],
+     "bars": [{"label": "Vendor A — total", "value": 300000, "max": 300000, "note": "$300,000"},
+              {"label": "Vendor B — total", "value": 275000, "max": 300000, "note": "$275,000"}],
+     "note": "Vendor A wins on the line item in this year's budget and loses on the money actually spent."
+    }
+   }
+  ]
  },
  {
   "n": "10.21", "name": "Focus Groups", "group": "Elicitation and collaboration",
