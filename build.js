@@ -12,6 +12,7 @@
  */
 const fs = require("fs");
 const path = require("path");
+const { execFileSync } = require("child_process");
 
 const dir = __dirname;
 const HTML = path.join(dir, "index.html");
@@ -214,6 +215,18 @@ if (start !== -1) {
 }
 fs.writeFileSync(HTML, html);
 
+/* The PowerPoint pack is part of the product, not a side artefact: it is
+   generated from the same data, in the same build, so it cannot fall behind. */
+let pack = "skipped";
+try {
+  execFileSync(process.execPath, [path.join(dir, "make-pptx.js")], { stdio: "pipe" });
+  const st = fs.statSync(path.join(dir, "CBAP-Technique-Pack.pptx"));
+  pack = (st.size / 1024).toFixed(0) + " KB";
+} catch (e) {
+  console.error("warning: the PowerPoint pack did not rebuild -", (e.message || "").split("\n")[0]);
+  pack = "FAILED";
+}
+
 const exhibits = techQuestions.filter(q => q.exhibit).length;
 const tagged = questions.filter(q => q.techniques && q.techniques.length).length;
 console.log(`index.html written`);
@@ -221,3 +234,4 @@ console.log(`  exam bank        ${questions.length} items (${tagged} carry techn
 console.log(`  technique bank   ${techQuestions.length} items (${exhibits} with data exhibits)`);
 console.log(`  techniques       ${techniques.length}`);
 console.log(`  drill pool       ${techQuestions.length + tagged} items`);
+console.log(`  powerpoint pack  ${pack}`);

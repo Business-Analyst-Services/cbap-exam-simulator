@@ -116,7 +116,7 @@ interleaved so no two consecutive questions come from the same area. There is no
 | `questions.json` | The 120-item exam bank as data, if you want to build your own front end |
 | `technique-questions.json` | The technique drill bank, including the items that carry data exhibits |
 | `techniques.json` | The 50 BABOK v3 techniques used by the learn view |
-| `build.js` | Embeds the three JSON files into `index.html` and validates them first |
+| `build.js` | Validates the data, embeds it into `index.html`, and rebuilds the PowerPoint pack |
 | `make-pptx.js` | Generates the PowerPoint pack from `techniques.json` |
 | `pptx-lib.js` | Minimal OOXML writer — emits native shapes and tables, no dependencies |
 | `pptx-template/` | The PowerPoint chassis the generator builds on (master, layouts, theme) |
@@ -174,6 +174,11 @@ Canvas actually is — partners tall on the left, value proposition through the 
 on the right, cost and revenue across the foot — rather than as a uniform grid.
 
 Wide exhibits scroll inside their own box; the page itself never scrolls horizontally.
+
+The on-screen artefacts are styled to match the PowerPoint pack — filled header band, banded rows,
+the same spacing — so a technique reads the same whether you meet it in the browser or on a slide.
+The artefact is shown on its own, without a prose lead: the whole point is that the artefact
+explains itself.
 
 ```json
 "exhibit": {
@@ -256,7 +261,9 @@ path. To host your own copy, enable GitHub Pages on a fork and point it at the d
 
 ## The PowerPoint pack
 
-**[Download CBAP-Technique-Pack.pptx](https://business-analyst-services.github.io/cbap-exam-simulator/CBAP-Technique-Pack.pptx)** — 102 slides, generated from `techniques.json`:
+**[Download CBAP-Technique-Pack.pptx](https://business-analyst-services.github.io/cbap-exam-simulator/CBAP-Technique-Pack.pptx)** — 102 slides, generated from `techniques.json`. There is a download button in the technique reference header, next to Print.
+
+The pack is part of the product rather than a side artefact: `build.js` regenerates it every time, from the same data it embeds into `index.html`, so the deck cannot fall behind the app. To build it on its own:
 
 ```bash
 node make-pptx.js
