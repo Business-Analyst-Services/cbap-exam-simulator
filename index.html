@@ -276,7 +276,38 @@ td.mcell span{display:block;font-size:12.5px;color:var(--ink-2);padding:1px 0}
 .fbranch{border-top:1px solid var(--grid);padding:10px 14px;font-size:12.5px;color:var(--ink-2);display:grid;gap:3px}
 .fbranch b{color:var(--ink);font-weight:600}
 
+/* ---- SVG notation ---- */
+.dgm{display:block;margin:13px 14px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+.dgm text{fill:var(--ink)}
+.dgm .sm{fill:var(--ink-2)}
+.dgm .bad{fill:var(--critical)}
+.dgm .box{fill:var(--surface-1);stroke:var(--axis);stroke-width:1.1}
+.dgm .box.term{stroke:var(--ink-2);stroke-width:2}
+.dgm .box.proc{fill:var(--sel);stroke:var(--accent)}
+.dgm .box.ext{fill:var(--plane)}
+.dgm .storefill{fill:var(--plane);stroke:none}
+.dgm .storeline{stroke:var(--axis);stroke-width:1.4;fill:none}
+.dgm .lane{fill:var(--plane)} .dgm .lanealt{fill:var(--surface-1)}
+.dgm .sep{stroke:var(--grid);stroke-width:1}
+.dgm .edge{stroke:var(--axis);stroke-width:1.3;fill:none}
+.dgm .edge.thin{stroke-width:1}
+.dgm .edge.dash{stroke-dasharray:4 3}
+.dgm .edge.bad,.dgm path.bad{stroke:var(--critical)}
+.dgm .ahd{fill:var(--axis);stroke:none}
+.dgm .ahdn{fill:var(--critical);stroke:none}
+.dgm .ahdo{fill:none;stroke:var(--axis);stroke-width:1.3}
+.dgm .bound{fill:none;stroke:var(--axis);stroke-width:1.1;stroke-dasharray:5 4}
+.dgm .fig{fill:none;stroke:var(--ink-2);stroke-width:1.6;stroke-linecap:round}
+.dgm .life{stroke:var(--axis);stroke-width:1;stroke-dasharray:3 4}
+.dgm .dot{fill:var(--ink-2)}
+
 .canvasgrid{display:grid;grid-template-columns:repeat(var(--cc,3),1fr);gap:1px;background:var(--grid)}
+/* The real Business Model Canvas: partners tall left, value proposition centre,
+   segments tall right, cost and revenue across the foot. */
+.canvasgrid.bmc{grid-template-columns:repeat(5,1fr);
+  grid-template-areas:"b1 b2 b3 b4 b6" "b1 b9 b3 b5 b6" "b8 b8 b8 b7 b7"}
+@media (max-width:760px){ .canvasgrid.bmc{grid-template-columns:1fr;grid-template-areas:none}
+  .canvasgrid.bmc .cpanel{grid-area:auto !important} }
 .cpanel{background:var(--surface-1);padding:10px 12px;min-height:74px}
 .cplab{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-deep);font-weight:650;margin-bottom:5px}
 .cpitem{font-size:12.5px;color:var(--ink-2);padding:1px 0}
@@ -4816,7 +4847,6 @@ const TECHNIQUES = [
   "visual": {
    "type": "canvas",
    "title": "Trade publisher — moving from distributor print to direct digital",
-   "cols": 3,
    "lead": "Five of the nine blocks move at once. A fulfilment process map shows one of them.",
    "panels": [
     {
@@ -4881,12 +4911,13 @@ const TECHNIQUES = [
      ]
     }
    ],
-   "note": "The publisher does not hold its own subscriber list. That is the change strategy's first problem."
+   "note": "The publisher does not hold its own subscriber list. That is the change strategy's first problem.",
+   "layout": "bmc"
   },
   "template": {
    "type": "canvas",
    "title": "Business Model Canvas — blank template",
-   "cols": 3,
+   "layout": "bmc",
    "panels": [
     {
      "label": "Key partners",
@@ -5341,74 +5372,103 @@ const TECHNIQUES = [
   "use": "Reach for it when the concern is movement and custody of information rather than the order in which people act.",
   "confused": "Data flow diagrams follow the data; process models follow the work. An item about who does what next is process modelling even when systems are involved.",
   "visual": {
-   "type": "flow",
+   "type": "dfd",
    "title": "Where a referral's patient identifiers travel",
-   "lead": "Follows the data, not the work. Stores and third parties are the point.",
-   "steps": [
+   "lead": "Different shapes, different things: squares are outside the boundary, rounded shapes transform, open bars store. A process model has none of this.",
+   "nodes": [
     {
-     "actor": "External",
-     "label": "GP practice",
-     "note": "Sends referral + identifiers"
+     "kind": "external",
+     "label": "GP practice"
     },
     {
-     "actor": "Process",
-     "label": "Referral intake",
-     "note": "Validates, assigns URN"
+     "kind": "process",
+     "label": "Referral intake"
     },
     {
-     "actor": "Store",
-     "label": "Referral register",
-     "note": "Full identifiers, retained 7 years"
+     "kind": "store",
+     "label": "Referral register"
     },
     {
-     "actor": "Process",
-     "label": "Appointment scheduling",
-     "note": "Outsourced since 2025"
+     "kind": "process",
+     "label": "Appointment scheduling"
     },
     {
-     "actor": "External",
-     "label": "Scheduling vendor",
-     "note": "Receives name, DOB, phone"
+     "kind": "external",
+     "label": "Scheduling vendor"
     }
    ],
-   "branches": [
+   "flows": [
     {
-     "from": "Referral register",
-     "label": "→ nightly extract to the data warehouse, identifiers not masked"
+     "from": 0,
+     "to": 1,
+     "label": "referral, identifiers"
+    },
+    {
+     "from": 1,
+     "to": 2,
+     "label": "URN, full identifiers"
+    },
+    {
+     "from": 2,
+     "to": 3,
+     "label": "patient record"
+    },
+    {
+     "from": 3,
+     "to": 4,
+     "label": "name, DOB, phone"
     }
-   ]
+   ],
+   "note": "The register also feeds a nightly warehouse extract, unmasked. That store is where the privacy question actually lands."
   },
   "template": {
-   "type": "flow",
+   "type": "dfd",
    "title": "Data Flow Diagrams — blank template",
-   "steps": [
+   "nodes": [
     {
-     "label": "Step 1",
-     "note": "",
-     "actor": "External"
+     "kind": "external",
+     "label": ""
     },
     {
-     "label": "Step 2",
-     "note": "",
-     "actor": "Process"
+     "kind": "process",
+     "label": ""
     },
     {
-     "label": "Step 3",
-     "note": "",
-     "actor": "Store"
+     "kind": "store",
+     "label": ""
     },
     {
-     "label": "Step 4",
-     "note": "",
-     "actor": "Process"
+     "kind": "process",
+     "label": ""
     },
     {
-     "label": "Step 5",
-     "note": "",
-     "actor": "External"
+     "kind": "external",
+     "label": ""
     }
    ],
-   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
+   "flows": [
+    {
+     "from": 0,
+     "to": 1,
+     "label": ""
+    },
+    {
+     "from": 1,
+     "to": 2,
+     "label": ""
+    },
+    {
+     "from": 2,
+     "to": 3,
+     "label": ""
+    },
+    {
+     "from": 3,
+     "to": 4,
+     "label": ""
+    }
+   ],
+   "note": "Label every arrow with the data it carries. An unlabelled arrow is the one nobody has checked."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -8340,82 +8400,93 @@ const TECHNIQUES = [
   "use": "Reach for it when order, branching or hand-off is the substance of the problem, and prose has stopped being able to carry it.",
   "confused": "Process modelling shows the flow of work; use cases show an actor achieving a goal with the solution; data flow diagrams follow information. Hand-offs between people point to process.",
   "visual": {
-   "type": "flow",
-   "title": "Parcel return, six parties, and where it breaks",
-   "lead": "Hand-offs between actors are the substance, which is why a use case would fragment it.",
+   "type": "swimlane",
+   "title": "Parcel return — six parties, and where it breaks",
+   "lead": "Lanes make the hand-offs visible. Every arrow crossing a lane is a change of custody, and both failures below sit on one.",
+   "lanes": [
+    "Customer",
+    "Courier",
+    "Warehouse",
+    "Refurbisher",
+    "Finance"
+   ],
    "steps": [
     {
-     "actor": "Customer",
-     "label": "Lodges return"
+     "lane": 0,
+     "label": "Lodge return"
     },
     {
-     "actor": "Courier",
-     "label": "Collects"
+     "lane": 1,
+     "label": "Collect parcel"
     },
     {
-     "actor": "Warehouse inwards",
-     "label": "Receives and inspects"
+     "lane": 2,
+     "label": "Receive and inspect"
     },
     {
-     "actor": "Refurbisher",
-     "label": "Assesses"
+     "lane": 3,
+     "label": "Assess condition"
     },
     {
-     "actor": "Warehouse stock",
-     "label": "Restocks or scraps"
+     "lane": 2,
+     "label": "Restock or scrap"
     },
     {
-     "actor": "Finance",
-     "label": "Refunds"
+     "lane": 4,
+     "label": "Issue refund"
     }
    ],
-   "branches": [
+   "flows": [
     {
-     "from": "Receives and inspects",
-     "label": "rejects → back to courier, and the customer is not told"
+     "from": 2,
+     "to": 1,
+     "label": "rejected at inwards — customer never told"
     },
     {
-     "from": "Assesses",
-     "label": "rejects → scrap, but finance has already refunded"
+     "from": 3,
+     "to": 5,
+     "label": "scrapped after the refund was paid"
     }
-   ]
+   ],
+   "note": "A use case would cut this into six disconnected actor goals and lose exactly the hand-offs that are the problem."
   },
   "template": {
-   "type": "flow",
+   "type": "swimlane",
    "title": "Process Modelling — blank template",
+   "lanes": [
+    "Lane 1",
+    "Lane 2",
+    "Lane 3",
+    "Lane 4",
+    "Lane 5"
+   ],
    "steps": [
     {
-     "label": "Step 1",
-     "note": "",
-     "actor": ""
+     "lane": 0,
+     "label": "Step 1"
     },
     {
-     "label": "Step 2",
-     "note": "",
-     "actor": ""
+     "lane": 1,
+     "label": "Step 2"
     },
     {
-     "label": "Step 3",
-     "note": "",
-     "actor": ""
+     "lane": 2,
+     "label": "Step 3"
     },
     {
-     "label": "Step 4",
-     "note": "",
-     "actor": ""
+     "lane": 3,
+     "label": "Step 4"
     },
     {
-     "label": "Step 5",
-     "note": "",
-     "actor": ""
+     "lane": 2,
+     "label": "Step 5"
     },
     {
-     "label": "Step 6",
-     "note": "",
-     "actor": ""
+     "lane": 4,
+     "label": "Step 6"
     }
    ],
-   "note": "Name the actor above each step, and start a new box wherever the work changes hands."
+   "note": "Name a lane per party. Every arrow crossing a lane is a hand-off — those are where the work goes wrong."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -9176,64 +9247,84 @@ const TECHNIQUES = [
   "use": "Reach for it when timing, ordering and the exact exchange between components decide whether the behaviour is correct.",
   "confused": "Sequence diagrams order messages between components; process models order activities performed by people and systems; state models track what an object becomes. Messages, work, or status is the three-way split.",
   "visual": {
-   "type": "flow",
+   "type": "sequence",
    "title": "The race that only appears under load",
-   "lead": "Ordered messages between components. A process model has no time axis, which is why it did not help.",
-   "steps": [
+   "lead": "Time runs down the page. The defect is an ordering fault, which is why the process model could not show it — a process model has no time axis.",
+   "participants": [
+    "Gateway",
+    "Authorisation",
+    "Fraud service",
+    "Ledger"
+   ],
+   "messages": [
     {
-     "actor": "1",
-     "label": "Gateway → Authorisation",
-     "note": "authorise(txn) — blocking"
+     "from": 0,
+     "to": 1,
+     "label": "authorise(txn)"
     },
     {
-     "actor": "2",
-     "label": "Gateway → Fraud service",
-     "note": "score(txn) — async, no wait"
+     "from": 1,
+     "to": 0,
+     "label": "approved",
+     "async": true
     },
     {
-     "actor": "3",
-     "label": "Gateway → Ledger",
-     "note": "post(txn) — fires immediately"
+     "from": 0,
+     "to": 2,
+     "label": "score(txn) — does not wait",
+     "async": true
     },
     {
-     "actor": "4",
-     "label": "Fraud service → Gateway",
-     "note": "decision arrives, sometimes after step 3"
+     "from": 0,
+     "to": 3,
+     "label": "post(txn)"
+    },
+    {
+     "from": 2,
+     "to": 0,
+     "label": "decision arrives after posting",
+     "late": true
     }
    ],
-   "branches": [
-    {
-     "from": "Gateway → Ledger",
-     "label": "— posting before the fraud reply is the defect. Load widens the window; it does not cause it."
-    }
-   ]
+   "note": "Load widens the window between the last two messages. It does not cause the fault."
   },
   "template": {
-   "type": "flow",
+   "type": "sequence",
    "title": "Sequence Diagrams — blank template",
-   "steps": [
+   "participants": [
+    "Participant 1",
+    "Participant 2",
+    "Participant 3",
+    "Participant 4"
+   ],
+   "messages": [
     {
-     "label": "Step 1",
-     "note": "",
-     "actor": "1"
+     "from": 0,
+     "to": 1,
+     "label": ""
     },
     {
-     "label": "Step 2",
-     "note": "",
-     "actor": "2"
+     "from": 1,
+     "to": 0,
+     "label": ""
     },
     {
-     "label": "Step 3",
-     "note": "",
-     "actor": "3"
+     "from": 0,
+     "to": 2,
+     "label": ""
     },
     {
-     "label": "Step 4",
-     "note": "",
-     "actor": "4"
+     "from": 0,
+     "to": 3,
+     "label": ""
+    },
+    {
+     "from": 2,
+     "to": 0,
+     "label": ""
     }
    ],
-   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
+   "note": "Time runs down the page. Mark which calls block and which return later — that gap is where races live."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -9356,76 +9447,125 @@ const TECHNIQUES = [
   "use": "Reach for it when the same object behaves differently depending on where it is in its life, and the rules about what may happen next are the requirement.",
   "confused": "State modelling tracks what an object may become; process modelling tracks what people do. If the stem is full of statuses such as lodged, assessed, withdrawn, it is state.",
   "visual": {
-   "type": "flow",
+   "type": "state",
    "title": "Tribunal case — which statuses may follow which",
-   "lead": "The two disputes were both illegal transitions. A process model showed neither.",
-   "steps": [
+   "lead": "Both disputes were illegal transitions, marked below in red. A process model showed neither, because it describes what staff do, not what the case may become.",
+   "states": [
     {
-     "label": "Lodged",
-     "note": "on registration"
+     "label": "Lodged"
     },
     {
-     "label": "Allocated",
-     "note": "on member assignment"
+     "label": "Allocated"
     },
     {
-     "label": "Listed",
-     "note": "on hearing date set"
+     "label": "Listed"
     },
     {
-     "label": "Reserved",
-     "note": "on hearing completed"
+     "label": "Reserved"
     },
     {
      "label": "Determined",
-     "note": "terminal"
+     "terminal": true
+    },
+    {
+     "label": "Struck out",
+     "terminal": true
     }
    ],
-   "branches": [
+   "transitions": [
     {
-     "from": "Listed",
-     "label": "→ Adjourned → Listed. Permitted."
+     "from": 0,
+     "to": 1,
+     "label": "allocated"
     },
     {
-     "from": "Determined",
-     "label": "→ Adjourned. NOT permitted — this was dispute one."
+     "from": 1,
+     "to": 2,
+     "label": "listed"
     },
     {
-     "from": "Lodged",
-     "label": "→ Struck out → (terminal). Reinstatement NOT permitted — dispute two."
+     "from": 2,
+     "to": 3,
+     "label": "heard"
     },
     {
-     "from": "Allocated",
-     "label": "→ Withdrawn. Permitted at any point before Determined."
+     "from": 3,
+     "to": 4,
+     "label": "determined"
+    },
+    {
+     "from": 3,
+     "to": 2,
+     "label": "adjourned, relisted"
+    },
+    {
+     "from": 1,
+     "to": 5,
+     "label": "struck out"
+    },
+    {
+     "from": 4,
+     "to": 2,
+     "label": "adjourned after determination",
+     "illegal": true
+    },
+    {
+     "from": 5,
+     "to": 1,
+     "label": "reinstated after strike out",
+     "illegal": true
     }
-   ]
+   ],
+   "note": "Specifying the permitted transitions is what prevents the two disputes. Staff diligence was never going to."
   },
   "template": {
-   "type": "flow",
+   "type": "state",
    "title": "State Modelling — blank template",
-   "steps": [
+   "states": [
     {
-     "label": "Step 1",
-     "note": ""
+     "label": "State 1"
     },
     {
-     "label": "Step 2",
-     "note": ""
+     "label": "State 2"
     },
     {
-     "label": "Step 3",
-     "note": ""
+     "label": "State 3"
     },
     {
-     "label": "Step 4",
-     "note": ""
+     "label": "State 4"
     },
     {
-     "label": "Step 5",
-     "note": ""
+     "label": "State 5",
+     "terminal": true
+    },
+    {
+     "label": "State 6",
+     "terminal": true
     }
    ],
-   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
+   "transitions": [
+    {
+     "from": 0,
+     "to": 1,
+     "label": ""
+    },
+    {
+     "from": 1,
+     "to": 2,
+     "label": ""
+    },
+    {
+     "from": 2,
+     "to": 3,
+     "label": ""
+    },
+    {
+     "from": 3,
+     "to": 4,
+     "label": ""
+    }
+   ],
+   "note": "Name the event on every transition. Then ask which transitions are missing, and which should be forbidden."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -9641,66 +9781,112 @@ const TECHNIQUES = [
   "use": "Reach for it when the interaction between an actor and the solution, including everything that can go wrong in it, is the substance of the requirement.",
   "confused": "A use case is goal-oriented interaction with the solution; a process model is the flow of business work. Use cases carry alternate and exception flows, which is usually the discriminating detail in a stem.",
   "visual": {
-   "type": "flow",
-   "title": "Renew a licence online — with the flows that testing found missing",
-   "lead": "The alternates and exceptions are part of the use case, not an afterthought.",
-   "steps": [
+   "type": "usecase",
+   "title": "Renew a licence online",
+   "lead": "Actors sit outside the boundary, goals inside it. What testing found missing were the alternate and exception flows behind these ovals, not the ovals themselves.",
+   "system": "Licensing portal",
+   "actors": [
     {
-     "actor": "Main flow",
-     "label": "1. Identify holder"
+     "name": "Licence holder"
     },
     {
-     "label": "2. Confirm details"
+     "name": "Registry officer"
     },
     {
-     "label": "3. Take payment"
-    },
-    {
-     "label": "4. Issue renewal"
+     "name": "Payment gateway",
+     "side": "right"
     }
    ],
-   "branches": [
+   "cases": [
     {
-     "from": "3. Take payment",
-     "label": "alt — card expired: prompt for another, licence not yet renewed"
+     "label": "Renew a licence"
     },
     {
-     "from": "3. Take payment",
-     "label": "exc — timeout after debit: renewal issued, payment reconciled out of band"
+     "label": "Pay renewal fee"
     },
     {
-     "from": "2. Confirm details",
-     "label": "alt — resumed next day: part-completed renewal restored, payment not retained"
+     "label": "Verify identity"
     },
     {
-     "from": "1. Identify holder",
-     "label": "exc — licence suspended: renewal refused, reason shown, no payment taken"
+     "label": "Refuse renewal"
     }
-   ]
+   ],
+   "links": [
+    {
+     "actor": 0,
+     "case": 0
+    },
+    {
+     "actor": 0,
+     "case": 2
+    },
+    {
+     "actor": 2,
+     "case": 1
+    },
+    {
+     "actor": 1,
+     "case": 3
+    }
+   ],
+   "rels": [
+    {
+     "from": 0,
+     "to": 1,
+     "kind": "include"
+    }
+   ],
+   "note": "Each oval carries a main flow plus its alternates and exceptions: expired card, resumed next day, suspended licence, payment timing out after the debit."
   },
   "template": {
-   "type": "flow",
+   "type": "usecase",
    "title": "Use Cases and Scenarios — blank template",
-   "steps": [
+   "system": "System",
+   "actors": [
     {
-     "label": "Step 1",
-     "note": "",
-     "actor": "Main flow"
+     "name": ""
     },
     {
-     "label": "Step 2",
-     "note": ""
+     "name": ""
     },
     {
-     "label": "Step 3",
-     "note": ""
-    },
-    {
-     "label": "Step 4",
-     "note": ""
+     "name": "",
+     "side": "right"
     }
    ],
-   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
+   "cases": [
+    {
+     "label": ""
+    },
+    {
+     "label": ""
+    },
+    {
+     "label": ""
+    },
+    {
+     "label": ""
+    }
+   ],
+   "links": [
+    {
+     "actor": 0,
+     "case": 0
+    },
+    {
+     "actor": 0,
+     "case": 2
+    },
+    {
+     "actor": 2,
+     "case": 1
+    },
+    {
+     "actor": 1,
+     "case": 3
+    }
+   ],
+   "note": "Actors outside the boundary, goals inside it. If an oval is not a goal an actor would name, it is not a use case."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -12918,6 +13104,203 @@ function primaryTech(q){
   return q.techniques.find(k => S.techs.has(k)) || q.techniques[0];
 }
 
+/* ---------- SVG notation ----------
+   Five of these techniques are separated in the exam by their notation, so the
+   notation is the content. Everything is hand-built SVG: no libraries, themed
+   through the same CSS variables, and laid out from the data at render time. */
+
+const ARROWDEFS = `<defs>
+ <marker id="ah" viewBox="0 0 10 8" refX="9.2" refY="4" markerWidth="7.5" markerHeight="6.5" orient="auto">
+  <path d="M0,0 L10,4 L0,8 z" class="ahd"/></marker>
+ <marker id="ahn" viewBox="0 0 10 8" refX="9.2" refY="4" markerWidth="7.5" markerHeight="6.5" orient="auto">
+  <path d="M0,0 L10,4 L0,8 z" class="ahdn"/></marker>
+ <marker id="aho" viewBox="0 0 10 8" refX="9.2" refY="4" markerWidth="8" markerHeight="7" orient="auto">
+  <path d="M0,0 L10,4 L0,8" class="ahdo"/></marker>
+</defs>`;
+
+function wrapLabel(s, max){
+  const words = String(s == null ? "" : s).split(/\s+/), out = [];
+  let cur = "";
+  words.forEach(w => {
+    if (!cur) cur = w;
+    else if ((cur + " " + w).length <= max) cur += " " + w;
+    else { out.push(cur); cur = w; }
+  });
+  if (cur) out.push(cur);
+  return out;
+}
+/* Vertically centred multi-line SVG text. */
+function svgText(x, y, lines, size, anchor, cls){
+  const lh = size * 1.2, top = y - ((lines.length - 1) * lh) / 2;
+  return lines.map((l, i) =>
+    `<text x="${x}" y="${(top + i * lh).toFixed(1)}" font-size="${size}" text-anchor="${anchor || "middle"}" ` +
+    `dominant-baseline="middle" class="${cls || "sl"}">${esc(l)}</text>`).join("");
+}
+/* Fixed intrinsic size — .xbody scrolls rather than shrinking labels to nothing. */
+function svgBox(w, h, inner){
+  return `<div class="xbody"><svg class="dgm" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" ` +
+    `style="width:${w}px;height:${h}px" role="img">${ARROWDEFS}${inner}</svg></div>`;
+}
+
+/* Swimlanes — one column per step, one band per actor. Cross-lane arrows elbow,
+   which is what makes a hand-off visible instead of implied. */
+function svgSwimlane(x){
+  const lanes = x.lanes, steps = x.steps, back = x.flows || [];
+  const LW = 118, COL = 156, BW = 126, BH = 48, LH = 82, TOP = 6;
+  const W = LW + steps.length * COL + 20;
+  const baseH = TOP + lanes.length * LH;
+  const H = baseH + (back.length ? 24 + back.length * 20 : 10);
+  const cx = i => LW + 15 + i * COL + BW / 2;
+  const cy = l => TOP + l * LH + LH / 2;
+  let s = "";
+  lanes.forEach((ln, i) => {
+    s += `<rect x="0" y="${TOP + i * LH}" width="${W}" height="${LH}" class="${i % 2 ? "lanealt" : "lane"}"/>`;
+    s += svgText(11, cy(i), wrapLabel(ln, 15), 11.5, "start", "sm");
+  });
+  for (let i = 0; i <= lanes.length; i++)
+    s += `<line x1="0" y1="${TOP + i * LH}" x2="${W}" y2="${TOP + i * LH}" class="sep"/>`;
+  s += `<line x1="${LW}" y1="${TOP}" x2="${LW}" y2="${baseH}" class="sep"/>`;
+  steps.forEach((st, i) => {
+    if (i === steps.length - 1) return;
+    const b = steps[i + 1];
+    const x1 = cx(i) + BW / 2, y1 = cy(st.lane), x2 = cx(i + 1) - BW / 2, y2 = cy(b.lane);
+    const mx = (x1 + x2) / 2;
+    s += `<path d="${st.lane === b.lane ? `M${x1},${y1} L${x2},${y2}`
+      : `M${x1},${y1} L${mx},${y1} L${mx},${y2} L${x2},${y2}`}" class="edge" marker-end="url(#ah)"/>`;
+  });
+  back.forEach((f, k) => {
+    const yb = baseH + 16 + k * 20;
+    s += `<path d="M${cx(f.from)},${cy(steps[f.from].lane) + BH / 2} L${cx(f.from)},${yb} ` +
+      `L${cx(f.to)},${yb} L${cx(f.to)},${cy(steps[f.to].lane) + BH / 2}" class="edge bad" marker-end="url(#ahn)"/>`;
+    if (f.label) s += svgText((cx(f.from) + cx(f.to)) / 2, yb - 7, [f.label], 10.5, "middle", "bad");
+  });
+  steps.forEach((st, i) => {
+    s += `<rect x="${cx(i) - BW / 2}" y="${cy(st.lane) - BH / 2}" width="${BW}" height="${BH}" rx="7" class="box"/>`;
+    s += svgText(cx(i), cy(st.lane), wrapLabel(st.label, 18), 11.5, "middle", "sl");
+  });
+  return svgBox(W, H, s);
+}
+
+/* Use case — actors outside, ovals inside a named system boundary. */
+function svgUsecase(x){
+  const L = x.actors.filter(a => a.side !== "right"), R = x.actors.filter(a => a.side === "right");
+  const OW = 186, OH = 46, GAP = 15, BX = 172, BW2 = OW + 34, TOP = 30;
+  const bodyH = x.cases.length * (OH + GAP) + GAP;
+  const H = Math.max(bodyH + TOP + 12, Math.max(L.length, R.length) * 96 + 40);
+  const W = BX + BW2 + 172;
+  const ocy = i => TOP + GAP + i * (OH + GAP) + OH / 2;
+  const acy = (i, n) => (H / 2) - ((n - 1) * 96) / 2 + i * 96;
+  let s = `<rect x="${BX}" y="${TOP - 16}" width="${BW2}" height="${bodyH + 22}" rx="10" class="bound"/>`;
+  s += svgText(BX + BW2 / 2, TOP - 28, [x.system || "System"], 11.5, "middle", "sm");
+  const figure = (fx, fy, name, anchor) => {
+    let g = `<circle cx="${fx}" cy="${fy - 20}" r="8" class="fig"/>`;
+    g += `<path d="M${fx},${fy - 12} L${fx},${fy + 6} M${fx - 11},${fy - 5} L${fx + 11},${fy - 5} ` +
+      `M${fx},${fy + 6} L${fx - 9},${fy + 20} M${fx},${fy + 6} L${fx + 9},${fy + 20}" class="fig"/>`;
+    return g + svgText(fx, fy + 34, wrapLabel(name, 16), 11, "middle", "sm");
+  };
+  L.forEach((a, i) => { s += figure(66, acy(i, L.length), a.name); });
+  R.forEach((a, i) => { s += figure(W - 66, acy(i, R.length), a.name); });
+  (x.links || []).forEach(l => {
+    const a = x.actors[l.actor], isR = a.side === "right";
+    const side = isR ? R : L, idx = side.indexOf(a);
+    const ax = isR ? W - 66 : 66, ay = acy(idx, side.length);
+    const tx = isR ? BX + BW2 : BX, ty = ocy(l.case);
+    s += `<line x1="${isR ? ax - 26 : ax + 26}" y1="${ay}" x2="${tx}" y2="${ty}" class="edge thin"/>`;
+  });
+  x.cases.forEach((c, i) => {
+    s += `<ellipse cx="${BX + BW2 / 2}" cy="${ocy(i)}" rx="${OW / 2}" ry="${OH / 2}" class="box"/>`;
+    s += svgText(BX + BW2 / 2, ocy(i), wrapLabel(c.label, 24), 11.5, "middle", "sl");
+  });
+  (x.rels || []).forEach(r => {
+    s += `<path d="M${BX + BW2 / 2},${ocy(r.from) + OH / 2} L${BX + BW2 / 2},${ocy(r.to) - OH / 2}" ` +
+      `class="edge dash" marker-end="url(#aho)"/>`;
+    s += svgText(BX + BW2 / 2 + 6, (ocy(r.from) + ocy(r.to)) / 2, ["«" + (r.kind || "include") + "»"], 10, "start", "sm");
+  });
+  return svgBox(W, H, s);
+}
+
+/* State machine — legal transitions above, illegal ones marked below in red.
+   The two tribunal disputes were both illegal transitions, so they are drawn. */
+function svgState(x){
+  const SW = 128, SH = 46, GAP = 44, TOP = 54;
+  const W = 34 + x.states.length * (SW + GAP) + 10;
+  const extra = (x.transitions || []).filter(t => Math.abs(t.to - t.from) !== 1 || t.to < t.from || t.illegal);
+  const H = TOP + SH + 34 + extra.length * 30;
+  const sx = i => 34 + i * (SW + GAP) + SW / 2;
+  const my = TOP + SH / 2;
+  let s = `<circle cx="14" cy="${my}" r="6" class="dot"/>`;
+  s += `<line x1="20" y1="${my}" x2="${sx(0) - SW / 2}" y2="${my}" class="edge" marker-end="url(#ah)"/>`;
+  (x.transitions || []).forEach((t, k) => {
+    const straight = t.to === t.from + 1 && !t.illegal;
+    if (straight){
+      const x1 = sx(t.from) + SW / 2, x2 = sx(t.to) - SW / 2;
+      s += `<line x1="${x1}" y1="${my}" x2="${x2}" y2="${my}" class="edge" marker-end="url(#ah)"/>`;
+      if (t.label) s += svgText((x1 + x2) / 2, my - 15, wrapLabel(t.label, 14), 10.5, "middle", "sm");
+    }
+  });
+  extra.forEach((t, k) => {
+    const yb = TOP + SH + 22 + k * 30;
+    const bad = !!t.illegal;
+    s += `<path d="M${sx(t.from)},${TOP + SH} L${sx(t.from)},${yb} L${sx(t.to)},${yb} L${sx(t.to)},${TOP + SH}" ` +
+      `class="edge ${bad ? "bad dash" : ""}" marker-end="url(#${bad ? "ahn" : "ah"})"/>`;
+    s += svgText((sx(t.from) + sx(t.to)) / 2, yb + 11, [(bad ? "✕ " : "") + (t.label || "")], 10.5, "middle", bad ? "bad" : "sm");
+  });
+  x.states.forEach((st, i) => {
+    s += `<rect x="${sx(i) - SW / 2}" y="${TOP}" width="${SW}" height="${SH}" rx="${SH / 2}" ` +
+      `class="box ${st.terminal ? "term" : ""}"/>`;
+    s += svgText(sx(i), my, wrapLabel(st.label, 17), 11.5, "middle", "sl");
+  });
+  return svgBox(W, H, s);
+}
+
+/* Sequence — lifelines down, messages across, ordered top to bottom. */
+function svgSequence(x){
+  const PW = 150, GAP = 26, TOP = 44, ROW = 46;
+  const W = 20 + x.participants.length * (PW + GAP);
+  const H = TOP + x.messages.length * ROW + 40;
+  const px = i => 20 + i * (PW + GAP) + PW / 2;
+  let s = "";
+  x.participants.forEach((p, i) => {
+    s += `<rect x="${px(i) - PW / 2}" y="6" width="${PW}" height="34" rx="7" class="box"/>`;
+    s += svgText(px(i), 23, wrapLabel(p, 20), 11.5, "middle", "sl");
+    s += `<line x1="${px(i)}" y1="40" x2="${px(i)}" y2="${H - 14}" class="life"/>`;
+  });
+  x.messages.forEach((m, i) => {
+    const y = TOP + i * ROW + 22, x1 = px(m.from), x2 = px(m.to);
+    const dir = x2 > x1 ? 1 : -1;
+    s += `<line x1="${x1 + dir * 4}" y1="${y}" x2="${x2 - dir * 4}" y2="${y}" ` +
+      `class="edge ${m.async ? "dash" : ""} ${m.late ? "bad" : ""}" marker-end="url(#${m.late ? "ahn" : m.async ? "aho" : "ah"})"/>`;
+    s += svgText((x1 + x2) / 2, y - 11, wrapLabel(m.label, 30), 10.5, "middle", m.late ? "bad" : "sm");
+  });
+  return svgBox(W, H, s);
+}
+
+/* Data flow — externals square, processes round, stores open-ended. The shapes
+   are the whole point: a DFD follows the data, a process model follows the work. */
+function svgDfd(x){
+  const NW = 148, NH = 62, GAP = 74, TOP = 26;
+  const W = 20 + x.nodes.length * (NW + GAP) - GAP + 20;
+  const H = TOP + NH + 76;
+  const nx = i => 20 + i * (NW + GAP) + NW / 2;
+  const ny = TOP + NH / 2;
+  let s = "";
+  (x.flows || []).forEach(f => {
+    const x1 = nx(f.from) + NW / 2, x2 = nx(f.to) - NW / 2;
+    s += `<line x1="${x1}" y1="${ny}" x2="${x2}" y2="${ny}" class="edge" marker-end="url(#ah)"/>`;
+    if (f.label) s += svgText((x1 + x2) / 2, ny - 14, wrapLabel(f.label, 15), 10, "middle", "sm");
+  });
+  x.nodes.forEach((n, i) => {
+    const cx0 = nx(i), l = cx0 - NW / 2;
+    if (n.kind === "process") s += `<rect x="${l}" y="${TOP}" width="${NW}" height="${NH}" rx="${NH / 2}" class="box proc"/>`;
+    else if (n.kind === "store") s += `<path d="M${l},${TOP} L${l + NW},${TOP} M${l},${TOP + NH} L${l + NW},${TOP + NH}" class="storeline"/>` +
+      `<rect x="${l}" y="${TOP}" width="${NW}" height="${NH}" class="storefill"/>`;
+    else s += `<rect x="${l}" y="${TOP}" width="${NW}" height="${NH}" rx="3" class="box ext"/>`;
+    s += svgText(cx0, ny, wrapLabel(n.label, 19), 11.5, "middle", "sl");
+    s += svgText(cx0, TOP + NH + 15, [n.kind === "process" ? "process" : n.kind === "store" ? "data store" : "external"], 9.5, "middle", "sm");
+  });
+  return svgBox(W, H, s);
+}
+
 /* Data exhibits — a table or a small dashboard the item requires you to read. */
 function exhibitHTML(q){
   const x = q.exhibit;
@@ -12973,11 +13356,19 @@ function exhibitHTML(q){
       ${x.branches && x.branches.length ? `<div class="fbranch">${x.branches.map(b =>
         `<div><b>${esc(b.from)}</b> ${esc(b.label)}</div>`).join("")}</div>` : ""}</div>`;
   } else if (x.type === "canvas"){
-    body = `<div class="xbody"><div class="canvasgrid" style="--cc:${x.cols||3}">${
-      x.panels.map(p => `<div class="cpanel">
+    /* layout:"bmc" lays the nine blocks out the way the canvas actually is,
+       rather than as a uniform grid, because the shape carries meaning. */
+    const bmc = x.layout === "bmc";
+    body = `<div class="xbody"><div class="canvasgrid${bmc ? " bmc" : ""}" style="--cc:${x.cols||3}">${
+      x.panels.map((p,i) => `<div class="cpanel"${bmc ? ` style="grid-area:b${i+1}"` : ""}>
         <div class="cplab">${esc(p.label)}</div>
         ${(p.items||[]).map(t => `<div class="cpitem">${esc(t)}</div>`).join("")}
       </div>`).join("")}</div></div>`;
+  } else if (x.type === "swimlane"){ body = svgSwimlane(x);
+  } else if (x.type === "usecase"){  body = svgUsecase(x);
+  } else if (x.type === "state"){    body = svgState(x);
+  } else if (x.type === "sequence"){ body = svgSequence(x);
+  } else if (x.type === "dfd"){      body = svgDfd(x);
   }
   return `<div class="exhibit">
     ${x.title ? `<div class="xtitle">${esc(x.title)}</div>` : ""}

@@ -695,7 +695,6 @@
   "visual": {
    "type": "canvas",
    "title": "Trade publisher — moving from distributor print to direct digital",
-   "cols": 3,
    "lead": "Five of the nine blocks move at once. A fulfilment process map shows one of them.",
    "panels": [
     {
@@ -760,12 +759,13 @@
      ]
     }
    ],
-   "note": "The publisher does not hold its own subscriber list. That is the change strategy's first problem."
+   "note": "The publisher does not hold its own subscriber list. That is the change strategy's first problem.",
+   "layout": "bmc"
   },
   "template": {
    "type": "canvas",
    "title": "Business Model Canvas — blank template",
-   "cols": 3,
+   "layout": "bmc",
    "panels": [
     {
      "label": "Key partners",
@@ -1220,74 +1220,103 @@
   "use": "Reach for it when the concern is movement and custody of information rather than the order in which people act.",
   "confused": "Data flow diagrams follow the data; process models follow the work. An item about who does what next is process modelling even when systems are involved.",
   "visual": {
-   "type": "flow",
+   "type": "dfd",
    "title": "Where a referral's patient identifiers travel",
-   "lead": "Follows the data, not the work. Stores and third parties are the point.",
-   "steps": [
+   "lead": "Different shapes, different things: squares are outside the boundary, rounded shapes transform, open bars store. A process model has none of this.",
+   "nodes": [
     {
-     "actor": "External",
-     "label": "GP practice",
-     "note": "Sends referral + identifiers"
+     "kind": "external",
+     "label": "GP practice"
     },
     {
-     "actor": "Process",
-     "label": "Referral intake",
-     "note": "Validates, assigns URN"
+     "kind": "process",
+     "label": "Referral intake"
     },
     {
-     "actor": "Store",
-     "label": "Referral register",
-     "note": "Full identifiers, retained 7 years"
+     "kind": "store",
+     "label": "Referral register"
     },
     {
-     "actor": "Process",
-     "label": "Appointment scheduling",
-     "note": "Outsourced since 2025"
+     "kind": "process",
+     "label": "Appointment scheduling"
     },
     {
-     "actor": "External",
-     "label": "Scheduling vendor",
-     "note": "Receives name, DOB, phone"
+     "kind": "external",
+     "label": "Scheduling vendor"
     }
    ],
-   "branches": [
+   "flows": [
     {
-     "from": "Referral register",
-     "label": "→ nightly extract to the data warehouse, identifiers not masked"
+     "from": 0,
+     "to": 1,
+     "label": "referral, identifiers"
+    },
+    {
+     "from": 1,
+     "to": 2,
+     "label": "URN, full identifiers"
+    },
+    {
+     "from": 2,
+     "to": 3,
+     "label": "patient record"
+    },
+    {
+     "from": 3,
+     "to": 4,
+     "label": "name, DOB, phone"
     }
-   ]
+   ],
+   "note": "The register also feeds a nightly warehouse extract, unmasked. That store is where the privacy question actually lands."
   },
   "template": {
-   "type": "flow",
+   "type": "dfd",
    "title": "Data Flow Diagrams — blank template",
-   "steps": [
+   "nodes": [
     {
-     "label": "Step 1",
-     "note": "",
-     "actor": "External"
+     "kind": "external",
+     "label": ""
     },
     {
-     "label": "Step 2",
-     "note": "",
-     "actor": "Process"
+     "kind": "process",
+     "label": ""
     },
     {
-     "label": "Step 3",
-     "note": "",
-     "actor": "Store"
+     "kind": "store",
+     "label": ""
     },
     {
-     "label": "Step 4",
-     "note": "",
-     "actor": "Process"
+     "kind": "process",
+     "label": ""
     },
     {
-     "label": "Step 5",
-     "note": "",
-     "actor": "External"
+     "kind": "external",
+     "label": ""
     }
    ],
-   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
+   "flows": [
+    {
+     "from": 0,
+     "to": 1,
+     "label": ""
+    },
+    {
+     "from": 1,
+     "to": 2,
+     "label": ""
+    },
+    {
+     "from": 2,
+     "to": 3,
+     "label": ""
+    },
+    {
+     "from": 3,
+     "to": 4,
+     "label": ""
+    }
+   ],
+   "note": "Label every arrow with the data it carries. An unlabelled arrow is the one nobody has checked."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -4219,82 +4248,93 @@
   "use": "Reach for it when order, branching or hand-off is the substance of the problem, and prose has stopped being able to carry it.",
   "confused": "Process modelling shows the flow of work; use cases show an actor achieving a goal with the solution; data flow diagrams follow information. Hand-offs between people point to process.",
   "visual": {
-   "type": "flow",
-   "title": "Parcel return, six parties, and where it breaks",
-   "lead": "Hand-offs between actors are the substance, which is why a use case would fragment it.",
+   "type": "swimlane",
+   "title": "Parcel return — six parties, and where it breaks",
+   "lead": "Lanes make the hand-offs visible. Every arrow crossing a lane is a change of custody, and both failures below sit on one.",
+   "lanes": [
+    "Customer",
+    "Courier",
+    "Warehouse",
+    "Refurbisher",
+    "Finance"
+   ],
    "steps": [
     {
-     "actor": "Customer",
-     "label": "Lodges return"
+     "lane": 0,
+     "label": "Lodge return"
     },
     {
-     "actor": "Courier",
-     "label": "Collects"
+     "lane": 1,
+     "label": "Collect parcel"
     },
     {
-     "actor": "Warehouse inwards",
-     "label": "Receives and inspects"
+     "lane": 2,
+     "label": "Receive and inspect"
     },
     {
-     "actor": "Refurbisher",
-     "label": "Assesses"
+     "lane": 3,
+     "label": "Assess condition"
     },
     {
-     "actor": "Warehouse stock",
-     "label": "Restocks or scraps"
+     "lane": 2,
+     "label": "Restock or scrap"
     },
     {
-     "actor": "Finance",
-     "label": "Refunds"
+     "lane": 4,
+     "label": "Issue refund"
     }
    ],
-   "branches": [
+   "flows": [
     {
-     "from": "Receives and inspects",
-     "label": "rejects → back to courier, and the customer is not told"
+     "from": 2,
+     "to": 1,
+     "label": "rejected at inwards — customer never told"
     },
     {
-     "from": "Assesses",
-     "label": "rejects → scrap, but finance has already refunded"
+     "from": 3,
+     "to": 5,
+     "label": "scrapped after the refund was paid"
     }
-   ]
+   ],
+   "note": "A use case would cut this into six disconnected actor goals and lose exactly the hand-offs that are the problem."
   },
   "template": {
-   "type": "flow",
+   "type": "swimlane",
    "title": "Process Modelling — blank template",
+   "lanes": [
+    "Lane 1",
+    "Lane 2",
+    "Lane 3",
+    "Lane 4",
+    "Lane 5"
+   ],
    "steps": [
     {
-     "label": "Step 1",
-     "note": "",
-     "actor": ""
+     "lane": 0,
+     "label": "Step 1"
     },
     {
-     "label": "Step 2",
-     "note": "",
-     "actor": ""
+     "lane": 1,
+     "label": "Step 2"
     },
     {
-     "label": "Step 3",
-     "note": "",
-     "actor": ""
+     "lane": 2,
+     "label": "Step 3"
     },
     {
-     "label": "Step 4",
-     "note": "",
-     "actor": ""
+     "lane": 3,
+     "label": "Step 4"
     },
     {
-     "label": "Step 5",
-     "note": "",
-     "actor": ""
+     "lane": 2,
+     "label": "Step 5"
     },
     {
-     "label": "Step 6",
-     "note": "",
-     "actor": ""
+     "lane": 4,
+     "label": "Step 6"
     }
    ],
-   "note": "Name the actor above each step, and start a new box wherever the work changes hands."
+   "note": "Name a lane per party. Every arrow crossing a lane is a hand-off — those are where the work goes wrong."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -5055,64 +5095,84 @@
   "use": "Reach for it when timing, ordering and the exact exchange between components decide whether the behaviour is correct.",
   "confused": "Sequence diagrams order messages between components; process models order activities performed by people and systems; state models track what an object becomes. Messages, work, or status is the three-way split.",
   "visual": {
-   "type": "flow",
+   "type": "sequence",
    "title": "The race that only appears under load",
-   "lead": "Ordered messages between components. A process model has no time axis, which is why it did not help.",
-   "steps": [
+   "lead": "Time runs down the page. The defect is an ordering fault, which is why the process model could not show it — a process model has no time axis.",
+   "participants": [
+    "Gateway",
+    "Authorisation",
+    "Fraud service",
+    "Ledger"
+   ],
+   "messages": [
     {
-     "actor": "1",
-     "label": "Gateway → Authorisation",
-     "note": "authorise(txn) — blocking"
+     "from": 0,
+     "to": 1,
+     "label": "authorise(txn)"
     },
     {
-     "actor": "2",
-     "label": "Gateway → Fraud service",
-     "note": "score(txn) — async, no wait"
+     "from": 1,
+     "to": 0,
+     "label": "approved",
+     "async": true
     },
     {
-     "actor": "3",
-     "label": "Gateway → Ledger",
-     "note": "post(txn) — fires immediately"
+     "from": 0,
+     "to": 2,
+     "label": "score(txn) — does not wait",
+     "async": true
     },
     {
-     "actor": "4",
-     "label": "Fraud service → Gateway",
-     "note": "decision arrives, sometimes after step 3"
+     "from": 0,
+     "to": 3,
+     "label": "post(txn)"
+    },
+    {
+     "from": 2,
+     "to": 0,
+     "label": "decision arrives after posting",
+     "late": true
     }
    ],
-   "branches": [
-    {
-     "from": "Gateway → Ledger",
-     "label": "— posting before the fraud reply is the defect. Load widens the window; it does not cause it."
-    }
-   ]
+   "note": "Load widens the window between the last two messages. It does not cause the fault."
   },
   "template": {
-   "type": "flow",
+   "type": "sequence",
    "title": "Sequence Diagrams — blank template",
-   "steps": [
+   "participants": [
+    "Participant 1",
+    "Participant 2",
+    "Participant 3",
+    "Participant 4"
+   ],
+   "messages": [
     {
-     "label": "Step 1",
-     "note": "",
-     "actor": "1"
+     "from": 0,
+     "to": 1,
+     "label": ""
     },
     {
-     "label": "Step 2",
-     "note": "",
-     "actor": "2"
+     "from": 1,
+     "to": 0,
+     "label": ""
     },
     {
-     "label": "Step 3",
-     "note": "",
-     "actor": "3"
+     "from": 0,
+     "to": 2,
+     "label": ""
     },
     {
-     "label": "Step 4",
-     "note": "",
-     "actor": "4"
+     "from": 0,
+     "to": 3,
+     "label": ""
+    },
+    {
+     "from": 2,
+     "to": 0,
+     "label": ""
     }
    ],
-   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
+   "note": "Time runs down the page. Mark which calls block and which return later — that gap is where races live."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -5235,76 +5295,125 @@
   "use": "Reach for it when the same object behaves differently depending on where it is in its life, and the rules about what may happen next are the requirement.",
   "confused": "State modelling tracks what an object may become; process modelling tracks what people do. If the stem is full of statuses such as lodged, assessed, withdrawn, it is state.",
   "visual": {
-   "type": "flow",
+   "type": "state",
    "title": "Tribunal case — which statuses may follow which",
-   "lead": "The two disputes were both illegal transitions. A process model showed neither.",
-   "steps": [
+   "lead": "Both disputes were illegal transitions, marked below in red. A process model showed neither, because it describes what staff do, not what the case may become.",
+   "states": [
     {
-     "label": "Lodged",
-     "note": "on registration"
+     "label": "Lodged"
     },
     {
-     "label": "Allocated",
-     "note": "on member assignment"
+     "label": "Allocated"
     },
     {
-     "label": "Listed",
-     "note": "on hearing date set"
+     "label": "Listed"
     },
     {
-     "label": "Reserved",
-     "note": "on hearing completed"
+     "label": "Reserved"
     },
     {
      "label": "Determined",
-     "note": "terminal"
+     "terminal": true
+    },
+    {
+     "label": "Struck out",
+     "terminal": true
     }
    ],
-   "branches": [
+   "transitions": [
     {
-     "from": "Listed",
-     "label": "→ Adjourned → Listed. Permitted."
+     "from": 0,
+     "to": 1,
+     "label": "allocated"
     },
     {
-     "from": "Determined",
-     "label": "→ Adjourned. NOT permitted — this was dispute one."
+     "from": 1,
+     "to": 2,
+     "label": "listed"
     },
     {
-     "from": "Lodged",
-     "label": "→ Struck out → (terminal). Reinstatement NOT permitted — dispute two."
+     "from": 2,
+     "to": 3,
+     "label": "heard"
     },
     {
-     "from": "Allocated",
-     "label": "→ Withdrawn. Permitted at any point before Determined."
+     "from": 3,
+     "to": 4,
+     "label": "determined"
+    },
+    {
+     "from": 3,
+     "to": 2,
+     "label": "adjourned, relisted"
+    },
+    {
+     "from": 1,
+     "to": 5,
+     "label": "struck out"
+    },
+    {
+     "from": 4,
+     "to": 2,
+     "label": "adjourned after determination",
+     "illegal": true
+    },
+    {
+     "from": 5,
+     "to": 1,
+     "label": "reinstated after strike out",
+     "illegal": true
     }
-   ]
+   ],
+   "note": "Specifying the permitted transitions is what prevents the two disputes. Staff diligence was never going to."
   },
   "template": {
-   "type": "flow",
+   "type": "state",
    "title": "State Modelling — blank template",
-   "steps": [
+   "states": [
     {
-     "label": "Step 1",
-     "note": ""
+     "label": "State 1"
     },
     {
-     "label": "Step 2",
-     "note": ""
+     "label": "State 2"
     },
     {
-     "label": "Step 3",
-     "note": ""
+     "label": "State 3"
     },
     {
-     "label": "Step 4",
-     "note": ""
+     "label": "State 4"
     },
     {
-     "label": "Step 5",
-     "note": ""
+     "label": "State 5",
+     "terminal": true
+    },
+    {
+     "label": "State 6",
+     "terminal": true
     }
    ],
-   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
+   "transitions": [
+    {
+     "from": 0,
+     "to": 1,
+     "label": ""
+    },
+    {
+     "from": 1,
+     "to": 2,
+     "label": ""
+    },
+    {
+     "from": 2,
+     "to": 3,
+     "label": ""
+    },
+    {
+     "from": 3,
+     "to": 4,
+     "label": ""
+    }
+   ],
+   "note": "Name the event on every transition. Then ask which transitions are missing, and which should be forbidden."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",
@@ -5520,66 +5629,112 @@
   "use": "Reach for it when the interaction between an actor and the solution, including everything that can go wrong in it, is the substance of the requirement.",
   "confused": "A use case is goal-oriented interaction with the solution; a process model is the flow of business work. Use cases carry alternate and exception flows, which is usually the discriminating detail in a stem.",
   "visual": {
-   "type": "flow",
-   "title": "Renew a licence online — with the flows that testing found missing",
-   "lead": "The alternates and exceptions are part of the use case, not an afterthought.",
-   "steps": [
+   "type": "usecase",
+   "title": "Renew a licence online",
+   "lead": "Actors sit outside the boundary, goals inside it. What testing found missing were the alternate and exception flows behind these ovals, not the ovals themselves.",
+   "system": "Licensing portal",
+   "actors": [
     {
-     "actor": "Main flow",
-     "label": "1. Identify holder"
+     "name": "Licence holder"
     },
     {
-     "label": "2. Confirm details"
+     "name": "Registry officer"
     },
     {
-     "label": "3. Take payment"
-    },
-    {
-     "label": "4. Issue renewal"
+     "name": "Payment gateway",
+     "side": "right"
     }
    ],
-   "branches": [
+   "cases": [
     {
-     "from": "3. Take payment",
-     "label": "alt — card expired: prompt for another, licence not yet renewed"
+     "label": "Renew a licence"
     },
     {
-     "from": "3. Take payment",
-     "label": "exc — timeout after debit: renewal issued, payment reconciled out of band"
+     "label": "Pay renewal fee"
     },
     {
-     "from": "2. Confirm details",
-     "label": "alt — resumed next day: part-completed renewal restored, payment not retained"
+     "label": "Verify identity"
     },
     {
-     "from": "1. Identify holder",
-     "label": "exc — licence suspended: renewal refused, reason shown, no payment taken"
+     "label": "Refuse renewal"
     }
-   ]
+   ],
+   "links": [
+    {
+     "actor": 0,
+     "case": 0
+    },
+    {
+     "actor": 0,
+     "case": 2
+    },
+    {
+     "actor": 2,
+     "case": 1
+    },
+    {
+     "actor": 1,
+     "case": 3
+    }
+   ],
+   "rels": [
+    {
+     "from": 0,
+     "to": 1,
+     "kind": "include"
+    }
+   ],
+   "note": "Each oval carries a main flow plus its alternates and exceptions: expired card, resumed next day, suspended licence, payment timing out after the debit."
   },
   "template": {
-   "type": "flow",
+   "type": "usecase",
    "title": "Use Cases and Scenarios — blank template",
-   "steps": [
+   "system": "System",
+   "actors": [
     {
-     "label": "Step 1",
-     "note": "",
-     "actor": "Main flow"
+     "name": ""
     },
     {
-     "label": "Step 2",
-     "note": ""
+     "name": ""
     },
     {
-     "label": "Step 3",
-     "note": ""
-    },
-    {
-     "label": "Step 4",
-     "note": ""
+     "name": "",
+     "side": "right"
     }
    ],
-   "note": "Record what can go wrong at each step underneath, not only the path where everything works."
+   "cases": [
+    {
+     "label": ""
+    },
+    {
+     "label": ""
+    },
+    {
+     "label": ""
+    },
+    {
+     "label": ""
+    }
+   ],
+   "links": [
+    {
+     "actor": 0,
+     "case": 0
+    },
+    {
+     "actor": 0,
+     "case": 2
+    },
+    {
+     "actor": 2,
+     "case": 1
+    },
+    {
+     "actor": 1,
+     "case": 3
+    }
+   ],
+   "note": "Actors outside the boundary, goals inside it. If an oval is not a goal an actor would name, it is not a use case."
   },
   "tasks": [
    "7.1 Specify and Model Requirements",

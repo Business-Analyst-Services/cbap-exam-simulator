@@ -38,7 +38,9 @@ for (let i = 1; i < questions.length; i++) {
 }
 
 /* Exhibits appear on questions and inside technique explainers, so check them in one place. */
-const EXHIBIT_TYPES = ["table", "dashboard", "tree", "matrix", "flow", "canvas"];
+const EXHIBIT_TYPES = ["table", "dashboard", "tree", "matrix", "flow", "canvas",
+  "swimlane", "usecase", "state", "sequence", "dfd"];
+const DFD_KINDS = ["external", "process", "store"];
 function checkExhibit(x, where) {
   if (!EXHIBIT_TYPES.includes(x.type)) { errors.push(`${where}: exhibit type "${x.type}" (expected ${EXHIBIT_TYPES.join(", ")})`); return; }
   if (x.type === "tree") {
@@ -69,6 +71,44 @@ function checkExhibit(x, where) {
   if (x.type === "canvas") {
     if (!x.panels || !x.panels.length) { errors.push(`${where}: canvas has no panels`); return; }
     x.panels.forEach((p, i) => { if (!p.label) errors.push(`${where}: canvas panel ${i + 1} has no label`); });
+    if (x.layout === "bmc" && x.panels.length !== 9)
+      errors.push(`${where}: bmc layout needs exactly 9 panels, has ${x.panels.length}`);
+  }
+  // Diagram types: every index must point at something that exists, or the SVG
+  // silently draws an arrow to NaN.
+  const idx = (v, arr, what) => {
+    if (typeof v !== "number" || v < 0 || v >= arr.length) errors.push(`${where}: ${what} index ${v} is out of range (0..${arr.length - 1})`);
+  };
+  if (x.type === "swimlane") {
+    if (!x.lanes || !x.lanes.length) { errors.push(`${where}: swimlane has no lanes`); return; }
+    if (!x.steps || !x.steps.length) { errors.push(`${where}: swimlane has no steps`); return; }
+    x.steps.forEach((s, i) => {
+      if (typeof s.lane !== "number" || s.lane < 0 || s.lane >= x.lanes.length) errors.push(`${where}: step ${i + 1} sits in lane ${s.lane}, which does not exist`);
+      if (s.label === undefined) errors.push(`${where}: step ${i + 1} has no label`);
+    });
+    (x.flows || []).forEach(f => { idx(f.from, x.steps, "flow from"); idx(f.to, x.steps, "flow to"); });
+  }
+  if (x.type === "usecase") {
+    if (!x.actors || !x.actors.length) { errors.push(`${where}: usecase has no actors`); return; }
+    if (!x.cases || !x.cases.length) { errors.push(`${where}: usecase has no cases`); return; }
+    (x.links || []).forEach(l => { idx(l.actor, x.actors, "link actor"); idx(l.case, x.cases, "link case"); });
+    (x.rels || []).forEach(r => { idx(r.from, x.cases, "rel from"); idx(r.to, x.cases, "rel to"); });
+  }
+  if (x.type === "state") {
+    if (!x.states || !x.states.length) { errors.push(`${where}: state model has no states`); return; }
+    (x.transitions || []).forEach(tr => { idx(tr.from, x.states, "transition from"); idx(tr.to, x.states, "transition to"); });
+  }
+  if (x.type === "sequence") {
+    if (!x.participants || x.participants.length < 2) { errors.push(`${where}: sequence needs at least two participants`); return; }
+    (x.messages || []).forEach(m => {
+      idx(m.from, x.participants, "message from"); idx(m.to, x.participants, "message to");
+      if (m.from === m.to) errors.push(`${where}: a message goes from a participant to itself`);
+    });
+  }
+  if (x.type === "dfd") {
+    if (!x.nodes || !x.nodes.length) { errors.push(`${where}: dfd has no nodes`); return; }
+    x.nodes.forEach((n, i) => { if (!DFD_KINDS.includes(n.kind)) errors.push(`${where}: node ${i + 1} kind "${n.kind}" (expected ${DFD_KINDS.join(", ")})`); });
+    (x.flows || []).forEach(f => { idx(f.from, x.nodes, "flow from"); idx(f.to, x.nodes, "flow to"); });
   }
   if (x.type === "table") {
     if (!x.cols || !x.rows) { errors.push(`${where}: table exhibit missing cols or rows`); return; }

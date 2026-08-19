@@ -150,8 +150,24 @@ Six types are available:
 | `dashboard` | Stat tiles and bars | Anything where the reading is a comparison of magnitudes |
 | `tree` | Indented hierarchy | KPI trees, decomposition, decision logic, five whys, mind maps |
 | `matrix` | Labelled grid with axes | 2×2 prioritisation, SWOT, risk exposure, permissions |
-| `flow` | Ordered steps with branches | Processes, state transitions, use case flows, message sequences |
-| `canvas` | Labelled panels | Business Model Canvas, scorecard perspectives, scope in/out/adjacent |
+| `flow` | Ordered steps with branches | Staged activities: brainstorming rounds, workshop phases |
+| `canvas` | Labelled panels | Scorecard perspectives, scope in/out/adjacent, lessons learned |
+| `swimlane` | SVG process diagram | Actor bands, cross-lane hand-off arrows, exception routes |
+| `usecase` | SVG use case diagram | Actors, system boundary, goal ovals, `«include»` |
+| `state` | SVG state machine | States, labelled transitions, illegal ones marked |
+| `sequence` | SVG sequence diagram | Lifelines, ordered messages, blocking vs async |
+| `dfd` | SVG data flow diagram | External / process / data store, each its own shape |
+
+**Why the SVG types exist.** Five techniques are separated in the exam largely by their notation —
+Process Modelling, Data Flow Diagrams, Sequence Diagrams, State Modelling and Use Cases. Drawing
+them all as boxes in a row teaches that they are interchangeable, which is the opposite of what is
+being tested. Each now draws in its own notation, so the discrimination is visible rather than only
+asserted in prose. All of it is hand-built SVG: no libraries, themed through the same CSS variables,
+laid out from the data at render time.
+
+`canvas` also accepts `"layout": "bmc"`, which lays the nine blocks out the way the Business Model
+Canvas actually is — partners tall on the left, value proposition through the centre, segments tall
+on the right, cost and revenue across the foot — rather than as a uniform grid.
 
 Wide exhibits scroll inside their own box; the page itself never scrolls horizontally.
 
@@ -202,7 +218,8 @@ else neutral. A falling cost is therefore `up`.
 **Every technique carries a `visual`** — the artefact that technique actually produces, filled in
 with realistic content rather than described. A data dictionary is shown as a populated dictionary;
 decision modelling as a real decision tree; SWOT as a filled 2×2 with the internal/external axis
-corrected. Across the 50 that is 22 tables, 9 flows, 7 trees, 7 matrices and 5 canvases.
+corrected. Across the 50 that is 22 tables, 7 trees, 7 matrices, 5 canvases, 4 staged flows, and one each
+of swimlane, use case, state machine, sequence and data flow diagram.
 
 **Every technique also carries a `template`** — the same artefact with the content stripped out, so
 you can fill it in yourself. The learn card shows a *Worked example / Blank template* toggle. The
