@@ -287,7 +287,12 @@ The three formats are not the same artefact three times:
 
 - **`.pptx`** keeps the notation. A swimlane is a swimlane, a state machine is a state machine.
 - **`.docx`** is a Word table you type into, with the technique's purpose and discriminator above it.
-- **`.xlsx`** has three sheets: About, Worked example, Blank template.
+- **`.xlsx`** — the example has an About sheet beside it; the template is the sheet alone.
+
+**The template files carry no teaching copy.** No purpose, no when-to-use, no confused-with, no task
+list, no About sheet — that material belongs on the worked example. A blank template is a header, the
+form, and one line saying how to fill it in. Dropping the sidebar also hands the whole slide width to
+the form, and blank tables are padded out to enough rows to be worth using.
 
 Word and Excel cannot draw a sequence diagram usefully, and an embedded picture would be worse than
 useless because you could not edit it. So the 16 diagram artefacts are expressed as the grid that

@@ -134,4 +134,15 @@ function toGrid(x) {
   return g;
 }
 
-module.exports = { toGrid, TOTAL };
+/* A blank grid with three rows wastes the page. Pad it out to something worth
+   filling in, without inventing content. */
+function padBlank(g, rows) {
+  const empty = g.head.map(() => "");
+  const allBlank = g.rows.every(r => r.every(c => String(c == null ? "" : c).trim() === ""));
+  if (!allBlank || g.rows.length >= rows) return g;
+  return Object.assign({}, g, {
+    rows: g.rows.concat(Array.from({ length: rows - g.rows.length }, () => empty.slice()))
+  });
+}
+
+module.exports = { toGrid, TOTAL, padBlank };

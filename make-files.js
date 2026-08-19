@@ -11,7 +11,7 @@
 const fs = require("fs");
 const path = require("path");
 const { zip, slug } = require("./ooxml.js");
-const { toGrid } = require("./artefact-grid.js");
+const { toGrid, padBlank } = require("./artefact-grid.js");
 const PPT = require("./make-pptx.js");
 const X = require("./xlsx-lib.js");
 const D = require("./docx-lib.js");
@@ -25,8 +25,8 @@ const baseName = t => pad(t.n).replace("10.", "") + "-" + slug(t.name);
 
 /* ---------- Excel ---------- */
 function xlsxFor(t, which) {
-  const sheet = (x, label) => {
-    const g = toGrid(x);
+  const sheet = (x, label, pad) => {
+    const g = pad ? padBlank(toGrid(x), pad) : toGrid(x);
     const rows = [];
     rows.push([{ v: t.n + "  " + t.name, s: X.S.TITLE, span: Math.max(g.head.length, 2) }]);
     rows.push([{ v: label + " · " + g.title, s: X.S.SUB, span: Math.max(g.head.length, 2) }]);
@@ -57,14 +57,18 @@ function xlsxFor(t, which) {
       [{ v: which === "ex" ? "The worked example is on the next sheet." : "The blank template is on the next sheet — fill it in.", s: X.S.NOTE, span: 2 }]
     ]
   };
-  const half = which === "ex"
-    ? sheet(t.visual, "Worked example")
-    : sheet(t.template, "Blank template");
-  return X.build([guide, half], { title: t.n + " " + t.name });
+  if (which !== "ex") {
+    // No About sheet: the template workbook opens straight onto the form.
+    return X.build([sheet(t.template, "Blank template", 20)], { title: t.n + " " + t.name + " — blank template" });
+  }
+  return X.build([guide, sheet(t.visual, "Worked example")], { title: t.n + " " + t.name });
 }
 
 /* ---------- Word ---------- */
+const FOOTER = "CBAP® Technique Pack · BABOK® Guide v3 · business-analyst.services · not affiliated with IIBA®";
+
 function docxFor(t, which) {
+  if (which !== "ex") return docxTemplateFor(t);
   const C = D.C;
   let b = "";
   b += D.para(t.n + "  " + t.name, { size: 21, bold: true, after: 2 });
@@ -90,14 +94,26 @@ function docxFor(t, which) {
     return s;
   };
 
-  b += which === "ex"
-    ? section(t.visual, "Worked example")
-    : section(t.template, "Blank template — fill this one in");
+  b += section(t.visual, "Worked example");
   b += D.para((t.tasks || []).length ? "Tasks that use it: " + t.tasks.join("  ·  ") : "",
     { size: 9, color: C.muted, before: 6 });
-  b += D.para("CBAP® Technique Pack · BABOK® Guide v3 · business-analyst.services · not affiliated with IIBA®",
-    { size: 8, color: C.muted, before: 10 });
+  b += D.para(FOOTER, { size: 8, color: C.muted, before: 10 });
   return D.build(b, { title: t.n + " " + t.name });
+}
+
+/* The template document is the form. No purpose, no when-to-use, no
+   confused-with, no task list — that material belongs on the worked example. */
+function docxTemplateFor(t) {
+  const C = D.C;
+  const g = padBlank(toGrid(t.template), 12);
+  let b = D.para(t.n + "  " + t.name, { size: 21, bold: true, after: 2 });
+  b += D.para("Blank template", { size: 10, color: C.muted, rule: C.grid, after: 12 });
+  b += D.para(g.title, { size: 12.5, bold: true, after: 6 });
+  b += D.table([g.head, ...g.rows.map(r => g.head.map((_, ci) => (r[ci] == null ? "" : r[ci])))],
+    { header: true, widths: g.widths, size: 9 });
+  if (g.note) b += D.para(g.note, { size: 9, italic: true, color: C.muted, before: 2 });
+  b += D.para(FOOTER, { size: 8, color: C.muted, before: 10 });
+  return D.build(b, { title: t.n + " " + t.name + " — blank template" });
 }
 
 /* ---------- run ---------- */

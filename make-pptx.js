@@ -452,10 +452,27 @@ function groupsOf(list) {
 }
 
 /* The two slides a technique gets: worked example, then blank template. */
+/* The template slide carries no teaching copy — the sidebar of purpose, use and
+   confused-with belongs on the worked example. Dropping it also hands the whole
+   slide width to the form, which is the point of it. */
+function templateSlide(t) {
+  const FULL = { x: M, y: 1.86, w: PAGE.w - 2 * M, h: PAGE.h - 1.86 - 0.72 };
+  return header(t, "tpl")
+    + P.shape({ x: M, y: 1.32, cx: PAGE.w - 2 * M, cy: 0.3, fill: "none", line: "none",
+        paras: [{ text: clip(t.template.title, 120), size: 12.5, bold: true, color: C.deep }],
+        text: { anchor: "b", ins: 0 } })
+    + (t.template.note
+        ? P.shape({ x: M, y: PAGE.h - 0.84, cx: PAGE.w - 2 * M, cy: 0.38, fill: "none", line: "none",
+            paras: [{ text: clip(t.template.note, 190), size: 8.5, color: C.muted }],
+            text: { anchor: "t", ins: 0 } })
+        : "")
+    + artefactIn(fillOut(t.template), FULL);
+}
+
 function pair(t) {
   return [
     { shapes: header(t, "ex") + sidebar(t, "ex") + caption(t.visual.title, t.visual.note) + artefact(t.visual) },
-    { shapes: header(t, "tpl") + sidebar(t, "tpl") + caption(t.template.title, null) + artefact(fillOut(t.template)) }
+    { shapes: templateSlide(t) }
   ];
 }
 
