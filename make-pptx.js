@@ -284,39 +284,66 @@ const ocy = i => a.y + 0.32 + i * (oh + 0.12) + oh / 2;
   return s;
 }
 
+/* States run left to right, then the next row runs right to left. Laid out that
+   way a wrapping transition lands directly beneath its predecessor, so it can be
+   drawn as a short vertical arrow instead of being demoted to a footnote. */
 function rState(x, a) {
   const n = x.states.length;
-  const per = Math.min(4, n), rowsN = Math.ceil(n / per);
-  const bw = (a.w - (per - 1) * 0.5) / per, bh = 0.5;
-  const rowGap = Math.min(1.15, (a.h - 0.6) / rowsN);
-  const pos = i => ({ x: a.x + (i % per) * (bw + 0.5), y: a.y + Math.floor(i / per) * rowGap });
+  const per = Math.min(n, 6);
+  const rowsN = Math.ceil(n / per);
+  // The gap has to fit the event label, not just separate the boxes.
+  const gap = per > 4 ? 0.52 : 0.34, bh = 0.5;
+  const bw = (a.w - (per - 1) * gap) / per;
+  const rowGap = Math.min(1.15, Math.max(bh + 0.45, (a.h - 0.6) / rowsN));
+  const size = per > 4 ? 8.5 : 9;
+
+  const cell = i => {
+    const r = Math.floor(i / per);
+    const c = r % 2 === 1 ? per - 1 - (i % per) : i % per;   // serpentine
+    return { r, c, x: a.x + c * (bw + gap), y: a.y + r * rowGap };
+  };
+  const inline = t => t.to === t.from + 1 && !t.illegal;
+
   let s = "";
-const inline = t => t.to === t.from + 1 && !t.illegal &&
-    Math.floor(t.from / per) === Math.floor(t.to / per);
   (x.transitions || []).filter(inline).forEach(t => {
-    const p1 = pos(t.from), p2 = pos(t.to);
-    s += P.connector({ x1: p1.x + bw, y1: p1.y + bh / 2, x2: p2.x, y2: p2.y + bh / 2, arrow: true, color: C.line });
-    if (t.label) s += P.shape({ x: p1.x + bw - 0.18, y: p1.y + bh / 2 - 0.32, cx: 0.86, cy: 0.24,
-      fill: "none", line: "none",
-      paras: [{ text: clip(t.label, 16), size: 7.5, color: C.muted, align: "ctr" }] });
+    const p1 = cell(t.from), p2 = cell(t.to);
+    if (p1.r === p2.r) {
+      const ltr = p1.r % 2 === 0;
+      const x1 = ltr ? p1.x + bw : p1.x;
+      const x2 = ltr ? p2.x : p2.x + bw;
+      const y = p1.y + bh / 2;
+      s += P.connector({ x1, y1: y, x2, y2: y, arrow: true, color: C.line });
+      if (t.label) s += P.shape({ x: Math.min(x1, x2) - 0.14, y: y - 0.34, cx: Math.abs(x2 - x1) + 0.28, cy: 0.24,
+        fill: "none", line: "none",
+        paras: [{ text: clip(t.label, 18), size: 7.5, color: C.muted, align: "ctr" }] });
+    } else {
+      // wrap: same column, one row down
+      const cx0 = p1.x + bw / 2;
+      s += P.connector({ x1: cx0, y1: p1.y + bh, x2: cx0, y2: p2.y, arrow: true, color: C.line });
+      if (t.label) s += P.shape({ x: cx0 + 0.08, y: p1.y + bh + (p2.y - p1.y - bh) / 2 - 0.12, cx: bw, cy: 0.24,
+        fill: "none", line: "none",
+        paras: [{ text: clip(t.label, 18), size: 7.5, color: C.muted }] });
+    }
   });
+
   x.states.forEach((st, i) => {
-    const p = pos(i);
-    s += P.shape({ x: p.x, y: p.y, cx: bw, cy: bh, geom: "roundRect", adj: 45000,
+    const c = cell(i);
+    s += P.shape({ x: c.x, y: c.y, cx: bw, cy: bh, geom: "roundRect", adj: 45000,
       fill: C.white, line: st.terminal ? C.ink : C.line, lineW: st.terminal ? 19050 : 9525,
-      paras: [{ text: clip(st.label, 22), size: 9, color: C.ink, align: "ctr" }] });
+      paras: [{ text: clip(st.label, 24), size, color: C.ink, align: "ctr" }] });
   });
+
+  // Only genuinely non-sequential or forbidden transitions are listed underneath.
   const odd = (x.transitions || []).filter(t => !inline(t));
-  odd.slice(0, 5).forEach((t, i) => {
+  odd.slice(0, 5).forEach((t, k) => {
     const from = x.states[t.from] ? x.states[t.from].label : "?";
     const to = x.states[t.to] ? x.states[t.to].label : "?";
-    s += P.shape({ x: a.x, y: a.y + rowsN * rowGap + 0.05 + i * 0.26, cx: a.w, cy: 0.24, fill: "none", line: "none",
+    s += P.shape({ x: a.x, y: a.y + rowsN * rowGap + 0.02 + k * 0.26, cx: a.w, cy: 0.24, fill: "none", line: "none",
       paras: [{ text: (t.illegal ? "✕ " : "↳ ") + from + " → " + to + "   " + clip(t.label || "", 60),
         size: 8.5, color: t.illegal ? C.red : C.muted }], text: { anchor: "ctr", ins: 0 } });
   });
   return s;
 }
-
 function rSequence(x, a) {
   const n = x.participants.length;
   const pw = Math.min(1.9, (a.w - 0.2) / n), gap = (a.w - pw * n) / Math.max(n - 1, 1);
