@@ -117,6 +117,10 @@ interleaved so no two consecutive questions come from the same area. There is no
 | `technique-questions.json` | The technique drill bank, including the items that carry data exhibits |
 | `techniques.json` | The 50 BABOK v3 techniques used by the learn view |
 | `build.js` | Embeds the three JSON files into `index.html` and validates them first |
+| `make-pptx.js` | Generates the PowerPoint pack from `techniques.json` |
+| `pptx-lib.js` | Minimal OOXML writer — emits native shapes and tables, no dependencies |
+| `pptx-template/` | The PowerPoint chassis the generator builds on (master, layouts, theme) |
+| `CBAP-Technique-Pack.pptx` | The generated pack, 102 slides |
 
 ### `questions.json` shape
 
@@ -249,6 +253,30 @@ Download `index.html` and open it. That is the whole procedure — it works offl
 path. To host your own copy, enable GitHub Pages on a fork and point it at the default branch root.
 
 > **Note:** progress is held in the browser tab only. Reloading mid-sitting starts you over.
+
+## The PowerPoint pack
+
+**[Download CBAP-Technique-Pack.pptx](https://business-analyst-services.github.io/cbap-exam-simulator/CBAP-Technique-Pack.pptx)** — 102 slides, generated from `techniques.json`:
+
+```bash
+node make-pptx.js
+```
+
+A title slide, a contents slide, then a pair per technique: the **worked example**, then the
+**blank template**. Each slide carries a sidebar with what the technique is for, when to reach for
+it, and what it is most often confused with, so a single slide stands alone as a one-pager.
+
+The web app and the deck answer different questions. On screen you need to *recognise* a notation
+under exam pressure; on an engagement you need to *fill one in*. You cannot type into an HTML blank,
+which is why the deck exists — every diagram is a native PowerPoint shape and every table a native
+table. Select it, type over it, recolour it, delete what you do not need.
+
+Both are generated from the same `techniques.json`, so they cannot drift apart.
+
+> **Note on the generator.** There is no dependency on python-pptx or any other library. `pptx-lib.js`
+> writes the OOXML package directly. The parts under `pptx-template/` are a chassis produced by
+> PowerPoint itself — hand-authoring a slide master is where a home-made .pptx usually goes wrong,
+> so the generator only writes the slides and the package plumbing.
 
 ## Contributing
 
