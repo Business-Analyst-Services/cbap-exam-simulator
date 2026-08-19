@@ -233,6 +233,22 @@ kbd{font:12px/1 ui-monospace,monospace;border:1px solid var(--border);border-bot
 @media print{ .vtoggle{display:none} .vpane[data-v="tpl"]{display:none} }
 @media (max-width:640px){ .tcard .mech td{display:block;padding-bottom:2px} .tcard .mech tr{display:block;padding:6px 0;border-bottom:1px solid var(--grid)} }
 
+/* the scenario thread: numbered steps joined by what passes between them */
+.sbrief{background:var(--surface-1);border:1px solid var(--border);border-radius:12px;padding:22px;box-shadow:var(--shadow);margin-bottom:6px}
+.sbrief h2{margin-top:0}
+.sstep{position:relative;padding-left:56px;margin-top:6px}
+.sstep::before{content:"";position:absolute;left:17px;top:0;bottom:-6px;width:2px;background:var(--grid)}
+.sstep:last-child::before{bottom:auto;height:38px}
+.snum{position:absolute;left:0;top:14px;width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;
+  display:grid;place-items:center;font-weight:700;font-size:14px;font-variant-numeric:tabular-nums;z-index:1}
+.sstep .tcard{margin-bottom:14px}
+.sq{font-size:16px;font-weight:650;letter-spacing:-.01em;margin:2px 0 12px}
+.shand{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:6px}
+.shand div{border:1px solid var(--border);border-radius:9px;padding:9px 12px;font-size:13px;color:var(--ink-2);background:var(--plane)}
+.shand b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:3px}
+.shand .gives{border-left:3px solid var(--accent)}
+@media (max-width:700px){ .shand{grid-template-columns:1fr} .sstep{padding-left:0} .sstep::before{display:none} .snum{position:static;margin-bottom:8px} }
+
 /* one concept per block: a plain-English line, the numbers, then the picture */
 .expl{border-top:1px solid var(--grid);padding-top:15px;margin-top:15px}
 .expl:first-of-type{border-top:0;padding-top:2px}
@@ -407,6 +423,7 @@ td.mcell span{display:block;font-size:13px;color:var(--ink-2);padding:1.5px 0}
         <h3>What do you want to do</h3>
         <div class="seg" id="techSeg">
           <button class="on" data-t="learn">Learn the techniques</button>
+          <button data-t="story">Follow one scenario</button>
           <button data-t="drill">Drill the questions</button>
         </div>
         <p class="sub" id="techSegNote" style="margin:10px 0 0"></p>
@@ -438,7 +455,8 @@ td.mcell span{display:block;font-size:13px;color:var(--ink-2);padding:1.5px 0}
           <li>Items are drawn from a dedicated technique bank plus every item in the main 120 that turns on a named technique.</li>
           <li>Financial Analysis, Estimation, Risk and KPI items carry data exhibits — tables and dashboards you have to read rather than recognise.</li>
           <li>The end-of-session summary scores you by technique and by the group the technique sits in.</li>
-          <li><b>To fill one in</b>, take the PowerPoint pack — 102 slides, the same worked example and blank template for every technique, as editable shapes. The button is in the reference header.</li>
+          <li><b>To fill one in</b>, download the templates. Every technique has its own PowerPoint, Word and Excel file — 150 in all — plus a single 102-slide pack. The buttons are in the reference header.</li>
+          <li><b>Follow one scenario</b> walks a single engagement through 16 techniques in order, each step taking what the one before it produced. That is where the hand-offs between techniques become visible.</li>
         </ul>
       </div>
 
@@ -500,6 +518,20 @@ td.mcell span{display:block;font-size:13px;color:var(--ink-2);padding:1.5px 0}
   <div class="wrap" id="resultsBody"></div>
 </section>
 
+<!-- ============ CASE STUDY ============ -->
+<section id="story" class="hidden">
+  <header class="bar"><div class="wrap row">
+    <b style="flex:1">One scenario, sixteen techniques</b>
+    <a class="ghost btnlink" href="CBAP-Scenario-Walkthrough.pptx" download>↓ Slides</a>
+    <a class="ghost btnlink" href="CBAP-Scenario-Walkthrough.docx" download>↓ Word</a>
+    <a class="ghost btnlink" href="CBAP-Scenario-Walkthrough.xlsx" download>↓ Excel</a>
+    <button class="ghost" id="themeBtn5">◐</button>
+    <button class="ghost" id="storyPrintBtn">Print / save PDF</button>
+    <button class="ghost" id="storyBackBtn">← Setup</button>
+  </div></header>
+  <div class="wrap" id="storyBody"></div>
+</section>
+
 <!-- ============ LEARN ============ -->
 <section id="learn" class="hidden">
   <header class="bar"><div class="wrap row">
@@ -507,6 +539,7 @@ td.mcell span{display:block;font-size:13px;color:var(--ink-2);padding:1.5px 0}
     <span class="pill" id="learnCount"></span>
     <button class="ghost" id="themeBtn4">◐</button>
     <a class="ghost btnlink" id="learnPackBtn" href="CBAP-Technique-Pack.pptx" download>↓ PowerPoint pack</a>
+    <a class="ghost btnlink" id="learnZipBtn" href="CBAP-Technique-Templates.zip" download>↓ All 150 templates</a>
     <button class="ghost" id="learnPrintBtn">Print / save PDF</button>
     <button class="ghost" id="learnBackBtn">← Setup</button>
     <button class="primary" id="learnDrillBtn">Drill these →</button>
@@ -12574,6 +12607,929 @@ const TECHNIQUE_QUESTIONS = [
   "answer": 1
  }
 ];
+
+const SCENARIO = {
+ "name": "Fairgate Roads Authority — heavy vehicle access permits",
+ "brief": "Fairgate issues about 12,000 heavy vehicle access permits a year. An operator applies for a route, an assessor checks it against mass and bridge limits, affected road managers consent, and a permit is issued. It currently takes about 40 days. A new national scheme obliges Fairgate to decide routine applications within 15 days from 1 July, and the authority has no idea whether that is achievable.",
+ "closing": "Sixteen techniques, each taking something the one before it produced. Nothing here is a fresh start: the process model becomes the analysis rows, the worst row becomes the root cause, the cost to serve becomes the business case, the scope becomes the functions, the functions become the rules and the use cases, and the benefit becomes the KPI. That chain is what makes a technique useful — on its own each is a drawing, in sequence they are an argument.",
+ "steps": [
+  {
+   "seq": 1,
+   "technique": "10.43 Stakeholder List, Map, or Personas",
+   "question": "Who is affected, and who actually decides?",
+   "takes": "Nothing — this is the first pass.",
+   "gives": "Eight parties positioned by influence and interest. Road managers turn out to hold a veto nobody had planned around.",
+   "artefact": {
+    "type": "matrix",
+    "title": "Who matters, and how much",
+    "xLabel": "Interest",
+    "yLabel": "Influence",
+    "cols": [
+     "Low",
+     "High"
+    ],
+    "rows": [
+     "High",
+     "Low"
+    ],
+    "cells": [
+     [
+      {
+       "tag": "keep satisfied",
+       "items": [
+        "Transport regulator",
+        "Fairgate executive"
+       ]
+      },
+      {
+       "tag": "manage closely",
+       "items": [
+        "Road managers (11 councils)",
+        "Permit assessors",
+        "Freight operators"
+       ]
+      }
+     ],
+     [
+      {
+       "items": [
+        "Finance"
+       ]
+      },
+      {
+       "tag": "keep informed",
+       "items": [
+        "Police heavy vehicle unit",
+        "Bridge engineering"
+       ]
+      }
+     ]
+    ],
+    "note": "Road managers are external to Fairgate and consent individually. That is the first sign the 15-day obligation is not entirely within Fairgate's control."
+   }
+  },
+  {
+   "seq": 2,
+   "technique": "10.18 Document Analysis",
+   "question": "What do the existing artefacts already answer?",
+   "takes": "The stakeholder list, which says who owns which document.",
+   "gives": "What is already settled, and the three questions only a person can answer. Those become the interview guide.",
+   "artefact": {
+    "type": "table",
+    "title": "Read before anyone's time is booked",
+    "cols": [
+     "Source",
+     "What it settled",
+     "What it could not"
+    ],
+    "rows": [
+     [
+      "National scheme instrument",
+      "15 days, routine applications only",
+      "What counts as routine"
+     ],
+     [
+      "Assessment procedure v4",
+      "The 6 documented checks",
+      "Why 2 of them are skipped at volume"
+     ],
+     [
+      "Consent deed, 11 councils",
+      "Each council has 10 business days",
+      "Whether that runs concurrently or in series"
+     ],
+     [
+      "Permit system specification",
+      "Fields captured at lodgement",
+      "Whether route data is reliable enough to automate"
+     ]
+    ],
+    "note": "The consent question matters most: 11 councils at 10 days in series cannot fit inside 15 days at all."
+   }
+  },
+  {
+   "seq": 3,
+   "technique": "10.31 Observation",
+   "question": "What do assessors actually do, as opposed to what the procedure says?",
+   "takes": "The two unexplained checks from the document analysis.",
+   "gives": "The real practice, including a shortcut nobody had documented. Feeds the current-state process model.",
+   "artefact": {
+    "type": "table",
+    "title": "Six documented checks, watched across nine applications",
+    "cols": [
+     "Documented check",
+     "Observed",
+     "Gap"
+    ],
+    "rows": [
+     [
+      "1. Vehicle configuration",
+      "Done every time",
+      "None"
+     ],
+     [
+      "2. Mass limits",
+      "Done every time",
+      "None"
+     ],
+     [
+      "3. Bridge capacity",
+      "Skipped when the route is 'known'",
+      "'Known' is the assessor's memory, not a register"
+     ],
+     [
+      "4. Road manager list",
+      "Done every time",
+      "None"
+     ],
+     [
+      "5. Seasonal load restriction",
+      "Skipped in 7 of 9",
+      "Restriction data sits in a separate system nobody opens"
+     ],
+     [
+      "6. Prior refusal check",
+      "Done every time",
+      "None"
+     ]
+    ],
+    "note": "Two of the six checks rely on recall rather than data. Both are the checks that generate rework when a road manager objects."
+   }
+  },
+  {
+   "seq": 4,
+   "technique": "10.35 Process Modelling",
+   "question": "What is the end-to-end flow, and where does it change hands?",
+   "takes": "The observed practice, not the documented procedure.",
+   "gives": "Four stages and the hand-offs between them. These four stage names are used unchanged by every later step.",
+   "artefact": {
+    "type": "swimlane",
+    "title": "Current state — application to permit",
+    "lanes": [
+     "Operator",
+     "Assessor",
+     "Road managers",
+     "Registry"
+    ],
+    "steps": [
+     {
+      "lane": 0,
+      "label": "Lodge application"
+     },
+     {
+      "lane": 1,
+      "label": "Lodgement check"
+     },
+     {
+      "lane": 1,
+      "label": "Route assessment"
+     },
+     {
+      "lane": 2,
+      "label": "Road manager consent"
+     },
+     {
+      "lane": 3,
+      "label": "Permit issue"
+     }
+    ],
+    "flows": [
+     {
+      "from": 3,
+      "to": 2,
+      "label": "objection — reassess, and the clock restarts"
+     },
+     {
+      "from": 1,
+      "to": 0,
+      "label": "incomplete — returned to operator"
+     }
+    ],
+    "note": "Consent sits in a lane Fairgate does not own. Every objection returns the file to assessment and restarts the elapsed clock."
+   }
+  },
+  {
+   "seq": 5,
+   "technique": "10.34 Process Analysis",
+   "question": "Where do the 40 days actually go?",
+   "takes": "The four stages from the process model, by the same names.",
+   "gives": "Elapsed against touch time, and a cost to serve of $41 a permit. Both are consumed by the business case.",
+   "artefact": {
+    "type": "table",
+    "title": "40 days elapsed, 3.2 hours of work",
+    "cols": [
+     "Stage",
+     "Elapsed",
+     "Touch time",
+     "Verdict"
+    ],
+    "align": [
+     "left",
+     "num",
+     "num",
+     "left"
+    ],
+    "rows": [
+     [
+      "Lodgement check",
+      "4 days",
+      "0.3 h",
+      "Queue"
+     ],
+     [
+      "Route assessment",
+      "19 days",
+      "2.1 h",
+      "Queue, plus rework from objections"
+     ],
+     [
+      "Road manager consent",
+      "14 days",
+      "0.4 h",
+      "Outside Fairgate, 11 councils in series"
+     ],
+     [
+      "Permit issue",
+      "3 days",
+      "0.4 h",
+      "Queue"
+     ],
+     [
+      "Total",
+      "40 days",
+      "3.2 h",
+      "Touch time is 1.1% of elapsed"
+     ]
+    ],
+    "note": "Cost to serve is $41 a permit across 12,000 permits, so $492,000 a year. Adding assessors buys touch time, which is 1.1% of the problem."
+   }
+  },
+  {
+   "seq": 6,
+   "technique": "10.40 Root Cause Analysis",
+   "question": "Why does route assessment take 19 days to do 2.1 hours of work?",
+   "takes": "The worst row of the process analysis.",
+   "gives": "A cause that is about data, not effort. That rules out the obvious option before it is costed.",
+   "artefact": {
+    "type": "tree",
+    "title": "Why route assessment runs to 19 days",
+    "levels": [
+     "Symptom",
+     "Why",
+     "Why again",
+     "Root cause"
+    ],
+    "nodes": [
+     {
+      "label": "Route assessment takes 19 days for 2.1 hours of work",
+      "children": [
+       {
+        "label": "Why? Files wait to be reworked after objections",
+        "children": [
+         {
+          "label": "Why? Road managers object to routes already assessed",
+          "children": [
+           {
+            "label": "Bridge and seasonal restriction data is not on the assessor's screen"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "label": "Why? Assessors batch work to avoid switching systems",
+        "children": [
+         {
+          "label": "Why? Restriction data lives in a second system",
+          "children": [
+           {
+            "label": "The same root: the data an assessment needs is not where the assessment happens"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "note": "Both branches end in the same place, which is what makes it a root cause rather than two problems."
+   }
+  },
+  {
+   "seq": 7,
+   "technique": "10.20 Financial Analysis",
+   "question": "What is each option worth?",
+   "takes": "The $41 cost to serve, and the root cause that says more assessors will not help.",
+   "gives": "Three options valued over five years at 7%. B has the best NPV, C the fastest payback.",
+   "artefact": {
+    "type": "table",
+    "title": "Three options, five years, discounted at 7%",
+    "cols": [
+     "Option",
+     "Cost per permit",
+     "Annual saving",
+     "Investment",
+     "NPV",
+     "Payback"
+    ],
+    "align": [
+     "left",
+     "num",
+     "num",
+     "num",
+     "num",
+     "num"
+    ],
+    "rows": [
+     [
+      "A  More assessors",
+      "$41",
+      "($180,000)",
+      "$120,000",
+      "($858,036)",
+      "never"
+     ],
+     [
+      "B  Rules engine and self-service",
+      "$19",
+      "$264,000",
+      "$700,000",
+      "$382,452",
+      "2.65 yrs"
+     ],
+     [
+      "C  Outsource assessment",
+      "$31",
+      "$120,000",
+      "$250,000",
+      "$242,024",
+      "2.08 yrs"
+     ]
+    ],
+    "note": "Option A is the one the executive asked for. It adds touch-time capacity to a queue problem and returns a negative NPV, which is exactly what the root cause predicted."
+   }
+  },
+  {
+   "seq": 8,
+   "technique": "10.16 Decision Analysis",
+   "question": "B has the better return and C pays back sooner. Which?",
+   "takes": "The NPV and payback figures, unchanged.",
+   "gives": "A recommendation with the weighting visible, so the argument is about criteria rather than preference.",
+   "artefact": {
+    "type": "table",
+    "title": "Weighted against criteria agreed before scoring",
+    "cols": [
+     "Criterion",
+     "Weight",
+     "A",
+     "B",
+     "C"
+    ],
+    "align": [
+     "left",
+     "num",
+     "num",
+     "num",
+     "num"
+    ],
+    "rows": [
+     [
+      "Meets the 15-day obligation",
+      "40%",
+      "1",
+      "5",
+      "3"
+     ],
+     [
+      "Five-year value",
+      "25%",
+      "1",
+      "5",
+      "4"
+     ],
+     [
+      "Cash exposure",
+      "15%",
+      "4",
+      "2",
+      "4"
+     ],
+     [
+      "Keeps assessment capability in house",
+      "20%",
+      "5",
+      "5",
+      "1"
+     ],
+     [
+      "Weighted total",
+      "100%",
+      "2.25",
+      "4.55",
+      "2.95"
+     ]
+    ],
+    "note": "C pays back faster and still loses, because payback carries 15% of the decision and the statutory obligation carries 40%. Naming the weights first is what stops that being an argument about opinions."
+   }
+  },
+  {
+   "seq": 9,
+   "technique": "10.38 Risk Analysis and Management",
+   "question": "What could stop option B working?",
+   "takes": "The recommended option, and the road manager veto from the stakeholder map.",
+   "gives": "An expected monetary value of $196,000, which goes into the business case beside the benefit.",
+   "artefact": {
+    "type": "matrix",
+    "title": "Option B risks, post-mitigation",
+    "xLabel": "Impact",
+    "yLabel": "Likelihood",
+    "cols": [
+     "Moderate",
+     "Major",
+     "Severe"
+    ],
+    "rows": [
+     "Likely",
+     "Possible",
+     "Unlikely"
+    ],
+    "cells": [
+     [
+      {
+       "items": [
+        "Assessor adoption"
+       ]
+      },
+      {
+       "items": [
+        ""
+       ]
+      },
+      {
+       "items": [
+        ""
+       ]
+      }
+     ],
+     [
+      {
+       "items": [
+        "Restriction data quality"
+       ]
+      },
+      {
+       "tag": "EMV $126,000",
+       "items": [
+        "Councils decline to consent digitally"
+       ]
+      },
+      {
+       "items": [
+        ""
+       ]
+      }
+     ],
+     [
+      {
+       "items": [
+        ""
+       ]
+      },
+      {
+       "tag": "EMV $70,000",
+       "items": [
+        "Scheme rules change before go-live"
+       ]
+      },
+      {
+       "items": [
+        ""
+       ]
+      }
+     ]
+    ],
+    "note": "Expected monetary value across all outcomes is $196,000. That figure enters the business case; the severe cases stay here."
+   }
+  },
+  {
+   "seq": 10,
+   "technique": "10.7 Business Cases",
+   "question": "Is the change justified, and on what?",
+   "takes": "Need, options, value, risk — each already produced by a step above.",
+   "gives": "An approved change strategy. Nothing new is invented here; the case is an assembly.",
+   "artefact": {
+    "type": "canvas",
+    "title": "The case for option B",
+    "cols": 2,
+    "panels": [
+     {
+      "label": "Need",
+      "items": [
+       "15-day statutory obligation from 1 July",
+       "40 days today, 1.1% of it working time",
+       "$492,000 a year to serve"
+      ]
+     },
+     {
+      "label": "Options considered",
+      "items": [
+       "A more assessors — negative NPV",
+       "C outsource — faster payback, loses capability",
+       "B rules engine and self-service — recommended",
+       "Do nothing — non-compliant"
+      ]
+     },
+     {
+      "label": "Value",
+      "items": [
+       "$264,000 a year saved",
+       "$382,452 NPV over five years",
+       "Cost per permit $41 to $19"
+      ]
+     },
+     {
+      "label": "Risk",
+      "items": [
+       "Expected monetary value $196,000",
+       "Largest: councils declining digital consent"
+      ]
+     },
+     {
+      "label": "Timing",
+      "items": [
+       "Must be live before 1 July",
+       "Consent redesign is on the critical path"
+      ]
+     },
+     {
+      "label": "What success looks like",
+      "items": [
+       "Routine permits decided in 15 days",
+       "Measured, not asserted — see step 16"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "seq": 11,
+   "technique": "10.41 Scope Modelling",
+   "question": "What is in, what is out, and what will try to creep in?",
+   "takes": "The approved change strategy.",
+   "gives": "A boundary. The in-scope list becomes the top level of the decomposition, unchanged.",
+   "artefact": {
+    "type": "canvas",
+    "title": "Boundary for the permit service change",
+    "cols": 3,
+    "panels": [
+     {
+      "label": "In scope",
+      "items": [
+       "Application lodgement",
+       "Route assessment",
+       "Road manager consent",
+       "Permit issue and variation"
+      ]
+     },
+     {
+      "label": "Out of scope",
+      "items": [
+       "Enforcement and infringements",
+       "Bridge asset management",
+       "Operator accreditation",
+       "Fee setting"
+      ]
+     },
+     {
+      "label": "Adjacent — decide before it drifts",
+      "items": [
+       "Restriction data mastering",
+       "Council consent portal",
+       "Registry identity"
+      ]
+     }
+    ],
+    "note": "Restriction data is adjacent and unavoidable: the root cause sits in it. Naming it here forces the decision rather than absorbing it silently."
+   }
+  },
+  {
+   "seq": 12,
+   "technique": "10.22 Functional Decomposition",
+   "question": "What does the in-scope work break into?",
+   "takes": "The four in-scope items, as the top level.",
+   "gives": "Functions small enough to specify. 'Assess route' is where the rules and the data live.",
+   "artefact": {
+    "type": "tree",
+    "title": "The permit service, broken down far enough to specify",
+    "levels": [
+     "Service",
+     "Function",
+     "Sub-function"
+    ],
+    "nodes": [
+     {
+      "label": "Issue a heavy vehicle access permit",
+      "children": [
+       {
+        "label": "Lodge application",
+        "children": [
+         {
+          "label": "Capture vehicle configuration"
+         },
+         {
+          "label": "Capture proposed route"
+         }
+        ]
+       },
+       {
+        "label": "Assess route",
+        "children": [
+         {
+          "label": "Check mass and bridge limits"
+         },
+         {
+          "label": "Check seasonal restrictions"
+         },
+         {
+          "label": "Determine affected road managers"
+         }
+        ]
+       },
+       {
+        "label": "Obtain consent",
+        "children": [
+         {
+          "label": "Request consent"
+         },
+         {
+          "label": "Track and escalate"
+         }
+        ]
+       },
+       {
+        "label": "Issue and vary",
+        "children": [
+         {
+          "label": "Issue permit"
+         },
+         {
+          "label": "Vary or revoke"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "seq": 13,
+   "technique": "10.9 Business Rules Analysis",
+   "question": "What governs an assessment, and how often will it change?",
+   "takes": "The 'Assess route' function.",
+   "gives": "Rules held apart from the process. Each names the data elements it needs, which sets the dictionary.",
+   "artefact": {
+    "type": "table",
+    "title": "Assessment rules, governed separately from the workflow",
+    "cols": [
+     "Rule",
+     "Statement",
+     "Data it needs",
+     "Owner"
+    ],
+    "rows": [
+     [
+      "ASR-01",
+      "A route crossing a bridge below the vehicle's gross mass is refused.",
+      "bridge_capacity_t, gross_mass_t",
+      "Bridge engineering"
+     ],
+     [
+      "ASR-02",
+      "A route under a seasonal restriction is refused for the restricted dates.",
+      "restriction_from, restriction_to",
+      "Road managers"
+     ],
+     [
+      "ASR-03",
+      "An application matching a refusal within 12 months goes to panel.",
+      "prior_refusal_date",
+      "Policy"
+     ],
+     [
+      "ASR-04",
+      "Consent is required from every road manager on the route.",
+      "road_manager_id",
+      "Policy"
+     ]
+    ],
+    "note": "The scheme rules changed twice last year. Held in workflow code each change is a release; held here each change is a rule version."
+   }
+  },
+  {
+   "seq": 14,
+   "technique": "10.12 Data Dictionary",
+   "question": "What exactly are the elements those rules depend on?",
+   "takes": "The data column of the rules table.",
+   "gives": "Element definitions precise enough to build and to migrate.",
+   "artefact": {
+    "type": "table",
+    "title": "Elements the assessment rules depend on",
+    "cols": [
+     "Element",
+     "Meaning",
+     "Type",
+     "Permitted",
+     "Mandatory"
+    ],
+    "rows": [
+     [
+      "gross_mass_t",
+      "Total mass of vehicle and load",
+      "Decimal",
+      "> 0, one decimal",
+      "Yes"
+     ],
+     [
+      "bridge_capacity_t",
+      "Rated capacity of a structure on the route",
+      "Decimal",
+      "> 0, one decimal",
+      "Yes"
+     ],
+     [
+      "restriction_from",
+      "First day a seasonal restriction applies",
+      "Date",
+      "Not before today",
+      "No"
+     ],
+     [
+      "restriction_to",
+      "Last day it applies",
+      "Date",
+      "≥ restriction_from",
+      "No"
+     ],
+     [
+      "road_manager_id",
+      "The council or authority controlling a road segment",
+      "Reference",
+      "One of 11",
+      "Yes"
+     ],
+     [
+      "prior_refusal_date",
+      "Date of the most recent refusal for this operator and route",
+      "Date",
+      "Not future-dated",
+      "No"
+     ]
+    ],
+    "note": "restriction_from and restriction_to are the elements the observed shortcut skipped. Defining them is what moves the check from memory to data."
+   }
+  },
+  {
+   "seq": 15,
+   "technique": "10.44 State Modelling",
+   "question": "What may a permit become, and from where?",
+   "takes": "The process stages and the refusal rule.",
+   "gives": "Permitted transitions, including two that must be forbidden.",
+   "artefact": {
+    "type": "state",
+    "title": "Permit lifecycle",
+    "states": [
+     {
+      "label": "Lodged"
+     },
+     {
+      "label": "Assessed"
+     },
+     {
+      "label": "Consent pending"
+     },
+     {
+      "label": "Issued"
+     },
+     {
+      "label": "Refused",
+      "terminal": true
+     },
+     {
+      "label": "Revoked",
+      "terminal": true
+     }
+    ],
+    "transitions": [
+     {
+      "from": 0,
+      "to": 1,
+      "label": "assessed"
+     },
+     {
+      "from": 1,
+      "to": 2,
+      "label": "consent sought"
+     },
+     {
+      "from": 2,
+      "to": 3,
+      "label": "all consents in"
+     },
+     {
+      "from": 1,
+      "to": 4,
+      "label": "refused"
+     },
+     {
+      "from": 3,
+      "to": 5,
+      "label": "revoked"
+     },
+     {
+      "from": 2,
+      "to": 1,
+      "label": "objection, reassess"
+     },
+     {
+      "from": 4,
+      "to": 3,
+      "label": "issued after refusal",
+      "illegal": true
+     },
+     {
+      "from": 5,
+      "to": 3,
+      "label": "reinstated after revocation",
+      "illegal": true
+     }
+    ],
+    "note": "The objection loop back to Assessed is the one the process model showed restarting the clock. It is legal, and it is the thing the 15-day obligation cannot absorb twice."
+   }
+  },
+  {
+   "seq": 16,
+   "technique": "10.28 Metrics and Key Performance Indicators",
+   "question": "How will anyone know whether it worked?",
+   "takes": "The benefits claimed in the business case, and the states just defined.",
+   "gives": "Measures with targets and the threshold at which someone must act. This is what closes the loop back to step 5.",
+   "artefact": {
+    "type": "tree",
+    "title": "From the obligation down to the indicator someone acts on",
+    "levels": [
+     "Objective",
+     "Strategy",
+     "Tactic",
+     "KPI"
+    ],
+    "nodes": [
+     {
+      "label": "Decide routine permits within 15 days at $19 a permit",
+      "children": [
+       {
+        "label": "Remove the queue in assessment",
+        "children": [
+         {
+          "label": "Put restriction and bridge data on the assessment screen",
+          "children": [
+           {
+            "label": "Median days Lodged to Issued — target ≤ 15, act above 13",
+            "note": "lagging"
+           },
+           {
+            "label": "Objection rate — target ≤ 6%, act above 9%",
+            "note": "leading"
+           }
+          ]
+         }
+        ]
+       },
+       {
+        "label": "Shorten consent",
+        "children": [
+         {
+          "label": "Seek consent from all road managers at once",
+          "children": [
+           {
+            "label": "Median consent days — target ≤ 7, act above 9",
+            "note": "lagging"
+           },
+           {
+            "label": "Councils consenting digitally — target ≥ 9 of 11, act below 7",
+            "note": "leading"
+           }
+          ]
+         }
+        ]
+       }
+      ]
+     }
+    ],
+    "note": "Baseline is step 5: 40 days, $41 a permit. Without that row there is no improvement to claim, only an assertion."
+   }
+  }
+ ]
+};
 /* === end generated data === */
 
 const BLUEPRINT = {3:14, 4:12, 5:15, 6:15, 7:30, 8:14};
@@ -12622,6 +13578,7 @@ const S = {
   kas: new Set([3,4,5,6,7,8]),
   techs: new Set(),
   techMode: "learn",
+  story: false,
   len: 25,
   tLen: 25,
   qs: [],
@@ -12665,7 +13622,7 @@ function toggleTheme(){
   const r = document.documentElement;
   r.dataset.theme = r.dataset.theme === "dark" ? "light" : "dark";
 }
-["themeBtn","themeBtn2","themeBtn3","themeBtn4"].forEach(id => $(id) && $(id).addEventListener("click", toggleTheme));
+["themeBtn","themeBtn2","themeBtn3","themeBtn4","themeBtn5"].forEach(id => $(id) && $(id).addEventListener("click", toggleTheme));
 initTheme();
 
 /* ---------- start screen ---------- */
@@ -12784,6 +13741,15 @@ function syncSetup(){
   $("examPane").classList.toggle("hidden", study || tech);
   $("noTimerWrap").classList.toggle("hidden", study || tech);
 
+  if (tech && S.techMode === "story"){
+    $("techLenWrap").classList.add("hidden");
+    $("techSegNote").textContent =
+      "One engagement, worked end to end. Each technique takes what the one before it produced — the process model becomes the analysis, the analysis becomes the business case, the scope becomes the functions.";
+    $("tPoolNote").innerHTML = `${SCENARIO.steps.length} steps · ${new Set(SCENARIO.steps.map(x => x.technique)).size} techniques · the selection above does not apply`;
+    $("startBtn").disabled = false;
+    $("startBtn").textContent = "Open the case study";
+    return;
+  }
   if (tech){
     const learn = S.techMode === "learn";
     const chosen = S.techs.size, avail = techPoolSize();
@@ -12893,6 +13859,7 @@ function buildSet(){
 }
 
 $("startBtn").addEventListener("click", () => {
+  if (S.mode === "technique" && S.techMode === "story") return openStory();
   if (S.mode === "technique" && S.techMode === "learn") return openLearn();
   startSession();
 });
@@ -12993,6 +13960,43 @@ $("learnBody").addEventListener("click", e => {
   card.querySelectorAll(".vtoggle button").forEach(b => b.classList.toggle("on", b === btn));
   card.querySelectorAll(".vpane").forEach(p => p.classList.toggle("hidden", p.dataset.v !== btn.dataset.v));
 });
+
+/* ---------- case study ---------- */
+function openStory(){
+  const byKey = {};
+  TECHNIQUES.forEach(t => byKey[t.n + " " + t.name] = t);
+  $("storyBody").innerHTML =
+    `<div class="sbrief">
+       <h2 style="margin-top:0">${esc(SCENARIO.name)}</h2>
+       <p class="sub" style="font-size:15px;margin-bottom:0">${esc(SCENARIO.brief)}</p>
+     </div>` +
+    SCENARIO.steps.map(st => {
+      const t = byKey[st.technique] || {};
+      return `<div class="sstep"><div class="snum">${st.seq}</div>
+        <div class="tcard">
+          <h3>${esc(st.technique)}</h3>
+          <div class="tmeta">${esc(t.group || "")}</div>
+          <div class="sq">${esc(st.question)}</div>
+          <div class="shand">
+            <div><b>Takes</b>${esc(st.takes)}</div>
+            <div class="gives"><b>Gives</b>${esc(st.gives)}</div>
+          </div>
+          ${exhibitHTML({exhibit: st.artefact})}
+          ${t.confused ? `<div class="lbl">Why this technique and not its neighbour</div>
+            <div class="conf">${esc(t.confused)}</div>` : ""}
+        </div></div>`;
+    }).join("") +
+    `<div class="sbrief" style="margin-top:10px"><p class="sub" style="font-size:15px;margin-bottom:0">${esc(SCENARIO.closing)}</p></div>`;
+  $("start").classList.add("hidden");
+  $("story").classList.remove("hidden");
+  window.scrollTo({top:0});
+}
+$("storyBackBtn").addEventListener("click", () => {
+  $("story").classList.add("hidden");
+  $("start").classList.remove("hidden");
+  window.scrollTo({top:0});
+});
+$("storyPrintBtn").addEventListener("click", () => window.print());
 
 $("learnBackBtn").addEventListener("click", () => {
   $("learn").classList.add("hidden");

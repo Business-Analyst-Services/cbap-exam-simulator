@@ -116,7 +116,13 @@ interleaved so no two consecutive questions come from the same area. There is no
 | `questions.json` | The 120-item exam bank as data, if you want to build your own front end |
 | `technique-questions.json` | The technique drill bank, including the items that carry data exhibits |
 | `techniques.json` | The 50 BABOK v3 techniques used by the learn view |
-| `build.js` | Validates the data, embeds it into `index.html`, and rebuilds the PowerPoint pack |
+| `build.js` | Validates the data, embeds it, and rebuilds every download |
+| `scenario.json` | One engagement worked across 16 techniques, with the hand-offs between them |
+| `make-files.js` | One .pptx, .docx and .xlsx per technique — 150 files plus a zip |
+| `make-scenario.js` | The scenario walkthrough in all three formats |
+| `ooxml.js` | Shared ZIP and escaping for all three writers |
+| `docx-lib.js` / `xlsx-lib.js` | Minimal Word and Excel writers, no dependencies |
+| `artefact-grid.js` | Turns any artefact into a grid, so Word and Excel can carry the diagrams |
 | `make-pptx.js` | Generates the PowerPoint pack from `techniques.json` |
 | `pptx-lib.js` | Minimal OOXML writer — emits native shapes and tables, no dependencies |
 | `pptx-template/` | The PowerPoint chassis the generator builds on (master, layouts, theme) |
@@ -258,6 +264,54 @@ Download `index.html` and open it. That is the whole procedure — it works offl
 path. To host your own copy, enable GitHub Pages on a fork and point it at the default branch root.
 
 > **Note:** progress is held in the browser tab only. Reloading mid-sitting starts you over.
+
+## Downloads
+
+| What | Where |
+|---|---|
+| **[Every technique, three formats](https://business-analyst-services.github.io/cbap-exam-simulator/CBAP-Technique-Templates.zip)** | 150 files — one `.pptx`, `.docx` and `.xlsx` per technique |
+| **[The 102-slide pack](https://business-analyst-services.github.io/cbap-exam-simulator/CBAP-Technique-Pack.pptx)** | All 50 techniques in one deck |
+| **[Scenario walkthrough](https://business-analyst-services.github.io/cbap-exam-simulator/CBAP-Scenario-Walkthrough.pptx)** | One engagement, 16 techniques ([Word](https://business-analyst-services.github.io/cbap-exam-simulator/CBAP-Scenario-Walkthrough.docx) · [Excel](https://business-analyst-services.github.io/cbap-exam-simulator/CBAP-Scenario-Walkthrough.xlsx)) |
+
+Every one is rebuilt by `node build.js` from the same JSON the app embeds, so nothing drifts.
+
+### One file per technique
+
+Each is self-contained — the worked example and the blank template for that technique alone — so it
+can be handed to someone without the other 49. Named `12-data-dictionary.docx` and so on.
+
+The three formats are not the same artefact three times:
+
+- **`.pptx`** keeps the notation. A swimlane is a swimlane, a state machine is a state machine.
+- **`.docx`** is a Word table you type into, with the technique's purpose and discriminator above it.
+- **`.xlsx`** has three sheets: About, Worked example, Blank template.
+
+Word and Excel cannot draw a sequence diagram usefully, and an embedded picture would be worse than
+useless because you could not edit it. So the 16 diagram artefacts are expressed as the grid that
+carries the same information — a swimlane becomes lanes down and steps across, a state model becomes
+from/event/to with a permitted column, a sequence becomes ordered messages. That is sortable,
+printable and editable; a picture of a diagram is none of those.
+
+## Follow one scenario
+
+The 50 worked examples are deliberately drawn from 50 different organisations, because recognising a
+technique in an unfamiliar setting is what the exam tests. That variety is the wrong shape for
+learning how techniques *connect*, so there is a separate thread that does the opposite.
+
+**Fairgate Roads Authority — heavy vehicle access permits.** One engagement, 16 techniques in BABOK
+order, and every step says what it takes from the step before and what it hands to the next:
+
+| | |
+|---|---|
+| 4 → 5 | The four stage names in the process model become the rows of the process analysis, unchanged |
+| 5 → 6 | The worst row, 19 days for 2.1 hours of work, becomes the root cause symptom |
+| 5 → 7 | The $41 cost to serve becomes the baseline the options are valued against |
+| 7 → 8 | B has the better NPV, C the faster payback — the weighting decides, in the open |
+| 11 → 12 | The in-scope list becomes the top level of the decomposition |
+| 13 → 14 | The data each rule needs becomes the data dictionary |
+| 10 → 16 | The benefit claimed in the business case becomes the KPI with a threshold |
+
+That chain is the point. On its own each technique is a drawing; in sequence they are an argument.
 
 ## The PowerPoint pack
 

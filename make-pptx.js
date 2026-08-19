@@ -440,57 +440,89 @@ function artefact(x) {
 }
 
 /* ---------- slides ---------- */
-const slides = [];
-const groups = [];
-techs.forEach(t => {
-  let g = groups.find(x => x.name === t.group);
-  if (!g) groups.push(g = { name: t.group, items: [] });
-  g.items.push(t);
-});
 
-// title
-P.resetIds();
-slides.push({ shapes:
-  P.shape({ x: 0, y: 0, cx: PAGE.w, cy: PAGE.h, fill: C.plane, line: "none" })
-  + P.shape({ x: 1.1, y: 2.15, cx: 11, cy: 0.9, fill: "none", line: "none",
-      paras: [{ text: "CBAP® Technique Pack", size: 44, bold: true, color: C.ink }] })
-  + P.shape({ x: 1.1, y: 3.05, cx: 11, cy: 0.5, fill: "none", line: "none",
-      paras: [{ text: "All 50 BABOK® Guide v3 techniques — a worked example and a blank template for each", size: 16, color: C.muted }] })
-  + P.connector({ x1: 1.1, y1: 3.75, x2: 5.2, y2: 3.75, color: C.accent, w: 28575 })
-  + P.shape({ x: 1.1, y: 4.0, cx: 11, cy: 0.9, fill: "none", line: "none",
-      paras: [{ text: "Every diagram and table on the following slides is a native PowerPoint object.", size: 11, color: C.ink },
-              { text: "Select it, type over it, recolour it, delete what you do not need.", size: 11, color: C.ink }] })
-  + P.shape({ x: 1.1, y: 6.3, cx: 11, cy: 0.4, fill: "none", line: "none",
-      paras: [{ text: "business-analyst.services  ·  generated from techniques.json  ·  not affiliated with IIBA®", size: 9.5, color: C.muted }] }) });
+function groupsOf(list) {
+  const groups = [];
+  list.forEach(t => {
+    let g = groups.find(x => x.name === t.group);
+    if (!g) groups.push(g = { name: t.group, items: [] });
+    g.items.push(t);
+  });
+  return groups;
+}
 
-// contents
-let cy0 = 1.3;
-let contents = P.shape({ x: M, y: 0.4, cx: 11, cy: 0.6, fill: "none", line: "none",
-    paras: [{ text: "Contents", size: 26, bold: true, color: C.ink }] })
-  + P.connector({ x1: M, y1: 1.12, x2: PAGE.w - M, y2: 1.12, color: C.grid });
-groups.forEach((g, gi) => {
-  const col = gi % 2, row = Math.floor(gi / 2);
-  const gx = M + col * 6.3, gy = 1.3 + row * 2.0;
-  contents += P.shape({ x: gx, y: gy, cx: 6.0, cy: 0.26, fill: "none", line: "none",
-    paras: [{ text: g.name.toUpperCase(), size: 9, bold: true, color: C.deep }] });
-  contents += P.shape({ x: gx, y: gy + 0.26, cx: 6.0, cy: 1.6, fill: "none", line: "none",
-    paras: g.items.map(t => ({ text: `${t.n}  ${t.name}`, size: 8.5, color: C.ink })), text: { anchor: "t", ins: 0 } });
-});
-slides.push({ shapes: contents });
+/* The two slides a technique gets: worked example, then blank template. */
+function pair(t) {
+  return [
+    { shapes: header(t, "ex") + sidebar(t, "ex") + caption(t.visual.title, t.visual.note) + artefact(t.visual) },
+    { shapes: header(t, "tpl") + sidebar(t, "tpl") + caption(t.template.title, null) + artefact(fillOut(t.template)) }
+  ];
+}
 
-// technique pairs
-groups.forEach(g => g.items.forEach(t => {
-  slides.push({ shapes: header(t, "ex") + sidebar(t, "ex")
-    + caption(t.visual.title, t.visual.note) + artefact(t.visual) });
-  slides.push({ shapes: header(t, "tpl") + sidebar(t, "tpl")
-    + caption(t.template.title, null) + artefact(fillOut(t.template)) });
-}));
+function titleSlide(sub) {
+  return { shapes:
+    P.shape({ x: 0, y: 0, cx: PAGE.w, cy: PAGE.h, fill: C.plane, line: "none" })
+    + P.shape({ x: 1.1, y: 2.15, cx: 11, cy: 0.9, fill: "none", line: "none",
+        paras: [{ text: "CBAP® Technique Pack", size: 44, bold: true, color: C.ink }] })
+    + P.shape({ x: 1.1, y: 3.05, cx: 11, cy: 0.5, fill: "none", line: "none",
+        paras: [{ text: sub, size: 16, color: C.muted }] })
+    + P.connector({ x1: 1.1, y1: 3.75, x2: 5.2, y2: 3.75, color: C.accent, w: 28575 })
+    + P.shape({ x: 1.1, y: 4.0, cx: 11, cy: 0.9, fill: "none", line: "none",
+        paras: [{ text: "Every diagram and table on the following slides is a native PowerPoint object.", size: 11, color: C.ink },
+                { text: "Select it, type over it, recolour it, delete what you do not need.", size: 11, color: C.ink }] })
+    + P.shape({ x: 1.1, y: 6.3, cx: 11, cy: 0.4, fill: "none", line: "none",
+        paras: [{ text: "business-analyst.services  ·  generated from techniques.json  ·  not affiliated with IIBA®", size: 9.5, color: C.muted }] }) };
+}
 
-const buf = P.build(slides, { title: "CBAP Technique Pack", creator: "Business Analyst Services" });
-fs.writeFileSync(OUT, buf);
-console.log(`${path.basename(OUT)} written`);
-console.log(`  slides      ${slides.length} (title + contents + ${techs.length} pairs)`);
-console.log(`  size        ${(buf.length / 1024).toFixed(0)} KB`);
-const byType = {};
-techs.forEach(t => byType[t.visual.type] = (byType[t.visual.type] || 0) + 1);
-console.log(`  artefacts   ${Object.entries(byType).map(([k, v]) => k + ":" + v).join("  ")}`);
+function contentsSlide(groups) {
+  let contents = P.shape({ x: M, y: 0.4, cx: 11, cy: 0.6, fill: "none", line: "none",
+      paras: [{ text: "Contents", size: 26, bold: true, color: C.ink }] })
+    + P.connector({ x1: M, y1: 1.12, x2: PAGE.w - M, y2: 1.12, color: C.grid });
+  groups.forEach((g, gi) => {
+    const col = gi % 2, row = Math.floor(gi / 2);
+    const gx = M + col * 6.3, gy = 1.3 + row * 2.0;
+    contents += P.shape({ x: gx, y: gy, cx: 6.0, cy: 0.26, fill: "none", line: "none",
+      paras: [{ text: g.name.toUpperCase(), size: 9, bold: true, color: C.deep }] });
+    contents += P.shape({ x: gx, y: gy + 0.26, cx: 6.0, cy: 1.6, fill: "none", line: "none",
+      paras: g.items.map(t => ({ text: t.n + "  " + t.name, size: 8.5, color: C.ink })), text: { anchor: "t", ins: 0 } });
+  });
+  return { shapes: contents };
+}
+
+/* The whole pack: title, contents, then every technique in group order. */
+function buildPack(list) {
+  P.resetIds();
+  const groups = groupsOf(list);
+  const slides = [titleSlide("All 50 BABOK® Guide v3 techniques — a worked example and a blank template for each"),
+    contentsSlide(groups)];
+  groups.forEach(g => g.items.forEach(t => slides.push(...pair(t))));
+  return { buf: P.build(slides, { title: "CBAP Technique Pack", creator: "Business Analyst Services" }), slides };
+}
+
+/* One technique on its own: just the pair, no front matter. */
+function buildOne(t) {
+  P.resetIds();
+  const slides = pair(t);
+  return P.build(slides, { title: t.n + " " + t.name, creator: "Business Analyst Services" });
+}
+
+/* Render an artefact into an arbitrary rectangle, so callers that are not the
+   technique pair (the scenario walkthrough) can lay slides out differently. */
+function artefactIn(x, area) {
+  const fn = RENDER[x.type];
+  if (!fn) throw new Error("no PowerPoint renderer for exhibit type " + x.type);
+  return fn(x, area);
+}
+
+module.exports = { buildPack, buildOne, artefact, artefactIn, fillOut, AREA, C, PAGE, MAIN, M, P };
+
+if (require.main === module) {
+  const { buf, slides } = buildPack(techs);
+  fs.writeFileSync(OUT, buf);
+  const byType = {};
+  techs.forEach(t => byType[t.visual.type] = (byType[t.visual.type] || 0) + 1);
+  console.log(path.basename(OUT) + " written");
+  console.log("  slides      " + slides.length + " (title + contents + " + techs.length + " pairs)");
+  console.log("  size        " + (buf.length / 1024).toFixed(0) + " KB");
+  console.log("  artefacts   " + Object.entries(byType).map(([k, v]) => k + ":" + v).join("  "));
+}

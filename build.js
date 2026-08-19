@@ -23,6 +23,7 @@ const read = f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
 const questions = read("questions.json");
 const techniques = read("techniques.json");
 const techQuestions = read("technique-questions.json");
+const scenario = read("scenario.json");
 
 /* ---- checks that must hold before anything is written ---- */
 const errors = [];
@@ -143,6 +144,23 @@ all.forEach(q => {
   if (q.exhibit) checkExhibit(q.exhibit, where);
 });
 
+/* The scenario is a chain: each step must name a real technique, and must say
+   what it takes from the step before and what it hands on. A step that takes
+   nothing after the first has broken the chain, which is the whole point of it. */
+if (!scenario.steps || !scenario.steps.length) errors.push("scenario has no steps");
+(scenario.steps || []).forEach((st, i) => {
+  const where = `scenario step ${st.seq}`;
+  if (st.seq !== i + 1) errors.push(`${where}: out of sequence (position ${i + 1})`);
+  if (!keys.has(st.technique)) errors.push(`${where}: unknown technique "${st.technique}"`);
+  ["question", "takes", "gives"].forEach(f => { if (!st[f]) errors.push(`${where}: missing ${f}`); });
+  if (!st.artefact) errors.push(`${where}: no artefact`);
+  else checkExhibit(st.artefact, where);
+});
+const usedTwice = {};
+(scenario.steps || []).forEach(st => { usedTwice[st.technique] = (usedTwice[st.technique] || 0) + 1; });
+Object.entries(usedTwice).filter(([, n]) => n > 1)
+  .forEach(([k, n]) => errors.push(`scenario uses ${k} ${n} times`));
+
 techniques.forEach(t => {
   if (t.visual) checkExhibit(t.visual, `${t.n} visual`);
   if (t.template) {
@@ -196,6 +214,8 @@ const block = [
   "const TECHNIQUES = " + JSON.stringify(techniques, null, 1) + ";",
   "",
   "const TECHNIQUE_QUESTIONS = " + JSON.stringify(techQuestions, null, 1) + ";",
+  "",
+  "const SCENARIO = " + JSON.stringify(scenario, null, 1) + ";",
   CLOSE
 ].join("\n");
 
@@ -217,7 +237,7 @@ fs.writeFileSync(HTML, html);
 
 /* The PowerPoint pack is part of the product, not a side artefact: it is
    generated from the same data, in the same build, so it cannot fall behind. */
-let pack = "skipped";
+let pack = "skipped", files = "skipped";
 try {
   execFileSync(process.execPath, [path.join(dir, "make-pptx.js")], { stdio: "pipe" });
   const st = fs.statSync(path.join(dir, "CBAP-Technique-Pack.pptx"));
@@ -225,6 +245,19 @@ try {
 } catch (e) {
   console.error("warning: the PowerPoint pack did not rebuild -", (e.message || "").split("\n")[0]);
   pack = "FAILED";
+}
+try {
+  execFileSync(process.execPath, [path.join(dir, "make-scenario.js")], { stdio: "pipe" });
+} catch (e) {
+  console.error("warning: the scenario walkthrough did not rebuild -", (e.message || "").split("\n")[0]);
+}
+try {
+  const out = execFileSync(process.execPath, [path.join(dir, "make-files.js")], { stdio: "pipe" }).toString();
+  files = (out.match(/files\s+(\d+)/) || [, "?"])[1] + " files, " +
+    (fs.statSync(path.join(dir, "CBAP-Technique-Templates.zip")).size / 1024 / 1024).toFixed(1) + " MB zipped";
+} catch (e) {
+  console.error("warning: the per-technique templates did not rebuild -", (e.message || "").split("\n")[0]);
+  files = "FAILED";
 }
 
 const exhibits = techQuestions.filter(q => q.exhibit).length;
@@ -234,4 +267,6 @@ console.log(`  exam bank        ${questions.length} items (${tagged} carry techn
 console.log(`  technique bank   ${techQuestions.length} items (${exhibits} with data exhibits)`);
 console.log(`  techniques       ${techniques.length}`);
 console.log(`  drill pool       ${techQuestions.length + tagged} items`);
+console.log(`  per-technique    ${files}`);
 console.log(`  powerpoint pack  ${pack}`);
+console.log(`  scenario         ${scenario.steps.length} steps, ${new Set(scenario.steps.map(s => s.technique)).size} techniques`);
