@@ -25,9 +25,11 @@ retaking a set is not a memory test. Untimed, with the clock counting up.
 
 **Technique lab** — the 50 BABOK v3 techniques, in two halves. *Learn* gives you a card per
 technique: what it is for, when to reach for it, the technique it is most often confused with, and
-the tasks that use it. Financial Analysis goes further, breaking into eight worked concepts — one
-idea at a time, each with a short plain-English line, a small data table and a dashboard showing
-what the numbers do. *Drill* runs technique-filtered items with feedback after every question,
+the tasks that use it — and, above all, **the artefact it produces, filled in**. A data dictionary
+is shown as a populated dictionary; decision modelling as a real decision tree; SWOT as a completed
+2×2 with the internal/external axis corrected. Financial Analysis goes further again, breaking into
+eight worked concepts — one idea at a time, each with a short plain-English line, a data table and a
+dashboard showing what the numbers do. *Drill* runs technique-filtered items with feedback after every question,
 drawn from a dedicated technique bank plus every item in the main 120 that turns on a named
 technique. Financial Analysis, Estimation, Risk and KPI items carry **data exhibits** — tables and
 dashboards you work from rather than prose you recognise — and the summary scores you by technique
@@ -138,7 +140,20 @@ required on technique items; each entry must match a `"<n> <name>"` key in `tech
 
 ### Data exhibits
 
-An item may carry an `exhibit`, rendered under the stem and repeated in the review pane.
+An item may carry an `exhibit`, rendered under the stem and repeated in the review pane. Techniques
+use the same shapes for their worked artefact (`visual`) and for the Financial Analysis explainers.
+Six types are available:
+
+| Type | Shape | Used for |
+|---|---|---|
+| `table` | Column grid | Data dictionaries, interface registers, three-point estimates, cash flows |
+| `dashboard` | Stat tiles and bars | Anything where the reading is a comparison of magnitudes |
+| `tree` | Indented hierarchy | KPI trees, decomposition, decision logic, five whys, mind maps |
+| `matrix` | Labelled grid with axes | 2×2 prioritisation, SWOT, risk exposure, permissions |
+| `flow` | Ordered steps with branches | Processes, state transitions, use case flows, message sequences |
+| `canvas` | Labelled panels | Business Model Canvas, scorecard perspectives, scope in/out/adjacent |
+
+Wide exhibits scroll inside their own box; the page itself never scrolls horizontally.
 
 ```json
 "exhibit": {
@@ -176,11 +191,17 @@ else neutral. A falling cost is therefore `up`.
   "confused": "Financial analysis values what is already forecast; estimation produces the forecast …",
   "tasks": ["6.4 Define Change Strategy"],
   "kas": [6, 7, 8],
+  "visual": { "type": "matrix", "title": "Which measure answers which question", "lead": "…", … },
   "mechanics": [{ "term": "Net present value (NPV)", "formula": "…", "note": "…" }],
   "explainers": [{ "term": "…", "formula": "…", "plain": "…", "data": { … }, "chart": { … } }],
   "worked": "A change costs $400,000 up front and returns $180,000 a year …"
 }
 ```
+
+**Every technique carries a `visual`** — the artefact that technique actually produces, filled in
+with realistic content rather than described. A data dictionary is shown as a populated dictionary;
+decision modelling as a real decision tree; SWOT as a filled 2×2 with the internal/external axis
+corrected. Across the 50 that is 22 tables, 9 flows, 7 trees, 7 matrices and 5 canvases.
 
 `mechanics`, `explainers` and `worked` are optional and carried only by the techniques with
 arithmetic to teach.

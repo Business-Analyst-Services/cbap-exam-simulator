@@ -181,7 +181,9 @@ kbd{font:12px/1 ui-monospace,monospace;border:1px solid var(--border);border-bot
 .exhibit .xtitle{padding:9px 14px;border-bottom:1px solid var(--border);font-size:13px;font-weight:650;letter-spacing:.01em}
 .exhibit .xbody{overflow-x:auto;padding:2px 0}
 .exhibit table{width:100%;font-size:13.5px}
-.exhibit th,.exhibit td{padding:7px 14px;border-bottom:1px solid var(--grid);text-align:left;white-space:nowrap}
+.exhibit th,.exhibit td{padding:7px 14px;border-bottom:1px solid var(--grid);text-align:left}
+.exhibit th.num,.exhibit td.num{white-space:nowrap}
+.exhibit td{min-width:90px}
 .exhibit thead th{font-weight:600;color:var(--ink-2);background:var(--surface-1)}
 .exhibit tr:last-child td{border-bottom:0}
 .exhibit tbody tr:last-child td{font-weight:650}
@@ -209,10 +211,10 @@ kbd{font:12px/1 ui-monospace,monospace;border:1px solid var(--border);border-bot
 .tcard .mech td{padding:6px 10px 6px 0;border-bottom:1px solid var(--grid);vertical-align:top}
 .tcard .mech tr:last-child td{border-bottom:0}
 .tcard .mech .mt{font-weight:600;white-space:nowrap}
-.tcard .mech .mf{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--accent-deep);white-space:nowrap}
+.tcard .mech .mf{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--accent-deep)}
 .tcard .worked{background:var(--plane);border:1px solid var(--border);border-radius:9px;padding:13px 15px;font-size:13.5px;margin-top:6px}
 .tcard .tt{display:inline-block;font-size:12px;color:var(--ink-2);border:1px solid var(--border);border-radius:99px;padding:2px 9px;margin:3px 5px 0 0}
-@media (max-width:640px){ .tcard .mech .mf{white-space:normal} }
+@media (max-width:640px){ .tcard .mech td{display:block;padding-bottom:2px} .tcard .mech tr{display:block;padding:6px 0;border-bottom:1px solid var(--grid)} }
 
 /* one concept per block: a plain-English line, the numbers, then the picture */
 .expl{border-top:1px solid var(--grid);padding-top:15px;margin-top:15px}
@@ -231,6 +233,51 @@ kbd{font:12px/1 ui-monospace,monospace;border:1px solid var(--border);border-bot
 .eindex a:hover{border-color:var(--accent);color:var(--ink)}
 .expl{scroll-margin-top:76px}
 @media print{ .eindex{display:none} }
+
+/* ---- worked-artefact exhibits: tree, matrix, flow, canvas ---- */
+.tlevels{display:flex;flex-wrap:wrap;gap:14px;padding:11px 14px 2px;font-size:12px;color:var(--ink-2)}
+.tlevels i{display:inline-grid;place-items:center;width:16px;height:16px;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent-deep);font-size:10px;font-weight:700;font-style:normal;margin-right:5px}
+ul.tree,ul.tree ul{list-style:none;margin:0;padding:0}
+ul.tree{padding:10px 14px 13px}
+ul.tree ul{margin-left:9px;padding-left:15px;border-left:1px solid var(--axis)}
+ul.tree li{position:relative;padding:3px 0}
+ul.tree ul>li::before{content:"";position:absolute;left:-15px;top:16px;width:11px;height:1px;background:var(--axis)}
+.tlab{font-size:13.5px}
+ul.tree>li>.tlab{font-weight:650}
+.tnote{display:block;font-size:12px;color:var(--muted)}
+
+table.matrix{width:100%;border-collapse:separate;border-spacing:4px;font-size:13px}
+table.matrix caption.mx{caption-side:top;text-align:right;font-size:12px;color:var(--ink-2);padding:9px 4px 2px}
+table.matrix th{font-size:12px;font-weight:650;color:var(--ink-2);padding:3px 6px;text-align:center}
+table.matrix th.mrow{text-align:right;white-space:nowrap;vertical-align:middle}
+table.matrix td.mcorner{width:1px}
+td.mcell{background:var(--surface-1);border:1px solid var(--border);border-radius:9px;padding:9px 11px;vertical-align:top;min-width:110px}
+td.mcell b{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-deep);margin-bottom:4px}
+td.mcell span{display:block;font-size:12.5px;color:var(--ink-2);padding:1px 0}
+.my{font-size:12px;color:var(--ink-2);padding:2px 14px 10px}
+
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:7px;padding:13px 14px}
+.fstep{flex:1 1 140px;min-width:130px;background:var(--surface-1);border:1px solid var(--border);
+  border-radius:9px;padding:9px 11px;display:flex;flex-direction:column;gap:2px}
+.factor{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-deep);font-weight:650}
+.flab{font-size:13px;font-weight:600}
+.fnote{font-size:12px;color:var(--muted)}
+.farrow{align-self:center;color:var(--axis);font-size:15px;flex:none}
+.fbranch{border-top:1px solid var(--grid);padding:10px 14px;font-size:12.5px;color:var(--ink-2);display:grid;gap:3px}
+.fbranch b{color:var(--ink);font-weight:600}
+
+.canvasgrid{display:grid;grid-template-columns:repeat(var(--cc,3),1fr);gap:1px;background:var(--grid)}
+.cpanel{background:var(--surface-1);padding:10px 12px;min-height:74px}
+.cplab{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--accent-deep);font-weight:650;margin-bottom:5px}
+.cpitem{font-size:12.5px;color:var(--ink-2);padding:1px 0}
+@media (max-width:640px){
+  .canvasgrid{grid-template-columns:1fr}
+  .flow{display:grid;grid-template-columns:1fr}
+  .farrow{display:none}
+  td.mcell{min-width:0}
+  table.matrix{font-size:12px}
+}
 </style>
 </head>
 <body>
@@ -4071,6 +4118,38 @@ const TECHNIQUES = [
   "purpose": "States the conditions a solution must meet to be accepted, and the measures used to judge one option against another.",
   "use": "Reach for it when a requirement has to be testable before anyone builds against it, or when competing options need a common yardstick rather than opinion.",
   "confused": "Acceptance criteria are pass or fail and belong to a single requirement; evaluation criteria rank options against each other. An item that asks you to choose between suppliers wants evaluation, not acceptance.",
+  "visual": {
+   "type": "table",
+   "title": "Two activities, two differently built sets of criteria",
+   "lead": "One ranks alternatives, the other admits a requirement. A combined set does neither well.",
+   "cols": [
+    "Purpose",
+    "Form",
+    "Example",
+    "Result"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "Choose a ticketing supplier",
+     "Weighted, comparative",
+     "Integration effort, weight 25%",
+     "A ranking"
+    ],
+    [
+     "Admit a journey planner requirement",
+     "Threshold, binary",
+     "Returns a route within 2 s at peak load",
+     "Pass or fail"
+    ]
+   ],
+   "note": "A zero weight removes a criterion from the ranking; it does not turn it into a threshold."
+  },
   "tasks": [
    "7.3 Validate Requirements",
    "8.1 Measure Solution Performance",
@@ -4089,6 +4168,49 @@ const TECHNIQUES = [
   "purpose": "Keeps a ranked, living list of outstanding work so the next most valuable item is always visible at the top.",
   "use": "Reach for it on adaptive work where scope is expected to change and the commitment is to the ordering, not to a fixed set.",
   "confused": "Backlog management is the ongoing custody of the list; prioritisation is the act of ordering it. Items about re-ranking after new information are prioritisation; items about how the list itself is maintained and drawn from are backlog management.",
+  "visual": {
+   "type": "table",
+   "title": "480 items, triaged before anything is ranked",
+   "lead": "Ranking a list a third of which is obsolete produces a well-ordered list of the wrong work.",
+   "cols": [
+    "State",
+    "Items",
+    "Action"
+   ],
+   "align": [
+    "left",
+    "num",
+    "left"
+   ],
+   "rows": [
+    [
+     "Need already met by a later release",
+     "152",
+     "Retire, with the release noted"
+    ],
+    [
+     "Duplicate of another item",
+     "61",
+     "Merge, keep the earliest reference"
+    ],
+    [
+     "Still valid, not reviewed this quarter",
+     "198",
+     "Re-rank"
+    ],
+    [
+     "Still valid, reviewed this quarter",
+     "69",
+     "Leave"
+    ],
+    [
+     "Total",
+     "480",
+     ""
+    ]
+   ],
+   "note": "Prioritisation presumes the list represents current need. This one did not."
+  },
   "tasks": [
    "5.2 Maintain Requirements",
    "5.3 Prioritize Requirements",
@@ -4105,6 +4227,46 @@ const TECHNIQUES = [
   "purpose": "Holds performance to four perspectives at once, financial, customer, internal process, and learning and growth, so no single dimension is optimised alone.",
   "use": "Reach for it when an organisation is measuring itself only on money and needs the leading indicators that explain the money.",
   "confused": "A balanced scorecard is a framework for choosing a spread of measures; metrics and KPIs are the individual measures themselves. If the scenario already has measures and asks whether they are the right ones, the scorecard is the answer.",
+  "visual": {
+   "type": "canvas",
+   "title": "Contact centre, with the two empty perspectives exposed",
+   "cols": 2,
+   "lead": "Seven measures, all green, all drawn from two of the four perspectives.",
+   "panels": [
+    {
+     "label": "Financial — 4 measures",
+     "items": [
+      "Cost per contact $4.12, down 18%",
+      "Cost per resolution",
+      "Overtime spend",
+      "Contacts per FTE"
+     ]
+    },
+    {
+     "label": "Internal process — 3 measures",
+     "items": [
+      "Average handle time 3m 44s, down 22%",
+      "Schedule adherence 96%",
+      "First-contact resolution"
+     ]
+    },
+    {
+     "label": "Customer — 0 measures",
+     "items": [
+      "Nothing defined",
+      "No satisfaction, effort or complaint measure"
+     ]
+    },
+    {
+     "label": "Learning and growth — 0 measures",
+     "items": [
+      "Nothing defined",
+      "Attrition rose 9% → 24% and appears nowhere"
+     ]
+    }
+   ],
+   "note": "Adding attrition closes one gap and leaves the customer perspective unobserved. Two perspectives are structurally missing."
+  },
   "tasks": [
    "6.2 Define Future State",
    "8.1 Measure Solution Performance",
@@ -4122,6 +4284,50 @@ const TECHNIQUES = [
   "purpose": "Compares the practices and results of an enterprise against peers, competitors or a recognised standard, and reads the market it operates in.",
   "use": "Reach for it when you need an outside reference point for what good looks like, or when the case for change rests on a claim about the market.",
   "confused": "Benchmarking looks outward at others; measuring solution performance looks inward at your own. An item where the comparison target is another organisation is benchmarking, even if the words performance and measure appear in the stem.",
+  "visual": {
+   "type": "table",
+   "title": "Account opening, against the market the bank competes in",
+   "lead": "Four years of internal trend showed improvement. It could not show position.",
+   "cols": [
+    "Measure",
+    "This bank",
+    "Peer median",
+    "Best in market"
+   ],
+   "align": [
+    "left",
+    "num",
+    "num",
+    "num"
+   ],
+   "rows": [
+    [
+     "Time to open, median",
+     "6 days",
+     "2 days",
+     "11 minutes"
+    ],
+    [
+     "Applications abandoned",
+     "34%",
+     "19%",
+     "8%"
+    ],
+    [
+     "Identity check",
+     "Branch visit",
+     "Digital",
+     "Digital"
+    ],
+    [
+     "Four-year trend",
+     "11 days → 6",
+     "5 days → 2",
+     "3 days → 11 min"
+    ]
+   ],
+   "note": "The bank improved 45% and fell further behind. Internal data alone supports the opposite conclusion."
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "6.2 Define Future State",
@@ -4139,6 +4345,34 @@ const TECHNIQUES = [
   "purpose": "Generates a wide field of ideas quickly by separating generation from judgement.",
   "use": "Reach for it when the problem is that too few options are on the table, and the group has the knowledge but has not yet been asked the open question.",
   "confused": "Brainstorming diverges; decision analysis and prioritisation converge. If the scenario already has plenty of options and needs to pick one, brainstorming is the wrong tool no matter how collaborative the setting sounds.",
+  "visual": {
+   "type": "flow",
+   "title": "Widening the option set for late withdrawals",
+   "lead": "Generation and judgement are kept apart, and the count is the point.",
+   "steps": [
+    {
+     "actor": "Round 1",
+     "label": "Diverge, 12 minutes",
+     "note": "41 ideas, no discussion, no evaluation"
+    },
+    {
+     "actor": "Round 2",
+     "label": "Cluster",
+     "note": "41 ideas collapse to 9 distinct approaches"
+    },
+    {
+     "actor": "Round 3",
+     "label": "Converge",
+     "note": "9 approaches shortlisted to 3"
+    }
+   ],
+   "branches": [
+    {
+     "from": "Diverge, 12 minutes",
+     "label": "— any critique here is ruled out of order, including agreement"
+    }
+   ]
+  },
   "tasks": [
    "4.2 Conduct Elicitation",
    "6.3 Assess Risks",
@@ -4157,6 +4391,62 @@ const TECHNIQUES = [
   "purpose": "Describes what the enterprise is able to do, independently of who does it or how, and grades each ability for performance and importance.",
   "use": "Reach for it when investment has to be aimed at an outcome rather than a department, or when the same weakness keeps surfacing across several units.",
   "confused": "Capabilities are what the organisation can do; processes are how it does it. An item that keeps naming org units or hand-offs is heading for process or organisational modelling, not capability analysis.",
+  "visual": {
+   "type": "matrix",
+   "title": "Insurer capabilities, graded after three departmental programmes",
+   "lead": "The failing capability is owned by no single department, which is why three fixes missed it.",
+   "xLabel": "Performance",
+   "yLabel": "Importance",
+   "cols": [
+    "Weak",
+    "Adequate",
+    "Strong"
+   ],
+   "rows": [
+    "Critical",
+    "Supporting"
+   ],
+   "cells": [
+    [
+     {
+      "tag": "invest here",
+      "items": [
+       "Decisioning consistency",
+       "Customer identity resolution"
+      ]
+     },
+     {
+      "items": [
+       "Claims assessment"
+      ]
+     },
+     {
+      "items": [
+       "Premium calculation"
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       "Document generation"
+      ]
+     },
+     {
+      "items": [
+       "Complaints capture"
+      ]
+     },
+     {
+      "tag": "over-invested",
+      "items": [
+       "Reporting"
+      ]
+     }
+    ]
+   ],
+   "note": "Decisioning consistency spans claims, underwriting and service. No department owns it, so no departmental programme fixed it."
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "6.2 Define Future State",
@@ -4173,6 +4463,59 @@ const TECHNIQUES = [
   "purpose": "Assembles the justification for a change: the need, the options considered, the recommended option and what it is expected to be worth.",
   "use": "Reach for it when a decision-maker has to approve funding and needs the need, the options and the value in one place.",
   "confused": "The business case is the container; financial analysis is one of its contents. An item that turns on how the return was calculated is financial analysis, while one that turns on whether the recommendation was justified at all is the business case.",
+  "visual": {
+   "type": "canvas",
+   "title": "Grants replacement — the structure the committee asked for",
+   "cols": 2,
+   "lead": "The rejected submission had the valuation and none of the justification.",
+   "panels": [
+    {
+     "label": "Need",
+     "items": [
+      "Vendor support ends Mar 2027",
+      "Manual acquittal costs 2.1 FTE",
+      "No audit trail on overrides"
+     ]
+    },
+    {
+     "label": "Options considered",
+     "items": [
+      "Do nothing — carries unsupported software",
+      "Extend support — quoted, 18 months maximum",
+      "Reconfigure existing — assessed, cannot meet audit trail",
+      "Replace — recommended"
+     ]
+    },
+    {
+     "label": "Why replace",
+     "items": [
+      "Only option meeting the audit finding",
+      "Extension defers the same decision at 60% of the cost"
+     ]
+    },
+    {
+     "label": "Value",
+     "items": [
+      "$3.2m over 5 years",
+      "2.1 FTE released to assessment backlog"
+     ]
+    },
+    {
+     "label": "Risks",
+     "items": [
+      "Migration of 11 years of acquittals",
+      "Round in flight at cutover"
+     ]
+    },
+    {
+     "label": "Timing",
+     "items": [
+      "Must complete before Mar 2027",
+      "One clear window: Oct–Dec"
+     ]
+    }
+   ]
+  },
   "tasks": [
    "6.4 Define Change Strategy",
    "6.2 Define Future State",
@@ -4190,6 +4533,76 @@ const TECHNIQUES = [
   "purpose": "Lays the operating logic of a business on one page across nine blocks, from value proposition through to cost structure and revenue streams.",
   "use": "Reach for it early, when the question is how the enterprise creates and captures value rather than how a particular process runs.",
   "confused": "The canvas describes a whole business model; SWOT assesses position. An item asking what would break if the revenue model changed is canvas work; one asking what threatens the organisation is SWOT.",
+  "visual": {
+   "type": "canvas",
+   "title": "Trade publisher — moving from distributor print to direct digital",
+   "cols": 3,
+   "lead": "Five of the nine blocks move at once. A fulfilment process map shows one of them.",
+   "panels": [
+    {
+     "label": "Key partners",
+     "items": [
+      "Now: single distributor (80% of revenue)",
+      "After: payment processor, CDN"
+     ]
+    },
+    {
+     "label": "Key activities",
+     "items": [
+      "Now: commissioning, print scheduling",
+      "After: commissioning, platform operation"
+     ]
+    },
+    {
+     "label": "Value proposition",
+     "items": [
+      "Unchanged: trusted trade reporting"
+     ]
+    },
+    {
+     "label": "Customer relationship",
+     "items": [
+      "Now: none — distributor owns it",
+      "After: direct, renewable"
+     ]
+    },
+    {
+     "label": "Channels",
+     "items": [
+      "Now: print via distributor",
+      "After: web and app, direct"
+     ]
+    },
+    {
+     "label": "Customer segments",
+     "items": [
+      "Unchanged: trade professionals"
+     ]
+    },
+    {
+     "label": "Revenue streams",
+     "items": [
+      "Now: wholesale, 80% of total",
+      "After: subscription, recognised monthly"
+     ]
+    },
+    {
+     "label": "Cost structure",
+     "items": [
+      "Now: print, freight, distributor margin",
+      "After: platform, support, card fees"
+     ]
+    },
+    {
+     "label": "Key resources",
+     "items": [
+      "Now: print contract",
+      "After: subscriber list — currently not owned"
+     ]
+    }
+   ],
+   "note": "The publisher does not hold its own subscriber list. That is the change strategy's first problem."
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "6.2 Define Future State"
@@ -4205,6 +4618,50 @@ const TECHNIQUES = [
   "purpose": "Draws out the rules that constrain or guide behaviour and states them so they can be governed and changed independently of the process that applies them.",
   "use": "Reach for it when policy changes more often than process, or when the same rule is buried in several systems and nobody can say which version is current.",
   "confused": "A rule is a constraint on behaviour; a requirement is something the solution must do. Items where a policy is being restated as a system function are testing whether you keep the rule separate from the process that invokes it.",
+  "visual": {
+   "type": "table",
+   "title": "Licensing eligibility, held apart from the assessment workflow",
+   "lead": "Each rule is owned, versioned and changeable without touching the process.",
+   "cols": [
+    "Rule",
+    "Statement",
+    "Owner",
+    "Last changed"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "ELIG-01",
+     "An applicant with an unpaid penalty may not be granted a licence.",
+     "Policy",
+     "Mar 2026"
+    ],
+    [
+     "ELIG-02",
+     "Applicants under 18 require a nominated supervisor.",
+     "Policy",
+     "Nov 2025"
+    ],
+    [
+     "ELIG-04",
+     "A refusal within 12 months requires panel referral.",
+     "Legal",
+     "Jun 2026"
+    ],
+    [
+     "ELIG-07",
+     "Interstate licences are recognised if issued after 2019.",
+     "Policy",
+     "Jun 2026"
+    ]
+   ],
+   "note": "Eleven amendments in three years. Held in workflow code, each one would be a release."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "6.1 Analyze Current State",
@@ -4222,6 +4679,39 @@ const TECHNIQUES = [
   "purpose": "Uses a structured, playful exercise to surface assumptions and shared understanding that direct questioning does not reach.",
   "use": "Reach for it when a group is stuck, guarded, or dominated by one voice, and the obstacle is the dynamic rather than the information.",
   "confused": "A collaborative game is a device used inside a session; the workshop is the session. If the item turns on planning, facilitating or closing the event, it is workshops.",
+  "visual": {
+   "type": "flow",
+   "title": "Speedboat, run to surface what is holding the release back",
+   "lead": "The game changes who gets to speak, not what is discussed.",
+   "steps": [
+    {
+     "actor": "Set up",
+     "label": "Draw the boat",
+     "note": "Anchors below the line, wind above"
+    },
+    {
+     "actor": "Play",
+     "label": "Everyone writes at once",
+     "note": "Silent, 6 minutes, one idea per note"
+    },
+    {
+     "actor": "Cluster",
+     "label": "Group the anchors",
+     "note": "14 notes fall into 4 themes"
+    },
+    {
+     "actor": "Debrief",
+     "label": "Name the top two",
+     "note": "Dot vote, then discuss"
+    }
+   ],
+   "branches": [
+    {
+     "from": "Everyone writes at once",
+     "label": "— simultaneous writing is what stops the loudest voice framing the room"
+    }
+   ]
+  },
   "tasks": [
    "4.2 Conduct Elicitation",
    "4.5 Manage Stakeholder Collaboration"
@@ -4237,6 +4727,42 @@ const TECHNIQUES = [
   "purpose": "Fixes the business vocabulary and the relationships between its terms, independently of any system or database.",
   "use": "Reach for it when the same word means different things in different parts of the business and the disagreement is being mistaken for a requirements dispute.",
   "confused": "A concept model is about meaning in the business; a data model is about structure for storage. Items that mention tables, keys or attributes have already left concept modelling.",
+  "visual": {
+   "type": "tree",
+   "title": "What the energy retailer means by customer",
+   "lead": "Both divisions are right. The relationship between the terms is what settles it.",
+   "levels": [
+    "Concept",
+    "Relates to",
+    "Detail"
+   ],
+   "nodes": [
+    {
+     "label": "Account holder",
+     "children": [
+      {
+       "label": "holds 1..* Accounts",
+       "children": [
+        {
+         "label": "Retail counts one customer per account holder"
+        }
+       ]
+      },
+      {
+       "label": "is billed for 1..* Connection points",
+       "children": [
+        {
+         "label": "Network counts one customer per connection point"
+        },
+        {
+         "label": "A shared-care household has 2 connection points, 1 account holder"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "7.4 Define Requirements Architecture"
@@ -4252,6 +4778,56 @@ const TECHNIQUES = [
   "purpose": "Records the standard definition of each data element: its meaning, format, allowed values and composition.",
   "use": "Reach for it when data is being exchanged or migrated and the arguments are about what a field actually holds.",
   "confused": "A data dictionary defines elements; a glossary defines business terms. If the disputed word is a business concept rather than a stored field, the answer is glossary.",
+  "visual": {
+   "type": "table",
+   "title": "Policy start date, defined at element level for the migration",
+   "lead": "Both teams agree what a policy is. They disagree about what the field holds.",
+   "cols": [
+    "Element",
+    "Set by",
+    "Type",
+    "Permitted",
+    "Mandatory"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "policy_start_date (System A)",
+     "Underwriting decision",
+     "Date",
+     "Not future-dated",
+     "Yes"
+    ],
+    [
+     "policy_start_date (System B)",
+     "Cover commencement",
+     "Date",
+     "0–30 days after underwriting",
+     "Yes"
+    ],
+    [
+     "underwritten_on (target)",
+     "Underwriting decision",
+     "Date",
+     "Not future-dated",
+     "Yes"
+    ],
+    [
+     "cover_from (target)",
+     "Cover commencement",
+     "Date",
+     "≥ underwritten_on",
+     "Yes"
+    ]
+   ],
+   "note": "Reconciliation failed because one name carried two events. The target splits them."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "3.4 Plan Business Analysis Information Management"
@@ -4268,6 +4844,44 @@ const TECHNIQUES = [
   "purpose": "Shows where data comes from, what transforms it and where it ends up, across processes, stores and external parties.",
   "use": "Reach for it when the concern is movement and custody of information rather than the order in which people act.",
   "confused": "Data flow diagrams follow the data; process models follow the work. An item about who does what next is process modelling even when systems are involved.",
+  "visual": {
+   "type": "flow",
+   "title": "Where a referral's patient identifiers travel",
+   "lead": "Follows the data, not the work. Stores and third parties are the point.",
+   "steps": [
+    {
+     "actor": "External",
+     "label": "GP practice",
+     "note": "Sends referral + identifiers"
+    },
+    {
+     "actor": "Process",
+     "label": "Referral intake",
+     "note": "Validates, assigns URN"
+    },
+    {
+     "actor": "Store",
+     "label": "Referral register",
+     "note": "Full identifiers, retained 7 years"
+    },
+    {
+     "actor": "Process",
+     "label": "Appointment scheduling",
+     "note": "Outsourced since 2025"
+    },
+    {
+     "actor": "External",
+     "label": "Scheduling vendor",
+     "note": "Receives name, DOB, phone"
+    }
+   ],
+   "branches": [
+    {
+     "from": "Referral register",
+     "label": "→ nightly extract to the data warehouse, identifiers not masked"
+    }
+   ]
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "6.1 Analyze Current State",
@@ -4285,6 +4899,44 @@ const TECHNIQUES = [
   "purpose": "Interrogates large data sets for patterns and relationships that were not hypothesised in advance.",
   "use": "Reach for it when the evidence for a problem or an opportunity is already sitting in operational data and nobody has looked.",
   "confused": "Data mining finds the pattern; metrics and KPIs track a measure you already chose. If the scenario knows what it wants to watch, it does not need mining.",
+  "visual": {
+   "type": "table",
+   "title": "Eleven years of order history, interrogated before anyone was surveyed",
+   "lead": "Patterns nobody hypothesised. The survey would have missed the customers who left.",
+   "cols": [
+    "Pattern found",
+    "Holds for",
+    "Lead time to churn"
+   ],
+   "align": [
+    "left",
+    "num",
+    "left"
+   ],
+   "rows": [
+    [
+     "Two consecutive short-paid invoices",
+     "81% of churned accounts",
+     "5–7 months"
+    ],
+    [
+     "Order frequency drops below 60% of own baseline",
+     "74%",
+     "4 months"
+    ],
+    [
+     "Any delivery complaint unresolved past 30 days",
+     "69%",
+     "3 months"
+    ],
+    [
+     "Contact person changes and is not re-engaged",
+     "58%",
+     "8 months"
+    ]
+   ],
+   "note": "None of these was on anyone's list of suspected causes."
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "8.2 Analyze Performance Measures",
@@ -4303,6 +4955,49 @@ const TECHNIQUES = [
   "purpose": "Describes the entities an organisation holds information about, their attributes and the relationships between them.",
   "use": "Reach for it when the solution has to store or exchange information and the structure, cardinality and ownership of that information are in question.",
   "confused": "Data modelling structures information for a solution; concept modelling settles what the business means by a term. The give-away for data modelling is cardinality: one-to-many, optionality, keys.",
+  "visual": {
+   "type": "table",
+   "title": "Family portal — the relationships the prose could not state",
+   "lead": "Cardinality and optionality are the requirement here, not the wording.",
+   "cols": [
+    "From",
+    "Relationship",
+    "To"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "Child",
+     "attends 1..* ",
+     "Centre"
+    ],
+    [
+     "Child",
+     "belongs to 1..2",
+     "Household"
+    ],
+    [
+     "Guardian",
+     "acts for 0..*",
+     "Child"
+    ],
+    [
+     "Parent",
+     "is a",
+     "Guardian"
+    ],
+    [
+     "Household",
+     "has 1..*",
+     "Guardian"
+    ]
+   ],
+   "note": "Shared care is 2 households per child. A guardian need not be a parent."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "7.4 Define Requirements Architecture"
@@ -4318,6 +5013,70 @@ const TECHNIQUES = [
   "purpose": "Structures a choice under uncertainty by setting out the options, the criteria, the values and the trade-offs between them.",
   "use": "Reach for it when a decision is contested, the criteria are not agreed, or the outcome depends on events nobody controls.",
   "confused": "Decision analysis chooses between options; prioritisation sequences items you have already agreed to do. If nothing is being discarded, it is prioritisation.",
+  "visual": {
+   "type": "table",
+   "title": "Four metering approaches, criteria weighted before scoring",
+   "lead": "The executives disagreed about criteria. Making the weights explicit is what settled it.",
+   "cols": [
+    "Criterion",
+    "Weight",
+    "Smart",
+    "Staged",
+    "Manual+",
+    "AMI-lite"
+   ],
+   "align": [
+    "left",
+    "num",
+    "num",
+    "num",
+    "num",
+    "num"
+   ],
+   "rows": [
+    [
+     "Regulatory exposure",
+     "35%",
+     "5",
+     "4",
+     "1",
+     "4"
+    ],
+    [
+     "Total cost",
+     "25%",
+     "2",
+     "4",
+     "5",
+     "3"
+    ],
+    [
+     "Customer disruption",
+     "20%",
+     "2",
+     "4",
+     "5",
+     "3"
+    ],
+    [
+     "Speed to comply",
+     "20%",
+     "3",
+     "3",
+     "2",
+     "5"
+    ],
+    [
+     "Weighted total",
+     "100%",
+     "3.25",
+     "3.80",
+     "2.90",
+     "3.80"
+    ]
+   ],
+   "note": "Staged and AMI-lite tie. That is a useful result: the argument moves to a tiebreak the group can have."
+  },
   "tasks": [
    "7.6 Analyze Potential Value and Recommend Solution",
    "6.4 Define Change Strategy",
@@ -4335,6 +5094,56 @@ const TECHNIQUES = [
   "purpose": "Represents repeatable operational decisions and the logic behind them, so the same inputs always yield the same outcome.",
   "use": "Reach for it when a decision is made hundreds of times a day by different people and the inconsistency is the problem.",
   "confused": "Decision modelling documents a recurring operational decision; decision analysis supports a one-off strategic choice. Frequency is the tell.",
+  "visual": {
+   "type": "tree",
+   "title": "Delegated authority, decided 400 times a day",
+   "lead": "Same inputs, same outcome. Six officers currently reach three different answers.",
+   "levels": [
+    "Decision",
+    "Condition",
+    "Outcome"
+   ],
+   "nodes": [
+    {
+     "label": "May this application be determined under delegation?",
+     "children": [
+      {
+       "label": "Objections received?",
+       "children": [
+        {
+         "label": "Yes → refer to panel"
+        },
+        {
+         "label": "No → next test"
+        }
+       ]
+      },
+      {
+       "label": "Variation exceeds 10%?",
+       "children": [
+        {
+         "label": "Yes → refer to panel"
+        },
+        {
+         "label": "No → next test"
+        }
+       ]
+      },
+      {
+       "label": "Heritage overlay applies?",
+       "children": [
+        {
+         "label": "Yes → refer to panel"
+        },
+        {
+         "label": "No → determine under delegation"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "6.1 Analyze Current State"
@@ -4351,6 +5160,43 @@ const TECHNIQUES = [
   "purpose": "Elicits information from existing material: procedures, contracts, system documentation, regulations and prior artefacts.",
   "use": "Reach for it before you take stakeholder time, so the questions you do ask are the ones the documents cannot answer.",
   "confused": "Document analysis is elicitation from artefacts, not verification of your own work. If the material being examined is the requirements you just wrote, that is reviews.",
+  "visual": {
+   "type": "table",
+   "title": "What the artefacts answered before the pharmacist was booked",
+   "lead": "The point of the read is to shorten the interview, not to replace it.",
+   "cols": [
+    "Source",
+    "What it settled",
+    "What it could not"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "Dispensing procedure v6",
+     "The 9 documented steps and who signs each",
+     "Why step 4 is skipped on night shift"
+    ],
+    [
+     "Regulatory schedule",
+     "Which drugs need a second check",
+     "How staff decide when the checker is unavailable"
+    ],
+    [
+     "System specification",
+     "Fields captured at dispense",
+     "Which of them are entered accurately"
+    ],
+    [
+     "2024 review report",
+     "12 prior recommendations",
+     "Which were implemented and which lapsed"
+    ]
+   ]
+  },
   "tasks": [
    "4.1 Prepare for Elicitation",
    "4.2 Conduct Elicitation",
@@ -4368,6 +5214,63 @@ const TECHNIQUES = [
   "purpose": "Produces a forecast of cost, effort, duration or value, together with the confidence and assumptions attached to it.",
   "use": "Reach for it when a decision needs a number that does not yet exist, and the honest answer is a range rather than a point.",
   "confused": "Estimation forecasts an unknown; financial analysis works on figures you already have. An item that hands you cash flows and asks what they are worth is financial analysis.",
+  "visual": {
+   "type": "table",
+   "title": "Claims replacement analysis effort, three-point",
+   "lead": "The skew is the information. A single figure hides it.",
+   "cols": [
+    "Component",
+    "Optimistic",
+    "Likely",
+    "Pessimistic",
+    "Expected"
+   ],
+   "align": [
+    "left",
+    "num",
+    "num",
+    "num",
+    "num"
+   ],
+   "rows": [
+    [
+     "Rules engine",
+     "30",
+     "45",
+     "90",
+     "50.0"
+    ],
+    [
+     "Interfaces",
+     "20",
+     "25",
+     "40",
+     "26.7"
+    ],
+    [
+     "Reporting",
+     "10",
+     "12",
+     "18",
+     "12.7"
+    ],
+    [
+     "Migration",
+     "15",
+     "20",
+     "60",
+     "25.8"
+    ],
+    [
+     "Total (days)",
+     "75",
+     "102",
+     "208",
+     "115.2"
+    ]
+   ],
+   "note": "Expected = (O + 4M + P) / 6. Reporting the 102 understates by 13 days and hides a range of 75 to 208."
+  },
   "tasks": [
    "3.1 Plan Business Analysis Approach",
    "5.3 Prioritize Requirements",
@@ -4386,6 +5289,74 @@ const TECHNIQUES = [
   "purpose": "Puts a monetary frame around a change: what it costs, what it returns, when the return arrives and what the money is worth once timing and risk are accounted for.",
   "use": "Reach for it whenever an option has to be justified in money, or when two options differ mainly in the timing of their costs and benefits rather than in their size.",
   "confused": "Financial analysis values what is already forecast; estimation produces the forecast. And a positive return is not the same as the best option: the exam repeatedly offers an option that is profitable but beaten by an alternative.",
+  "visual": {
+   "type": "matrix",
+   "title": "Which measure answers which question",
+   "lead": "Each measure is complete for one question and misleading for the others.",
+   "xLabel": "Use it when",
+   "yLabel": "Measure",
+   "cols": [
+    "It answers",
+    "It cannot answer"
+   ],
+   "rows": [
+    "NPV",
+    "Payback",
+    "ROI",
+    "IRR"
+   ],
+   "cells": [
+    [
+     {
+      "items": [
+       "Is this worth more than it costs, allowing for timing?"
+      ]
+     },
+     {
+      "items": [
+       "How long is our cash exposed?"
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       "How long until we get the money back?"
+      ]
+     },
+     {
+      "items": [
+       "Anything after break-even — where the value often is"
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       "How efficient is each dollar invested?"
+      ]
+     },
+     {
+      "items": [
+       "How big the prize is — it is a ratio"
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       "Does it beat what our capital costs?"
+      ]
+     },
+     {
+      "items": [
+       "How much value in dollars"
+      ]
+     }
+    ]
+   ],
+   "note": "The eight blocks below work each of these through with figures."
+  },
   "tasks": [
    "6.4 Define Change Strategy",
    "7.6 Analyze Potential Value and Recommend Solution",
@@ -5061,6 +6032,38 @@ const TECHNIQUES = [
   "purpose": "Draws attitudes and reactions from a selected group in a moderated discussion, using the interaction between participants as part of the data.",
   "use": "Reach for it when you want to know how people feel about something and why, and when hearing them disagree with each other is informative.",
   "confused": "A focus group gathers opinion; a workshop produces a work product. If the session is meant to end with a decision or a signed-off model, it is a workshop.",
+  "visual": {
+   "type": "table",
+   "title": "Three groups on the redesigned rates notice",
+   "lead": "Sentiment and the reasons behind it, including where the groups disagree with each other.",
+   "cols": [
+    "Group",
+    "Who",
+    "What emerged"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "A",
+     "8 ratepayers on instalments",
+     "Due dates matter more than the total; layout was never the complaint"
+    ],
+    [
+     "B",
+     "6 pensioners",
+     "Concession line must be visible without reading further"
+    ],
+    [
+     "C",
+     "7 agents acting for owners",
+     "Want the property reference top-right, opposite what group A preferred"
+    ]
+   ]
+  },
   "tasks": [
    "4.2 Conduct Elicitation",
    "8.1 Measure Solution Performance"
@@ -5077,6 +6080,70 @@ const TECHNIQUES = [
   "purpose": "Breaks a large function, scope or problem into constituent parts small enough to estimate, assign or analyse.",
   "use": "Reach for it when something is too big to reason about whole, and the parts are genuinely separable.",
   "confused": "Decomposition breaks work down for analysis; a work breakdown structure schedules delivery. Producing one to satisfy a project manager is the classic doing-project-management trap.",
+  "visual": {
+   "type": "tree",
+   "title": "The grant lifecycle, broken down far enough to estimate",
+   "lead": "Broken for analysis, not for scheduling. Durations and owners are not on it.",
+   "levels": [
+    "Function",
+    "Sub-function",
+    "Component"
+   ],
+   "nodes": [
+    {
+     "label": "Manage the grant lifecycle",
+     "children": [
+      {
+       "label": "Open a round",
+       "children": [
+        {
+         "label": "Publish guidelines"
+        },
+        {
+         "label": "Configure eligibility"
+        }
+       ]
+      },
+      {
+       "label": "Assess applications",
+       "children": [
+        {
+         "label": "Screen eligibility"
+        },
+        {
+         "label": "Score against criteria"
+        },
+        {
+         "label": "Moderate scores"
+        }
+       ]
+      },
+      {
+       "label": "Award and contract",
+       "children": [
+        {
+         "label": "Approve"
+        },
+        {
+         "label": "Generate agreement"
+        }
+       ]
+      },
+      {
+       "label": "Acquit",
+       "children": [
+        {
+         "label": "Collect reports"
+        },
+        {
+         "label": "Reconcile spend"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "3.1 Plan Business Analysis Approach",
@@ -5095,6 +6162,39 @@ const TECHNIQUES = [
   "purpose": "Holds the agreed definition of business terms so that one word carries one meaning across the whole effort.",
   "use": "Reach for it when stakeholders are using the same word for different things, and the argument is really about vocabulary.",
   "confused": "A glossary defines business terms; a data dictionary defines stored data elements. Concept modelling goes further and maps the relationships between the terms.",
+  "visual": {
+   "type": "table",
+   "title": "Shipment, qualified so both records can stand",
+   "lead": "Neither team was wrong. One word was carrying two meanings.",
+   "cols": [
+    "Term",
+    "Agreed meaning",
+    "Used by"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "Shipment despatched",
+     "Goods have left the warehouse",
+     "Operations"
+    ],
+    [
+     "Shipment delivered",
+     "Customer has confirmed receipt",
+     "Finance"
+    ],
+    [
+     "Shipment complete",
+     "Deprecated — do not use unqualified",
+     "—"
+    ]
+   ],
+   "note": "Elicitation results were confirmed against this, and both records were accurate."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "3.4 Plan Business Analysis Information Management",
@@ -5113,6 +6213,50 @@ const TECHNIQUES = [
   "purpose": "Identifies the boundaries between the solution and everything it touches, and specifies what crosses each one.",
   "use": "Reach for it when the risk sits at the seams: between systems, between organisations, or between a person and the solution.",
   "confused": "Interface analysis defines what crosses a boundary; scope modelling defines where the boundary is. Scope first, interfaces second.",
+  "visual": {
+   "type": "table",
+   "title": "Payments platform — what crosses each boundary",
+   "lead": "Written only after reversal handling was allocated, because that moves three of the four.",
+   "cols": [
+    "Interface",
+    "Direction",
+    "Carries",
+    "Frequency"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "Core banking",
+     "Both",
+     "Debit instruction, settlement confirmation",
+     "Real time"
+    ],
+    [
+     "Fraud service",
+     "Out, then in",
+     "Score request, decision",
+     "Real time, blocking"
+    ],
+    [
+     "Partner app A",
+     "In",
+     "Payment initiation",
+     "Real time"
+    ],
+    [
+     "Partner app B",
+     "In",
+     "Payment initiation, reversal request",
+     "Real time"
+    ]
+   ],
+   "note": "Reversal handling sits with the platform. Had it sat with core banking, rows 1, 2 and 4 would differ."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "7.4 Define Requirements Architecture",
@@ -5130,6 +6274,43 @@ const TECHNIQUES = [
   "purpose": "Elicits information one-to-one or in a small group through prepared and follow-up questioning.",
   "use": "Reach for it when the subject is sensitive, the expertise is concentrated in one person, or the group setting would suppress what needs saying.",
   "confused": "Interviews go deep with few people; surveys go wide with many. If the scenario needs coverage across hundreds of staff, interviewing them is the wrong instrument however thorough it sounds.",
+  "visual": {
+   "type": "table",
+   "title": "Interview guide — chief pharmacist, 90 minutes",
+   "lead": "Prepared questions with a stated purpose, and room to follow what comes back.",
+   "cols": [
+    "Question",
+    "Type",
+    "Why it is being asked"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "Walk me through the last handover that went wrong.",
+     "Open",
+     "Gets a real case rather than the procedure"
+    ],
+    [
+     "What did you decide not to pass on, and why?",
+     "Open",
+     "The judgement is the target; it is not written down anywhere"
+    ],
+    [
+     "Who do you check with when you are unsure?",
+     "Closed",
+     "Names the informal escalation path"
+    ],
+    [
+     "What would you want the new system to refuse to let you do?",
+     "Open",
+     "Surfaces constraints as the expert sees them"
+    ]
+   ]
+  },
   "tasks": [
    "4.2 Conduct Elicitation",
    "4.1 Prepare for Elicitation",
@@ -5147,6 +6328,63 @@ const TECHNIQUES = [
   "purpose": "Captures and follows issues, risks, conflicts and actions through to resolution, with an owner and a status on each.",
   "use": "Reach for it when things raised in sessions keep going missing, and the failure is one of follow-through rather than analysis.",
   "confused": "Item tracking manages open items; risk analysis assesses and responds to risk. A raised concern with no owner is an item; a quantified threat with a response strategy is a risk.",
+  "visual": {
+   "type": "table",
+   "title": "Nineteen concerns raised in four months",
+   "lead": "They were captured well. Eleven had no owner, which is why stakeholders stopped coming.",
+   "cols": [
+    "Raised",
+    "Concern",
+    "Type",
+    "Owner",
+    "Status"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "12 Mar",
+     "Assessors not consulted on field order",
+     "Issue",
+     "D. Nguyen",
+     "Closed"
+    ],
+    [
+     "19 Mar",
+     "Duplicate-check rule undefined",
+     "Issue",
+     "—",
+     "No owner, 5 months"
+    ],
+    [
+     "02 Apr",
+     "Cutover may land in peak",
+     "Risk",
+     "Moved to register",
+     "Open"
+    ],
+    [
+     "23 Apr",
+     "Who signs off migration mapping?",
+     "Question",
+     "—",
+     "No owner, 4 months"
+    ],
+    [
+     "07 May",
+     "Legacy report parity not agreed",
+     "Issue",
+     "—",
+     "No owner, 3 months"
+    ]
+   ],
+   "note": "Raising something and watching nothing happen teaches people not to raise things."
+  },
   "tasks": [
    "4.5 Manage Stakeholder Collaboration",
    "5.4 Assess Requirements Changes",
@@ -5165,6 +6403,38 @@ const TECHNIQUES = [
   "purpose": "Assembles what worked, what did not and what should change, from the people who were there, while it is still recoverable.",
   "use": "Reach for it at the close of a phase or effort, and when the same failure has now happened more than once.",
   "confused": "Lessons learned improves how the work is done next time; retrospective performance assessment of business analysis itself sits under task 3.5. The technique is the session, the task is the accountability.",
+  "visual": {
+   "type": "canvas",
+   "title": "Held before the team rolled off, not after the benefits data matured",
+   "cols": 3,
+   "lead": "The perishable input is the people. The benefits data will still be there in ten weeks.",
+   "panels": [
+    {
+     "label": "What worked",
+     "items": [
+      "Co-located analysts and testers",
+      "Weekly stakeholder demo held every week without exception"
+     ]
+    },
+    {
+     "label": "What did not",
+     "items": [
+      "Requirements churn ran at 3x the norm",
+      "Same pattern on the prior programme, never examined",
+      "Sign-off authority moved twice, undocumented"
+     ]
+    },
+    {
+     "label": "Change next time",
+     "items": [
+      "Name the approver per requirement type at initiation",
+      "Re-baseline when authority moves, not at phase end",
+      "Record the reason for change, not just the change"
+     ]
+    }
+   ],
+   "note": "Change records showed what changed. Only the team could say why this programme and its predecessor churned alike."
+  },
   "tasks": [
    "3.5 Identify Business Analysis Performance Improvements",
    "8.5 Recommend Actions to Increase Solution Value"
@@ -5181,6 +6451,61 @@ const TECHNIQUES = [
   "purpose": "Defines what will be measured, how, how often and against what target, so performance can be judged rather than asserted.",
   "use": "Reach for it when success has been described in adjectives, or when data is being collected that nobody has tied to an objective.",
   "confused": "A metric is a raw measure; a KPI is a metric tied to an objective with a target. An indicator that nobody would act on is a metric, not a KPI, however prominently it is displayed.",
+  "visual": {
+   "type": "tree",
+   "title": "From objective down to the indicator someone must act on",
+   "lead": "A measure with no target and no threshold produces reporting, not management.",
+   "levels": [
+    "Objective",
+    "Strategy",
+    "Tactic",
+    "KPI"
+   ],
+   "nodes": [
+    {
+     "label": "Cut cost to serve by 15% without losing service quality",
+     "children": [
+      {
+       "label": "Deflect avoidable contact",
+       "children": [
+        {
+         "label": "Self-service for status enquiries",
+         "children": [
+          {
+           "label": "Status enquiries by phone — target ≤ 4,000/mo, act below 5,500",
+           "note": "leading"
+          },
+          {
+           "label": "Self-service completion rate — target ≥ 70%, act below 60%",
+           "note": "leading"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Resolve first time",
+       "children": [
+        {
+         "label": "Agent access to full case history",
+         "children": [
+          {
+           "label": "First-contact resolution — target ≥ 82%, act below 75%",
+           "note": "lagging"
+          },
+          {
+           "label": "Repeat contact within 7 days — target ≤ 9%, act above 12%",
+           "note": "lagging"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "note": "Each leaf carries a target and the threshold at which someone is obliged to do something."
+  },
   "tasks": [
    "8.1 Measure Solution Performance",
    "8.2 Analyze Performance Measures",
@@ -5215,6 +6540,61 @@ const TECHNIQUES = [
   "purpose": "Organises ideas radially around a central concept to expose structure and association during thinking.",
   "use": "Reach for it while exploring, when the shape of the problem is still forming and premature lists would close it down.",
   "confused": "Mind mapping is for exploring and organising thought; functional decomposition is a disciplined breakdown of scope into parts. A mind map is not a deliverable model.",
+  "visual": {
+   "type": "tree",
+   "title": "First pass on why fundraising has got harder",
+   "lead": "Association, not classification. The structure is allowed to be provisional.",
+   "levels": [
+    "Centre",
+    "Strand",
+    "Detail"
+   ],
+   "nodes": [
+    {
+     "label": "Fundraising is harder",
+     "children": [
+      {
+       "label": "Donors",
+       "children": [
+        {
+         "label": "Regular givers ageing"
+        },
+        {
+         "label": "Younger donors give once"
+        }
+       ]
+      },
+      {
+       "label": "Channels",
+       "children": [
+        {
+         "label": "Direct mail response halved"
+        },
+        {
+         "label": "No recurring option online"
+        }
+       ]
+      },
+      {
+       "label": "Capacity",
+       "children": [
+        {
+         "label": "Two fundraisers left, not replaced"
+        }
+       ]
+      },
+      {
+       "label": "Competition",
+       "children": [
+        {
+         "label": "Two new local charities"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
   "tasks": [
    "4.2 Conduct Elicitation",
    "6.1 Analyze Current State"
@@ -5231,6 +6611,55 @@ const TECHNIQUES = [
   "purpose": "Specifies the qualities a solution must exhibit, such as performance, availability, security, usability and maintainability, in measurable terms.",
   "use": "Reach for it as soon as functional requirements are stable, because the qualities usually decide the architecture.",
   "confused": "Non-functional requirements describe how well the solution behaves; business rules constrain what the business permits. And a quality with no number attached is an aspiration, not a requirement.",
+  "visual": {
+   "type": "table",
+   "title": "Permit portal qualities, made measurable before tender",
+   "lead": "Fast, secure and easy to use are not requirements until they carry a number.",
+   "cols": [
+    "Quality",
+    "Measure",
+    "Target",
+    "Under"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "Response",
+     "Page render, 95th percentile",
+     "< 2.0 s",
+     "400 concurrent users"
+    ],
+    [
+     "Availability",
+     "Monthly uptime",
+     "99.5%",
+     "Excluding notified windows"
+    ],
+    [
+     "Security",
+     "Assessed against",
+     "ASD Essential Eight, Maturity 2",
+     "Annual review"
+    ],
+    [
+     "Accessibility",
+     "Conformance",
+     "WCAG 2.1 AA",
+     "All public pages"
+    ],
+    [
+     "Capacity",
+     "Permits lodged",
+     "12,000 / month",
+     "Peak month, June"
+    ]
+   ]
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "7.5 Define Design Options",
@@ -5247,6 +6676,43 @@ const TECHNIQUES = [
   "purpose": "Studies work as it is actually performed, rather than as it is described.",
   "use": "Reach for it when what people say they do and what the system records do not agree, or when the work is tacit and hard to articulate.",
   "confused": "Observation elicits from the work itself; interviews elicit from the person. If the scenario stresses that the documented procedure is not being followed, the answer is almost always observation.",
+  "visual": {
+   "type": "table",
+   "title": "End-of-shift inspection, watched across four shifts",
+   "lead": "The gap between the documented step and the performed one is the finding.",
+   "cols": [
+    "Documented step",
+    "Observed",
+    "Gap"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "1. Visual check of seal",
+     "Done, ~8 seconds",
+     "None"
+    ],
+    [
+     "2. Torque verification",
+     "Skipped on 3 of 4 shifts",
+     "Tool kept in a locked cupboard"
+    ],
+    [
+     "3. Sample weigh",
+     "Done for first unit only",
+     "Read as per batch, not per unit"
+    ],
+    [
+     "4. Log entry",
+     "Done, backfilled at shift end",
+     "Times recorded are estimates"
+    ]
+   ]
+  },
   "tasks": [
    "4.2 Conduct Elicitation",
    "6.1 Analyze Current State",
@@ -5265,6 +6731,60 @@ const TECHNIQUES = [
   "purpose": "Describes the units, roles, reporting lines and interactions that make up an organisation, and where responsibility actually sits.",
   "use": "Reach for it when the change crosses boundaries, or when a decision keeps stalling because nobody can say who owns it.",
   "confused": "Organisational modelling maps structure and responsibility; a stakeholder map positions people by influence and interest for engagement purposes. Structure versus engagement is the split.",
+  "visual": {
+   "type": "tree",
+   "title": "Where the mandate actually sits, after the undocumented restructure",
+   "lead": "Three decisions stalled because two directors each believed the other owned them.",
+   "levels": [
+    "Division",
+    "Unit",
+    "Decision right"
+   ],
+   "nodes": [
+    {
+     "label": "Customer Group",
+     "children": [
+      {
+       "label": "Service Design",
+       "children": [
+        {
+         "label": "Channel policy — held here since the 2024 restructure"
+        }
+       ]
+      },
+      {
+       "label": "Operations",
+       "children": [
+        {
+         "label": "Believed it held channel policy. Does not."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "label": "Technology Group",
+     "children": [
+      {
+       "label": "Platform",
+       "children": [
+        {
+         "label": "Integration standards"
+        }
+       ]
+      },
+      {
+       "label": "Data Office",
+       "children": [
+        {
+         "label": "Retention and privacy — moved here in 2024, never recorded"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "6.2 Define Future State",
@@ -5282,6 +6802,49 @@ const TECHNIQUES = [
   "purpose": "Orders requirements or work against agreed bases such as value, cost, risk, dependency, regulatory deadline or implementation difficulty.",
   "use": "Reach for it whenever demand exceeds capacity, which is nearly always, and the sequence has to be defensible to people who lose out.",
   "confused": "Prioritisation orders things you intend to do; decision analysis picks between options where some are discarded. Also watch the basis: an item where a regulatory date is in play is not decided by value.",
+  "visual": {
+   "type": "matrix",
+   "title": "Superannuation release — sequenced on constraint, not value",
+   "lead": "Value is one basis among several, and here it is not the one that governs.",
+   "xLabel": "Effort",
+   "yLabel": "Value",
+   "cols": [
+    "Low",
+    "High"
+   ],
+   "rows": [
+    "High",
+    "Low"
+   ],
+   "cells": [
+    [
+     {
+      "tag": "do first on value",
+      "items": [
+       "Member portal redesign"
+      ]
+     },
+     {
+      "items": [
+       "Adviser dashboard"
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       "Data quality fix"
+      ]
+     },
+     {
+      "items": [
+       "Legislative change"
+      ]
+     }
+    ]
+   ],
+   "note": "Value alone puts the portal first. The data fix is a dependency of the legislative change, and the legislative change has a 1 July date with a licence condition attached. Sequence: data fix, legislative change, then the portal."
+  },
   "tasks": [
    "5.3 Prioritize Requirements",
    "5.4 Assess Requirements Changes",
@@ -5299,6 +6862,62 @@ const TECHNIQUES = [
   "purpose": "Examines an existing process for waste, delay, variation and gaps against its intended outcome, and identifies where improvement is available.",
   "use": "Reach for it when the process is known and the question is what is wrong with it, rather than what it is.",
   "confused": "Process analysis evaluates a process; process modelling depicts it. If the scenario has no model yet, you cannot analyse it, which is why the ordering matters in exam items.",
+  "visual": {
+   "type": "table",
+   "title": "Development approval, once the end-to-end model existed",
+   "lead": "You cannot analyse a process nobody has depicted. The model came first.",
+   "cols": [
+    "Step",
+    "Elapsed",
+    "Touch time",
+    "Verdict"
+   ],
+   "align": [
+    "left",
+    "num",
+    "num",
+    "left"
+   ],
+   "rows": [
+    [
+     "Lodgement check",
+     "4 days",
+     "20 min",
+     "Queue, not work"
+    ],
+    [
+     "Referral to services",
+     "19 days",
+     "2 h",
+     "Waiting on 3 parallel referrals"
+    ],
+    [
+     "Assessment",
+     "6 days",
+     "7 h",
+     "Value-adding"
+    ],
+    [
+     "Peer review",
+     "11 days",
+     "1 h",
+     "Queue; single reviewer"
+    ],
+    [
+     "Determination",
+     "3 days",
+     "30 min",
+     "Value-adding"
+    ],
+    [
+     "Total",
+     "43 days",
+     "10.8 h",
+     "Touch time is 3% of elapsed"
+    ]
+   ],
+   "note": "Doubling assessor capacity addresses 7 of the 43 days."
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "8.5 Recommend Actions to Increase Solution Value",
@@ -5316,6 +6935,47 @@ const TECHNIQUES = [
   "purpose": "Depicts the sequence of activities, decisions, actors and hand-offs that produce an outcome.",
   "use": "Reach for it when order, branching or hand-off is the substance of the problem, and prose has stopped being able to carry it.",
   "confused": "Process modelling shows the flow of work; use cases show an actor achieving a goal with the solution; data flow diagrams follow information. Hand-offs between people point to process.",
+  "visual": {
+   "type": "flow",
+   "title": "Parcel return, six parties, and where it breaks",
+   "lead": "Hand-offs between actors are the substance, which is why a use case would fragment it.",
+   "steps": [
+    {
+     "actor": "Customer",
+     "label": "Lodges return"
+    },
+    {
+     "actor": "Courier",
+     "label": "Collects"
+    },
+    {
+     "actor": "Warehouse inwards",
+     "label": "Receives and inspects"
+    },
+    {
+     "actor": "Refurbisher",
+     "label": "Assesses"
+    },
+    {
+     "actor": "Warehouse stock",
+     "label": "Restocks or scraps"
+    },
+    {
+     "actor": "Finance",
+     "label": "Refunds"
+    }
+   ],
+   "branches": [
+    {
+     "from": "Receives and inspects",
+     "label": "rejects → back to courier, and the customer is not told"
+    },
+    {
+     "from": "Assesses",
+     "label": "rejects → scrap, but finance has already refunded"
+    }
+   ]
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "6.1 Analyze Current State",
@@ -5333,6 +6993,39 @@ const TECHNIQUES = [
   "purpose": "Makes an early, partial version of the solution so stakeholders can react to something concrete instead of describing something abstract.",
   "use": "Reach for it when requirements are unclear because people cannot picture the outcome, or when a technical assumption needs testing before commitment.",
   "confused": "A prototype elicits and validates; it is not the solution and not a design specification. Items where the prototype quietly becomes the build are testing whether you know the difference between throwaway and evolutionary intent.",
+  "visual": {
+   "type": "flow",
+   "title": "Claims intake screen, three rounds in nine days",
+   "lead": "Built to be argued with and thrown away, not to be extended.",
+   "steps": [
+    {
+     "actor": "Round 1",
+     "label": "Paper sketch",
+     "note": "Field order disputed by 4 of 6 assessors"
+    },
+    {
+     "actor": "Round 2",
+     "label": "Clickable, 1 screen",
+     "note": "Reveals the missing duplicate-claim check"
+    },
+    {
+     "actor": "Round 3",
+     "label": "Clickable, 4 screens",
+     "note": "Agreed; requirements written from it"
+    },
+    {
+     "actor": "Then",
+     "label": "Discarded",
+     "note": "No error handling, no security model, no tests"
+    }
+   ],
+   "branches": [
+    {
+     "from": "Discarded",
+     "label": "— throwaway by intent. Deciding to extend it later is a different decision, made once."
+    }
+   ]
+  },
   "tasks": [
    "4.2 Conduct Elicitation",
    "7.5 Define Design Options",
@@ -5350,6 +7043,38 @@ const TECHNIQUES = [
   "purpose": "Puts a work product in front of others to find defects, confirm understanding or obtain agreement, formally or informally.",
   "use": "Reach for it when the artefact is ready enough to be examined and the cost of an undetected error is rising.",
   "confused": "Verification asks whether the requirement is well written; validation asks whether it delivers value. A review is the vehicle for either, so read what the reviewers are being asked to judge.",
+  "visual": {
+   "type": "table",
+   "title": "The same technique, two different questions",
+   "lead": "The first review was run correctly. It just answered the question that was not at issue.",
+   "cols": [
+    "Review",
+    "Question asked",
+    "Participants",
+    "Found"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "Verification",
+     "Is each requirement well written?",
+     "Testers",
+     "Nothing — all atomic, testable, consistent"
+    ],
+    [
+     "Validation",
+     "Does each requirement still deliver value?",
+     "Business stakeholders",
+     "A third describe work the redesign removed"
+    ]
+   ],
+   "note": "No quality checklist would have caught it. The obsolete requirements were well written."
+  },
   "tasks": [
    "7.2 Verify Requirements",
    "7.3 Validate Requirements",
@@ -5367,6 +7092,79 @@ const TECHNIQUES = [
   "purpose": "Identifies uncertain events that could affect value, assesses their likelihood and impact, and settles a response for each.",
   "use": "Reach for it when the change strategy depends on things nobody controls, and unnamed risk is being carried as optimism.",
   "confused": "A risk is an uncertain future event; an issue is already happening and belongs in item tracking. And the responses are avoid, transfer, mitigate, accept or increase, not simply escalate.",
+  "visual": {
+   "type": "matrix",
+   "title": "Migration risks, post-mitigation, with residual exposure named",
+   "lead": "Mitigation moves a risk on the grid. It does not remove it from the grid.",
+   "xLabel": "Impact",
+   "yLabel": "Likelihood",
+   "cols": [
+    "Moderate",
+    "Major",
+    "Severe"
+   ],
+   "rows": [
+    "Likely",
+    "Possible",
+    "Unlikely"
+   ],
+   "cells": [
+    [
+     {
+      "items": [
+       "Data quality rework"
+      ]
+     },
+     {
+      "items": [
+       "—"
+      ]
+     },
+     {
+      "items": [
+       "—"
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       "Training slippage"
+      ]
+     },
+     {
+      "tag": "EMV $87,500",
+      "items": [
+       "Limited remediation"
+      ]
+     },
+     {
+      "items": [
+       "—"
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       "—"
+      ]
+     },
+     {
+      "items": [
+       "Vendor resourcing"
+      ]
+     },
+     {
+      "tag": "EMV $135,000",
+      "items": [
+       "Severe remediation"
+      ]
+     }
+    ]
+   ],
+   "note": "Expected monetary value across all outcomes is $222,500. That figure goes in the business case; the $900,000 severe case goes here."
+  },
   "tasks": [
    "6.3 Assess Risks",
    "6.4 Define Change Strategy",
@@ -5401,6 +7199,94 @@ const TECHNIQUES = [
   "purpose": "Sets out which role may perform which action on which object, exposing gaps, overlaps and separation-of-duty breaches.",
   "use": "Reach for it when access, authority or segregation of duties is in question, particularly under audit or regulation.",
   "confused": "A roles and permissions matrix governs what a role may do in the solution; organisational modelling describes where the role sits. Permission versus position.",
+  "visual": {
+   "type": "matrix",
+   "title": "Grants system — where separation of duties breaks",
+   "lead": "Eleven roles against nine objects. This is the corner the audit found.",
+   "xLabel": "Action",
+   "yLabel": "Role",
+   "cols": [
+    "Create",
+    "Approve",
+    "Amend",
+    "Delete"
+   ],
+   "rows": [
+    "Grants officer",
+    "Finance officer",
+    "Team leader"
+   ],
+   "cells": [
+    [
+     {
+      "items": [
+       "Payment ✓"
+      ]
+     },
+     {
+      "tag": "breach",
+      "items": [
+       "Payment ✓"
+      ]
+     },
+     {
+      "items": [
+       "Payment ✓"
+      ]
+     },
+     {
+      "items": [
+       "—"
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       "Payment ✓"
+      ]
+     },
+     {
+      "items": [
+       "—"
+      ]
+     },
+     {
+      "items": [
+       "Payment ✓"
+      ]
+     },
+     {
+      "items": [
+       "—"
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       "—"
+      ]
+     },
+     {
+      "items": [
+       "Payment ✓"
+      ]
+     },
+     {
+      "items": [
+       "Payment ✓"
+      ]
+     },
+     {
+      "items": [
+       "Payment ✓"
+      ]
+     }
+    ]
+   ],
+   "note": "The grants officer can raise and approve the same payment. Counted across all 99 combinations, not anecdotally."
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "6.2 Define Future State"
@@ -5417,6 +7303,48 @@ const TECHNIQUES = [
   "purpose": "Traces a problem back past its symptoms to the condition that produces it, using structured questioning or cause-and-effect mapping.",
   "use": "Reach for it when a fix keeps failing, when the same defect recurs, or when the stated problem is plainly a symptom.",
   "confused": "Root cause analysis explains why the current state underperforms; it does not design the future state. An item that jumps from a recurring failure to a solution is testing whether you stopped to find the cause.",
+  "visual": {
+   "type": "tree",
+   "title": "Duplicate invoices, three occurrences, three patches",
+   "lead": "Each patch removed a symptom. The condition all three shared survived them.",
+   "levels": [
+    "Symptom",
+    "Why",
+    "Why again",
+    "Root cause"
+   ],
+   "nodes": [
+    {
+     "label": "Duplicate invoices issued, 3 times in 18 months",
+     "children": [
+      {
+       "label": "Why? A batch job ran twice",
+       "children": [
+        {
+         "label": "Why? The job restarted after a timeout",
+         "children": [
+          {
+           "label": "Why? Restart is automatic and unconditional"
+          },
+          {
+           "label": "Why? No job writes an idempotency key — the shared cause"
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Why? Three different jobs, each patched separately",
+       "children": [
+        {
+         "label": "Why? No standard for restart safety across batch"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "8.3 Assess Solution Limitations",
@@ -5434,6 +7362,40 @@ const TECHNIQUES = [
   "purpose": "Draws the boundary of the change: what is inside, what is outside, and what sits on the edge.",
   "use": "Reach for it when scope is contested, when the effort keeps absorbing adjacent work, or before any credible estimate can be given.",
   "confused": "Scope modelling sets the boundary; interface analysis specifies what crosses it; functional decomposition breaks down what is inside. Boundary disputes are scope.",
+  "visual": {
+   "type": "canvas",
+   "title": "Licensing modernisation, after three informal absorptions",
+   "cols": 3,
+   "lead": "Naming what sits just outside is what makes the next absorption a visible decision.",
+   "panels": [
+    {
+     "label": "In scope",
+     "items": [
+      "Licence application and renewal",
+      "Eligibility assessment",
+      "Fee calculation and payment",
+      "Public register of licences"
+     ]
+    },
+    {
+     "label": "Out of scope",
+     "items": [
+      "Complaints handling",
+      "Inspections scheduling",
+      "Prosecution case management",
+      "Finance general ledger"
+     ]
+    },
+    {
+     "label": "Adjacent — decide before it drifts",
+     "items": [
+      "Inspection outcomes feeding eligibility",
+      "Register data reused by complaints",
+      "Shared identity for licence holders"
+     ]
+    }
+   ]
+  },
   "tasks": [
    "6.2 Define Future State",
    "6.4 Define Change Strategy",
@@ -5451,6 +7413,39 @@ const TECHNIQUES = [
   "purpose": "Shows the ordered exchange of messages between participants over time to accomplish a specific interaction.",
   "use": "Reach for it when timing, ordering and the exact exchange between components decide whether the behaviour is correct.",
   "confused": "Sequence diagrams order messages between components; process models order activities performed by people and systems; state models track what an object becomes. Messages, work, or status is the three-way split.",
+  "visual": {
+   "type": "flow",
+   "title": "The race that only appears under load",
+   "lead": "Ordered messages between components. A process model has no time axis, which is why it did not help.",
+   "steps": [
+    {
+     "actor": "1",
+     "label": "Gateway → Authorisation",
+     "note": "authorise(txn) — blocking"
+    },
+    {
+     "actor": "2",
+     "label": "Gateway → Fraud service",
+     "note": "score(txn) — async, no wait"
+    },
+    {
+     "actor": "3",
+     "label": "Gateway → Ledger",
+     "note": "post(txn) — fires immediately"
+    },
+    {
+     "actor": "4",
+     "label": "Fraud service → Gateway",
+     "note": "decision arrives, sometimes after step 3"
+    }
+   ],
+   "branches": [
+    {
+     "from": "Gateway → Ledger",
+     "label": "— posting before the fraud reply is the defect. Load widens the window; it does not cause it."
+    }
+   ]
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "7.4 Define Requirements Architecture"
@@ -5466,6 +7461,52 @@ const TECHNIQUES = [
   "purpose": "Identifies who is affected, positions them by influence, interest or attitude, and characterises user groups whose needs differ.",
   "use": "Reach for it at the start, and again whenever the change moves into a part of the organisation you have not analysed.",
   "confused": "Identifying and positioning stakeholders is analysis; deciding how often and how formally to deal with each is engagement planning under task 3.2. Producing a map is not the same as having a plan.",
+  "visual": {
+   "type": "matrix",
+   "title": "Permit service — 200,000 users, four groups the average hides",
+   "lead": "Influence and interest govern engagement. Personas describe what the design must satisfy.",
+   "xLabel": "Interest",
+   "yLabel": "Influence",
+   "cols": [
+    "Low",
+    "High"
+   ],
+   "rows": [
+    "High",
+    "Low"
+   ],
+   "cells": [
+    [
+     {
+      "tag": "manage closely",
+      "items": [
+       "Regulator",
+       "Professional agents — 4% of users, 61% of volume"
+      ]
+     },
+     {
+      "items": [
+       "Finance"
+      ]
+     }
+    ],
+    [
+     {
+      "items": [
+       "General public — occasional users"
+      ]
+     },
+     {
+      "tag": "do not design out",
+      "items": [
+       "Assistive technology users",
+       "Low-connectivity households"
+      ]
+     }
+    ]
+   ],
+   "note": "Weighted by volume, the bottom-right group disappears. They are the ones with least alternative."
+  },
   "tasks": [
    "3.2 Plan Stakeholder Engagement",
    "6.1 Analyze Current State",
@@ -5484,6 +7525,51 @@ const TECHNIQUES = [
   "purpose": "Describes the states an object can occupy, the transitions between them and the events and conditions that permit each transition.",
   "use": "Reach for it when the same object behaves differently depending on where it is in its life, and the rules about what may happen next are the requirement.",
   "confused": "State modelling tracks what an object may become; process modelling tracks what people do. If the stem is full of statuses such as lodged, assessed, withdrawn, it is state.",
+  "visual": {
+   "type": "flow",
+   "title": "Tribunal case — which statuses may follow which",
+   "lead": "The two disputes were both illegal transitions. A process model showed neither.",
+   "steps": [
+    {
+     "label": "Lodged",
+     "note": "on registration"
+    },
+    {
+     "label": "Allocated",
+     "note": "on member assignment"
+    },
+    {
+     "label": "Listed",
+     "note": "on hearing date set"
+    },
+    {
+     "label": "Reserved",
+     "note": "on hearing completed"
+    },
+    {
+     "label": "Determined",
+     "note": "terminal"
+    }
+   ],
+   "branches": [
+    {
+     "from": "Listed",
+     "label": "→ Adjourned → Listed. Permitted."
+    },
+    {
+     "from": "Determined",
+     "label": "→ Adjourned. NOT permitted — this was dispute one."
+    },
+    {
+     "from": "Lodged",
+     "label": "→ Struck out → (terminal). Reinstatement NOT permitted — dispute two."
+    },
+    {
+     "from": "Allocated",
+     "label": "→ Withdrawn. Permitted at any point before Determined."
+    }
+   ]
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "6.1 Analyze Current State"
@@ -5500,6 +7586,44 @@ const TECHNIQUES = [
   "purpose": "Collects information from many respondents through a structured instrument, closed for measurement or open for exploration.",
   "use": "Reach for it when you need breadth, statistical weight, or input from people too numerous or dispersed to meet.",
   "confused": "Surveys give breadth without depth and cannot ask the follow-up question. Items where the sample is self-selected, or the response rate is poor, are testing whether you treat the result as evidence or as a signal to go and interview.",
+  "visual": {
+   "type": "table",
+   "title": "Post-launch instrument, issued to all 12,000 users",
+   "lead": "Closed questions to measure, one open question to explain, and a guard on each.",
+   "cols": [
+    "Question",
+    "Type",
+    "Guards against"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "Did you complete what you came to do?",
+     "Yes / No / Partly",
+     "Measuring satisfaction instead of success"
+    ],
+    [
+     "How many attempts did it take?",
+     "1 / 2 / 3+",
+     "Self-reported ease, which flatters"
+    ],
+    [
+     "Which channel did you try first?",
+     "Choice",
+     "Missing the people who never reached the portal"
+    ],
+    [
+     "What stopped you, if anything?",
+     "Open",
+     "Closed lists that only offer failures we predicted"
+    ]
+   ],
+   "note": "Issued by email to the full list, not by a banner on the portal, so non-users are reachable."
+  },
   "tasks": [
    "4.2 Conduct Elicitation",
    "8.1 Measure Solution Performance",
@@ -5518,6 +7642,54 @@ const TECHNIQUES = [
   "purpose": "Sorts internal strengths and weaknesses against external opportunities and threats to read the organisation's position.",
   "use": "Reach for it early in strategy analysis, when the case for change has to be located in the organisation's actual position.",
   "confused": "The axis that trips people is internal versus external. A capability the organisation lacks is a weakness, not a threat; a competitor exploiting that lack is the threat.",
+  "visual": {
+   "type": "matrix",
+   "title": "Regional airline, with the three misplaced entries corrected",
+   "lead": "The axis that trips people is internal against external, not good against bad.",
+   "xLabel": "Nature",
+   "yLabel": "Origin",
+   "cols": [
+    "Helpful",
+    "Harmful"
+   ],
+   "rows": [
+    "Internal",
+    "External"
+   ],
+   "cells": [
+    [
+     {
+      "tag": "Strengths",
+      "items": [
+       "Strong regional brand recognition",
+       "Slot holdings at two capital airports"
+      ]
+     },
+     {
+      "tag": "Weaknesses",
+      "items": [
+       "No digital booking capability",
+       "Ageing fleet, high maintenance cost"
+      ]
+     }
+    ],
+    [
+     {
+      "tag": "Opportunities",
+      "items": [
+       "Regional route subsidies extended to 2029"
+      ]
+     },
+     {
+      "tag": "Threats",
+      "items": [
+       "Competitor launching direct routes"
+      ]
+     }
+    ]
+   ],
+   "note": "Lacking a capability is a weakness. A competitor exploiting that lack is the threat."
+  },
   "tasks": [
    "6.1 Analyze Current State",
    "6.2 Define Future State",
@@ -5534,6 +7706,44 @@ const TECHNIQUES = [
   "purpose": "Describes how an actor interacts with a solution to achieve a goal, including the main flow and the alternatives and exceptions.",
   "use": "Reach for it when the interaction between an actor and the solution, including everything that can go wrong in it, is the substance of the requirement.",
   "confused": "A use case is goal-oriented interaction with the solution; a process model is the flow of business work. Use cases carry alternate and exception flows, which is usually the discriminating detail in a stem.",
+  "visual": {
+   "type": "flow",
+   "title": "Renew a licence online — with the flows that testing found missing",
+   "lead": "The alternates and exceptions are part of the use case, not an afterthought.",
+   "steps": [
+    {
+     "actor": "Main flow",
+     "label": "1. Identify holder"
+    },
+    {
+     "label": "2. Confirm details"
+    },
+    {
+     "label": "3. Take payment"
+    },
+    {
+     "label": "4. Issue renewal"
+    }
+   ],
+   "branches": [
+    {
+     "from": "3. Take payment",
+     "label": "alt — card expired: prompt for another, licence not yet renewed"
+    },
+    {
+     "from": "3. Take payment",
+     "label": "exc — timeout after debit: renewal issued, payment reconciled out of band"
+    },
+    {
+     "from": "2. Confirm details",
+     "label": "alt — resumed next day: part-completed renewal restored, payment not retained"
+    },
+    {
+     "from": "1. Identify holder",
+     "label": "exc — licence suspended: renewal refused, reason shown, no payment taken"
+    }
+   ]
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "7.3 Validate Requirements"
@@ -5549,6 +7759,33 @@ const TECHNIQUES = [
   "purpose": "States a need briefly from the point of view of the person who has it, as a placeholder for the conversation that will refine it.",
   "use": "Reach for it on adaptive work where detail is deliberately deferred until the item is close to being built.",
   "confused": "A user story is a promise of a conversation with acceptance criteria attached; a use case is a complete specified interaction. A story written as a system instruction with no user and no value has stopped being a user story.",
+  "visual": {
+   "type": "table",
+   "title": "Rewritten with a real role and a real benefit",
+   "lead": "The template was being satisfied while the content it exists to carry was missing.",
+   "cols": [
+    "Before",
+    "After",
+    "Acceptance criterion"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "As a user I want the record saved to the audit table so that the record is saved to the audit table",
+     "As a compliance officer I want every eligibility override recorded so that I can evidence the decision at audit",
+     "Override shows who, when, prior value, reason. Immutable."
+    ],
+    [
+     "As a user I want a search",
+     "As a contact centre agent I want to find a member by surname and date of birth so that I can verify them inside the call",
+     "Returns within 2 s. Partial surname supported."
+    ]
+   ]
+  },
   "tasks": [
    "7.1 Specify and Model Requirements",
    "5.3 Prioritize Requirements",
@@ -5566,6 +7803,44 @@ const TECHNIQUES = [
   "purpose": "Judges whether a supplier can meet the commitment: capability, viability, cultural fit, licensing and the terms of the relationship.",
   "use": "Reach for it whenever part of the solution will be bought or delivered by a third party, and before the product demonstration does the deciding.",
   "confused": "Vendor assessment judges the supplier; evaluation criteria judge the product. An item where the shortlisted product fits but the supplier is thinly capitalised is testing vendor assessment.",
+  "visual": {
+   "type": "table",
+   "title": "The supplier behind the highest-scoring product",
+   "lead": "Evaluation criteria judged the product. This is the separate question.",
+   "cols": [
+    "Dimension",
+    "Finding",
+    "Bearing on a 7-year contract"
+   ],
+   "align": [
+    "left",
+    "left",
+    "left"
+   ],
+   "rows": [
+    [
+     "Trading history",
+     "2 years",
+     "No evidence of sustaining a long engagement"
+    ],
+    [
+     "Financial position",
+     "Loss-making, 9 staff",
+     "Viability risk across the term"
+    ],
+    [
+     "Reference site",
+     "One council, half our size",
+     "Capacity at our scale unproven"
+    ],
+    [
+     "Continuity",
+     "No source escrow offered",
+     "Rates register is unrecoverable if the firm fails"
+    ]
+   ],
+   "note": "The product genuinely is the best fit. Both assessments go to the decision-maker, not one folded into the other."
+  },
   "tasks": [
    "7.5 Define Design Options",
    "7.6 Analyze Potential Value and Recommend Solution",
@@ -5583,6 +7858,44 @@ const TECHNIQUES = [
   "purpose": "Brings the right stakeholders together in a facilitated, purposeful session that ends in a defined work product.",
   "use": "Reach for it when a decision or a shared model needs several parties in the room at once, and serial consultation would take too long or never converge.",
   "confused": "A workshop produces an agreed output; a focus group gathers views; a meeting has no such contract. The presence of a facilitator, a defined output and a scribe is what makes it a workshop.",
+  "visual": {
+   "type": "flow",
+   "title": "Extension rules, five faculties, one session",
+   "lead": "A defined output, a neutral facilitator, the people who can agree, and a scribe.",
+   "steps": [
+    {
+     "actor": "Before",
+     "label": "Circulate the five current practices",
+     "note": "Read in advance, not in the room"
+    },
+    {
+     "actor": "Open",
+     "label": "State the output",
+     "note": "One rule set, agreed today"
+    },
+    {
+     "actor": "Work",
+     "label": "Reconcile clause by clause",
+     "note": "Divergences parked, not debated"
+    },
+    {
+     "actor": "Decide",
+     "label": "Resolve the parked list",
+     "note": "7 items, 5 agreed, 2 escalated"
+    },
+    {
+     "actor": "Close",
+     "label": "Read back and confirm",
+     "note": "Scribe reads the decisions aloud"
+    }
+   ],
+   "branches": [
+    {
+     "from": "State the output",
+     "label": "— without this it is a meeting, and three of them have already produced nothing"
+    }
+   ]
+  },
   "tasks": [
    "4.2 Conduct Elicitation",
    "4.3 Confirm Elicitation Results",
@@ -8394,6 +10707,9 @@ function openLearn(){
         <div>${esc(t.use)}</div>
         <div class="lbl">Most often confused with</div>
         <div class="conf">${esc(t.confused)}</div>
+        ${t.visual ? `<div class="lbl">What it produces</div>
+          ${t.visual.lead ? `<div class="ep">${esc(t.visual.lead)}</div>` : ""}
+          ${exhibitHTML({exhibit: t.visual})}` : ""}
         ${t.mechanics ? `<div class="lbl">Mechanics</div>
           <table class="mech"><tbody>${t.mechanics.map(m => `<tr>
             <td class="mt">${esc(m.term)}</td><td class="mf">${esc(m.formula)}</td><td>${esc(m.note)}</td>
@@ -8557,6 +10873,41 @@ function exhibitHTML(q){
         <span class="bn">${esc(b.note != null ? b.note : b.value)}</span></div>`;
     }).join("");
     body = (tiles ? `<div class="tiles">${tiles}</div>` : "") + (bars ? `<div class="bars">${bars}</div>` : "");
+  } else if (x.type === "tree"){
+    /* Hierarchy, indented rather than fanned out, so it survives a phone. */
+    const node = n => `<li><span class="tlab">${esc(n.label)}</span>${
+      n.note ? `<span class="tnote">${esc(n.note)}</span>` : ""}${
+      n.children && n.children.length ? `<ul>${n.children.map(node).join("")}</ul>` : ""}</li>`;
+    body = `<div class="xbody">${
+      x.levels ? `<div class="tlevels">${x.levels.map((l,i) =>
+        `<span><i>${i+1}</i>${esc(l)}</span>`).join("")}</div>` : ""}
+      <ul class="tree">${x.nodes.map(node).join("")}</ul></div>`;
+  } else if (x.type === "matrix"){
+    const head = `<tr><td class="mcorner"></td>${x.cols.map(c =>
+      `<th>${esc(c)}</th>`).join("")}</tr>`;
+    const rows = x.rows.map((r,i) => `<tr><th class="mrow">${esc(r)}</th>${
+      (x.cells[i]||[]).map(c => `<td class="mcell">${c ? `${
+        c.tag ? `<b>${esc(c.tag)}</b>` : ""}${
+        (c.items||[]).map(t => `<span>${esc(t)}</span>`).join("")}` : ""}</td>`).join("")}</tr>`).join("");
+    body = `<div class="xbody"><table class="matrix">
+      ${x.xLabel ? `<caption class="mx">${esc(x.xLabel)} →</caption>` : ""}
+      <tbody>${head}${rows}</tbody></table>
+      ${x.yLabel ? `<div class="my">↑ ${esc(x.yLabel)}</div>` : ""}</div>`;
+  } else if (x.type === "flow"){
+    body = `<div class="xbody"><div class="flow">${x.steps.map((s,i) => `
+      <div class="fstep">
+        ${s.actor ? `<span class="factor">${esc(s.actor)}</span>` : ""}
+        <span class="flab">${esc(s.label)}</span>
+        ${s.note ? `<span class="fnote">${esc(s.note)}</span>` : ""}
+      </div>${i < x.steps.length-1 ? `<span class="farrow">→</span>` : ""}`).join("")}</div>
+      ${x.branches && x.branches.length ? `<div class="fbranch">${x.branches.map(b =>
+        `<div><b>${esc(b.from)}</b> ${esc(b.label)}</div>`).join("")}</div>` : ""}</div>`;
+  } else if (x.type === "canvas"){
+    body = `<div class="xbody"><div class="canvasgrid" style="--cc:${x.cols||3}">${
+      x.panels.map(p => `<div class="cpanel">
+        <div class="cplab">${esc(p.label)}</div>
+        ${(p.items||[]).map(t => `<div class="cpitem">${esc(t)}</div>`).join("")}
+      </div>`).join("")}</div></div>`;
   }
   return `<div class="exhibit">
     ${x.title ? `<div class="xtitle">${esc(x.title)}</div>` : ""}

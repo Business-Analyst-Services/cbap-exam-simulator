@@ -38,8 +38,38 @@ for (let i = 1; i < questions.length; i++) {
 }
 
 /* Exhibits appear on questions and inside technique explainers, so check them in one place. */
+const EXHIBIT_TYPES = ["table", "dashboard", "tree", "matrix", "flow", "canvas"];
 function checkExhibit(x, where) {
-  if (!["table", "dashboard"].includes(x.type)) { errors.push(`${where}: exhibit type "${x.type}"`); return; }
+  if (!EXHIBIT_TYPES.includes(x.type)) { errors.push(`${where}: exhibit type "${x.type}" (expected ${EXHIBIT_TYPES.join(", ")})`); return; }
+  if (x.type === "tree") {
+    if (!x.nodes || !x.nodes.length) { errors.push(`${where}: tree has no nodes`); return; }
+    let deepest = 0;
+    (function walk(ns, d) {
+      deepest = Math.max(deepest, d);
+      ns.forEach(n => {
+        if (!n.label) errors.push(`${where}: tree node at depth ${d} has no label`);
+        if (n.children) walk(n.children, d + 1);
+      });
+    })(x.nodes, 1);
+    if (x.levels && x.levels.length !== deepest) errors.push(`${where}: tree names ${x.levels.length} levels but is ${deepest} deep`);
+  }
+  if (x.type === "matrix") {
+    if (!x.cols || !x.rows || !x.cells) { errors.push(`${where}: matrix missing cols, rows or cells`); return; }
+    if (x.cells.length !== x.rows.length) errors.push(`${where}: matrix has ${x.cells.length} cell rows for ${x.rows.length} row labels`);
+    x.cells.forEach((r, i) => { if (r.length !== x.cols.length) errors.push(`${where}: matrix row ${i + 1} has ${r.length} cells for ${x.cols.length} columns`); });
+  }
+  if (x.type === "flow") {
+    if (!x.steps || !x.steps.length) { errors.push(`${where}: flow has no steps`); return; }
+    x.steps.forEach((s, i) => { if (!s.label) errors.push(`${where}: flow step ${i + 1} has no label`); });
+    (x.branches || []).forEach((b, i) => {
+      if (!b.from || !b.label) errors.push(`${where}: branch ${i + 1} missing from or label`);
+      else if (!x.steps.some(s => s.label === b.from)) errors.push(`${where}: branch ${i + 1} points at "${b.from}", which is not a step`);
+    });
+  }
+  if (x.type === "canvas") {
+    if (!x.panels || !x.panels.length) { errors.push(`${where}: canvas has no panels`); return; }
+    x.panels.forEach((p, i) => { if (!p.label) errors.push(`${where}: canvas panel ${i + 1} has no label`); });
+  }
   if (x.type === "table") {
     if (!x.cols || !x.rows) { errors.push(`${where}: table exhibit missing cols or rows`); return; }
     x.rows.forEach((r, i) => {
@@ -73,6 +103,7 @@ all.forEach(q => {
 });
 
 techniques.forEach(t => {
+  if (t.visual) checkExhibit(t.visual, `${t.n} visual`);
   (t.explainers || []).forEach((x, i) => {
     const where = `${t.n} explainer ${i + 1}`;
     ["term", "formula", "plain"].forEach(f => { if (!x[f]) errors.push(`${where}: missing ${f}`); });
