@@ -1,0 +1,758 @@
+[
+ {
+  "n": 301,
+  "ka": 2,
+  "kaName": "Business Analysis Key Concepts",
+  "task": "2.1 The Business Analysis Core Concept Model",
+  "trap": "Treating one core concept as decidable on its own",
+  "stem": "A retailer's executive has approved a new returns platform, the need being described as reducing returns handling cost. Six weeks in, the operations director points out that the platform assumes a single distribution centre while the retailer runs four, and that store managers were never counted as affected parties. The sponsor asks whether the solution needs to change or whether the need was wrong.",
+  "why": "The six core concepts are equal and interdependent: change the context and you change what counts as a solution, who the stakeholders are and what value is delivered. Neither the need nor the solution is wrong in isolation — the context was described as one distribution centre when it is four, and the stakeholder set was drawn to match. Re-examining all six together is what the model is for.",
+  "options": [
+   {
+    "text": "Re-examine all six core concepts together, since a change in context alters what counts as a solution, who the stakeholders are and what value means.",
+    "verdict": "Correct. The concepts are interdependent, so one of them shifting means the others must be checked."
+   },
+   {
+    "text": "Revise the solution to work across four distribution centres, since the need and the stakeholders were correctly identified.",
+    "verdict": "This treats context as a detail of the solution, and leaves the missing store managers unaddressed."
+   },
+   {
+    "text": "Restate the need, since a need that produced the wrong solution must have been described incorrectly.",
+    "verdict": "The need — reducing handling cost — is still accurate. The description of the context was not."
+   },
+   {
+    "text": "Add store managers to the stakeholder register and continue, since the omission is the only concrete error found.",
+    "verdict": "It is the most visible error but not the only one, and adding them without revisiting context repeats the original mistake."
+   }
+  ],
+  "answer": 0
+ },
+ {
+  "n": 302,
+  "ka": 2,
+  "kaName": "Business Analysis Key Concepts",
+  "task": "2.1 The Business Analysis Core Concept Model",
+  "trap": "Assuming value must be a positive monetary figure",
+  "stem": "A water authority is fitting backflow prevention on a network segment. There is no revenue gain, no cost saving and no measurable service improvement. The change exists because a contamination event, while unlikely, would be catastrophic and would breach the operating licence. A board member asks the analyst what value the change delivers, since the business case shows no return.",
+  "why": "Value in the core concept model is the worth of something to a stakeholder in a context, and it can be a loss avoided or an obligation met rather than a gain realised. Potential value is not confined to money, and it is not confined to positive figures. Losing the operating licence is the value at stake here, and expressing it as such is a legitimate answer rather than an evasion.",
+  "options": [
+   {
+    "text": "Report that the change delivers no value and is being made purely for compliance.",
+    "verdict": "Compliance is itself value to an authority whose licence depends on it, so this understates what is at stake."
+   },
+   {
+    "text": "Explain that value here is the avoided loss and the licence retained, which is value to the authority in this context.",
+    "verdict": "Correct. Value can be a loss avoided or an obligation met; it need not be a gain."
+   },
+   {
+    "text": "Estimate a notional revenue figure for the water that would be lost during a contamination event.",
+    "verdict": "Inventing a revenue proxy where none exists misrepresents the case and invites challenge on a number nobody can defend."
+   },
+   {
+    "text": "Reclassify the work as maintenance rather than a change, since it produces no benefit.",
+    "verdict": "It is a deliberate transformation in response to a need, which is a change regardless of how the benefit reads."
+   }
+  ],
+  "answer": 1
+ },
+ {
+  "n": 303,
+  "ka": 2,
+  "kaName": "Business Analysis Key Concepts",
+  "task": "2.3 Requirements and Designs",
+  "trap": "Judging requirement against design by level of detail",
+  "stem": "Two statements sit in the same document. The first reads that the assessor must be able to see a claimant's prior claims when deciding. The second reads that prior claims will appear in a right-hand panel, newest first, showing date, type and outcome. A reviewer argues the second is not a requirement because it is too detailed and should be deleted.",
+  "why": "What separates a requirement from a design is intent, not granularity. A requirement is a usable representation of a need; a design is a usable representation of a solution. The second statement describes how a solution will meet the need, which makes it a design — but designs are legitimate business analysis outputs and are not deleted for being detailed. Both belong, related to each other, with the design traceable to the requirement it satisfies.",
+  "options": [
+   {
+    "text": "Delete the second statement, since specifying a panel and a sort order constrains the designers unnecessarily.",
+    "verdict": "It may or may not be a premature constraint, but that is a separate judgement from whether it is a requirement."
+   },
+   {
+    "text": "Keep both and relabel the first as a design as well, since both describe the eventual system.",
+    "verdict": "The first describes what the assessor needs to be able to do, independently of how, which makes it a requirement."
+   },
+   {
+    "text": "Keep both, recognising the first as a requirement and the second as a design, and trace one to the other.",
+    "verdict": "Correct. Intent separates them, not detail, and both are valid outputs held in a traceable relationship."
+   },
+   {
+    "text": "Merge them into a single statement so the document contains only requirements.",
+    "verdict": "Merging loses the distinction that lets the design change later without the need being renegotiated."
+   }
+  ],
+  "answer": 2
+ },
+ {
+  "n": 304,
+  "ka": 2,
+  "kaName": "Business Analysis Key Concepts",
+  "task": "2.3 Requirements and Designs",
+  "trap": "Confusing the classification of a requirement with its importance",
+  "stem": "Four statements have been captured for a licensing replacement: the authority will reduce processing cost by 20% within two years; assessors need to see restriction data while assessing; the system must return a search within two seconds at peak; and 11 years of historical permits must be migrated before go-live and reconciled once.",
+  "why": "These are one of each in the classification schema. Reducing cost by 20% is a business requirement, a goal of the enterprise. The assessors' need is a stakeholder requirement. The two-second search is a solution requirement, and specifically a non-functional one. The migration is a transition requirement: it is needed only to move from current to future state and ceases to apply once the change is complete.",
+  "options": [
+   {
+    "text": "Business, stakeholder, solution and transition, in that order.",
+    "verdict": "Correct. The migration is a transition requirement because it applies only during the change and lapses afterwards."
+   },
+   {
+    "text": "Business, stakeholder, solution and solution, since migration is something the system must do.",
+    "verdict": "Migration is performed by the solution but exists only to effect the transition, and does not persist after it."
+   },
+   {
+    "text": "Business, business, solution and transition, since seeing restriction data serves the cost goal.",
+    "verdict": "It supports the goal but is expressed as a particular group's need, which makes it a stakeholder requirement."
+   },
+   {
+    "text": "Stakeholder, stakeholder, solution and transition, since all four were raised by stakeholders.",
+    "verdict": "Who raised a requirement does not classify it; the 20% target is a goal of the enterprise, not of a group within it."
+   }
+  ],
+  "answer": 0
+ },
+ {
+  "n": 305,
+  "ka": 2,
+  "kaName": "Business Analysis Key Concepts",
+  "task": "2.1 The Business Analysis Core Concept Model",
+  "trap": "Reading stakeholder as user",
+  "stem": "An analyst is listing stakeholders for a change to how a bank calculates hardship relief. The project manager proposes the list be limited to the hardship team, who operate the process, and the customers who receive relief, on the grounds that everyone else is merely interested rather than affected. The regulator publishes binding guidance on hardship, and internal audit tests the calculation annually.",
+  "why": "A stakeholder is a group or individual with a relationship to the change, the need or the solution, which is considerably wider than the people who operate or receive it. The regulator constrains the solution and audit tests it, so both hold relationships that will shape what is acceptable. Limiting the list to operators and recipients is the common error of reading stakeholder as user.",
+  "options": [
+   {
+    "text": "Accept the limit, since a stakeholder list that includes everyone with an opinion becomes unmanageable.",
+    "verdict": "Manageability is a reason to prioritise engagement, not a reason to exclude parties who constrain or test the solution."
+   },
+   {
+    "text": "Include the regulator and internal audit, since both hold a relationship to the change, the need or the solution.",
+    "verdict": "Correct. The definition turns on the relationship, not on whether the party operates or receives the solution."
+   },
+   {
+    "text": "Include the regulator but not audit, since audit reviews the outcome rather than shaping the requirement.",
+    "verdict": "Audit tests the calculation, which makes its criteria a constraint on the solution rather than an after-the-fact review."
+   },
+   {
+    "text": "List the regulator as a constraint rather than a stakeholder, since it does not participate in the change.",
+    "verdict": "Participation is not the test. A party that constrains the solution has a relationship to it."
+   }
+  ],
+  "answer": 1
+ },
+ {
+  "n": 306,
+  "ka": 2,
+  "kaName": "Business Analysis Key Concepts",
+  "task": "2.1 The Business Analysis Core Concept Model",
+  "trap": "Widening context until it stops being useful",
+  "stem": "Asked to describe the context for a change to a university's timetabling, an analyst has produced a forty-page document covering the sector funding model, national student demand trends, campus master planning, the IT operating model and the enterprise architecture roadmap. The sponsor cannot tell which parts bear on timetabling and has asked for it to be made useful.",
+  "why": "Context in the core concept model is the circumstances that influence, are influenced by and provide understanding of the change — not everything true about the enterprise. A description that includes everything discriminates nothing, and the test is whether a fact would change a decision about this change. Campus master planning may well qualify; national demand trends over a decade probably do not.",
+  "options": [
+   {
+    "text": "Keep the document as the context and add a summary at the front for the sponsor.",
+    "verdict": "A summary makes it readable without making it relevant, and the sponsor's objection is about relevance."
+   },
+   {
+    "text": "Replace it with the enterprise architecture roadmap, which is the most authoritative of the five.",
+    "verdict": "Authority is not relevance; the roadmap may bear on timetabling barely at all."
+   },
+   {
+    "text": "Reduce it to the circumstances that would actually change a decision about this change, and say why each one bears on it.",
+    "verdict": "Correct. Context is what influences or is influenced by the change, not the full description of the enterprise."
+   },
+   {
+    "text": "Move the document to an appendix and describe the context as the timetabling process itself.",
+    "verdict": "That narrows context to the process being changed and drops circumstances such as campus planning that genuinely constrain it."
+   }
+  ],
+  "answer": 2
+ },
+ {
+  "n": 307,
+  "ka": 2,
+  "kaName": "Business Analysis Key Concepts",
+  "task": "2.1 The Business Analysis Core Concept Model",
+  "trap": "Calling any difference a change",
+  "stem": "Three things are happening at an insurer. Claims volumes have risen 30% because of a storm season. The claims team has been reorganised into two pods following a deliberate decision. A new regulation will require a revised hardship assessment from July, and work is under way to meet it. An analyst is asked which of these are changes in the business analysis sense.",
+  "why": "Change in the core concept model is a controlled transformation of an enterprise in response to a need. The storm-driven volume rise is a variation in conditions, not a transformation anyone is directing. The reorganisation and the regulatory response are both deliberate transformations undertaken in response to a need, so both qualify. The distinction matters because business analysis attaches to the controlled ones.",
+  "options": [
+   {
+    "text": "All three, since each alters how the claims team operates.",
+    "verdict": "Volumes rising is a change in circumstances rather than a transformation the enterprise is directing."
+   },
+   {
+    "text": "Only the reorganisation, since regulatory compliance is an obligation rather than a change.",
+    "verdict": "Meeting the obligation requires a deliberate transformation, which is precisely a change."
+   },
+   {
+    "text": "Only the regulatory response, since it is the only one driven by an external requirement.",
+    "verdict": "An internally chosen reorganisation is no less a controlled transformation for being internally driven."
+   },
+   {
+    "text": "The reorganisation and the regulatory response, both being controlled transformations in response to a need.",
+    "verdict": "Correct. Control and intent are what separate a change from a variation in conditions."
+   }
+  ],
+  "answer": 3
+ },
+ {
+  "n": 308,
+  "ka": 2,
+  "kaName": "Business Analysis Key Concepts",
+  "task": "2.5 Requirements and Designs",
+  "trap": "Assuming the requirement and design distinction maps onto project phases",
+  "stem": "A programme has a rule that requirements are produced in analysis and designs in the build phase, and that nothing may be called a design before the phase gate. During analysis the team produces screen mock-ups to settle a contested workflow, and the governance lead insists they be renamed as requirements so the gate is not breached.",
+  "why": "The distinction is one of intent, not of phase: a design is a usable representation of a solution whenever it is produced. Requirements and designs are elaborated in parallel throughout, and a mock-up made to settle a workflow is a design however early it appears. Renaming it to satisfy a gate makes the artefact register inaccurate and disguises a real design decision as a need.",
+  "options": [
+   {
+    "text": "Explain that requirement and design are separated by intent rather than by phase, and record the mock-ups as designs.",
+    "verdict": "Correct. The two are elaborated in parallel; a representation of a solution is a design whenever it is made."
+   },
+   {
+    "text": "Rename them, since the governance rule is the programme's and the analyst should work within it.",
+    "verdict": "Working within governance does not extend to recording a design as a need, which misstates what was decided."
+   },
+   {
+    "text": "Discard the mock-ups and settle the workflow in prose so the gate is not breached.",
+    "verdict": "This throws away the artefact that resolved a contested workflow in order to preserve a naming rule."
+   },
+   {
+    "text": "Hold the mock-ups outside the requirements repository until the build phase begins.",
+    "verdict": "Keeping a decision-bearing artefact off the record is worse than mislabelling it."
+   }
+  ],
+  "answer": 0
+ },
+ {
+  "n": 309,
+  "ka": 2,
+  "kaName": "Business Analysis Key Concepts",
+  "task": "2.1 The Business Analysis Core Concept Model",
+  "trap": "Naming a solution before the need is agreed",
+  "stem": "A council's customer team reports that residents cannot find out what stage their development application has reached, and that this generates about 400 calls a month. The director has asked for a chatbot. The analyst finds that the status data exists but is only updated when an officer closes a task, sometimes a fortnight after the work is done.",
+  "why": "A solution is a specific way of satisfying one or more needs in a context, which means the need has to be understood before a solution can be judged. Here the need is timely visibility of status, and the context includes status data that lags reality by up to a fortnight. A chatbot over stale data answers faster and still answers wrongly, so it does not satisfy the need. Naming the need first is what exposes that.",
+  "options": [
+   {
+    "text": "Build the chatbot as asked, since it addresses the 400 calls directly and the director has decided.",
+    "verdict": "It reduces the calls by giving residents a faster route to information that is out of date."
+   },
+   {
+    "text": "State the need as timely visibility of status, then assess options against it, including the currency of the data.",
+    "verdict": "Correct. A solution is judged against a need in a context, and the context here is data that lags by a fortnight."
+   },
+   {
+    "text": "Fix the status update lag first, since the data problem is the root cause of the complaints.",
+    "verdict": "Probably part of the answer, but choosing it before the need is agreed is the same error as choosing the chatbot."
+   },
+   {
+    "text": "Reject the chatbot on the grounds that it is a solution proposed before analysis.",
+    "verdict": "Rejecting a proposal for its provenance rather than assessing it against the need is not analysis either."
+   }
+  ],
+  "answer": 1
+ },
+ {
+  "n": 310,
+  "ka": 2,
+  "kaName": "Business Analysis Key Concepts",
+  "task": "2.4 Requirements Classification Schema",
+  "trap": "Treating a non-functional requirement as a lesser functional one",
+  "stem": "A tender response is being assembled for a court listing system. One statement says the system must produce a daily list for each courtroom. Another says the daily list must be available by 6am on every sitting day, with no more than one failure a year. A reviewer has filed both as functional requirements on the grounds that producing a list on time is still producing a list.",
+  "why": "The first describes what the solution must do and is functional. The second describes how well it must do it — availability and reliability expressed with a measure — which makes it non-functional. The distinction matters because non-functional requirements usually drive the architecture and the price, and burying them among functional ones is how they end up unpriced and unverified.",
+  "options": [
+   {
+    "text": "Keep both as functional, since a list that arrives late has not been produced in any useful sense.",
+    "verdict": "That argument would make every quality attribute functional and would leave none of them separately verifiable."
+   },
+   {
+    "text": "Reclassify the second as a business requirement, since courtroom availability is an objective of the court.",
+    "verdict": "It is a quality the solution must exhibit, not a goal of the enterprise."
+   },
+   {
+    "text": "Reclassify the second as a non-functional requirement, since it states how well the solution must perform rather than what it must do.",
+    "verdict": "Correct. Availability and reliability with a measure attached are quality attributes of the solution."
+   },
+   {
+    "text": "Merge them so the timing forms an acceptance criterion of the functional requirement.",
+    "verdict": "It can also be an acceptance criterion, but that does not stop it being a non-functional requirement that must be priced and designed for."
+   }
+  ],
+  "answer": 2
+ },
+ {
+  "n": 311,
+  "ka": 2,
+  "kaName": "Business Analysis Key Concepts",
+  "task": "2.4 Requirements Classification Schema",
+  "trap": "Keeping transition requirements alive after the transition",
+  "stem": "Eighteen months after a payroll replacement went live, the requirements repository still carries the parallel-run reconciliation, the legacy extract routine and the dual-entry procedure as open requirements. Each quarter they are reviewed, found to be unmet, and carried forward. The delivery lead asks the analyst to explain why they never close.",
+  "why": "Those three exist only to move the enterprise from the current state to the future state; they are transition requirements and they cease to apply once the transition is complete. Carrying them as open requirements after go-live makes the repository misleading and consumes review time every quarter. They should be closed as satisfied by the completed transition, not carried indefinitely.",
+  "options": [
+   {
+    "text": "Archive them without closing them, so the record of what was required during cutover is preserved.",
+    "verdict": "The record is preserved by closing them with their outcome; leaving them unclosed is what causes the quarterly review."
+   },
+   {
+    "text": "Reclassify them as solution requirements so they can be tested and then closed.",
+    "verdict": "The solution is not required to do any of them now, so testing would fail against a requirement that no longer applies."
+   },
+   {
+    "text": "Keep them open until the legacy system is decommissioned, since the extract may still be needed.",
+    "verdict": "If an extract is genuinely still needed that is a live need to be stated fresh, not a transition requirement left open."
+   },
+   {
+    "text": "Close them as transition requirements satisfied by the completed transition, since they applied only while moving between states.",
+    "verdict": "Correct. Transition requirements are temporary by definition and lapse once the change is complete."
+   }
+  ],
+  "answer": 3
+ },
+ {
+  "n": 312,
+  "ka": 2,
+  "kaName": "Business Analysis Key Concepts",
+  "task": "2.1 The Business Analysis Core Concept Model",
+  "trap": "Optimising one core concept at the expense of the rest",
+  "stem": "A logistics firm has defined its need as cutting depot dwell time, and a solution has been selected that achieves a 40% reduction. In review it emerges that the reduction is obtained by moving inspection work to drivers, who are paid by the load and whose union has not been consulted, and that the inspection records this produces will not satisfy the transport regulator's retention rule.",
+  "why": "The need is being met and the solution works on its own terms, but value to drivers is negative, a stakeholder group was not engaged and the regulatory context makes the outcome unacceptable. The model treats the six concepts as equal, so a solution that satisfies the need while damaging value, stakeholders and context has not succeeded. Reporting the trade-off across all six is the analysis owed here.",
+  "options": [
+   {
+    "text": "Report the outcome across all six concepts, showing the need met but value, stakeholders and context adversely affected.",
+    "verdict": "Correct. The concepts are equal and interdependent, so meeting the need alone does not make the solution sound."
+   },
+   {
+    "text": "Report that the need is met and record the union and regulator issues as implementation risks.",
+    "verdict": "Calling a regulatory breach an implementation risk understates it, and the driver impact is a value question rather than a risk."
+   },
+   {
+    "text": "Recommend proceeding and consulting the union afterwards, since the reduction is substantial.",
+    "verdict": "Consultation after a decision is not engagement, and it leaves the retention breach unaddressed entirely."
+   },
+   {
+    "text": "Redefine the need to include regulatory compliance so the solution can be assessed against it.",
+    "verdict": "Compliance is part of the context constraining any solution, not something to be folded into the need to make the assessment come out right."
+   }
+  ],
+  "answer": 0
+ },
+ {
+  "n": 313,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.1 The Agile Perspective",
+  "trap": "Treating the analyst as a stand-in for the customer",
+  "stem": "A team runs two-week iterations. The product owner, a regional operations manager, attends refinement irregularly and is unavailable for three of the next four weeks. The delivery lead proposes the business analyst answer the team's questions in her absence, and record the answers as decisions so the team is never blocked.",
+  "why": "On agile work the analyst elaborates requirements just in time and helps the team and the product owner understand each other, but does not become the source of business decisions. Answering on the owner's behalf and recording it as decided converts the analyst into a proxy customer, which removes the feedback the approach depends on. Making the availability gap visible is the analyst's move, not filling it silently.",
+  "options": [
+   {
+    "text": "Answer the questions and record them as decisions, since an unblocked team delivering is the priority.",
+    "verdict": "It keeps the team moving at the cost of the very feedback loop the iteration exists to create."
+   },
+   {
+    "text": "Raise the availability gap as an impediment, and get decision authority delegated explicitly or the questions deferred.",
+    "verdict": "Correct. The analyst elaborates and clarifies, but decision authority has to be held or delegated openly."
+   },
+   {
+    "text": "Batch the questions into a specification and have the owner approve it on her return.",
+    "verdict": "Batching four weeks of decisions into an up-front document is the practice the iterative approach exists to avoid."
+   },
+   {
+    "text": "Ask the team to make reasonable assumptions and correct them in a later iteration.",
+    "verdict": "Reasonable for small design choices, but not for decisions that belong to the business."
+   }
+  ],
+  "answer": 1
+ },
+ {
+  "n": 314,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.1 The Agile Perspective",
+  "trap": "Reading progressive elaboration as an excuse for no analysis",
+  "stem": "A team has adopted the rule that no analysis happens before an item enters an iteration, on the grounds that analysis ahead of build is waste. Three iterations running, items have been pulled in and then abandoned mid-iteration when it emerged that a payments interface was needed, that a rule required legal advice, and that data would have to come from a system nobody had access to.",
+  "why": "Progressive elaboration defers detail until it is needed, but it does not defer the work of establishing whether an item is ready to be built. Discovering an external dependency mid-iteration is the cost of skipping that. The agile perspective still expects analysis, just closer to the point of use and in smaller increments, with enough done ahead to know an item can be finished.",
+  "options": [
+   {
+    "text": "Hold the rule and accept the abandonment rate, since the alternative is analysis that may prove unnecessary.",
+    "verdict": "Three abandoned iterations is a larger waste than the analysis that would have prevented them."
+   },
+   {
+    "text": "Return to specifying a release in full before any iteration starts, since the rule has failed three times.",
+    "verdict": "Over-correcting to up-front specification discards the benefit the approach was adopted for."
+   },
+   {
+    "text": "Elaborate items just far enough ahead to know they can be finished, without specifying them in full.",
+    "verdict": "Correct. Deferring detail is not the same as deferring the check that an item is ready to build."
+   },
+   {
+    "text": "Move the dependencies into a separate technical backlog handled by the team outside iterations.",
+    "verdict": "This hides the dependencies rather than surfacing them, and they will still block the items that need them."
+   }
+  ],
+  "answer": 2
+ },
+ {
+  "n": 315,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.1 The Agile Perspective",
+  "trap": "Expecting the backlog to serve as the requirements record",
+  "stem": "Two years into continuous delivery, an auditor asks a bank to demonstrate what the current eligibility rule is and when it last changed. The team points at the backlog. The items that implemented the rule are closed, their acceptance criteria describe the change made at the time rather than the resulting state, and three later items amended it without restating it.",
+  "why": "A backlog is a prioritised list of work, and its items describe changes rather than the state that results from them. Maintaining requirements so the current state is knowable is a distinct activity that the agile perspective does not remove — it changes where the record lives and how lightly it is held. A closed item is a record of a decision, not a statement of what is true now.",
+  "options": [
+   {
+    "text": "Reconstruct the current rule from the closed items, since together they contain the full history.",
+    "verdict": "Possible once, at cost, and it will be needed again on the next question. It does not fix the absence of a record."
+   },
+   {
+    "text": "Tell the auditor the current rule is whatever the code does, since the code is the single source of truth.",
+    "verdict": "Code states behaviour without stating intent, and cannot show when or why the rule changed."
+   },
+   {
+    "text": "Reopen the three amending items and consolidate their acceptance criteria into the original.",
+    "verdict": "Editing closed items rewrites the history and still leaves the record scattered across the backlog."
+   },
+   {
+    "text": "Maintain a current statement of the rule that the backlog items change, so the resulting state is knowable.",
+    "verdict": "Correct. Items describe changes; maintaining requirements so the present state is legible is a separate activity."
+   }
+  ],
+  "answer": 3
+ },
+ {
+  "n": 316,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.2 The Business Intelligence Perspective",
+  "trap": "Specifying a report instead of the decision it supports",
+  "stem": "A retail chain has asked for a dashboard showing sales by store by day. The analyst finds that the request came from a regional manager who is trying to decide which stores need extra staff next quarter, and that the existing daily figures already show sales but are loaded 36 hours in arrears and exclude online orders collected in store.",
+  "why": "On business intelligence work the analyst specifies the decision the information supports, and then the data required to support it — sources, quality, latency and definition. Staffing decisions for next quarter need trend and mix rather than yesterday's total, and a 36-hour lag matters less than the missing click-and-collect volume, which distorts store-level demand. Building the requested dashboard answers a question nobody asked.",
+  "options": [
+   {
+    "text": "Establish the staffing decision the manager is making, then specify the data it needs, including how collected orders are counted.",
+    "verdict": "Correct. Business intelligence work starts from the decision and works back to the data, its quality and its latency."
+   },
+   {
+    "text": "Build the dashboard as requested and add a note about the 36-hour lag so users can interpret it.",
+    "verdict": "The lag is the lesser problem; excluding collected online orders understates demand at exactly the stores in question."
+   },
+   {
+    "text": "Fix the click-and-collect exclusion first, since the data defect makes any dashboard misleading.",
+    "verdict": "Necessary, but doing it before the decision is understood risks fixing data for a report that will not be used."
+   },
+   {
+    "text": "Direct the manager to the existing daily figures, since they already show sales by store by day.",
+    "verdict": "They show a figure that omits a material part of demand, which is why it cannot support the decision."
+   }
+  ],
+  "answer": 0
+ },
+ {
+  "n": 317,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.2 The Business Intelligence Perspective",
+  "trap": "Treating a definition dispute as a data quality defect",
+  "stem": "Finance and operations report different figures for active customers, and a data quality programme has spent four months profiling the warehouse looking for the defect. The analyst finds no defect: finance counts a customer active if billed in the period, operations if the customer logged in, and both figures are correct against their own definitions.",
+  "why": "This is a definition problem, not a quality one. Business intelligence work depends on agreed meaning as much as on clean data, and no amount of profiling will reconcile two figures that are answering different questions. What is needed is a governed definition — or two named measures kept deliberately distinct — so each figure states which question it answers.",
+  "options": [
+   {
+    "text": "Continue profiling, since two figures for the same measure indicate a defect somewhere upstream.",
+    "verdict": "There is no upstream defect; both figures are correct against different definitions, which profiling cannot detect."
+   },
+   {
+    "text": "Govern the definition, either agreeing one meaning or naming two distinct measures so each states its question.",
+    "verdict": "Correct. Agreed meaning is a precondition for business intelligence, and this is a meaning dispute."
+   },
+   {
+    "text": "Adopt finance's definition, since billing is the authoritative record of a customer relationship.",
+    "verdict": "Picking one by authority leaves operations without the measure it actually manages against."
+   },
+   {
+    "text": "Publish both figures side by side and let each area use its own.",
+    "verdict": "That is where they already are; without named definitions the discrepancy will be raised again."
+   }
+  ],
+  "answer": 1
+ },
+ {
+  "n": 318,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.2 The Business Intelligence Perspective",
+  "trap": "Ignoring latency because the data is technically available",
+  "stem": "A utility wants to detect meter tampering and act within the day. The data exists: consumption reads land in the warehouse nightly, tamper flags come from the device platform every four hours, and the customer record updates on change. A proposal builds the detection on the warehouse because all three sources are already joined there.",
+  "why": "The information is only as timely as its slowest input. Building on the warehouse means detection cannot run before the nightly load, which makes same-day action impossible for any tamper flagged after that load. Latency is a first-order requirement in business intelligence work, not a technical detail, and the joined warehouse being convenient does not make it fit for a same-day decision.",
+  "options": [
+   {
+    "text": "Build on the warehouse and run the detection twice a day to shorten the delay.",
+    "verdict": "Running twice against data that refreshes nightly does not make the data any newer."
+   },
+   {
+    "text": "Accept next-day action, since the difference between same-day and next-day is small in practice.",
+    "verdict": "It may be, but that is a decision for the utility to make explicitly, not one to absorb by choosing a source."
+   },
+   {
+    "text": "Specify the latency the decision requires, then choose sources that meet it, joining outside the warehouse if necessary.",
+    "verdict": "Correct. The decision sets the latency requirement and the architecture follows it, not the other way round."
+   },
+   {
+    "text": "Move the consumption load to four-hourly so all three sources match the tamper feed.",
+    "verdict": "Possibly the answer, but it is a solution chosen before the required latency has been stated."
+   }
+  ],
+  "answer": 2
+ },
+ {
+  "n": 319,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.3 The Information Technology Perspective",
+  "trap": "Leaving quality attributes to the technical team",
+  "stem": "A requirements set for a customer portal has been signed off with a note that performance, availability and security will be determined by the technical team during design. At the first architecture review the technical lead asks what concurrency the portal must support and what recovery time is acceptable, and nobody in the room can answer.",
+  "why": "Quality attributes belong to the business analysis work, not to the technical team, because they express what the enterprise needs rather than how it will be achieved. On information technology work the analyst is expected to elicit and specify them, and they usually determine the architecture and the cost. Deferring them to design means the architecture is chosen before the requirement it must satisfy is known.",
+  "options": [
+   {
+    "text": "Let the technical team propose values and have the business confirm them at the next review.",
+    "verdict": "It inverts the order: the team would be proposing what the business needs rather than how to deliver it."
+   },
+   {
+    "text": "Defer the architecture review until after the first release, when real usage data exists.",
+    "verdict": "Recovery time and security cannot wait for production evidence, and the architecture is being chosen now."
+   },
+   {
+    "text": "Use industry benchmarks for a portal of this size as a starting point.",
+    "verdict": "A benchmark is a sanity check, not a statement of what this enterprise requires."
+   },
+   {
+    "text": "Elicit the concurrency, recovery and security requirements from the business now, since they express need rather than implementation.",
+    "verdict": "Correct. Quality attributes are requirements, and on IT work they usually drive the architecture."
+   }
+  ],
+  "answer": 3
+ },
+ {
+  "n": 320,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.3 The Information Technology Perspective",
+  "trap": "Treating an integration constraint as a technical detail",
+  "stem": "A hospital is replacing its bed management system. The preferred product assumes it holds the master patient index. The hospital's patient index is held in the patient administration system, which is the source for eleven other systems and cannot be displaced. Procurement has recorded this as a technical integration item for the implementation phase.",
+  "why": "Which system masters the patient identity is a constraint on any solution, not an integration task to be worked out later. On information technology work the analyst is expected to surface the existing landscape as a constraint on the solution, because a product that assumes it holds the master record is either unusable or requires a synchronisation design that changes its cost and risk. Deferring it to implementation defers the decision that determines whether the product is viable.",
+  "options": [
+   {
+    "text": "Raise it as a constraint on the solution now, since it determines whether the preferred product is viable at all.",
+    "verdict": "Correct. The existing landscape constrains the solution and has to be assessed before selection, not after."
+   },
+   {
+    "text": "Record it as an integration item, since every replacement requires interfaces to be built at implementation.",
+    "verdict": "This is not an interface to build but a contradiction about which system owns the identity."
+   },
+   {
+    "text": "Ask the vendor whether the product can be configured to accept an external index, and proceed on the answer.",
+    "verdict": "A necessary question, but the answer has to feed the selection decision rather than an implementation plan."
+   },
+   {
+    "text": "Plan a two-way synchronisation between the two indexes to satisfy both systems.",
+    "verdict": "A design chosen before the constraint has been assessed, and duplicate mastering of patient identity is a serious risk in a hospital."
+   }
+  ],
+  "answer": 0
+ },
+ {
+  "n": 321,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.4 The Business Architecture Perspective",
+  "trap": "Confusing business architecture with solution architecture",
+  "stem": "An insurer has asked for a business architecture to guide three years of investment. The document produced describes the target application portfolio, the integration patterns, the cloud landing zones and the data platform. The strategy director says it does not answer her question, which is where the insurer should invest to become better at underwriting complex risk.",
+  "why": "Business architecture describes the enterprise in terms of capabilities, value streams, information and organisation, independently of the systems that support them. What has been produced is a solution or technology architecture. It may be a necessary document, but it cannot answer an investment question framed around a capability, because it describes the means rather than what the enterprise must be able to do.",
+  "options": [
+   {
+    "text": "Add a capability layer on top of the existing document so the technology maps to capabilities.",
+    "verdict": "Mapping technology upward preserves the technology framing; the capability view has to be able to stand on its own."
+   },
+   {
+    "text": "Describe the enterprise as capabilities, value streams and information, then assess which need investment to underwrite complex risk.",
+    "verdict": "Correct. Business architecture describes what the enterprise must be able to do, independently of the systems."
+   },
+   {
+    "text": "Reframe the question in technology terms so the existing architecture can answer it.",
+    "verdict": "This makes the question fit the document rather than the document answer the question."
+   },
+   {
+    "text": "Treat the produced document as the business architecture and add a roadmap sequencing the portfolio changes.",
+    "verdict": "Sequencing a technology portfolio still does not say which business capabilities are weak."
+   }
+  ],
+  "answer": 1
+ },
+ {
+  "n": 322,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.4 The Business Architecture Perspective",
+  "trap": "Optimising a single initiative against an enterprise-wide view",
+  "stem": "A bank's mortgage programme has designed its own customer verification, which is faster than the enterprise service and meets its own business case. The business architect points out that verification is a shared capability used by six other areas, and that a second implementation will fragment it. The programme director argues the enterprise service would cost him four months.",
+  "why": "The business architecture perspective takes the enterprise as the unit of analysis, so a capability used by seven areas is assessed across all seven rather than within one programme. The programme's case is genuine and so is the architect's; what is owed is a decision made at the level where the trade-off actually sits, with the cost to the enterprise of fragmenting a shared capability set against four months on one programme.",
+  "options": [
+   {
+    "text": "Let the programme proceed, since it has a sound business case and delivery predictability matters.",
+    "verdict": "The case is sound within the programme, which is precisely the boundary the architecture view exists to widen."
+   },
+   {
+    "text": "Require the programme to use the enterprise service, since a shared capability must not be duplicated.",
+    "verdict": "A rule applied without the cost is as partial as a programme decision made without the enterprise view."
+   },
+   {
+    "text": "Put the trade-off to the level that owns the capability, quantifying the cost to the other six areas against the four months.",
+    "verdict": "Correct. A shared capability is assessed enterprise-wide, and the decision belongs where the trade-off sits."
+   },
+   {
+    "text": "Let the programme build its own and migrate to the enterprise service afterwards.",
+    "verdict": "Migration after go-live is routinely deferred indefinitely, so this is duplication with an intention attached."
+   }
+  ],
+  "answer": 2
+ },
+ {
+  "n": 323,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.5 The Business Process Management Perspective",
+  "trap": "Improving a fragment while the end-to-end process is the unit that matters",
+  "stem": "A telco has cut order provisioning from six days to two, and the provisioning team has been recognised for it. End-to-end order-to-activation has not moved from nineteen days. The work released by the faster provisioning now waits in field scheduling, which was already the constraint and is now carrying a larger queue.",
+  "why": "Business process management takes the end-to-end process as the unit of analysis and management, precisely because improving a step that is not the constraint moves the queue rather than the outcome. The provisioning gain is real and worthless in isolation. The perspective directs attention to the whole flow, its owner and its measures, which is what would have identified field scheduling before the effort was spent.",
+  "options": [
+   {
+    "text": "Repeat the approach in field scheduling, since it worked in provisioning.",
+    "verdict": "It may help, but choosing the next step by where the last success happened is how the constraint keeps moving unexamined."
+   },
+   {
+    "text": "Measure each step against its own target so every team is accountable for its part.",
+    "verdict": "Local targets are what produced a step optimised against an unchanged end-to-end result."
+   },
+   {
+    "text": "Hold provisioning output at its former rate so field scheduling is not overwhelmed.",
+    "verdict": "Throttling a faster step manages the symptom and forgoes the gain without addressing the constraint."
+   },
+   {
+    "text": "Manage order-to-activation as one process with an owner and end-to-end measures, and improve at the constraint.",
+    "verdict": "Correct. The end-to-end process is the unit of analysis, which is what makes the constraint visible."
+   }
+  ],
+  "answer": 3
+ },
+ {
+  "n": 324,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.5 The Business Process Management Perspective",
+  "trap": "Running process improvement as a project and then stopping",
+  "stem": "A council redesigned its complaints handling two years ago, cutting resolution from 21 days to 9. It is now at 17 days. Nobody owns the process end to end, the redesign team disbanded at go-live, the measures stopped being reported after six months, and four teams have since changed their own steps independently.",
+  "why": "The business process management perspective treats a process as something owned and managed continuously, not improved once by a project that then dissolves. Every condition that produced the decay follows from the absence of ownership and measurement: without an owner, local changes go unreviewed; without reporting, drift is invisible. Redesigning again without establishing ownership reproduces the same two-year cycle.",
+  "options": [
+   {
+    "text": "Establish an owner and continuous measurement for the end-to-end process, then improve from where it now stands.",
+    "verdict": "Correct. The perspective treats a process as managed continuously, which is exactly what was missing."
+   },
+   {
+    "text": "Run the redesign again, since it demonstrably worked the first time.",
+    "verdict": "It worked and then decayed, and repeating it without ownership would decay the same way."
+   },
+   {
+    "text": "Prevent the four teams from changing their steps without approval.",
+    "verdict": "Control without an owner or measures suppresses local improvement as well as local drift."
+   },
+   {
+    "text": "Reinstate the original measures and report them monthly to the executive.",
+    "verdict": "Necessary and not sufficient: measurement without ownership tells you it is drifting and nobody is accountable for stopping it."
+   }
+  ],
+  "answer": 0
+ },
+ {
+  "n": 325,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.1 The Agile Perspective",
+  "trap": "Choosing a perspective by preference rather than by the work",
+  "stem": "A government agency is replacing the calculation engine behind a statutory payment. The rules are set in legislation, the correct output is externally verifiable to the cent, and an error is recoverable only by a manual remediation programme. The delivery director wants the work run in two-week iterations with requirements elaborated just in time, as the agency's other programmes are.",
+  "why": "Perspectives are not exclusive and none is a house style: the approach follows the work. Here the rules are known in advance and fixed by legislation, the cost of an error is high and remediation is manual, so there is little to learn iteratively and a great deal to specify precisely. Iterations may still be useful for delivery, but the just-in-time elaboration that suits emergent requirements does not suit requirements that are already externally determined.",
+  "options": [
+   {
+    "text": "Run it in iterations as the director asks, since consistency across the agency's programmes has its own value.",
+    "verdict": "Consistency is a weak reason to elaborate legislated rules just in time when they are already fully determined."
+   },
+   {
+    "text": "Specify the legislated rules up front and use iterations for delivery, since the requirements are externally fixed rather than emergent.",
+    "verdict": "Correct. The approach follows the nature of the work; the perspectives are not mutually exclusive."
+   },
+   {
+    "text": "Refuse iterations entirely and run a predictive lifecycle, since the payment is statutory.",
+    "verdict": "The statutory rules argue for up-front specification, not against incremental delivery and feedback."
+   },
+   {
+    "text": "Adopt the agile perspective and mitigate the risk with additional testing at the end of each iteration.",
+    "verdict": "Testing catches errors in what was built; it does not compensate for elaborating fixed rules piecemeal."
+   }
+  ],
+  "answer": 1
+ },
+ {
+  "n": 326,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.3 The Information Technology Perspective",
+  "trap": "Assuming one perspective applies to the whole of a change",
+  "stem": "A supermarket is introducing demand forecasting. The work involves a forecasting model built on ten years of sales data, changes to the replenishment process in 800 stores, a new integration to the ordering platform, and a capability the chain has never had. The programme director asks which single perspective the analyst should work from.",
+  "why": "Perspectives overlap and more than one commonly applies to the same change. This work has a business intelligence dimension in the data and the model, an information technology dimension in the integration, a business process dimension in what 800 stores do differently, and a business architecture dimension in a capability the enterprise does not yet hold. Choosing one would leave three sets of concerns unexamined.",
+  "options": [
+   {
+    "text": "Business intelligence, since the forecasting model and the data are what make the change possible.",
+    "verdict": "It covers the model and leaves the process change in 800 stores and the new capability unaddressed."
+   },
+   {
+    "text": "Business process management, since what changes for the stores determines whether the forecast is used.",
+    "verdict": "The most consequential single choice, and still a choice that ignores the data quality the forecast depends on."
+   },
+   {
+    "text": "Apply all four, since perspectives overlap and this change has data, technology, process and capability dimensions.",
+    "verdict": "Correct. Perspectives are not mutually exclusive and are routinely combined on a single change."
+   },
+   {
+    "text": "Business architecture, since a capability the chain has never had is the largest of the four concerns.",
+    "verdict": "It frames the investment well and says nothing about the data, the integration or the store process."
+   }
+  ],
+  "answer": 2
+ },
+ {
+  "n": 327,
+  "ka": 11,
+  "kaName": "Perspectives",
+  "task": "11.2 The Business Intelligence Perspective",
+  "trap": "Building a measure nobody is positioned to act on",
+  "stem": "A hospital's executive dashboard will show a ward-level infection indicator refreshed hourly. The analyst finds that infection control decisions are made at a twice-weekly committee, that ward managers have no authority to act on the indicator, and that the underlying laboratory confirmation takes up to 40 hours.",
+  "why": "Information is specified against the decision it supports, and here the decision cadence is twice weekly against a 40-hour confirmation lag. An hourly indicator cannot be acted on by anyone who sees it, and refreshing faster than the data can be confirmed produces movement that is not signal. Matching the measure to the decision and its authority is the analysis owed before the dashboard is built.",
+  "options": [
+   {
+    "text": "Build it hourly, since more frequent information is available and users can choose how often to look.",
+    "verdict": "It presents variation that laboratory confirmation cannot support, which invites action on noise."
+   },
+   {
+    "text": "Give ward managers authority to act on the indicator so the hourly refresh becomes useful.",
+    "verdict": "Changing clinical governance to justify a dashboard refresh rate inverts the problem."
+   },
+   {
+    "text": "Keep the hourly refresh and add a confidence indicator showing which results are unconfirmed.",
+    "verdict": "Better than nothing, and it still gives ward managers a figure they have no authority to act on."
+   },
+   {
+    "text": "Match the measure to the decision it supports and to who can act, given a 40-hour confirmation lag.",
+    "verdict": "Correct. Frequency follows the decision cadence and the data's own reliability, not what the pipeline can push."
+   }
+  ],
+  "answer": 3
+ }
+]

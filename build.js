@@ -24,6 +24,8 @@ const questions = read("questions.json");
 const techniques = read("techniques.json");
 const techQuestions = read("technique-questions.json");
 const scenario = read("scenario.json");
+const concepts = read("concept-questions.json");
+const plan = read("studyplan.json");
 
 /* ---- checks that must hold before anything is written ---- */
 const errors = [];
@@ -144,6 +146,34 @@ all.forEach(q => {
   if (q.exhibit) checkExhibit(q.exhibit, where);
 });
 
+/* Chapters 2 and 11 sit outside the six blueprint-weighted knowledge areas but
+   are examinable, so they get their own bank rather than diluting the 120. */
+const CONTEXT_KAS = { 2: "Business Analysis Key Concepts", 11: "Perspectives" };
+const cSpread = [0, 0, 0, 0];
+concepts.forEach((q, i) => {
+  const where = `concept item ${q.n}`;
+  if (!CONTEXT_KAS[q.ka]) errors.push(`${where}: ka ${q.ka} is not a context chapter (expected 2 or 11)`);
+  else if (q.kaName !== CONTEXT_KAS[q.ka]) errors.push(`${where}: kaName "${q.kaName}" does not match ka ${q.ka}`);
+  if (!q.options || q.options.length !== 4) errors.push(`${where}: ${q.options ? q.options.length : 0} options`);
+  if (!(q.answer >= 0 && q.answer < 4)) errors.push(`${where}: answer out of range`);
+  else cSpread[q.answer]++;
+  if (q.options && q.options.some(o => !o.text || !o.verdict)) errors.push(`${where}: option missing text or verdict`);
+  ["task", "trap", "stem", "why"].forEach(f => { if (!q[f]) errors.push(`${where}: missing ${f}`); });
+  if (i && concepts[i - 1].answer === q.answer) errors.push(`${where}: shares an answer letter with the item before it`);
+});
+if (Math.max(...cSpread) - Math.min(...cSpread) > 1)
+  errors.push(`concept answer key is ${cSpread.join("/")}, which is not balanced`);
+
+const planKas = new Set([3, 4, 5, 6, 7, 8].concat(Object.keys(CONTEXT_KAS).map(Number)));
+(plan.weeks || []).forEach((w, i) => {
+  const where = `plan week ${w.week}`;
+  if (w.week !== i + 1) errors.push(`${where}: out of sequence (position ${i + 1})`);
+  ["title", "chapter", "focus", "watch"].forEach(f => { if (!w[f]) errors.push(`${where}: missing ${f}`); });
+  (w.kas || []).forEach(k => { if (!planKas.has(k)) errors.push(`${where}: unknown knowledge area ${k}`); });
+  (w.techniques || []).forEach(k => { if (!keys.has(k)) errors.push(`${where}: unknown technique "${k}"`); });
+});
+if ((plan.weeks || []).length !== 12) errors.push(`study plan has ${(plan.weeks || []).length} weeks, expected 12`);
+
 /* The scenario is a chain: each step must name a real technique, and must say
    what it takes from the step before and what it hands on. A step that takes
    nothing after the first has broken the chain, which is the whole point of it. */
@@ -216,6 +246,10 @@ const block = [
   "const TECHNIQUE_QUESTIONS = " + JSON.stringify(techQuestions, null, 1) + ";",
   "",
   "const SCENARIO = " + JSON.stringify(scenario, null, 1) + ";",
+  "",
+  "const CONCEPT_QUESTIONS = " + JSON.stringify(concepts, null, 1) + ";",
+  "",
+  "const STUDY_PLAN = " + JSON.stringify(plan, null, 1) + ";",
   CLOSE
 ].join("\n");
 
@@ -270,3 +304,5 @@ console.log(`  drill pool       ${techQuestions.length + tagged} items`);
 console.log(`  per-technique    ${files}`);
 console.log(`  powerpoint pack  ${pack}`);
 console.log(`  scenario         ${scenario.steps.length} steps, ${new Set(scenario.steps.map(s => s.technique)).size} techniques`);
+console.log(`  context bank     ${concepts.length} items (ch2 ${concepts.filter(q => q.ka === 2).length}, ch11 ${concepts.filter(q => q.ka === 11).length}), key ${cSpread.join("/")}`);
+console.log(`  study plan       ${plan.weeks.length} weeks`);

@@ -1,0 +1,91 @@
+{
+ "name": "12-week study plan",
+ "intro": "A BABOK v3 study group usually works the chapters in a fixed order over twelve weeks, one or two knowledge areas a session, with the related techniques alongside. This sequences what is already here to that order, so each week you can drill exactly the ground that week covered. The plan is only a running order: nothing here is drawn from any particular group's materials.",
+ "closing": "Weeks 3 to 11 are the six knowledge areas and carry the blueprint weighting. Weeks 1, 2 and 12 are Key Concepts and Perspectives — outside the blueprint percentages, examinable all the same, and the ground candidates most often leave until last.",
+ "weeks": [
+  {
+   "week": 1, "title": "Introduction and the core concept model", "chapter": "BABOK 1–2",
+   "kas": [2], "len": 10,
+   "focus": "The six core concepts and how they constrain each other. Get this right and the rest of the guide reads as one argument rather than six.",
+   "watch": "Change, need, solution, stakeholder, value and context are equal. Any question that lets you settle one without checking the others is testing whether you know that.",
+   "techniques": []
+  },
+  {
+   "week": 2, "title": "Key concepts and requirements classification", "chapter": "BABOK 2",
+   "kas": [2], "len": 12,
+   "focus": "Requirement against design, and the four classes: business, stakeholder, solution, transition.",
+   "watch": "Requirement and design are separated by intent, never by level of detail or by project phase. Transition requirements lapse once the transition is done.",
+   "techniques": ["10.23 Glossary", "10.11 Concept Modelling"]
+  },
+  {
+   "week": 3, "title": "Strategy Analysis, part 1", "chapter": "BABOK 6.1–6.2",
+   "kas": [6], "len": 18,
+   "focus": "Analyse the current state and define the future state.",
+   "watch": "Current state work is diagnosis, not design. An item that jumps from a recurring failure to a solution is testing whether you stopped to find the cause.",
+   "techniques": ["10.46 SWOT Analysis", "10.6 Business Capability Analysis", "10.40 Root Cause Analysis", "10.8 Business Model Canvas"]
+  },
+  {
+   "week": 4, "title": "Strategy Analysis, part 2", "chapter": "BABOK 6.3–6.4",
+   "kas": [6], "len": 18,
+   "focus": "Assess risks and define the change strategy.",
+   "watch": "Mitigation changes a risk, it does not close it. And a positive return is not the same as the best option — the exam repeatedly offers one that is profitable and beaten.",
+   "techniques": ["10.38 Risk Analysis and Management", "10.20 Financial Analysis", "10.7 Business Cases", "10.16 Decision Analysis"]
+  },
+  {
+   "week": 5, "title": "Solution Evaluation", "chapter": "BABOK 8",
+   "kas": [8], "len": 18,
+   "focus": "Measure performance, analyse measures, assess limitations inside and outside the solution, and recommend action.",
+   "watch": "Whether the limitation sits in the solution or in the enterprise around it decides the task, and the two are the most commonly confused pair in this area.",
+   "techniques": ["10.28 Metrics and Key Performance Indicators", "10.3 Balanced Scorecard", "10.34 Process Analysis"]
+  },
+  {
+   "week": 6, "title": "Elicitation and Collaboration", "chapter": "BABOK 4",
+   "kas": [4], "len": 16,
+   "focus": "Prepare, conduct, confirm, communicate, and manage collaboration.",
+   "watch": "Choosing the instrument is most of it: interviews go deep with few, surveys go wide with many, observation catches what people cannot articulate, workshops produce an agreed output.",
+   "techniques": ["10.25 Interviews", "10.45 Survey or Questionnaire", "10.31 Observation", "10.50 Workshops", "10.18 Document Analysis"]
+  },
+  {
+   "week": 7, "title": "Requirements Analysis and Design Definition, part 1", "chapter": "BABOK 7.1–7.3",
+   "kas": [7], "len": 20,
+   "focus": "Specify and model, verify, validate.",
+   "watch": "Verification asks whether the requirement is well written; validation asks whether it delivers value. Both use reviews, so read what the reviewers are being asked to judge.",
+   "techniques": ["10.35 Process Modelling", "10.44 State Modelling", "10.47 Use Cases and Scenarios", "10.15 Data Modelling", "10.9 Business Rules Analysis"]
+  },
+  {
+   "week": 8, "title": "Requirements Analysis and Design Definition, part 2", "chapter": "BABOK 7.4–7.6",
+   "kas": [7], "len": 20,
+   "focus": "Requirements architecture, design options, and the value-based recommendation.",
+   "watch": "Analysing potential value is business analysis; producing a delivery schedule for the options is project management. The distinction is examined repeatedly.",
+   "techniques": ["10.41 Scope Modelling", "10.24 Interface Analysis", "10.30 Non-Functional Requirements Analysis", "10.49 Vendor Assessment", "10.20 Financial Analysis"]
+  },
+  {
+   "week": 9, "title": "Requirements Life Cycle Management", "chapter": "BABOK 5",
+   "kas": [5], "len": 18,
+   "focus": "Trace, maintain, prioritise, assess changes, approve.",
+   "watch": "Prioritisation has several bases and value is only one. A regulatory date or a dependency governs before value does.",
+   "techniques": ["10.33 Prioritisation", "10.2 Backlog Management", "10.26 Item Tracking", "10.37 Reviews"]
+  },
+  {
+   "week": 10, "title": "Business Analysis Planning and Monitoring, part 1", "chapter": "BABOK 3.1–3.2",
+   "kas": [3], "len": 16,
+   "focus": "Plan the approach and plan stakeholder engagement.",
+   "watch": "Identifying and positioning stakeholders is analysis; deciding how often and how formally to deal with each is engagement planning. Producing a map is not having a plan.",
+   "techniques": ["10.43 Stakeholder List, Map, or Personas", "10.32 Organisational Modelling", "10.19 Estimation"]
+  },
+  {
+   "week": 11, "title": "Business Analysis Planning and Monitoring, part 2", "chapter": "BABOK 3.3–3.5",
+   "kas": [3], "len": 16,
+   "focus": "Governance, information management, and improving business analysis performance.",
+   "watch": "Governance is who decides and how change is controlled; information management is how the analysis itself is stored, traced and reused. They are easy to blur.",
+   "techniques": ["10.12 Data Dictionary", "10.27 Lessons Learned", "10.37 Reviews"]
+  },
+  {
+   "week": 12, "title": "Perspectives", "chapter": "BABOK 11",
+   "kas": [11], "len": 15,
+   "focus": "Agile, business intelligence, information technology, business architecture and business process management.",
+   "watch": "Perspectives are not exclusive and none is a house style. More than one commonly applies to the same change, and the approach follows the work rather than the team's habit.",
+   "techniques": ["10.48 User Stories", "10.2 Backlog Management", "10.14 Data Mining", "10.6 Business Capability Analysis", "10.34 Process Analysis"]
+  }
+ ]
+}

@@ -40,9 +40,9 @@ prioritised study plan; the technique lab adds a per-technique and per-group bre
 
 | | |
 |---|---|
-| **Items** | 120-item exam bank · 61-item technique bank · 133-item technique drill pool |
-| **Coverage** | All 6 Knowledge Areas, all 30 tasks, all 50 techniques |
-| **Modes** | Timed exam sitting · filtered study session · technique lab (learn + drill) |
+| **Items** | 120-item exam bank · 61-item technique bank · 27-item context bank · 133-item drill pool |
+| **Coverage** | All 6 Knowledge Areas, all 30 tasks, all 50 techniques, plus key concepts and perspectives |
+| **Modes** | Timed exam sitting · study session · 12-week plan · technique lab |
 | **Exhibits** | 11 items carry a data table or dashboard, 8 of them financial |
 | **Storage** | None. No accounts, no cookies, no analytics, no network calls |
 
@@ -83,6 +83,25 @@ prioritised study plan; the technique lab adds a per-technique and per-group bre
   you spent on wrong answers versus right ones), and prioritised actions ranked by weight × gap.
 - **Light and dark**, responsive, and printable to PDF for your records.
 
+## The 12-week plan
+
+A study group works the chapters in a settled order over twelve weeks. The plan sequences what is
+already here to that order, so each week drills its own ground with the techniques for that session
+listed beside it. It is a running order over existing original content.
+
+**Two of those weeks had no content until now.** Chapters 2 (key concepts, the BACCM, the
+requirements classification schema) and 11 (perspectives: agile, business intelligence, information
+technology, business architecture, business process management) are examinable but carry no
+blueprint percentage, and the simulator had nothing on either. They now have a 27-item bank of
+their own, kept deliberately separate:
+
+- The **exam sitting is untouched** — still exactly 120 items across the six weighted areas, and no
+  context item can appear in it.
+- Study mode offers them as two extra areas, off by default and labelled *outside the blueprint*.
+- Their answer key is balanced 7/7/7/6 with no two consecutive items sharing a letter, the same rule
+  the exam bank follows. `build.js` fails the build if a bank drifts more than one item from
+  balanced.
+
 ## Question design
 
 These are interpretation questions, not recall questions. Every item is written to the same rules:
@@ -116,6 +135,8 @@ interleaved so no two consecutive questions come from the same area. There is no
 | `questions.json` | The 120-item exam bank as data, if you want to build your own front end |
 | `technique-questions.json` | The technique drill bank, including the items that carry data exhibits |
 | `techniques.json` | The 50 BABOK v3 techniques used by the learn view |
+| `concept-questions.json` | Chapters 2 and 11 — key concepts and perspectives, outside the blueprint |
+| `studyplan.json` | The twelve-week running order |
 | `build.js` | Validates the data, embeds it, and rebuilds every download |
 | `scenario.json` | One engagement worked across 16 techniques, with the hand-offs between them |
 | `make-files.js` | Worked example and blank template, per technique, per format — 300 files plus a zip |
