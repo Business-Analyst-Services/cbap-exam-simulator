@@ -1,4 +1,26 @@
-# CBAP® Exam Simulator
+# BABOK® Guide v3 — a twelve-week programme
+
+A course site and a practice tool in one place. **[Open it](https://business-analyst-services.github.io/cbap-exam-simulator/)**
+
+The twelve weeks come first: each one explains its chapter, names the tasks in scope, the terms worth
+being precise about and the traps the exam sets, lists the techniques for that session with their
+blank templates, and then drills exactly that ground. The simulator sits inside the course as one of
+its tools rather than as the front door.
+
+    index.html        the twelve-week programme
+    week-01..12.html  a page per week
+    simulator.html    the practice tool
+    templates/        300 technique templates
+
+Every week page links straight into its own drill — `simulator.html#week=7` opens a twenty-question
+Requirements Analysis and Design Definition session with no setup.
+
+All explanation, questions and templates are original work aligned to the BABOK Guide v3 structure.
+No BABOK text is reproduced and nothing is drawn from any particular study group's materials.
+
+---
+
+## The practice tool
 
 A single-file, offline practice exam for the **CBAP®** certification, aligned to the
 **BABOK® Guide v3** and weighted to the published exam blueprint. Sit the full 120-item paper under
