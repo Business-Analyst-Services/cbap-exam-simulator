@@ -15,12 +15,11 @@ const path = require("path");
 const { execFileSync } = require("child_process");
 
 const dir = __dirname;
-const HTML = path.join(dir, "simulator.html");   // the app; index.html is the course home
+const HTML = path.join(dir, "index.html");
 const OPEN = "/* === generated data — see build.js, do not edit by hand === */";
 const CLOSE = "/* === end generated data === */";
 
 const read = f => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8"));
-const course = read("course.json");
 const questions = read("questions.json");
 const techniques = read("techniques.json");
 const techQuestions = read("technique-questions.json");
@@ -175,28 +174,6 @@ const planKas = new Set([3, 4, 5, 6, 7, 8].concat(Object.keys(CONTEXT_KAS).map(N
 });
 if ((plan.weeks || []).length !== 12) errors.push(`study plan has ${(plan.weeks || []).length} weeks, expected 12`);
 
-/* The course pages and the drill plan are separate files describing the same
-   twelve weeks, so they must agree or a week page will drill the wrong ground. */
-(course.weeks || []).forEach((w, i) => {
-  const where = `course week ${w.week}`;
-  if (w.week !== i + 1) errors.push(`${where}: out of sequence (position ${i + 1})`);
-  ["title", "chapter", "strap"].forEach(f => { if (!w[f]) errors.push(`${where}: missing ${f}`); });
-  ["overview", "tasks", "concepts", "techniques", "traps", "prepare", "discuss"]
-    .forEach(f => { if (!Array.isArray(w[f])) errors.push(`${where}: ${f} is not a list`); });
-  (w.techniques || []).forEach(k => { if (!keys.has(k)) errors.push(`${where}: unknown technique "${k}"`); });
-  (w.tasks || []).forEach((t, j) => {
-    ["n", "name", "what", "watch"].forEach(f => { if (!t[f]) errors.push(`${where}: task ${j + 1} missing ${f}`); });
-  });
-  const p = (plan.weeks || [])[i];
-  if (!p) errors.push(`${where}: no matching week in the drill plan`);
-  else {
-    if (JSON.stringify(p.kas) !== JSON.stringify(w.kas))
-      errors.push(`${where}: knowledge areas ${JSON.stringify(w.kas)} do not match the drill plan's ${JSON.stringify(p.kas)}`);
-    if (p.len !== w.len) errors.push(`${where}: drill length ${w.len} does not match the plan's ${p.len}`);
-  }
-});
-if ((course.weeks || []).length !== 12) errors.push(`course has ${(course.weeks || []).length} weeks, expected 12`);
-
 /* The scenario is a chain: each step must name a real technique, and must say
    what it takes from the step before and what it hands on. A step that takes
    nothing after the first has broken the chain, which is the whole point of it. */
@@ -304,11 +281,6 @@ try {
   pack = "FAILED";
 }
 try {
-  execFileSync(process.execPath, [path.join(dir, "make-site.js")], { stdio: "pipe" });
-} catch (e) {
-  console.error("warning: the course site did not rebuild -", (e.message || "").split("\n")[0]);
-}
-try {
   execFileSync(process.execPath, [path.join(dir, "make-scenario.js")], { stdio: "pipe" });
 } catch (e) {
   console.error("warning: the scenario walkthrough did not rebuild -", (e.message || "").split("\n")[0]);
@@ -324,7 +296,7 @@ try {
 
 const exhibits = techQuestions.filter(q => q.exhibit).length;
 const tagged = questions.filter(q => q.techniques && q.techniques.length).length;
-console.log(`simulator.html written`);
+console.log(`index.html written`);
 console.log(`  exam bank        ${questions.length} items (${tagged} carry technique tags)`);
 console.log(`  technique bank   ${techQuestions.length} items (${exhibits} with data exhibits)`);
 console.log(`  techniques       ${techniques.length}`);
@@ -334,4 +306,3 @@ console.log(`  powerpoint pack  ${pack}`);
 console.log(`  scenario         ${scenario.steps.length} steps, ${new Set(scenario.steps.map(s => s.technique)).size} techniques`);
 console.log(`  context bank     ${concepts.length} items (ch2 ${concepts.filter(q => q.ka === 2).length}, ch11 ${concepts.filter(q => q.ka === 11).length}), key ${cSpread.join("/")}`);
 console.log(`  study plan       ${plan.weeks.length} weeks`);
-console.log(`  course site      index + ${course.weeks.length} week pages`);
